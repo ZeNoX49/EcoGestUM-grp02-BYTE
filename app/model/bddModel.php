@@ -82,3 +82,9 @@ function getNbObjRecupUser($userId, $conn){
     $sql = "SELECT COUNT(*) FROM reservations_recues";
     $stmt = $conn->prepare($sql);
 }
+
+function createUser($nom,$prenom,$mail, $password, $role, $conn){
+    $sql = "INSERT INTO utilisateurs (nom_utilisateur,prenom_utilisateur,email_utilisateur, mot_de_passe, type_utilisateur) VALUES (?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$nom, $prenom,$mail, $password, $role]);
+}
