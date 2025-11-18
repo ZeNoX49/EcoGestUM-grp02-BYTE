@@ -1,19 +1,19 @@
 <?php
 
 function getDatabase(){
-
     $db_name = 'ecogestum';
     $conn = connectToDatabase();
     $stmt = $conn->query("SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '$db_name'");
     if ($stmt->rowCount() == 0) {
-        return setup_database();
+        setup_database();
     }
     return connectToDatabase();
 }
 function setup_database(){
-    createDatabase();
-    insertData();
-    return connectToDatabase();
+    $conn = connectToDatabase();
+    createDatabase($conn);
+    insertData($conn);
+    setProcedure($conn);
 }
 function connectToDatabase(){
     $hostname = 'localhost';
@@ -24,20 +24,28 @@ function connectToDatabase(){
     return $conn;
 }
 
-function executionSQL($sqlFile){
-    $conn = connectToDatabase();
+function executionSQL($sqlFile, $conn = null){
     $sql = file_get_contents($sqlFile);
     if ($sql === false){
         die("Erreur lors de la lecture du fichier SQL");
     }
     $conn->exec($sql);
 }
-function createDatabase(){
+function createDatabase($conn){
     $sqlFile = __DIR__ . '/assets/sql/script_creation.sql';
-    executionSQL($sqlFile);
+    executionSQL($sqlFile, $conn);
 }
 
-function insertData(){
+function insertData($conn ){
     $sqlFile = __DIR__ . '/assets/sql/script_insertion.sql';
-    executionSQL($sqlFile);
+    executionSQL($sqlFile, $conn);
+}
+
+function setProcedure($conn){
+    $sqlFileEnseignant = __DIR__ . '/assets/sql/script_enseignant.sql';
+    $sqlFileEtudiant = __DIR__ . '/assets/sql/script_etudiant.sql';
+    $sqlFilePresidence = __DIR__ . '/assets/sql/script_presidence.sql';
+    executionSQL($sqlFileEnseignant, $conn);
+    executionSQL($sqlFileEtudiant, $conn);
+    executionSQL($sqlFilePresidence, $conn);
 }
