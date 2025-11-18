@@ -10,7 +10,7 @@
         <div class="form-section">
             <img src="../../assets\image\LogoLeMans.png"
                  alt="Le Mans Université" class="logo">
-            <form>
+            <form method="POST" action="index.php?action=signIn/signUp">
                 <input type="text" placeholder="Nom" required>
                 <input type="text" placeholder="Prénom" required>
                 <input type="email" placeholder="Adresse mail" required>
