@@ -14,7 +14,7 @@
                 <input type="text" placeholder="Indentifiant" required>
                 <input type="password" placeholder="Mot de passe" required>
                 <button type="submit">Se Connecter</button>
-                <button type="submit" class="buttonSignIn">S'inscrire</button>
+                <button type="button" class="buttonSignIn" onclick="window.location='index.php?action=SignIn/show'">S'inscrire</button>
             </form>
         </div>
         <div class="image-section">

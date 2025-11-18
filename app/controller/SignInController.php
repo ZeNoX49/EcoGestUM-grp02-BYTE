@@ -8,11 +8,17 @@ class signInController {
     public function signUp() {
         $bdd = getDatabase();
         //TODO Verif mdp, existence d'un compte avec ce mail
-        if($_POST['Mdp'] === $_POST['ConfirmationMdp']){
-            createUser( $_POST['Nom'], $_POST['Prénom'],$_POST['Mail'], $_POST['Mdp'], null, $bdd);
-            header('Location: index.php?action=Connexion/show');
-        } else {
+        if(isset($_POST['mdp']) && isset($_POST['confirmMdp'])){
+            if($_POST['mdp'] === $_POST['confirmMdp']){
+                createUser( $_POST['nom'], $_POST['prenom'],$_POST['mail'], $_POST['mdp'], 1, $bdd);
+                header('Location: index.php?action=Connexion/show');
+            } else {
+                $this->show();
+            }
+        }
+        else {
             $this->show();
         }
+
     }
 }

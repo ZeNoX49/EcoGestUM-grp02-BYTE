@@ -11,11 +11,11 @@
             <img src="../../assets\image\LogoLeMans.png"
                  alt="Le Mans Université" class="logo">
             <form method="POST" action="/index.php?action=signIn/signUp">
-                <input type="text" placeholder="Nom" required>
-                <input type="text" placeholder="Prénom" required>
-                <input type="email" placeholder="Mail" required>
-                <input type="password" placeholder="Mdp" required>
-                <input type="password" placeholder="ConfirmationMdp" required>
+                <input type="text" name = "nom" placeholder="Nom" required>
+                <input type="text" name = "prenom" placeholder="Prénom" required>
+                <input type="email" name = "mail" placeholder="Adresse mail" required>
+                <input type="password" name = "mdp" placeholder="Mot de passe" required>
+                <input type="password" name = "confirmMdp" placeholder="Confirmation Mot de passe" required>
                 <select required>
                     <option value="" disabled selected>Rôle demandé</option>
                     <option value="Etudiant">Etudiant</option>

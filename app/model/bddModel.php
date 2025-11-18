@@ -93,7 +93,7 @@ function getNbObjRecupUser($userId, $conn){
 }
 
 function createUser($nom,$prenom,$mail, $password, $role, $conn){
-    $sql = "INSERT INTO utilisateurs (nom_utilisateur,prenom_utilisateur,email_utilisateur, mot_de_passe, type_utilisateur) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO utilisateur (nom_utilisateur,prenom_utilisateur,email_utilisateur, mdp_utilisateur, id_role) VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$nom, $prenom,$mail, $password, $role]);
 }
