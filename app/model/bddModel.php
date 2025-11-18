@@ -50,6 +50,27 @@ function setProcedure($conn){
     executionSQL($sqlFilePresidence, $conn);
 }
 
+
+function isUserExist($userId, $conn){
+    $sql = "SELECT COUNT(*) FROM utilisateurs WHERE id_utilisateur = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$userId]);
+    return $stmt->fetchColumn() > 0;
+}
+
+function isUserPasswordCorrect($userId, $password, $conn){
+    $sql = "SELECT COUNT(*) FROM utilisateurs WHERE id_utilisateur = ? AND mot_de_passe = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$userId, $password]);
+    return $stmt->fetchColumn() > 0;
+}
+
+function getUserType($userId, $conn){
+    $sql = "SELECT type_utilisateur FROM utilisateurs WHERE id_utilisateur = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$userId]);
+    return $stmt->fetchColumn();
+}
 function getNbObjPropUser($userId, $conn){
     $sql = "SELECT COUNT(*) FROM mes_objets_donnes";
     $stmt = $conn->prepare($sql);
