@@ -1,27 +1,36 @@
 <?php
 
 function getDatabase(){
-    $db_name = 'ecogestum';
-    $conn = connectToDatabase();
+    $db_name = 'EcoGuest';
+    $hostname = 'localhost';
+    $username = 'root';
+    $password = '';
+    $conn = new PDO("mysql:host=$hostname", $username, $password);
     $stmt = $conn->query("SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '$db_name'");
     if ($stmt->rowCount() == 0) {
-        setup_database();
+        setup_database($conn);
     }
     return connectToDatabase();
 }
-function setup_database(){
-    $conn = connectToDatabase();
+function setup_database($conn){
     createDatabase($conn);
     insertData($conn);
-    setProcedure($conn);
+    //setProcedure($conn);
 }
 function connectToDatabase(){
     $hostname = 'localhost';
     $username = 'root';
     $password = '';
-    $conn = new PDO("mysql:host=$hostname;dbname=ecogestum", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    return $conn;
+    $dbNames = 'ECOGESTUM';
+//    try {
+        $conn = new PDO("mysql:host=$hostname;dbname=$dbNames", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $conn;
+//    } catch (PDOException $e){
+//        error_log("Connection failed: " . $e->getMessage());
+//        die('Impossible de se connecter au serveur MySQL');
+//    }
+
 }
 
 function executionSQL($sqlFile, $conn = null){
@@ -32,19 +41,19 @@ function executionSQL($sqlFile, $conn = null){
     $conn->exec($sql);
 }
 function createDatabase($conn){
-    $sqlFile = __DIR__ . '/assets/sql/script_creation.sql';
+    $sqlFile = __DIR__ . '/../../assets/sql/script_creation.sql';
     executionSQL($sqlFile, $conn);
 }
 
 function insertData($conn ){
-    $sqlFile = __DIR__ . '/assets/sql/script_insertion.sql';
+    $sqlFile = __DIR__ . '/../../assets/sql/script_insertion.sql';
     executionSQL($sqlFile, $conn);
 }
 
 function setProcedure($conn){
-    $sqlFileEnseignant = __DIR__ . '/assets/sql/script_enseignant.sql';
-    $sqlFileEtudiant = __DIR__ . '/assets/sql/script_etudiant.sql';
-    $sqlFilePresidence = __DIR__ . '/assets/sql/script_presidence.sql';
+    $sqlFileEnseignant = __DIR__ . '/../../assets/sql/script_enseignant.sql';
+    $sqlFileEtudiant = __DIR__ . '/../../assets/sql/script_etudiant.sql';
+    $sqlFilePresidence = __DIR__ . '/../../assets/sql/script_presidence.sql';
     executionSQL($sqlFileEnseignant, $conn);
     executionSQL($sqlFileEtudiant, $conn);
     executionSQL($sqlFilePresidence, $conn);

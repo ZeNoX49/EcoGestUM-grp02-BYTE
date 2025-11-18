@@ -1,77 +1,95 @@
-USE SAE3;
-GO
+USE ECOGESTUM;
+
+-- ===========================================================
+-- VUES
+-- ===========================================================
 
 /* ------ ETUDIANT ------ */
 
 -- Requête 1 : Voir les objets disponibles
-CREATE OR ALTER VIEW objets_disponibles AS
-SELECT nom_objet, description_objet
-FROM OBJET o
-JOIN STATUTDISPONIBLE s ON o.id_statut_disponibilite = s.id_statut_disponibilite
+CREATE OR REPLACE VIEW objets_disponibles AS
+SELECT
+    o.nom_objet,
+    o.description_objet
+FROM objet o
+         JOIN statutdisponible s ON o.id_statut_disponibilite = s.id_statut_disponibilite
 WHERE s.nom_statut_disponibilite = 'Disponible';
-GO
 
--- Requête 2 : Voir mes réservations
-CREATE OR ALTER VIEW mes_reservations AS
-SELECT o.nom_objet, r.date_reservation, sr.nom_statut_reservation
-FROM RESERVER r
-JOIN OBJET o ON r.id_objet = o.id_objet
-JOIN STATUTRESERVATION sr ON r.id_statut_reservation = sr.id_statut_reservation
+-- Requête 2 : Voir mes réservations (exemple pour utilisateur id=1)
+CREATE OR REPLACE VIEW mes_reservations AS
+SELECT
+    o.nom_objet,
+    r.date_reservation,
+    sr.nom_statut_reservation
+FROM reserver r
+         JOIN objet o ON r.id_objet = o.id_objet
+         JOIN statutreservation sr ON r.id_statut_reservation = sr.id_statut_reservation
 WHERE r.id_utilisateur = 1;
-GO
 
 -- Requête 3 : Voir les événements à venir
-CREATE OR ALTER VIEW evenements_a_venir AS
-SELECT titre_evenement, description_evenement, date_debut_evenement
-FROM EVENEMENT
-WHERE date_debut_evenement >= GETDATE();
-GO
+CREATE OR REPLACE VIEW evenements_a_venir AS
+SELECT
+    titre_evenement,
+    description_evenement,
+    date_debut_evenement
+FROM evenement
+WHERE date_debut_evenement >= NOW();
+
+
+-- ===========================================================
+-- PROCEDURES STOCKÉES
+-- ===========================================================
+
 
 -- Procédure 1 : Réserver un objet
-CREATE OR ALTER PROCEDURE etudiant_reserver_objet
-    @p_id_utilisateur INT,
-    @p_id_objet INT
-AS
+CREATE OR REPLACE PROCEDURE etudiant_reserver_objet(
+    IN p_id_utilisateur INT,
+    IN p_id_objet INT
+)
 BEGIN
-    INSERT INTO RESERVER (id_objet, date_reservation, id_utilisateur, id_statut_reservation)
-    VALUES (@p_id_objet, GETDATE(), @p_id_utilisateur, 1);
-    
-    UPDATE OBJET
-    SET id_statut_disponibilite = 2
-    WHERE id_objet = @p_id_objet;
-END;
-GO
+INSERT INTO reserver (id_objet, date_reservation, id_utilisateur, id_statut_reservation)
+VALUES (p_id_objet, CURDATE(), p_id_utilisateur, 1);
+
+UPDATE objet
+SET id_statut_disponibilite = 2
+WHERE id_objet = p_id_objet;
+END
+
 
 -- Procédure 2 : Annuler ma réservation
-CREATE OR ALTER PROCEDURE etudiant_annuler_reservation
-    @p_id_utilisateur INT
-AS
+CREATE OR REPLACE PROCEDURE etudiant_annuler_reservation(
+    IN p_id_utilisateur INT
+)
 BEGIN
-    DECLARE @v_id_objet INT;
-    
-    SELECT @v_id_objet = id_objet
-    FROM RESERVER
-    WHERE id_utilisateur = @p_id_utilisateur;
-    
-    DELETE FROM RESERVER
-    WHERE id_utilisateur = @p_id_utilisateur;
-    
-    UPDATE OBJET
-    SET id_statut_disponibilite = 1
-    WHERE id_objet = @v_id_objet;
-END;
-GO
+    DECLARE v_id_objet INT;
+
+SELECT id_objet INTO v_id_objet
+FROM reserver
+WHERE id_utilisateur = p_id_utilisateur
+    LIMIT 1;
+
+DELETE FROM reserver
+WHERE id_utilisateur = p_id_utilisateur;
+
+IF v_id_objet IS NOT NULL THEN
+UPDATE objet
+SET id_statut_disponibilite = 1
+WHERE id_objet = v_id_objet;
+END IF;
+END
+
 
 -- Procédure 3 : Rechercher un objet par catégorie
-CREATE OR ALTER PROCEDURE etudiant_rechercher_par_categorie
-    @p_id_categorie INT
-AS
+CREATE OR REPLACE PROCEDURE etudiant_rechercher_par_categorie(
+    IN p_id_categorie INT
+)
 BEGIN
-    SELECT o.nom_objet, o.description_objet, s.nom_statut_disponibilite
-    FROM OBJET o
-    JOIN STATUTDISPONIBLE s ON o.id_statut_disponibilite = s.id_statut_disponibilite
-    WHERE o.id_categorie = @p_id_categorie;
-END;
-GO
-
+SELECT
+    o.nom_objet,
+    o.description_objet,
+    s.nom_statut_disponibilite
+FROM objet o
+         JOIN statutdisponible s ON o.id_statut_disponibilite = s.id_statut_disponibilite
+WHERE o.id_categorie = p_id_categorie;
+END
 

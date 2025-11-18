@@ -2,7 +2,7 @@
 
 function dispatch() {
 
-    $action = isset($_GET['action']) ? $_GET['action'] : 'signIn';
+    $action = isset($_GET['action']) ? $_GET['action'] : 'SignIn';
 
     $parts = explode('/', $action);
 
