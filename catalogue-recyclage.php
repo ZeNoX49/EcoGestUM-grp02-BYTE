@@ -91,7 +91,7 @@
 
                         <article class="card-objet">
                             <div class="card-img-container">
-                                <div class="card-image-box">
+                                <div class="card-image-box" style="background-image: url('https://via.placeholder.com/140x140/A8A8A8/FFFFFF?text=Objet+Générique'); background-size: 80%; background-repeat: no-repeat;">
                                     </div>
                             </div>
                             <div class="card-content">
@@ -112,11 +112,11 @@
 
                         <article class="card-objet">
                             <div class="card-img-container">
-                                <div class="card-image-box">
+                                <div class="card-image-box" style="background-image: url(http://googleusercontent.com/image_generation_content/0); background-size: 80%; background-repeat: no-repeat;">
                                     </div>
                             </div>
                             <div class="card-content">
-                                <h3>Nom Objet</h3>
+                                <h3>Chaise de bureau ergonomique</h3>
                                 <div class="card-text">
                                     <span class="label">Description :</span>
                                     <p>Chaise de bureau ergonomique en bon état. Quelques traces d'usure sur les accoudoirs mais parfaitement fonctionnelle.</p>
@@ -133,11 +133,11 @@
 
                         <article class="card-objet">
                             <div class="card-img-container">
-                                <div class="card-image-box">
+                                <div class="card-image-box" style="background-image: url('https://via.placeholder.com/140x140/000000/FFFFFF?text=Moniteur+24%22'); background-size: 90%; background-repeat: no-repeat;">
                                     </div>
                             </div>
                             <div class="card-content">
-                                <h3>Nom Objet</h3>
+                                <h3>Écran d'ordinateur 24 pouces</h3>
                                 <div class="card-text">
                                     <span class="label">Description :</span>
                                     <p>Écran d'ordinateur 24 pouces. Fonctionne parfaitement, câble HDMI fourni.</p>
