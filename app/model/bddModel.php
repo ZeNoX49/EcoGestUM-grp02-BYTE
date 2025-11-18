@@ -15,6 +15,7 @@ function getDatabase(){
 function setup_database($conn){
     createDatabase($conn);
     insertData($conn);
+    createObjet_disponible($conn);
     //setProcedure($conn);
 }
 function connectToDatabase(){
@@ -59,6 +60,17 @@ function setProcedure($conn){
     executionSQL($sqlFilePresidence, $conn);
 }
 
+function createObjet_disponible($conn){
+    $sql = "CREATE OR REPLACE VIEW objets_disponibles AS
+                SELECT
+                     o.nom_objet,
+                     o.description_objet
+                FROM objet o
+                JOIN statutdisponible s ON o.id_statut_disponibilite = s.id_statut_disponibilite
+                WHERE s.nom_statut_disponibilite = 'Disponible';";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+}
 
 function isUserExist($userId, $conn){
     $sql = "SELECT COUNT(*) FROM utilisateurs WHERE id_utilisateur = ?";
@@ -96,4 +108,11 @@ function createUser($nom,$prenom,$mail, $password, $role, $conn){
     $sql = "INSERT INTO utilisateur (nom_utilisateur,prenom_utilisateur,email_utilisateur, mdp_utilisateur, id_role) VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$nom, $prenom,$mail, $password, $role]);
+}
+
+function getCatalogue($conn){
+    $sql = "SELECT * FROM objets_disponibles";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll();
 }
