@@ -49,3 +49,15 @@ function setProcedure($conn){
     executionSQL($sqlFileEtudiant, $conn);
     executionSQL($sqlFilePresidence, $conn);
 }
+
+function getNbObjPropUser($userId, $conn){
+    $sql = "SELECT COUNT(*) FROM mes_objets_donnes";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$userId]);
+    return $stmt->fetchColumn();
+}
+
+function getNbObjRecupUser($userId, $conn){
+    $sql = "SELECT COUNT(*) FROM reservations_recues";
+    $stmt = $conn->prepare($sql);
+}
