@@ -1,5 +1,4 @@
 <?php
-require "app/model/bddModel.php";
 class signInController {
     public function show() {
         include "app/view/signIn.php";

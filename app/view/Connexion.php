@@ -10,7 +10,7 @@
     <div class="container">
         <div class="form-section">
             <img src="../../assets/image/LogoLeMans.png" alt="Le Mans Université" class="logo">
-            <form>
+            <form action="index.php?action=Connexion/connect" method="post">
                 <input type="text" placeholder="Indentifiant" required>
                 <input type="password" placeholder="Mot de passe" required>
                 <button type="submit">Se Connecter</button>

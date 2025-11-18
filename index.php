@@ -1,4 +1,5 @@
 <?php
+require "app/model/bddModel.php";
 
 function dispatch() {
 

@@ -5,4 +5,9 @@ class ConnexionController
     {
         include "app/view/Connexion.php";
     }
+
+    public function connect(){
+        $bdd = getDatabase();
+        header('Location: index.php?action=aView/show');
+    }
 }
