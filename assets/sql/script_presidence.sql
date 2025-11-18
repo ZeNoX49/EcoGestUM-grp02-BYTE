@@ -6,42 +6,41 @@ USE ECOGESTUM;
 
 /* ------ PRESIDENCE ------ */
 
--- Requête 7 : Statistiques par catégorie
+-- Requete 7 : Statistiques par categorie
 CREATE OR REPLACE VIEW statistiques_par_categorie AS
 SELECT
     c.nom_categorie,
     COUNT(o.id_objet) AS nombre_objets
 FROM categorie c
-         LEFT JOIN objet o ON c.id_categorie = o.id_categorie
+LEFT JOIN objet o ON c.id_categorie = o.id_categorie
 GROUP BY c.nom_categorie;
 
 
--- Requête 8 : Nombre d'utilisateurs par rôle
+-- Requete 8 : Nombre d'utilisateurs par rÃ´le
 CREATE OR REPLACE VIEW utilisateurs_par_role AS
 SELECT
     r.nom_role,
     COUNT(u.id_utilisateur) AS nombre_utilisateurs
 FROM role r
-         LEFT JOIN utilisateur u ON r.id_role = u.id_role
+LEFT JOIN utilisateur u ON r.id_role = u.id_role
 GROUP BY r.nom_role;
 
 
--- Requête 9 : Vue globale des réservations
+-- Requete 9 : Vue globale des reservations
 CREATE OR REPLACE VIEW vue_reservations AS
 SELECT
     sr.nom_statut_reservation,
     COUNT(*) AS nombre
 FROM reserver r
-         JOIN statutreservation sr ON r.id_statut_reservation = sr.id_statut_reservation
+JOIN statutreservation sr ON r.id_statut_reservation = sr.id_statut_reservation
 GROUP BY sr.nom_statut_reservation;
 
 
 -- ===========================================================
--- PROCEDURES STOCKÉES
+-- PROCEDURES STOCKeES
 -- ===========================================================
 
-
--- Procédure 7 : Rapport mensuel
+-- Procedure 7 : Rapport mensuel
 CREATE OR REPLACE PROCEDURE presidence_rapport_mois(
     IN p_mois INT,
     IN p_annee INT
@@ -57,7 +56,8 @@ WHERE MONTH(date_ajout_objet) = p_mois
 END
 
 
--- Procédure 8 : Statistiques par département
+
+-- Procedure 8 : Statistiques par departement
 CREATE OR REPLACE PROCEDURE presidence_stats_departement(
     IN p_id_departement INT
 )
@@ -76,7 +76,8 @@ GROUP BY d.nom_depser;
 END
 
 
--- Procédure 9 : Liste complète des objets
+
+-- Procedure 9 : Liste complete des objets
 CREATE OR REPLACE PROCEDURE presidence_liste_complete_objets()
 BEGIN
 SELECT

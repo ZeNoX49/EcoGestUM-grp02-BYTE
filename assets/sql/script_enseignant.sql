@@ -6,7 +6,7 @@ USE ECOGESTUM;
 
 /* ------ ENSEIGNANT ------ */
 
--- Requête 4 : Voir mes objets donnés (exemple pour id_utilisateur = 2)
+-- Requete 4 : Voir mes objets donnes (exemple pour id_utilisateur = 2)
 CREATE OR REPLACE VIEW mes_objets_donnes AS
 SELECT
     nom_objet,
@@ -16,7 +16,8 @@ FROM objet
 WHERE id_utilisateur = 2;
 
 
--- Requête 5 : Voir les réservations de mes objets
+
+-- Requete 5 : Voir les reservations de mes objets
 CREATE OR REPLACE VIEW reservations_de_mes_objets AS
 SELECT
     u.nom_utilisateur,
@@ -24,18 +25,18 @@ SELECT
     o.nom_objet,
     r.date_reservation
 FROM reserver r
-         JOIN objet o ON r.id_objet = o.id_objet
-         JOIN utilisateur u ON r.id_utilisateur = u.id_utilisateur
+JOIN objet o ON r.id_objet = o.id_objet
+JOIN utilisateur u ON r.id_utilisateur = u.id_utilisateur
 WHERE o.id_utilisateur = 2;
 
 
--- Requête 6 : Voir tous les objets par état
+-- Requete 6 : Voir tous les objets par etat
 CREATE OR REPLACE VIEW objets_par_etat AS
 SELECT
     e.nom_etat,
     COUNT(o.id_objet) AS nombre
 FROM etat e
-         LEFT JOIN objet o ON e.id_etat = o.id_etat
+LEFT JOIN objet o ON e.id_etat = o.id_etat
 WHERE o.id_utilisateur = 2
 GROUP BY e.nom_etat;
 
@@ -45,7 +46,8 @@ GROUP BY e.nom_etat;
 -- ===========================================================
 
 
--- Procédure 4 : Ajouter un objet
+
+-- Procedure 4 : Ajouter un objet
 CREATE OR REPLACE PROCEDURE enseignant_ajouter_objet(
     IN p_nom VARCHAR(100),
     IN p_description VARCHAR(250),
@@ -54,28 +56,28 @@ CREATE OR REPLACE PROCEDURE enseignant_ajouter_objet(
     IN p_id_utilisateur INT
 )
 BEGIN
-INSERT INTO objet (
-    nom_objet,
-    description_objet,
-    date_ajout_objet,
-    id_utilisateur,
-    id_statut_disponibilite,
-    id_etat,
-    id_categorie
-)
-VALUES (
-           p_nom,
-           p_description,
-           NOW(),
-           p_id_utilisateur,
-           1,  -- Disponible par défaut
-           p_id_etat,
-           p_id_categorie
-       );
+    INSERT INTO objet (
+        nom_objet,
+        description_objet,
+        date_ajout_objet,
+        id_utilisateur,
+        id_statut_disponibilite,
+        id_etat,
+        id_categorie
+    )
+    VALUES (
+        p_nom,
+        p_description,
+        NOW(),
+        p_id_utilisateur,
+        1,  -- Disponible par defaut
+        p_id_etat,
+        p_id_categorie
+    );
 END
 
 
--- Procédure 5 : Modifier un objet
+-- Procedure 5 : Modifier un objet
 CREATE OR REPLACE PROCEDURE enseignant_modifier_objet(
     IN p_id_objet INT,
     IN p_description VARCHAR(250),
@@ -90,7 +92,8 @@ WHERE id_objet = p_id_objet;
 END
 
 
--- Procédure 6 : Créer un événement
+
+-- Procedure 6 : Creer un evenement
 CREATE OR REPLACE PROCEDURE enseignant_creer_evenement(
     IN p_titre VARCHAR(100),
     IN p_type VARCHAR(100),
