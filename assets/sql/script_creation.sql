@@ -1,9 +1,9 @@
--- Suppression et recréation de la base
+-- Suppression et recreation de la base
 DROP DATABASE IF EXISTS SAE3;
 CREATE DATABASE SAE3;
 USE SAE3;
 
--- Suppression des tables (ordre sécurisé)
+-- Suppression des tables (ordre securise)
 DROP TABLE IF EXISTS RECEVOIR;
 DROP TABLE IF EXISTS INSCRIRE;
 DROP TABLE IF EXISTS SIGNALER;
@@ -28,7 +28,7 @@ DROP TABLE IF EXISTS CATEGORIE;
 DROP TABLE IF EXISTS UTILISATEUR;
 DROP TABLE IF EXISTS ROLE;
 
--- Création des tables
+-- Creation des tables
 CREATE TABLE ROLE (
    id_role INT AUTO_INCREMENT PRIMARY KEY,
    nom_role VARCHAR(100) NOT NULL

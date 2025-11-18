@@ -24,7 +24,7 @@ INSERT INTO categorie (nom_categorie, description_categorie) VALUES
 ('Livres', 'Manuels scolaires et ouvrages universitaires'),
 ('electronique', 'Materiel informatique et electronique'),
 ('Mobilier', 'Meubles et equipements de bureau'),
-('Vêtements', 'Vêtements et accessoires'),
+('Vetements', 'Vetements et accessoires'),
 ('Sport', 'equipements sportifs'),
 ('Papeterie', 'Fournitures de bureau et scolaires');
 
@@ -38,7 +38,7 @@ INSERT INTO depser (nom_depser, id_utilisateur) VALUES
 -- etats
 INSERT INTO etat (nom_etat) VALUES
 ('Neuf'),
-('Très bon etat'),
+('Tres bon etat'),
 ('Bon etat'),
 ('etat moyen'),
 ('Usage');
@@ -47,7 +47,7 @@ INSERT INTO etat (nom_etat) VALUES
 INSERT INTO statutdisponible (nom_statut_disponibilite) VALUES
 ('Disponible'),
 ('Reserve'),
-('Prête'),
+('Prete'),
 ('Indisponible');
 
 -- Statuts reservation
@@ -60,7 +60,7 @@ INSERT INTO statutreservation (nom_statut_reservation) VALUES
 -- Types d'echange
 INSERT INTO typeechange (nom_type_echange) VALUES
 ('Don'),
-('Prêt'),
+('Pret'),
 ('echange');
 
 -- Types d'evenement
@@ -73,7 +73,7 @@ INSERT INTO typeevenement (nom_type_evenement) VALUES
 -- Points de collecte
 INSERT INTO pointcollecte (adresse_point_collecte, nom_point_collecte) VALUES
 ('Bâtiment A, RDC', 'Point Central Campus'),
-('Bibliothèque Universitaire', 'Point BU'),
+('Bibliotheque Universitaire', 'Point BU'),
 ('Restaurant Universitaire', 'Point RU'),
 ('Maison des etudiants', 'Point MDE');
 
@@ -81,7 +81,7 @@ INSERT INTO pointcollecte (adresse_point_collecte, nom_point_collecte) VALUES
 INSERT INTO rapport (titre_rapport, contenu_rapport, date_rapport, id_utilisateur) VALUES
 ('Rapport mensuel janvier', 'Bilan des activites du mois', '2025-01-31', 6),
 ('Analyse des dons', 'Statistiques sur les objets donnes', '2025-02-15', 4),
-('Rapport trimestriel', 'Synthèse du premier trimestre', '2025-03-31', 6);
+('Rapport trimestriel', 'Synthese du premier trimestre', '2025-03-31', 6);
 
 -- Communiques
 INSERT INTO communique (titre_communique, contenu_communique, date_communique, id_utilisateur) VALUES
@@ -91,7 +91,7 @@ INSERT INTO communique (titre_communique, contenu_communique, date_communique, i
 
 -- Temoignages
 INSERT INTO temoignage (contenu_temoignage, date_temoignage, id_utilisateur) VALUES
-('Très satisfait de cette initiative, j\'ai pu trouver les livres dont j\'avais besoin', '2025-02-10 11:00:00', 1),
+('Tres satisfait de cette initiative, j\'ai pu trouver les livres dont j\'avais besoin', '2025-02-10 11:00:00', 1),
 ('Super concept ! J\'ai donne mon ancien ordinateur qui peut servir a d\'autres', '2025-02-15 16:30:00', 2),
 ('Plateforme facile a utiliser, je recommande', '2025-02-20 10:15:00', 3);
 
@@ -117,7 +117,7 @@ INSERT INTO statistique (date_statistique, type_statistique, valeur_statistique,
 
 -- Objets
 INSERT INTO objet (image_objet, nom_objet, description_objet, date_ajout_objet, id_point_collecte, id_type_echange, id_utilisateur, id_statut_disponibilite, id_etat, id_categorie) VALUES
-('livre1.jpg', 'Manuel de Mathematiques L1', 'Analyse et algèbre lineaire', '2025-02-10 10:00:00', 1, 1, 1, 1, 2, 1),
+('livre1.jpg', 'Manuel de Mathematiques L1', 'Analyse et algebre lineaire', '2025-02-10 10:00:00', 1, 1, 1, 1, 2, 1),
 ('ordi1.jpg', 'Ordinateur portable HP', 'Core i5, 8Go RAM, bon etat', '2025-02-12 14:30:00', 2, 2, 2, 1, 3, 2),
 ('bureau1.jpg', 'Bureau etudiant', 'Bureau avec tiroirs', '2025-02-14 09:00:00', 4, 1, 3, 1, 2, 3),
 ('livre2.jpg', 'Dictionnaire Anglais-Français', 'edition recente', '2025-02-15 11:00:00', 2, 1, 7, 2, 1, 1),

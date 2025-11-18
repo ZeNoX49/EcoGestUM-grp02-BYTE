@@ -6,7 +6,7 @@ USE sae3;
 
 /* ------ ETUDIANT ------ */
 
--- Requête 1 : Voir les objets disponibles
+-- Requete 1 : Voir les objets disponibles
 CREATE OR REPLACE VIEW objets_disponibles AS
 SELECT 
     o.nom_objet, 
@@ -15,7 +15,7 @@ FROM objet o
 JOIN statutdisponible s ON o.id_statut_disponibilite = s.id_statut_disponibilite
 WHERE s.nom_statut_disponibilite = 'Disponible';
 
--- Requête 2 : Voir mes réservations (exemple pour utilisateur id=1)
+-- Requete 2 : Voir mes reservations (exemple pour utilisateur id=1)
 CREATE OR REPLACE VIEW mes_reservations AS
 SELECT 
     o.nom_objet, 
@@ -26,7 +26,7 @@ JOIN objet o ON r.id_objet = o.id_objet
 JOIN statutreservation sr ON r.id_statut_reservation = sr.id_statut_reservation
 WHERE r.id_utilisateur = 1;
 
--- Requête 3 : Voir les événements à venir
+-- Requete 3 : Voir les evenements a venir
 CREATE OR REPLACE VIEW evenements_a_venir AS
 SELECT 
     titre_evenement, 
@@ -37,12 +37,12 @@ WHERE date_debut_evenement >= NOW();
 
 
 -- ===========================================================
--- PROCEDURES STOCKÉES
+-- PROCEDURES STOCKeES
 -- ===========================================================
 
 DELIMITER $$
 
--- Procédure 1 : Réserver un objet
+-- Procedure 1 : Reserver un objet
 CREATE OR REPLACE PROCEDURE etudiant_reserver_objet(
     IN p_id_utilisateur INT,
     IN p_id_objet INT
@@ -57,7 +57,7 @@ BEGIN
 END $$
 
 
--- Procédure 2 : Annuler ma réservation
+-- Procedure 2 : Annuler ma reservation
 CREATE OR REPLACE PROCEDURE etudiant_annuler_reservation(
     IN p_id_utilisateur INT
 )
@@ -80,7 +80,7 @@ BEGIN
 END $$
 
 
--- Procédure 3 : Rechercher un objet par catégorie
+-- Procedure 3 : Rechercher un objet par categorie
 CREATE OR REPLACE PROCEDURE etudiant_rechercher_par_categorie(
     IN p_id_categorie INT
 )
