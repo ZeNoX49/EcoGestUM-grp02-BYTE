@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Connexion - Le Mans Université</title>
-    <link rel="stylesheet" href="../../assets/css/style.css">
-</head>
+    <link rel="stylesheet" href="/EcoGestUM-grp12-BYTE/assets/css/style.css"></head>
 <body>
     <div class="container">
         <div class="form-section">
-            <img src="../../assets/image/LogoLeMans.png" alt="Le Mans Université" class="logo">
+            <img src="/EcoGestUM-grp12-BYTE/assets/image/LogoLeMans.png" alt="Le Mans Université" class="logo">
             <form action="index.php?action=Connexion/connect" method="post">
                 <input type="text" placeholder="Indentifiant" required>
                 <input type="password" placeholder="Mot de passe" required>
@@ -18,7 +17,7 @@
             </form>
         </div>
         <div class="image-section">
-            <img src="../../assets/image/backgroundImageConnexion.png" alt="Campus" class="campus-img">
+            <img src="/EcoGestUM-grp12-BYTE/assets/image/backgroundImageConnexion.png" alt="Campus" class="campus-img">
         </div>
     </div>
 </body>

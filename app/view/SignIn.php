@@ -8,9 +8,9 @@
 <body>
     <div class="container">
         <div class="form-section">
-            <img src="../../assets\image\LogoLeMans.png"
+            <img src="assets/image/LogoLeMans.png"
                  alt="Le Mans Université" class="logo">
-            <form method="POST" action="/index.php?action=signIn/signUp">
+            <form method="POST" action="index.php?action=signIn/signUp">
                 <input type="text" name = "nom" placeholder="Nom" required>
                 <input type="text" name = "prenom" placeholder="Prénom" required>
                 <input type="email" name = "mail" placeholder="Adresse mail" required>
