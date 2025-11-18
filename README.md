@@ -3,6 +3,7 @@
 **Mettez la version au debut du commit puis le titre (exemple ci dessous) et faites une petite description des changements puis la mettre au dessus des autres versions**
 > *ex : "v0.0 - Initial commit"*
 
+- v0.1.2 - ajout de .gitignore / suppression de composer du git
 - v0.1.1 - correction du readme
 - v0.1 - base d'EcoGestUM
 - v0.0 - Initial commit
