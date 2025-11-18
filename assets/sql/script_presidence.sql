@@ -3,7 +3,7 @@ GO
 
 /* ------ Presidence ------ */
 
--- Requête 7 : Statistiques par catégorie
+-- Requete 7 : Statistiques par categorie
 CREATE OR ALTER VIEW statistiques_par_categorie AS
 SELECT c.nom_categorie, COUNT(o.id_objet) AS nombre_objets
 FROM CATEGORIE c
@@ -11,7 +11,7 @@ LEFT JOIN OBJET o ON c.id_categorie = o.id_categorie
 GROUP BY c.nom_categorie;
 GO
 
--- Requête 8 : Nombre d'utilisateurs par département
+-- Requete 8 : Nombre d'utilisateurs par departement
 CREATE OR ALTER VIEW utilisateurs_par_role AS
 SELECT r.nom_role, COUNT(u.id_utilisateur) AS nombre_utilisateurs
 FROM ROLE r
@@ -19,7 +19,7 @@ LEFT JOIN UTILISATEUR u ON r.id_role = u.id_role
 GROUP BY r.nom_role;
 GO
 
--- Requête 9 : Vue globale des réservations
+-- Requete 9 : Vue globale des reservations
 CREATE OR ALTER VIEW vue_reservations AS
 SELECT sr.nom_statut_reservation, COUNT(*) AS nombre
 FROM RESERVER r
@@ -27,7 +27,7 @@ JOIN STATUTRESERVATION sr ON r.id_statut_reservation = sr.id_statut_reservation
 GROUP BY sr.nom_statut_reservation;
 GO
 
--- Procédure 7 : Rapport mensuel
+-- Procedure 7 : Rapport mensuel
 CREATE OR ALTER PROCEDURE presidence_rapport_mois
     @p_mois INT,
     @p_annee INT
@@ -43,7 +43,7 @@ BEGIN
 END;
 GO
 
--- Procédure 8 : Statistiques par département
+-- Procedure 8 : Statistiques par departement
 CREATE OR ALTER PROCEDURE presidence_stats_departement
     @p_id_departement INT
 AS
@@ -62,7 +62,7 @@ BEGIN
 END;
 GO
 
--- Procédure 9 : Liste complète des objets
+-- Procedure 9 : Liste complete des objets
 CREATE OR ALTER PROCEDURE presidence_liste_complete_objets
 AS
 BEGIN

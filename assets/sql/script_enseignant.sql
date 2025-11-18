@@ -3,14 +3,14 @@ GO
 
 /* ------ Enseignant ------ */
 
--- Requête 4 : Voir mes objets donnés
+-- Requete 4 : Voir mes objets donnes
 CREATE OR ALTER VIEW mes_objets_donnes AS
 SELECT nom_objet, description_objet, date_ajout_objet
 FROM OBJET
 WHERE id_utilisateur = 2;
 GO
 
--- Requête 5 : Voir les réservations de mes objets
+-- Requete 5 : Voir les reservations de mes objets
 CREATE OR ALTER VIEW reservations_de_mes_objets AS
 SELECT u.nom_utilisateur, u.prenom_utilisateur, o.nom_objet, r.date_reservation
 FROM RESERVER r
@@ -19,7 +19,7 @@ JOIN UTILISATEUR u ON r.id_utilisateur = u.id_utilisateur
 WHERE o.id_utilisateur = 2;
 GO
 
--- Requête 6 : Voir tous les objets par état
+-- Requete 6 : Voir tous les objets par etat
 CREATE OR ALTER VIEW objets_par_etat AS
 SELECT e.nom_etat, COUNT(o.id_objet) AS nombre
 FROM ETAT e
@@ -28,7 +28,7 @@ WHERE o.id_utilisateur = 2
 GROUP BY e.nom_etat;
 GO
 
--- Procédure 4 : Ajouter un objet
+-- Procedure 4 : Ajouter un objet
 CREATE OR ALTER PROCEDURE enseignant_ajouter_objet
     @p_nom VARCHAR(100),
     @p_description VARCHAR(250),
@@ -44,7 +44,7 @@ BEGIN
 END;
 GO
 
--- Procédure 5 : Modifier un objet
+-- Procedure 5 : Modifier un objet
 CREATE OR ALTER PROCEDURE enseignant_modifier_objet
     @p_id_objet INT,
     @p_description VARCHAR(250),
@@ -58,7 +58,7 @@ BEGIN
 END;
 GO
 
--- Procédure 6 : Créer un événement
+-- Procedure 6 : Creer un evenement
 CREATE OR ALTER PROCEDURE enseignant_creer_evenement
     @p_titre VARCHAR(100),
     @p_type VARCHAR(100),

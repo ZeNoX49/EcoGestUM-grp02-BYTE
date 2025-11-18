@@ -11,7 +11,7 @@ GO
 USE EcoGuest;
 GO
 
--- Suppression tables si existent (s�quence s�re)
+-- Suppression tables si existent (sequence sere)
 DROP TABLE IF EXISTS RECEVOIR;
 DROP TABLE IF EXISTS INSCRIRE;
 DROP TABLE IF EXISTS SIGNALER;
@@ -151,7 +151,7 @@ CREATE TABLE OBJET(
    image_objet VARCHAR(100),
    nom_objet VARCHAR(100) NOT NULL,
    description_objet VARCHAR(250),
-   date_ajout_objet DATETIME NOT NULL,          -- chang� en DATETIME
+   date_ajout_objet DATETIME NOT NULL,          -- change en DATETIME
    id_point_collecte INT NULL,
    id_type_echange INT NULL,
    id_utilisateur INT NOT NULL,

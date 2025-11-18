@@ -3,7 +3,7 @@ GO
 
 /* ------ ETUDIANT ------ */
 
--- Requête 1 : Voir les objets disponibles
+-- Requete 1 : Voir les objets disponibles
 CREATE OR ALTER VIEW objets_disponibles AS
 SELECT nom_objet, description_objet
 FROM OBJET o
@@ -11,7 +11,7 @@ JOIN STATUTDISPONIBLE s ON o.id_statut_disponibilite = s.id_statut_disponibilite
 WHERE s.nom_statut_disponibilite = 'Disponible';
 GO
 
--- Requête 2 : Voir mes réservations
+-- Requete 2 : Voir mes reservations
 CREATE OR ALTER VIEW mes_reservations AS
 SELECT o.nom_objet, r.date_reservation, sr.nom_statut_reservation
 FROM RESERVER r
@@ -20,14 +20,14 @@ JOIN STATUTRESERVATION sr ON r.id_statut_reservation = sr.id_statut_reservation
 WHERE r.id_utilisateur = 1;
 GO
 
--- Requête 3 : Voir les événements à venir
+-- Requete 3 : Voir les evenements e venir
 CREATE OR ALTER VIEW evenements_a_venir AS
 SELECT titre_evenement, description_evenement, date_debut_evenement
 FROM EVENEMENT
 WHERE date_debut_evenement >= GETDATE();
 GO
 
--- Procédure 1 : Réserver un objet
+-- Procedure 1 : Reserver un objet
 CREATE OR ALTER PROCEDURE etudiant_reserver_objet
     @p_id_utilisateur INT,
     @p_id_objet INT
@@ -42,7 +42,7 @@ BEGIN
 END;
 GO
 
--- Procédure 2 : Annuler ma réservation
+-- Procedure 2 : Annuler ma reservation
 CREATE OR ALTER PROCEDURE etudiant_annuler_reservation
     @p_id_utilisateur INT
 AS
@@ -62,7 +62,7 @@ BEGIN
 END;
 GO
 
--- Procédure 3 : Rechercher un objet par catégorie
+-- Procedure 3 : Rechercher un objet par categorie
 CREATE OR ALTER PROCEDURE etudiant_rechercher_par_categorie
     @p_id_categorie INT
 AS
