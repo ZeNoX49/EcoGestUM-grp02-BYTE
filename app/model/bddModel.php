@@ -1,7 +1,7 @@
 <?php
 
 function getDatabase(){
-    $db_name = 'EcoGuest';
+    $db_name = 'ECOGESTUM';
     $hostname = 'localhost';
     $username = 'root';
     $password = '';
@@ -64,9 +64,13 @@ function createObjet_disponible($conn){
     $sql = "CREATE OR REPLACE VIEW objets_disponibles AS
                 SELECT
                      o.nom_objet,
-                     o.description_objet
+                     o.description_objet,
+                     o.image_objet,
+                     p.nom_point_collecte,
+                     p.adresse_point_collecte
                 FROM objet o
                 JOIN statutdisponible s ON o.id_statut_disponibilite = s.id_statut_disponibilite
+                JOIN POINTCOLLECTE p ON p.id_point_collecte = o.id_point_collecte
                 WHERE s.nom_statut_disponibilite = 'Disponible';";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
