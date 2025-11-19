@@ -15,15 +15,15 @@
     <header class="header">
         <div class="bandeau">
             <ul>
-                <li><img src="assets/images/facebook.svg" alt="Facebook"></li>
-                <li><img src="assets/images/youtube.svg" alt="YouTube"></li>
-                <li><img src="assets/images/twitter.svg" alt="Twitter"></li>
-                <li><img src="assets/images/instagram.svg" alt="Instagram"></li>
+                <li><img src="assets/image/facebook.svg" alt="Facebook"></li>
+                <li><img src="assets/image/youtube.svg" alt="YouTube"></li>
+                <li><img src="assets/image/twitter.svg" alt="Twitter"></li>
+                <li><img src="assets/image/instagram.svg" alt="Instagram"></li>
             </ul>
         </div>
         <div class="elements">
             <div class="logo-container">
-                <img src="assets/images/logo.svg" alt="Le Mans Université">
+                <img src="assets/image/logo.svg" alt="Le Mans Université">
             </div>
             <nav>
                 <ul>
@@ -49,7 +49,7 @@
 
         <div class="gestion-grid">
             
-            <a href="ajouter-objet.php" class="gestion-card">
+            <a href="index.php?action=form/show" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </div>
