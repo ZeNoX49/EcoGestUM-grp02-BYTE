@@ -13,6 +13,7 @@ class signInController {
             $this->show();
             return;
         }
+        echo "coucou thomas";
 
         // On vérifie que les mdp sont les même
         if($_POST['mdp'] !== $_POST['confirmMdp']) {
@@ -32,7 +33,11 @@ class signInController {
         }
 
         // on créer le compte de l'utilisateur
-        insertUser( $_POST['nom'], $_POST['prenom'], $mail, $_POST['mdp'], 1);
+        if(!insertUser( $_POST['nom'], $_POST['prenom'], $mail, $_POST['mdp'], 1)) {
+            echo "pas ajouté dans la bdd";
+            $this->show();
+            return;
+        }
         header('Location: index.php?action=Connexion/show');
     }
 }
