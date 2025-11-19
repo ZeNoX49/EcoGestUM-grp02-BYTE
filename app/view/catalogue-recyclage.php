@@ -25,8 +25,8 @@
             <nav>
                 <ul>
                     <li><a href="../../index.php">Accueil</a></li>
-                    <li><a href="CatalogueRecyclage.php">Catalogue</a></li>
-                    <li><a href="gestion.php">Gestion</a></li>
+                    <li><a href="index.php?action=catalogue/show">Catalogue</a></li>
+                    <li><a href="index.php?action=gestion/show">Gestion</a></li>
                     <li><a href="evenements.php">Événements</a></li>
                     <li><a href="statistiques.php">Statistiques</a></li>
                     <li class="profil-btn"><a href="profil.php">Mon Profil</a></li>
