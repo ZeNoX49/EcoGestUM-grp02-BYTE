@@ -13,7 +13,6 @@
             <form>
                 <input type="text" placeholder="Nom" required>
                 <input type="text" placeholder="Prénom" required>
-                <input type="email" placeholder="Adresse mail" required>
                 <input type="password" placeholder="Mot de passe" required>
                 <input type="password" placeholder="Confirmation Mot de passe" required>
                 <select required>

@@ -22,6 +22,13 @@ function insert_object($image, $name, $description, $date, $id_collect_point, $i
     ]);
 }
 
+function getObject($id_object) {
+    $bdd = get_bdd();
+    $query = $bdd->query('SELECT * FROM OBJET WHERE id_objet = '.$id_object);
+    $object = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $object;
+}
+
 function getObjectDisponible() {
     $bdd = get_bdd();
     $query = $bdd->query("SELECT * FROM objets_disponibles");

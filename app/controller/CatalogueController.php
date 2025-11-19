@@ -9,8 +9,6 @@ class CatalogueController
         //TODO Récupérer la liste du catalogue et les afficher
         $objets = getObjectDisponible();
 
-
-        include "app/view/catalogue-recyclage.php";
-
+        include "app/view/catalogueView.php";
     }
 }

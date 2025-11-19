@@ -24,27 +24,32 @@ function getUsers() {
     return $users;
 }
 
-function isUserExisting($id_user){
-    $bdd = get_bdd();
-    $stmt = $bdd->prepare("SELECT COUNT(*) FROM utilisateur WHERE id_utilisateur = ".$id_user);
-    $stmt->execute();
-    return $stmt->fetchColumn() > 0;
-}
-
-function getUserById($id_user) {
-    if(!isUserExisting($id_user)) return null;
-
+function getUser($id_user) {
     $bdd = get_bdd();
     $query = $bdd->query('SELECT * FROM UTILISATEUR WHERE id_utilisateur = '.$id_user);
     $user = $query->fetchAll(PDO::FETCH_ASSOC);
     return $user;
 }
 
-function isUserPasswordCorrect($id_user, $password){
-    if(!isUserExisting($id_user)) return false;
+// function isUserExistingId($id_user){
+//     $bdd = get_bdd();
+//     $stmt = $bdd->prepare("SELECT COUNT(*) FROM utilisateur WHERE id_utilisateur = ".$id_user);
+//     $stmt->execute();
+//     return $stmt->fetchColumn() > 0;
+// }
+
+function isUserExisting($mail){
+    $bdd = get_bdd();
+    $stmt = $bdd->prepare("SELECT COUNT(*) FROM utilisateur WHERE email_utilisateur = ".$mail);
+    $stmt->execute();
+    return $stmt->fetchColumn() > 0;
+}
+
+function isUserPasswordCorrect($mail, $password){
+    if(!isUserExisting($mail)) return false;
 
     $bdd = get_bdd();
-    $query = $bdd->query('SELECT * FROM UTILISATEUR WHERE id_utilisateur = '.$id_user);
+    $query = $bdd->query('SELECT * FROM UTILISATEUR WHERE email_utilisateur = '.$mail);
     $user = $query->fetchAll(PDO::FETCH_ASSOC);
 
     return password_verify($password, $user['mdp_utilisateur']);

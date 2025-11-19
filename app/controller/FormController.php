@@ -4,6 +4,6 @@ class formController
 {
     public function show()
     {
-        include "app/view/form-objet.php";
+        include "app/view/formView.php";
     }
 }
