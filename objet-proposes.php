@@ -5,36 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style-catalogue.css">
     <link rel="stylesheet" href="assets/css/style-gestion.css">
     <title>Mes Objets Proposés</title>
 </head>
 <body>
-    <header class="header">
-        <div class="bandeau">
-            <ul>
-                <li><img src="assets/images/facebook.svg" alt="Facebook"></li>
-                <li><img src="assets/images/youtube.svg" alt="YouTube"></li>
-                <li><img src="assets/images/twitter.svg" alt="Twitter"></li>
-                <li><img src="assets/images/instagram.svg" alt="Instagram"></li>
-            </ul>
-        </div>
-        <div class="elements">
-            <div class="logo-container">
-                <img src="assets/images/logo.svg" alt="Le Mans Université">
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.php">Accueil</a></li>
-                    <li><a href="CatalogueRecyclage.php">Catalogue</a></li>
-                    <li><a href="gestion.php" style="color: #DB4C3B; font-weight:700;">Gestion</a></li>
-                    <li><a href="evenements.php">Événements</a></li>
-                    <li><a href="statistiques.php">Statistiques</a></li>
-                    <li class="profil-btn"><a href="profil.php">Mon Profil</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <?php include 'assets/html/header.html'; ?>
     <div class="gestion-wrapper">
         <div class="gestion-header-bar header-blue">
             <h1>Mes objets proposés</h1>
@@ -160,36 +135,7 @@
             </div>
         </div>
     </div>
-    <div class="footer">
-        <div class="footer-content">
-            <div class="elements-gauche">
-                <nav>
-                    <ul>
-                        <li><h4>Ressources</h4></li>
-                        <li><a href="CatalogueRecyclage.php">Politique de recyclage</a></li>
-                        <li><a href="gestion.php">Rapports annuels</a></li>
-                        <li><a href="evenements.php">Guide utilisateur</a></li>
-                        <li><a href="statistiques.php">Événements écoresponsables</a></li>
-                        <li><a href="statistiques.php">Campagnes de sensibilisation</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="elements-droite">
-                <nav>
-                    <ul>
-                        <li><h4>Contact</h4></li>
-                        <li><p>ecogestum@univ-lemans.fr</p></li>
-                        <li><p>+33 2 43 83 30 30</p></li>
-                        <li><a href="evenements.php">Nous contacter</a></li>
-                        <li><a href="statistiques.php">Signaler un problème</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2025 Le Mans Université - EcoGestUM. Tous droits réservés. | <a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a></p>
-        </div>
-    </div>
+    <?php include 'assets/html/footer.html'; ?>
 
     <div id="deleteModal" class="modal-overlay">
         <div class="modal-box">
