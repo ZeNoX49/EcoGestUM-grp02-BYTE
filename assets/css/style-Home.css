@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Stack+Sans+Notch:wght@200..700&family=Yantramanav:wght@100;300;400;500;700;900&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Yantramanav';
+  background-color: #f4f4f4;
+  color: #212121;
+}
+
+header {
+  background: linear-gradient(to bottom, #305da1 0%, #407ac2 100%);
+  color: white;
+  padding-bottom: 2em;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6em 2em 0.6em 2em;
+  background: #22447a;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.1em;
+  letter-spacing: 1px;
+}
+
+.navbar nav {
+  display: flex;
+  gap: 1.2em;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.profil-btn {
+  background-color: #d93b3b;
+  border-radius: 3px;
+  padding: 0.4em 1em;
+  font-weight: bold;
+}
+
+.hero {
+  text-align: center;
+  margin-top: 1em;
+}
+
+.hero-img {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+h1 {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-size: 2em;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.subtitle {
+  display: block;
+  margin-top: 0.5em;
+  font-size: 1em;
+  opacity: 0.9;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2em 1em 2em 1em;
+}
+
+section {
+  background: #fff;
+  border-radius: 8px;
+  margin-bottom: 2em;
+  box-shadow: 0 3px 12px rgba(60, 100, 180, 0.07);
+  padding: 1.6em;
+}
+
+section h2 {
+  text-align: center;
+  margin-top: 0;
+}
+
+.eco-responsable p {
+  text-align: center;
+  font-size: 1.08em;
+  margin-bottom: 2em;
+}
+
+.eco-grid {
+  display: flex;
+  gap: 1.5em;
+  justify-content: center;
+  margin-top: 1.2em;
+}
+
+.eco-item {
+  flex: 1 1 0;
+  background: #f8f9fd;
+  border-radius: 8px;
+  text-align: center;
+  padding: 1em;
+  min-width: 180px;
+}
+
+.eco-item img {
+  height: 40px;
+  margin-bottom: 1em;
+}
+
+.eco-item h3 {
+  font-size: 1.1em;
+  margin-bottom: 0.3em;
+}
+
+.objects-grid {
+  display: flex;
+  gap: 1.1em;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1.3em;
+}
+
+.obj-item {
+  flex: 0 1 120px;
+  background: #e8f2ff;
+  border-radius: 8px;
+  text-align: center;
+  padding: 1em 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.obj-item img {
+  height: 32px;
+  margin-bottom: 0.5em;
+}
+
+.testimonials .testimonial-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1em;
+  margin-top: 1em;
+}
+
+.testimonial {
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(40, 90, 150, 0.08);
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7em;
+}
+
+.user {
+  font-size: 0.95em;
+  color: #d93b3b;
+  font-weight: 600;
+  margin-top: 0.3em;
+}
+
+footer {
+  background: #22447a;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  padding: 2em 0;
+  gap: 4em;
+  font-size: 0.98em;
+}
+
+footer .footer-col {
+  min-width: 170px;
+}
+
+footer h4 {
+  margin-bottom: 0.7em;
+  font-weight: bold;
+}
+
+footer ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+footer li {
+  margin-bottom: 0.42em;
+}

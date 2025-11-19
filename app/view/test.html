@@ -1,25 +1,126 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Connexion - Le Mans Université</title>
-    <link rel="stylesheet" href="../../assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoGestUM</title>
+  <link rel="stylesheet" href="../../assets/css/style-Home.css">
 </head>
 <body>
-    <div class="container">
-        <div class="form-section">
-            <img src="../../assets/image/LogoLeMans.png" alt="Le Mans Université" class="logo">
-            <form>
-                <input type="text" placeholder="Indentifiant" required>
-                <input type="password" placeholder="Mot de passe" required>
-                <button type="submit">Se Connecter</button>
-                <button type="submit" class="buttonSignIn">S'inscrire</button>
-            </form>
-        </div>
-        <div class="image-section">
-            <img src="../../assets/image/backgroundImageConnexion.png" alt="Campus" class="campus-img">
-        </div>
+  <header>
+    <div class="navbar">
+      <img src="../../assets/image/LogoLeMans.png" alt="Le Mans Université" class="logo">
+      <nav>
+        <a href="#">Accueil</a>
+        <a href="#">Catalogue</a>
+        <a href="#">Événements</a>
+        <a href="#">Statistiques</a>
+        <a href="#" class="profil-btn">Mon Profil</a>
+      </nav>
     </div>
+    <div class="hero">
+      <img src="campus.jpg" alt="Campus" class="hero-img">
+      <h1>EcoGestUM</h1>
+      <p>Ensemble pour un campus plus durable</p>
+      <span class="subtitle">
+        La plateforme de gestion du recyclage et de réutilisation des équipements au sein de Le Mans Université
+      </span>
+    </div>
+  </header>
+
+  <main>
+    <section class="eco-responsable">
+      <h2>Notre Démarche Éco-Responsable</h2>
+      <p>
+        Dans une démarche éco-responsable et soucieuse de réduire son impact environnemental,
+        Le Mans Université a développé EcoGestUM, une solution optimisée dédiée à la gestion du recyclage des objets issus de ses différents composants et services.
+      </p>
+      <div class="eco-grid">
+        <div class="eco-item">
+          <img src="tri.png" alt="Optimiser le tri">
+          <h3>Optimiser le tri</h3>
+          <p>Optimiser le tri et la revalorisation des équipements et mobiliers issus des différentes composantes.</p>
+        </div>
+        <div class="eco-item">
+          <img src="acces.png" alt="Faciliter l'accès">
+          <h3>Faciliter l'accès</h3>
+          <p>Faciliter l'accès aux offres de réutilisation et préparer l'intégration pour les nouveaux usagers & services.</p>
+        </div>
+        <div class="eco-item">
+          <img src="gestion.png" alt="Gestion durable">
+          <h3>Gestion durable</h3>
+          <p>Proposer des stratégies de gestion durable et des statistiques sur les réutilisations.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="recyclables">
+      <h2>Objets Recyclables</h2>
+      <p>
+        EcoGestUM permet de gérer le recyclage d'une grande variété d'équipements issus des différentes composantes et services de l'université.
+      </p>
+      <div class="objects-grid">
+        <div class="obj-item"><img src="ordinateur.png" alt="Matériel informatique"><span>Matériel informatique</span></div>
+        <div class="obj-item"><img src="chaise.png" alt="Mobilier"><span>Mobilier</span></div>
+        <div class="obj-item"><img src="livres.png" alt="Livres"><span>Livres</span></div>
+        <div class="obj-item"><img src="fournitures.png" alt="Fournitures"><span>Fournitures</span></div>
+        <div class="obj-item"><img src="appareils.png" alt="Appareils électroniques"><span>Appareils électroniques</span></div>
+        <div class="obj-item"><img src="sport.png" alt="Matériel sportif"><span>Matériel sportif</span></div>
+        <div class="obj-item"><img src="vetement.png" alt="Vêtements"><span>Vêtements</span></div>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <h2>Ils Témoignent</h2>
+      <p>Les utilisateurs d’EcoGestUM partagent leur expérience</p>
+      <div class="testimonial-list">
+        <div class="testimonial">
+          <p>Grâce à EcoGestUM, j'ai pu réemployer du mobilier pour mon bureau, solution efficace et d'intérêt général !</p>
+          <span class="user">MD - Service Informatique</span>
+        </div>
+        <div class="testimonial">
+          <p>EcoGestUM m'a permis de donner une seconde vie aux livres de mon service. Simple et rapide !</p>
+          <span class="user">MD - Bibliothèque</span>
+        </div>
+        <div class="testimonial">
+          <p>La gestion des équipements est facilitée, tout le monde y gagne et l'environnement aussi.</p>
+          <span class="user">MD - Responsable Durable</span>
+        </div>
+        <div class="testimonial">
+          <p>On optimise la gestion du matériel et mobilier inutilisé, c'est un vrai plus pour l’université.</p>
+          <span class="user">MD - Service Logistique</span>
+        </div>
+        <div class="testimonial">
+          <p>Facilite la réutilisation interne et réduit le gaspillage, plateforme intuitive !</p>
+          <span class="user">MD - Service Achats</span>
+        </div>
+        <div class="testimonial">
+          <p>EcoGestUM contribue pleinement à la démarche de développement durable menée par l'université.</p>
+          <span class="user">MD - Direction</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-col">
+      <h4>Ressources</h4>
+      <ul>
+        <li>Règlement intérieur</li>
+        <li>Politiques environnement</li>
+        <li>FAQ</li>
+        <li>Composantes & administration</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li>ecogestum@univ-lemans.fr</li>
+        <li>+33 2 43 83 35 87</li>
+        <li>Nous contacter</li>
+        <li>Suggestions d'amélioration</li>
+      </ul>
+    </div>
+  </footer>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Inscritpion - Le Mans Université</title>
-    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style-Sign.css">
 </head>
 <body>
     <div class="container">
