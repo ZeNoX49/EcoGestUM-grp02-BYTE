@@ -4,23 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Koulen&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>Catalogue Recyclage</title>
 </head>
 <body>
     <header class="header">
         <div class="bandeau">
             <ul>
-                <li><img src="assets/images/facebook.svg" alt="Facebook"></li>
-                <li><img src="assets/images/youtube.svg" alt="YouTube"></li>
-                <li><img src="assets/images/twitter.svg" alt="Twitter"></li>
-                <li><img src="assets/images/instagram.svg" alt="Instagram"></li>
+                <li><img src="assets/image/facebook.svg" alt="Facebook"></li>
+                <li><img src="assets/image/youtube.svg" alt="YouTube"></li>
+                <li><img src="assets/image/twitter.svg" alt="Twitter"></li>
+                <li><img src="assets/image/instagram.svg" alt="Instagram"></li>
             </ul>
         </div>
         
         <div class="elements">
             <div class="logo-container">
-                <img src="assets/images/logo.svg" alt="Le Mans Université">
+                <img src="assets/image/logo.svg" alt="Le Mans Université">
             </div>
             <nav>
                 <ul>
@@ -39,7 +39,7 @@
             <div class="search-barre">
                 <div class="search-form">
                     <div class="search-input-container">
-                        <img src="assets/images/search.svg" alt="Recherche" class="search-icon">
+                        <img src="assets/image/search.svg" alt="Recherche" class="search-icon">
                         <input type="text" placeholder="Rechercher un objet" class="search-input">
                     </div>
                     
@@ -75,7 +75,7 @@
                             <div class="filter-section">
                                 <p class="filter-title">Localisation</p>
                                 <div class="location-box">
-                                    <img src="assets/images/map-pin.svg" alt="Loc" class="loc-icon">
+                                    <img src="assets/image/map-pin.svg" alt="Loc" class="loc-icon">
                                     <input type="text" placeholder="Ajouter une localisation">
                                 </div>
                             </div>
@@ -89,16 +89,18 @@
                 <div class="catalogue">
                     <div class="catalogue-list">
 
+                        <?php if(isset($objets)):
+                                foreach($objets as $objet): ?>
                         <article class="card-objet">
                             <div class="card-img-container">
                                 <div class="card-image-box" style="background-image: url('https://via.placeholder.com/140x140/A8A8A8/FFFFFF?text=Objet+Générique'); background-size: 80%; background-repeat: no-repeat;">
                                     </div>
                             </div>
                             <div class="card-content">
-                                <h3>Nom Objet</h3>
+                                <h3><?php echo $objet['nom_objet']?> </h3>
                                 <div class="card-text">
                                     <span class="label">Description :</span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sit amet tortor rhoncus, elementum dui id, laoreet elit.</p>
+                                    <p><?php echo $objet['description_objet']; ?></p>
                                 </div>
                                 <div class="card-text">
                                     <span class="label">Localisation :</span>
@@ -109,48 +111,7 @@
                                 <span>Réserver</span>
                             </a>
                         </article>
-
-                        <article class="card-objet">
-                            <div class="card-img-container">
-                                <div class="card-image-box" style="background-image: url(http://googleusercontent.com/image_generation_content/0); background-size: 80%; background-repeat: no-repeat;">
-                                    </div>
-                            </div>
-                            <div class="card-content">
-                                <h3>Chaise de bureau ergonomique</h3>
-                                <div class="card-text">
-                                    <span class="label">Description :</span>
-                                    <p>Chaise de bureau ergonomique en bon état. Quelques traces d'usure sur les accoudoirs mais parfaitement fonctionnelle.</p>
-                                </div>
-                                <div class="card-text">
-                                    <span class="label">Localisation :</span>
-                                    <span class="value">Bibliothèque universitaire</span>
-                                </div>
-                            </div>
-                            <a href="#" class="card-action">
-                                <span>Réserver</span>
-                            </a>
-                        </article>
-
-                        <article class="card-objet">
-                            <div class="card-img-container">
-                                <div class="card-image-box" style="background-image: url('https://via.placeholder.com/140x140/000000/FFFFFF?text=Moniteur+24%22'); background-size: 90%; background-repeat: no-repeat;">
-                                    </div>
-                            </div>
-                            <div class="card-content">
-                                <h3>Écran d'ordinateur 24 pouces</h3>
-                                <div class="card-text">
-                                    <span class="label">Description :</span>
-                                    <p>Écran d'ordinateur 24 pouces. Fonctionne parfaitement, câble HDMI fourni.</p>
-                                </div>
-                                <div class="card-text">
-                                    <span class="label">Localisation :</span>
-                                    <span class="value">Salle informatique IUT</span>
-                                </div>
-                            </div>
-                            <a href="#" class="card-action">
-                                <span>Réserver</span>
-                            </a>
-                        </article>
+                        <?php endforeach; endif; ?>
                     </div>
                 </div>
             </div>
