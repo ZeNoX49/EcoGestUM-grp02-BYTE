@@ -10,12 +10,12 @@
         <div class="form-section">
             <img src="../../assets\image\LogoLeMans.png"
                  alt="Le Mans Université" class="logo">
-            <form>
-                <input type="text" placeholder="Nom" required>
-                <input type="text" placeholder="Prénom" required>
-                <input type="password" placeholder="Mot de passe" required>
-                <input type="password" placeholder="Confirmation Mot de passe" required>
-                <select required>
+            <form method="POST" action="index.php?action=signIn/signUp">
+                <input type="text" name="nom" placeholder="Nom" required>
+                <input type="text" name="prenom" placeholder="Prénom" required>
+                <input type="password" name="mdp" placeholder="Mot de passe" required>
+                <input type="password" name="confirmMdp" placeholder="Confirmation Mot de passe" required>
+                <select name="role" required>
                     <option value="" disabled selected>Rôle demandé</option>
                     <option value="Etudiant">Etudiant</option>
                     <option value="Enseignant">Enseignant</option>
