@@ -104,7 +104,7 @@
                                 </div>
                                 <div class="card-text">
                                     <span class="label">Localisation :</span>
-                                    <span class="value">Bâtiment E, Salle 102</span>
+                                    <span class="value"> <?php echo $objet['nom_point_collecte'] ?> | <?php echo $objet['adresse_point_collecte'] ?> </span>
                                 </div>
                             </div>
                             <a href="#" class="card-action">
