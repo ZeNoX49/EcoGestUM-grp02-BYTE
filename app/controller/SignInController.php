@@ -13,7 +13,7 @@ class signInController {
             $this->show();
             return;
         }
-        echo "coucou thomas";
+        echo "coucou<br>";
 
         // On vérifie que les mdp sont les même
         if($_POST['mdp'] !== $_POST['confirmMdp']) {
@@ -27,7 +27,8 @@ class signInController {
 
         // on vérifie que l'utilisateur n'existe pas
         if(!isUserExisting($mail)) {
-            echo "L'utilisateur existe déja";
+            echo "L'utilisateur existe déja<br>";
+            echo $_POST['nom']." - ".$_POST['prenom']." - $mail - ".$_POST['mdp']." - ".$_POST['confirmMdp']." - ".$_POST['role']."<br>";
             $this->show();
             return;
         }
