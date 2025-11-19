@@ -63,9 +63,11 @@ function setProcedure($conn){
 function createObjet_disponible($conn){
     $sql = "CREATE OR REPLACE VIEW objets_disponibles AS
                 SELECT
+                     o.id_objet,
                      o.nom_objet,
                      o.description_objet,
                      o.image_objet,
+                     o.id_categorie,
                      p.nom_point_collecte,
                      p.adresse_point_collecte
                 FROM objet o
@@ -119,4 +121,14 @@ function getCatalogue($conn){
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll();
+}
+
+function getObjet($id, $conn){
+    if(!is_numeric($id))return null;
+    if($id < 1)return null;
+    $sql = "SELECT * FROM objets_disponibles 
+JOIN CATEGORIE c ON c.id_categorie = objets_disponibles.id_categorie WHERE id_objet = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$id]);
+    return $stmt->fetch();
 }
