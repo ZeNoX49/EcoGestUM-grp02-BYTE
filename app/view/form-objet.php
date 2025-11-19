@@ -12,22 +12,22 @@
     <header class="header">
         <div class="bandeau">
             <ul>
-                <li><img src="assets/images/facebook.svg" alt="Facebook"></li>
-                <li><img src="assets/images/youtube.svg" alt="YouTube"></li>
-                <li><img src="assets/images/twitter.svg" alt="Twitter"></li>
-                <li><img src="assets/images/instagram.svg" alt="Instagram"></li>
+                <li><img src="assets/image/facebook.svg" alt="Facebook"></li>
+                <li><img src="assets/image/youtube.svg" alt="YouTube"></li>
+                <li><img src="assets/image/twitter.svg" alt="Twitter"></li>
+                <li><img src="assets/image/instagram.svg" alt="Instagram"></li>
             </ul>
         </div>
         
         <div class="elements">
             <div class="logo-container">
-                <img src="assets/images/logo.svg" alt="Le Mans Université">
+                <img src="assets/image/logo.svg" alt="Le Mans Université">
             </div>
             <nav>
                 <ul>
                     <li><a href="../../index.php">Accueil</a></li>
-                    <li><a href="CatalogueRecyclage.php">Catalogue</a></li>
-                    <li><a href="gestion.php">Gestion</a></li>
+                    <li><a href="index.php?action=catalogue/show">Catalogue</a></li>
+                    <li><a href="index.php?action=gestion/show" style="color: #DB4C3B; font-weight:700;">Gestion</a></li>
                     <li><a href="evenements.php">Événements</a></li>
                     <li><a href="statistiques.php">Statistiques</a></li>
                     <li class="profil-btn"><a href="profil.php">Mon Profil</a></li>
