@@ -67,12 +67,17 @@ function createObjet_disponible($conn){
                      o.nom_objet,
                      o.description_objet,
                      o.image_objet,
+                     o.date_ajout_objet,
                      o.id_categorie,
                      p.nom_point_collecte,
-                     p.adresse_point_collecte
+                     p.adresse_point_collecte,
+                     e.nom_etat,
+                     u.nom_utilisateur
                 FROM objet o
                 JOIN statutdisponible s ON o.id_statut_disponibilite = s.id_statut_disponibilite
                 JOIN POINTCOLLECTE p ON p.id_point_collecte = o.id_point_collecte
+                JOIN ETAT e ON e.id_etat = o.id_etat
+                JOIN UTILISATEUR u ON u.id_utilisateur = o.id_utilisateur
                 WHERE s.nom_statut_disponibilite = 'Disponible';";
     $stmt = $conn->prepare($sql);
     $stmt->execute();

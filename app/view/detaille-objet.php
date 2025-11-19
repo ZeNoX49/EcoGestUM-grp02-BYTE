@@ -24,9 +24,9 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.php">Accueil</a></li>
-                    <li><a href="CatalogueRecyclage.php">Catalogue</a></li>
-                    <li><a href="gestion.php">Gestion</a></li>
+                    <li><a href="../../index.php">Accueil</a></li>
+                    <li><a href="index.php?action=catalogue/show">Catalogue</a></li>
+                    <li><a href="index.php?action=gestion/show" style="color: #DB4C3B; font-weight:700;">Gestion</a></li>
                     <li><a href="evenements.php">Événements</a></li>
                     <li><a href="statistiques.php">Statistiques</a></li>
                     <li class="profil-btn"><a href="profil.php">Mon Profil</a></li>
@@ -37,12 +37,12 @@
 
     <div class="main-detail">
         <div class="back-to-catalogue">
-            <a href="CatalogueRecyclage.php">Retour au catalogue</a>
+            <a href="index.php?action=catalogue/show">Retour au catalogue</a>
         </div>
         
         <div class="breadcrumb">
             <a href="index.php">Accueil</a> / 
-            <a href="CatalogueRecyclage.php">Catalogue</a> / 
+            <a href="index.php?action=catalogue/show">Catalogue</a> /
             Matériel Informatique / Ordinateur portable Dell Latitude 5420
         </div>
 
@@ -112,7 +112,7 @@
                     </div>
                     <div class="attribute-item">
                         <span class="label">État</span>
-                        <span class="value">Bon</span>
+                        <span class="value"><?=$objet['nom_etat']?></span>
                     </div>
                     <div class="attribute-item">
                         <span class="label">Quantité</span>
@@ -120,25 +120,22 @@
                     </div>
                     <div class="attribute-item">
                         <span class="label">Localisation</span>
-                        <span class="value">Entrepôt - Zone A</span>
+                        <span class="value"><?=$objet['nom_point_collecte']?> | <?=$objet['adresse_point_collecte']?></span>
                     </div>
                     <div class="attribute-item">
                         <span class="label">Date d'ajout</span>
-                        <span class="value">15 janvier 2025</span>
+                        <span class="value"><?=$objet['date_ajout_objet']?></span>
                     </div>
                     <div class="attribute-item">
                         <span class="label">Responsable</span>
-                        <span class="value">J. Martin</span>
+                        <span class="value"><?=$objet['nom_utilisateur']?></span>
                     </div>
                 </div>
 
                 <div class="description-box">
                     <h2>Description</h2>
                     <p>
-                        Ordinateurs portables Dell Latitude 5420 en parfait état de fonctionnement. Suite au renouvellement 
-                        du parc informatique du Service Informatique, ces machines sont disponibles pour réutilisation. 
-                        Caractéristiques : Intel Core i5 11ème génération, 8 Go RAM, SSD 256 Go, écran 14 pouces Full HD. 
-                        Idéal pour usage bureautique et pédagogique.
+                        <?=$objet['description_objet']?>
                     </p>
                 </div>
 
