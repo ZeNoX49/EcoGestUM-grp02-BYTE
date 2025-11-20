@@ -251,6 +251,50 @@ body::before {
   box-sizing: border-box;
 }
 
+.event-details-box {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 5px 16px rgba(60, 110, 180, 0.10);
+  width: 370px;
+  min-height: 330px;
+  padding: 34px 26px 48px 26px; /* Marge basse assez grande pour le bouton */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; /* <-- clé ici ! */
+}
+
+.add-event-icon-btn {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.add-event-icon-btn img {
+  width: 44px;
+  height: 44px;
+  display: block;
+  transition: filter 0.15s, transform 0.15s;
+}
+
+.add-event-icon-btn:hover img,
+.add-event-icon-btn:focus img {
+  filter: brightness(0.88) drop-shadow(0 2px 8px rgba(44,53,70,0.10));
+  transform: scale(1.08);
+}
+
 .event-details-marker {
   display: inline-block;
   width: 28px;

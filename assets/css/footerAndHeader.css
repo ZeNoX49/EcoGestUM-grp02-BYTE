@@ -111,7 +111,7 @@
 .footer-content {
     display: flex;
     justify-content: space-between;
-    max-width: 1400px;
+    max-width: auto;
     margin: 0 auto;
     gap: 100px;
 }
