@@ -29,6 +29,7 @@ class signInController {
             $this->show();
             return;
         }
+        
         header('Location: index.php?action=Connexion/show');
     }
 }

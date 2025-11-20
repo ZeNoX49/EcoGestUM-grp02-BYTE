@@ -1,30 +1,31 @@
 # EcoGestUM-grp12-BYTE
 
 **pour créer la BDD aller dans le fichier *createDB.php***
+
 *3 comptes (mail, mdp)*
 - test.etudiant.etu@univ-lemans.fr | test
 - test.enseignant@univ-lemans.fr | test
 - test.presidence@univ-lemans.fr | test
 
-**Merci de mettre a jour les cases des pages finis pour qu'on sache où on en est**
-
 ## Pages
 
+**Merci de mettre a jour les cases des pages finis pour qu'on sache où on en est**
+
 ### globale
-- [ ] header
-- [ ] footer
+- [X] header
+- [X] footer
 - [X] connexion
 - [X] premiere Connexion
-- [ ] accueil
+- [X] accueil
 - [ ] profil - donnees personelles
 - [ ] profil - notifications
 - [ ] profil - new mdp
-- [ ] catalogue recyclage
+- [X] catalogue recyclage
 - [ ] detaille objet
-- [ ] carte
-- [ ] gestion des objets : mes reservations
-- [ ] gestion des objets : proposer un objet
-- [ ] gestion des objets : mes objets proposés
+- [X] carte
+- [X] gestion des objets : mes reservations
+- [X] gestion des objets : proposer un objet
+- [X] gestion des objets : mes objets proposés
 
 ### etudiant
 - [ ] gestion des objets - etudiant
@@ -35,7 +36,7 @@
 - [ ] statistique - etudiant
 
 ### enseignant
-- [ ] gestion des objets - enseignant
+- [X] gestion des objets - enseignant
 - [ ] gestion des categories
 - [ ] inventaire
 - [ ] historique
@@ -55,6 +56,7 @@
 ## Mettez la version au debut du commit puis le titre (exemple ci dessous) et faites une petite description des changements puis la mettre au dessus des autres versions
 > *ex : "v0.0 - Initial commit"*
 
+- v0.3.4 - main à jour
 - v0.3.3 - ajout d'un moyen pour créer la base de donnée automatiquement
 - v0.3.2 - correction d'un bug avec le catalogue (modification de la vue objets_disponible)
 - v0.3.1 - connexion entierement fonctionelle
