@@ -12,8 +12,8 @@
 ### globale
 - [ ] header
 - [ ] footer
-- [ ] connexion
-- [ ] premiere Connexion
+- [X] connexion
+- [X] premiere Connexion
 - [ ] accueil
 - [ ] profil - donnees personelles
 - [ ] profil - notifications
@@ -54,6 +54,8 @@
 **Mettez la version au debut du commit puis le titre (exemple ci dessous) et faites une petite description des changements puis la mettre au dessus des autres versions**
 > *ex : "v0.0 - Initial commit"*
 
+- v0.3.1 - connexion entierement fonctionelle
+- v0.3 - maj de la bdd + fonctionnement de connexion et inscription avec en css en bonus
 - v0.2.2 - correction de la bdd ?
 - v0.2.1 - modification de la facon de se connecter/créer un compte, mon code est ok (en grosse partie) le problème vient d'autre part
 - v0.2 - merge (*sans git merge*) de toutes les branches

@@ -52,7 +52,5 @@ function isUserPasswordCorrect($mail, $password){
     $query = $bdd->query("SELECT * FROM UTILISATEUR WHERE email_utilisateur LIKE '$mail'");
     $user = $query->fetchAll(PDO::FETCH_ASSOC);
 
-    var_dump($user);
-
-    return password_verify($password, $user['mdp_utilisateur']);
+    return password_verify($password, $user[0]['mdp_utilisateur']);
 }
