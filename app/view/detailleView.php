@@ -4,37 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Koulen&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style-catalogue.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Ordinateur portable Dell Latitude 5420</title>
 </head>
 <body>
-    <header class="header">
-        <div class="bandeau">
-            <ul>
-                <li><img src="assets/image/facebook.svg" alt="Facebook"></li>
-                <li><img src="assets/image/youtube.svg" alt="YouTube"></li>
-                <li><img src="assets/image/twitter.svg" alt="Twitter"></li>
-                <li><img src="assets/image/instagram.svg" alt="Instagram"></li>
-            </ul>
-        </div>
-        
-        <div class="elements">
-            <div class="logo-container">
-                <img src="assets/image/logo.svg" alt="Le Mans Université">
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="../../index.php">Accueil</a></li>
-                    <li><a href="index.php?action=catalogue/show">Catalogue</a></li>
-                    <li><a href="index.php?action=gestion/show" style="color: #DB4C3B; font-weight:700;">Gestion</a></li>
-                    <li><a href="evenements.php">Événements</a></li>
-                    <li><a href="statistiques.php">Statistiques</a></li>
-                    <li class="profil-btn"><a href="profil.php">Mon Profil</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
+    <?php include 'assets/html/header.html'; ?>
     <div class="main-detail">
         <div class="back-to-catalogue">
             <a href="index.php?action=catalogue/show">Retour au catalogue</a>
@@ -140,8 +114,8 @@
                 </div>
 
                 <div class="action-buttons">
-                    <a href="#" class="btn-reserve">Réserver cet objet</a>
-                    <a href="#" class="btn-map">Voir sur la carte</a>
+                    <a href="mesReservationsView.php" class="btn-reserve">Réserver cet objet</a>
+                    <a href="mapView.php" class="btn-map">Voir sur la carte</a>
                     <a href="#" class="btn-contact">Contacter</a>
                 </div>
 
@@ -150,35 +124,7 @@
         <?php endif; ?>
     </div>
 
-    <div class="footer">
-        <div class="footer-content">
-            <div class="elements-gauche">
-                <nav>
-                    <ul>
-                        <li><h4>Ressources</h4></li>
-                        <li><a href="CatalogueRecyclage.php">Politique de recyclage</a></li>
-                        <li><a href="gestion.php">Rapports annuels</a></li>
-                        <li><a href="evenements.php">Guide utilisateur</a></li>
-                        <li><a href="statistiques.php">Événements écoresponsables</a></li>
-                        <li><a href="statistiques.php">Campagnes de sensibilisation</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="elements-droite">
-                <nav>
-                    <ul>
-                        <li><h4>Contact</h4></li>
-                        <li><p>ecogestum@univ-lemans.fr</p></li>
-                        <li><p>+33 2 43 83 30 30</p></li>
-                        <li><a href="evenements.php">Nous contacter</a></li>
-                        <li><a href="statistiques.php">Signaler un problème</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2025 Le Mans Université - EcoGestUM. Tous droits réservés. | <a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a></p>
-        </div>
-    </div>
+
+    <?php include 'assets/html/footer.html'; ?>
 </body>
 </html>
