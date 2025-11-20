@@ -52,7 +52,7 @@
                 </div>
             </a>
 
-            <a href="gestionCategoriesView.php" class="gestion-card">
+            <a href="index.php?action=gestionCategories/show" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-solid fa-tags"></i>
                 </div>
