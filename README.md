@@ -20,7 +20,7 @@
 - [ ] profil - donnees personelles
 - [ ] profil - notifications
 - [ ] profil - new mdp
-- [ ] catalogue recyclage
+- [X] catalogue recyclage
 - [ ] detaille objet
 - [ ] carte
 - [ ] gestion des objets : mes reservations
