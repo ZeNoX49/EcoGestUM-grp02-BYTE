@@ -2,7 +2,7 @@
 
 require_once "app/model/objetModel.php";
 
-class detailleController
+class DetailleController
 {
     public function show()
     {
