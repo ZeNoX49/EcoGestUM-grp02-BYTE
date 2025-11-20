@@ -69,12 +69,19 @@
         </table>
       </div>
       <div class="event-details-box">
-        <div class="event-details-header">Jeudi 18 Octobre</div>
-        <div class="event-details-content">
-          <span class="event-details-marker"></span>
-          <span class="event-details-nodata">Aucun Événement</span>
-        </div>
-      </div>
+  <div class="event-details-header">Jeudi 18 Octobre</div>
+  <details class="event-card" open>
+    <summary>
+      <span class="event-card-title">ADILL Event</span>
+      <button class="event-card-btn" type="button">S'inscrire</button>
+    </summary>
+    <div class="event-card-details">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pulvinar vitae elit placerat lacinia velit est sit amet enim. Mauris convallis commodo turpis. Vestibulum feugiat varius, accumsan eu odio eu, aliquet pharetra nunc. Etiam dictum ullamcorper enim.
+    </div>
+  </details>
+</div>
+
+
     </div>
   </div>
 </main>
