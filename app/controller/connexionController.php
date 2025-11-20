@@ -8,6 +8,6 @@ class connexionController
 
     public function connect(){
         $bdd = getDatabase();
-        header('Location: index.php?action=catalogue/show');
+        header('Location: index.php?action=homePage/show');
     }
 }

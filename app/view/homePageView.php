@@ -3,35 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>EcoGestUM - Accueil</title>
-  <link rel="stylesheet" href="../../assets/css/style-Home.css">
+  <link rel="stylesheet" href="/EcoGestUM-grp12-BYTE/assets/css/style-Home.css">
  </head>
 <body>
   <div class="home-wrapper">
    <header>
-  <div class="topbar">
-    <div class="socials">
-      <a href="#"><img src="../../assets/image/facebook.svg" alt="Facebook"></a>
-      <a href="#"><img src="../../assets/image/youtube.svg" alt="Youtube"></a>
-      <a href="#"><img src="../../assets/image/twitter.svg" alt="Twitter"></a>
-      <a href="#"><img src="../../assets/image/instagram.svg" alt="Instagram"></a>
-    </div>
-  </div>
-  <nav class="main-navbar">
-    <div class="navbar-left">
-      <img src="../../assets/image/LogoLeMans.png" class="logo" alt="Le Mans Université"/>
-    </div>
-    <div class="navbar-center">
-      <ul class="navbar-menu">
-        <li><a href="#">Accueil</a></li>
-        <li><a href="#">Catalogue</a></li>
-        <li><a href="#">Gestion</a></li>
-        <li><a href="#">Évènements</a></li>
-        <li><a href="#">Statistiques</a></li>
-      </ul>
-      <a href="#" class="profil-btn">Mon Profil</a>
-    </div>
-  </nav>
-</header>
+       <?php include 'assets/html/header.html'; ?>
+   </header>
 
 
     <main>
