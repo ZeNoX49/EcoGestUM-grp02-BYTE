@@ -2,7 +2,7 @@
 
 require "bddModel.php";
 
-function insertUser($fname, $name, $mail, $password, $id_role) {
+function insertUser($name, $fname, $mail, $password, $id_role) {
     $bdd = get_bdd();
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 

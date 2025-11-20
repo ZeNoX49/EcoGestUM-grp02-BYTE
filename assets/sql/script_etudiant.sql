@@ -16,7 +16,7 @@ SELECT
     p.adresse_point_collecte
 FROM objet o
 JOIN POINTCOLLECTE p ON p.id_point_collecte = o.id_point_collecte
-WHERE o.id_statut_disponibilite = 0;
+WHERE o.id_statut_disponibilite = 1;
 
 -- Requete 2 : Voir mes reservations (exemple pour utilisateur id=1)
 CREATE OR REPLACE VIEW mes_reservations AS
@@ -44,8 +44,6 @@ WHERE date_debut_evenement >= NOW();
 
 -- Procedure 1 : Reserver un objet
 DROP PROCEDURE IF EXISTS etudiant_reserver_objet;
-DELIMITER $$
-
 CREATE PROCEDURE etudiant_reserver_objet(
     IN p_id_utilisateur INT,
     IN p_id_objet INT
@@ -57,14 +55,10 @@ VALUES (p_id_objet, CURDATE(), p_id_utilisateur, 1);
 UPDATE objet
 SET id_statut_disponibilite = 2
 WHERE id_objet = p_id_objet;
-END $$
-
-DELIMITER ;
+END;
 
 -- Procedure 2 : Annuler ma reservation
 DROP PROCEDURE IF EXISTS etudiant_annuler_reservation;
-DELIMITER $$
-
 CREATE PROCEDURE etudiant_annuler_reservation(
     IN p_id_utilisateur INT
 )
@@ -84,14 +78,10 @@ UPDATE objet
 SET id_statut_disponibilite = 1
 WHERE id_objet = v_id_objet;
 END IF;
-END $$
-
-DELIMITER ;
+END;
 
 -- Procedure 3 : Rechercher un objet par categorie
 DROP PROCEDURE IF EXISTS etudiant_rechercher_par_categorie;
-DELIMITER $$
-
 CREATE PROCEDURE etudiant_rechercher_par_categorie(
     IN p_id_categorie INT
 )
@@ -103,6 +93,4 @@ SELECT
 FROM objet o
          JOIN statutdisponible s ON o.id_statut_disponibilite = s.id_statut_disponibilite
 WHERE o.id_categorie = p_id_categorie;
-END $$
-
-DELIMITER ;
+END;
