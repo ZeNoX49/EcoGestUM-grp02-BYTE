@@ -47,7 +47,7 @@ INSERT INTO etat (nom_etat) VALUES
 INSERT INTO statutdisponible (nom_statut_disponibilite) VALUES
 ('Disponible'),
 ('Reserve'),
-('Prete'),
+('Attente'),
 ('Indisponible');
 
 -- Statuts reservation

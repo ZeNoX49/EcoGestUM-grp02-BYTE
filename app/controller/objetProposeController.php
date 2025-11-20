@@ -7,7 +7,10 @@ class objetProposeController
     {
         if(isset($_SESSION['user'])){
             $objets = getNbObjectPropUtilisateur($_SESSION['user']);
-                
+            $nbAttente = countObjectStatus($objets, 3);
+            $nbDisponible = countObjectStatus($objets, 1);
+            $nbRserve = countObjectStatus($objets, 2);
+
             // Sécurité : si la fonction renvoie false, on force un tableau vide
             if ($objets === false) {
                 $objets = [];

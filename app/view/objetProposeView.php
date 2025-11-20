@@ -1,4 +1,4 @@
-<?php if(!isset($objets)) die('error')?>
+<?php if(!isset($objets) || !isset($nbAttente) || !isset($nbDisponible) || !isset($nbRserve)) die('error')?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -44,22 +44,27 @@
                     <span class="stat-label">Objets proposés</span>
                 </div>
                 <div class="stat-card border-yellow">
-                    <span class="stat-number"></span>
-                    <span class="stat-label">En attente</span>
+                    <span class="stat-number"><?=$nbAttente?></span>
+                    <span class="stat-label">En attente de validation</span>
                 </div>
                 <div class="stat-card border-green">
-                    <span class="stat-number">5</span>
-                    <span class="stat-label">Acceptés</span>
+                    <span class="stat-number"><?=$nbDisponible?></span>
+                    <span class="stat-label">Disponible</span>
                 </div>
                 <div class="stat-card border-blue">
-                    <span class="stat-number">4</span>
-                    <span class="stat-label">Récupérés</span>
+                    <span class="stat-number"><?=$nbRserve?></span>
+                    <span class="stat-label">Réservés</span>
                 </div>
+
+<!--                <div class="stat-card border-blue">-->
+<!--                    <span class="stat-number">4</span>-->
+<!--                    <span class="stat-label">Récupérés</span>-->
+<!--                </div>-->
             </div>
             <div class="my-objects-grid">
                 <?php foreach ($objets as $objet):?>
                     <div class="my-object-card">
-                    <div class="status-badge status-pending"><?=$objet['nom_etat']?>e</div>
+                    <div class="status-badge status-pending"><?=$objet['nom_statut_disponibilite']?></div>
                     <div class="card-img-top" style="background-image: url('http://googleusercontent.com/image_generation_content/0');"></div>
                     <div class="card-body">
                         <h3>
