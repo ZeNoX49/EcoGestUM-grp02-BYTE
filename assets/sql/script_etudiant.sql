@@ -9,13 +9,20 @@ USE ECOGESTUM;
 -- Requete 1 : Voir les objets disponibles
 CREATE OR REPLACE VIEW objets_disponibles AS
 SELECT
+    o.id_objet,
     o.nom_objet,
     o.description_objet,
     o.image_objet,
+    o.date_ajout_objet,
+    o.id_categorie,
     p.nom_point_collecte,
-    p.adresse_point_collecte
+    p.adresse_point_collecte,
+    e.nom_etat,
+    u.nom_utilisateur
 FROM objet o
-JOIN POINTCOLLECTE p ON p.id_point_collecte = o.id_point_collecte
+         JOIN POINTCOLLECTE p ON p.id_point_collecte = o.id_point_collecte
+         JOIN ETAT e ON e.id_etat = o.id_etat
+         JOIN UTILISATEUR u ON u.id_utilisateur = o.id_utilisateur
 WHERE o.id_statut_disponibilite = 1;
 
 -- Requete 2 : Voir mes reservations (exemple pour utilisateur id=1)

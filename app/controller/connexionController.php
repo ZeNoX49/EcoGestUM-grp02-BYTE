@@ -1,5 +1,8 @@
 <?php
-class connexionController
+
+require_once "app/model/utilisateurModel.php";
+
+class ConnexionController
 {
     public function show()
     {
@@ -7,7 +10,19 @@ class connexionController
     }
 
     public function connect(){
-        $bdd = getDatabase();
-        header('Location: index.php?action=homePage/show');
+        echo isUserExisting($_POST['mail']);
+
+        if(!isUserExisting($_POST['mail'])) {
+            echo "L'utilisateur n'existe pas";
+            $this->show();
+            return;
+        }
+
+        if(!isUserPasswordCorrect($_POST['mail'],$_POST['mdp'])) {
+            echo "Le mdp n'est pas bon";
+            $this->show();
+            return;
+        }
+        header('Location: index.php?action=catalogue/show');
     }
 }
