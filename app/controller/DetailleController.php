@@ -8,6 +8,6 @@ class DetailleController
             $conn = getDatabase();
             $objet = getObjet($_GET['id'], $conn);
         }
-        include "app/view/detaille-objet.php";
+        include "app/view/DetailleView.php";
     }
 }

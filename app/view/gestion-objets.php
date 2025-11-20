@@ -15,7 +15,7 @@
         
         <div class="gestion-header-bar">
             <h1>Gestion des Objets</h1>
-            <a href="profil.php" class="back-icon">
+            <a href="ProfilView.php" class="back-icon">
                 <i class="fa-solid fa-arrow-turn-up"></i>
             </a>
         </div>
@@ -42,7 +42,7 @@
                 </div>
             </a>
 
-            <a href="mes-reservations.php" class="gestion-card">
+            <a href="MesReservationsView.php" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-regular fa-calendar-check"></i>
                 </div>
@@ -52,7 +52,7 @@
                 </div>
             </a>
 
-            <a href="gestion-categories.php" class="gestion-card">
+            <a href="GestionCategoriesView.php" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-solid fa-tags"></i>
                 </div>
@@ -62,7 +62,7 @@
                 </div>
             </a>
 
-            <a href="gerer-demandes.php" class="gestion-card">
+            <a href="GererDemandeView.php" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-solid fa-square-check"></i>
                 </div>
@@ -72,7 +72,7 @@
                 </div>
             </a>
 
-            <a href="inventaire.php" class="gestion-card">
+            <a href="InventaireView.php" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-solid fa-boxes-stacked"></i>
                 </div>
@@ -82,7 +82,7 @@
                 </div>
             </a>
 
-            <a href="historique.php" class="gestion-card">
+            <a href="HistoriqueView.php" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-solid fa-file-lines"></i>
                 </div>

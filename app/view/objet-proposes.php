@@ -33,7 +33,7 @@
                         <option>Autre</option>
                     </select>
                 </div>
-                <a href="form-objet.php" class="btn-add-new">
+                <a href="FormObjeViewt.php" class="btn-add-new">
                     <i class="fa-solid fa-plus"></i> Proposer un nouvel objet
                 </a>
             </div>

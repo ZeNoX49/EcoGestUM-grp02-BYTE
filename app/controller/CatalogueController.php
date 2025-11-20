@@ -10,7 +10,7 @@ class CatalogueController
         $objets = getCatalogue($conn);
 
 
-        include "app/view/catalogue-recyclage.php";
+        include "app/view/CatalogueView.php";
 
     }
 }

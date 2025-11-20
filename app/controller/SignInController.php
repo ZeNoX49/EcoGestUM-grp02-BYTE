@@ -1,7 +1,7 @@
 <?php
 class signInController {
     public function show() {
-        include "app/view/signIn.php";
+        include "app/view/SignInView.php";
     }
 
     public function signUp() {
