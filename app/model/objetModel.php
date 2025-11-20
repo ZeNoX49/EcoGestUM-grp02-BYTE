@@ -45,7 +45,7 @@ function getNbObjectPropUtilisateur($id_utilisateur) {
          WHERE o.id_utilisateur = ? AND o.id_statut_disponibilite != 4";
     $stmt = $bdd->prepare($sql);
     $stmt->execute([$id_utilisateur]);
-    return $stmt->fetch();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function getObjectDisponible() {

@@ -44,7 +44,7 @@
                     <span class="stat-label">Objets proposés</span>
                 </div>
                 <div class="stat-card border-yellow">
-                    <span class="stat-number">3</span>
+                    <span class="stat-number"></span>
                     <span class="stat-label">En attente</span>
                 </div>
                 <div class="stat-card border-green">
@@ -57,21 +57,21 @@
                 </div>
             </div>
             <div class="my-objects-grid">
-                
-                <div class="my-object-card">
-                    <div class="status-badge status-pending">En attente</div>
+                <?php foreach ($objets as $objet):?>
+                    <div class="my-object-card">
+                    <div class="status-badge status-pending"><?=$objet['nom_etat']?>e</div>
                     <div class="card-img-top" style="background-image: url('http://googleusercontent.com/image_generation_content/0');"></div>
                     <div class="card-body">
                         <h3>
-                            Chaise en bois 
-                            <span class="category-label">Mobilier</span>
+                            <?=$objet['nom_objet']?>
+                            <span class="category-label"><?=$objet['nom_categorie']?></span>
                         </h3>
                         <p class="card-desc">
-                            Chaise en chêne massif, quelques rayures mais très solide. Parfait pour un étudiant ou un bureau.
+                            <?=$objet['nom_objet']?>
                         </p>
                         <div class="card-meta">
-                            <span><i class="fa-solid fa-location-dot"></i> Bâtiment E - Bureau 205</span>
-                            <span><i class="fa-regular fa-calendar"></i> 15/01/2025</span>
+                            <span><i class="fa-solid fa-location-dot"></i> <?=$objet['nom_point_collecte']?> - <?=$objet['adresse_point_collecte']?></span>
+                            <span><i class="fa-regular fa-calendar"></i> <?=$objet['date_ajout_objet']?></span>
                         </div>
                         <div class="card-actions">
                             <button class="btn-action-modify">Modifier</button>
@@ -81,52 +81,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="my-object-card">
-                    <div class="status-badge status-accepted">Accepté</div>
-                    <div class="card-img-top" style="background-image: url('https://via.placeholder.com/400x300/A8A8A8/FFFFFF?text=Ecran+Dell');"></div>
-                    <div class="card-body">
-                        <h3>
-                            Écran Dell 24" 
-                            <span class="category-label">Informatique</span>
-                        </h3>
-                        <p class="card-desc">
-                            Moniteur fonctionnel, connectique HDMI fournie. Idéal pour double écran. Très peu servi.
-                        </p>
-                        <div class="card-meta">
-                            <span><i class="fa-solid fa-location-dot"></i> IUT - Salle 12</span>
-                            <span><i class="fa-regular fa-calendar"></i> 10/01/2025</span>
-                        </div>
-                        <div class="card-actions">
-                            <button class="btn-action-modify">Modifier</button>
-                            <button class="btn-action-delete" onclick="openDeleteModal('Écran Dell 24', 'traitement-suppression.php?id=2')">
-                                Supprimer
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="my-object-card">
-                    <div class="status-badge status-collected">Récupéré</div>
-                    <div class="card-img-top" style="background-image: url('https://via.placeholder.com/400x300/808080/FFFFFF?text=Souris+USB');"></div>
-                    <div class="card-body">
-                        <h3>
-                            Lot de Souris USB
-                            <span class="category-label">Informatique</span>
-                        </h3>
-                        <p class="card-desc">
-                            Lot de 5 souris filaires USB classiques. Toutes testées et fonctionnelles.
-                        </p>
-                        <div class="card-meta">
-                            <span><i class="fa-solid fa-location-dot"></i> Bibliothèque</span>
-                            <span><i class="fa-regular fa-calendar"></i> 02/01/2025</span>
-                        </div>
-                        <div class="card-actions">
-                            <button class="btn-action-modify">Modifier</button>
-                            <button class="btn-action-delete" onclick="openDeleteModal('Lot de Souris USB', 'traitement-suppression.php?id=3')">
-                                Supprimer
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach;?>
             </div>
             <div class="pagination-container">
                 <a href="#" class="page-btn">< Précédent</a>
