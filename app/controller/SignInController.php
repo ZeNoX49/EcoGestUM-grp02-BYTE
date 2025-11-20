@@ -25,7 +25,7 @@ class signInController {
         }
         
         // on créer le compte de l'utilisateur
-        if(!insertUser( $_POST['nom'], $_POST['prenom'], $mail, $_POST['mdp'], 1)) {
+        if(!insertUser($_POST['prenom'], $_POST['nom'], $mail, $_POST['mdp'], 1)) {
             $this->show();
             return;
         }

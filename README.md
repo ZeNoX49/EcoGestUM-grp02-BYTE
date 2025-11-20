@@ -1,5 +1,6 @@
 # EcoGestUM-grp12-BYTE
 
+**pour créer la BDD aller dans le fichier *createDB.php***
 *3 comptes (mail, mdp)*
 - test.etudiant.etu@univ-lemans.fr | test
 - test.enseignant@univ-lemans.fr | test
@@ -51,9 +52,10 @@
 - [ ] historique
 - [ ] statistique - presidence
 
-**Mettez la version au debut du commit puis le titre (exemple ci dessous) et faites une petite description des changements puis la mettre au dessus des autres versions**
+## Mettez la version au debut du commit puis le titre (exemple ci dessous) et faites une petite description des changements puis la mettre au dessus des autres versions
 > *ex : "v0.0 - Initial commit"*
 
+- v0.3.3 - ajout d'un moyen pour créer la base de donnée automatiquement
 - v0.3.2 - correction d'un bug avec le catalogue (modification de la vue objets_disponible)
 - v0.3.1 - connexion entierement fonctionelle
 - v0.3 - maj de la bdd + fonctionnement de connexion et inscription avec en css en bonus
