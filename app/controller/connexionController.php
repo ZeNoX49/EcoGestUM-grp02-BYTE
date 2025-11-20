@@ -2,7 +2,7 @@
 
 require_once "app/model/utilisateurModel.php";
 
-class ConnexionController
+class connexionController
 {
     public function show()
     {
