@@ -20,7 +20,7 @@ INSERT INTO utilisateur (nom_utilisateur, prenom_utilisateur, email_utilisateur,
 ('Lefebvre', 'Thomas', 'thomas.lefebvre.etu@univ-lemans.fr', 'mdp741', 1);
 
 -- Categories
-INSERT INTO categorie (nom_categorie, description_categorie) VALUES
+INSERT INTO categorie (nom_categorie, description_categorie, image_categorie) VALUES
 ('Materiel informatique', 'Materiel informatique et electronique', '💻'),
 ('Mobilier', 'Meubles et equipements de bureau', '🪑'),
 ('Livres', 'Manuels scolaires et ouvrages universitaires', '📚'),
