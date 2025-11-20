@@ -24,10 +24,10 @@ INSERT INTO categorie (nom_categorie, description_categorie, image_categorie) VA
 ('Materiel informatique', 'Materiel informatique et electronique', '💻'),
 ('Mobilier', 'Meubles et equipements de bureau', '🪑'),
 ('Livres', 'Manuels scolaires et ouvrages universitaires', '📚'),
-('Materiel Pedagogique', 'Fournitures de bureau et scolaires', '🎓');
+('Materiel Pedagogique', 'Fournitures de bureau et scolaires', '🎓'),
 ('Equipement sportif', 'equipements sportifs', '⚽'),
 ('Petit electromenager', 'petit electromenager', '🔌'),
-('Materiel multimédia', 'materiel multimédia', '📺');
+('Materiel multimédia', 'materiel multimédia', '📺'),
 ('Vetements', 'vetements', '👕');
 
 -- Departements / Services
