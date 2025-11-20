@@ -1,9 +1,16 @@
 <?php
+require_once "app/model/objetModel.php";
 
 class objetProposeController
 {
     public function show()
     {
-        include "app/view/objetProposeView.php";
+        if(isset($_SESSION['user'])){
+            $objets = getNbObjectPropUtilisateur($_SESSION['user']);
+            include "app/view/objetProposeView.php";
+        }
+        else{
+            header('Location: index.php?action=connexion/show');
+        }
     }
 }

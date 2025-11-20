@@ -19,6 +19,10 @@ class connexionController
             $this->show();
             return;
         }
+        $user = getUserByMail($_POST['mail']);
+
+
+        $_SESSION['user'] = $user[0];
         header('Location: index.php?action=catalogue/show');
     }
 }
