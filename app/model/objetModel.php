@@ -43,6 +43,54 @@ function getObjectDisponible() {
     return $objects;
 }
 
+function getFilteredObjects($search = '', $catId = null, $etatNom = null, $location = '') {
+    $bdd = get_bdd();
+    $sql = "SELECT * FROM objets_disponibles WHERE 1=1";
+    $params = [];
+    // Filtre Recherche
+    if (!empty($search)) {
+        $sql .= " AND (nom_objet LIKE :search OR description_objet LIKE :search)";
+        $params[':search'] = "%$search%";
+    }
+    // Filtre Catégorie
+    if (!empty($catId)) {
+        $sql .= " AND id_categorie = :cat";
+        $params[':cat'] = $catId;
+    }
+    // Filtre État
+    if (!empty($etatNom)) {
+        $sql .= " AND nom_etat = :etat";
+        $params[':etat'] = $etatNom;
+    }
+    // Filtre Localisation
+    if (!empty($location)) {
+        $sql .= " AND (nom_point_collecte LIKE :loc OR adresse_point_collecte LIKE :loc)";
+        $params[':loc'] = "%$location%";
+    }
+
+    $stmt = $bdd->prepare($sql);
+    $stmt->execute($params);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function getAllCategories() {
+    $bdd = get_bdd();
+    $req = $bdd->query("SELECT * FROM CATEGORIE ORDER BY nom_categorie");
+    return $req->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function getAllEtats() {
+    $bdd = get_bdd();
+    $req = $bdd->query("SELECT * FROM ETAT");
+    return $req->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function getAllLocations() {
+    $bdd = get_bdd();
+    $req = $bdd->query("SELECT * FROM POINTCOLLECTE ORDER BY nom_point_collecte");
+    return $req->fetchAll(PDO::FETCH_ASSOC);
+}
+
 // function getNbObjPropUser($id_user) {
 //     $bdd = get_bdd();
 //     $query = $bdd->query("SELECT COUNT(*) FROM mes_objets_donnes $id_user");
