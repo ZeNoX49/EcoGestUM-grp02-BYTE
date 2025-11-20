@@ -139,7 +139,7 @@
 
     <div id="deleteModal" class="modal-overlay">
         <div class="modal-box">
-            <h2>Supprimer l'objet</h2>
+            <h2 class="title-red">Supprimer l'objet</h2>
             <p class="modal-subtext">Attention : Cette action est irréversible</p>
             
             <p class="modal-question">

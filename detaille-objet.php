@@ -11,12 +11,12 @@
     <?php include 'assets/html/header.html'; ?>
     <div class="main-detail">
         <div class="back-to-catalogue">
-            <a href="CatalogueRecyclage.php">Retour au catalogue</a>
+            <a href="catalogue-recyclage.php">Retour au catalogue</a>
         </div>
         
         <div class="breadcrumb">
             <a href="index.php">Accueil</a> / 
-            <a href="CatalogueRecyclage.php">Catalogue</a> / 
+            <a href="catalogue-recyclage.php">Catalogue</a> / 
             Matériel Informatique / Ordinateur portable Dell Latitude 5420
         </div>
 
@@ -117,8 +117,8 @@
                 </div>
 
                 <div class="action-buttons">
-                    <a href="#" class="btn-reserve">Réserver cet objet</a>
-                    <a href="#" class="btn-map">Voir sur la carte</a>
+                    <a href="mes-reservations.php" class="btn-reserve">Réserver cet objet</a>
+                    <a href="map.php" class="btn-map">Voir sur la carte</a>
                     <a href="#" class="btn-contact">Contacter</a>
                 </div>
 

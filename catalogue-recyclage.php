@@ -80,7 +80,7 @@
                                     <span class="value">Bâtiment E, Salle 102</span>
                                 </div>
                             </div>
-                            <a href="#" class="card-action">
+                            <a href="mes-reservations.php" class="card-action">
                                 <span>Réserver</span>
                             </a>
                         </article>
@@ -101,7 +101,7 @@
                                     <span class="value">Bibliothèque universitaire</span>
                                 </div>
                             </div>
-                            <a href="#" class="card-action">
+                            <a href="mes-reservations.php" class="card-action">
                                 <span>Réserver</span>
                             </a>
                         </article>
@@ -122,7 +122,7 @@
                                     <span class="value">Salle informatique IUT</span>
                                 </div>
                             </div>
-                            <a href="#" class="card-action">
+                            <a href="mes-reservations.php" class="card-action">
                                 <span>Réserver</span>
                             </a>
                         </article>

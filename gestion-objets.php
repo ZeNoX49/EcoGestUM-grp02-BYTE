@@ -22,7 +22,7 @@
 
         <div class="gestion-grid">
             
-            <a href="ajouter-objet.php" class="gestion-card">
+            <a href="form-objet.php" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </div>
@@ -32,7 +32,7 @@
                 </div>
             </a>
 
-            <a href="mes-objets.php" class="gestion-card">
+            <a href="objet-proposes.php" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-solid fa-box-open"></i>
                 </div>
