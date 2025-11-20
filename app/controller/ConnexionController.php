@@ -10,20 +10,15 @@ class ConnexionController
     }
 
     public function connect(){
-        echo isUserExisting($_POST['mail']);
-        
         if(!isUserExisting($_POST['mail'])) {
-            echo "L'utilisateur n'existe pas";
             $this->show();
             return;
         }
 
         if(!isUserPasswordCorrect($_POST['mail'],$_POST['mdp'])) {
-            echo "Le mdp n'est pas bon";
             $this->show();
             return;
         }
-        
         header('Location: index.php?action=catalogue/show');
     }
 }
