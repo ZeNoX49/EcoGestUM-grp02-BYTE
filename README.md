@@ -12,8 +12,8 @@
 **Merci de mettre a jour les cases des pages finis pour qu'on sache où on en est**
 
 ### globale
-- [X] header
-- [X] footer
+- [ ] header
+- [ ] footer
 - [X] connexion
 - [X] premiere Connexion
 - [ ] accueil
