@@ -13,7 +13,7 @@
     <div class="gestion-wrapper">
         <div class="gestion-header-bar header-blue">
             <h1>Mes objets proposés</h1>
-            <a href="gestionObjetsView.php" class="back-icon">
+            <a href="index.php?action=gestion/show" class="back-icon">
                 <i class="fa-solid fa-arrow-turn-up"></i>
             </a>
         </div>

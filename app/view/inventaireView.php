@@ -20,7 +20,7 @@
 
         <div class="inv-header-bar">
             <h1>Inventaire</h1>
-            <a href="gestionObjetsView.php" class="back-icon">
+            <a href="index.php?action=gestion/show" class="back-icon">
                 <i class="fa-solid fa-arrow-turn-up"></i>
             </a>
         </div>

@@ -15,7 +15,7 @@
         
         <div class="gestion-header-bar">
             <h1>Gestion des Objets</h1>
-            <a href="profilView.php" class="back-icon">
+            <a href="index.php?action=homePage/show" class="back-icon">
                 <i class="fa-solid fa-arrow-turn-up"></i>
             </a>
         </div>
