@@ -1,4 +1,4 @@
-/* PAGE HISTORIQUE*/
+/* PAGE HISTORIQUE */
 
 body {
     background-color: #f4f4f4;
@@ -94,7 +94,7 @@ body {
     margin-top: 4px;
 }
 
-/* --- 2. Filtres --- */
+/* --- Filtres --- */
 .hist-filters-bar {
     background: white;
     border-radius: 15px;
@@ -314,4 +314,37 @@ body {
     background-color: #5C7CFA;
     color: white;
     border-color: #5C7CFA;
+}
+
+/* HISTORIQUE-EVENEMENTS */
+.events-glass-container {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 30px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.events-timeline-box {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+}
+
+.t-meta-top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    margin-bottom: 8px;
+}
+
+.t-grid.three-cols {
+    grid-template-columns: 1fr 1fr 1fr;
+    border-top: 1px solid #f9f9f9;
+    padding-top: 15px;
 }
