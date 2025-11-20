@@ -11,49 +11,47 @@
 
 **Merci de mettre a jour les cases des pages finis pour qu'on sache où on en est**
 
-*page créée | page fonctionelle*
-
 ### globale
-- [X] [X] header
-- [X] [X] footer
-- [X] [X] connexion
-- [X] [X] premiere Connexion
-- [X] [ ] accueil
-- [ ] [ ] profil - donnees personelles
-- [ ] [ ] profil - notifications
-- [ ] [ ] profil - new mdp
-- [X] [ ] catalogue recyclage
-- [ ] [ ] detaille objet
-- [X] [ ] carte
-- [X] [ ] gestion des objets : mes reservations
-- [X] [ ] gestion des objets : proposer un objet
-- [X] [ ] gestion des objets : mes objets proposés
+- [X] header
+- [X] footer
+- [X] connexion
+- [X] premiere Connexion
+- [ ] accueil
+- [ ] profil - donnees personelles
+- [ ] profil - notifications
+- [ ] profil - new mdp
+- [ ] catalogue recyclage
+- [ ] detaille objet
+- [ ] carte
+- [ ] gestion des objets : mes reservations
+- [ ] gestion des objets : proposer un objet
+- [ ] gestion des objets : mes objets proposés
 
 ### etudiant
-- [ ] [ ] gestion des objets - etudiant
-- [ ] [ ] evenements - etudiant
-    - [ ] [ ] sans evenement
-    - [ ] [ ] avec evenement
-    - [ ] [ ] avec evenement et plus d'info
-- [ ] [ ] statistique - etudiant
+- [ ] gestion des objets - etudiant
+- [ ] evenements - etudiant
+    - [ ] sans evenement
+    - [ ] avec evenement
+    - [ ] avec evenement et plus d'info
+- [ ] statistique - etudiant
 
 ### enseignant
-- [X] [ ] gestion des objets - enseignant
-- [ ] [ ] gestion des categories
-- [ ] [ ] inventaire
-- [ ] [ ] historique
-- [ ] [ ] page evenement en mode "amdmin"
-- [ ] [ ] proposer un evenement
-- [ ] [ ] statistique departement / service
-- [ ] [ ] statistique evenement
-- [ ] [ ] statistique mes donnees
-- [ ] [ ] historique des evenements
+- [ ] gestion des objets - enseignant
+- [ ] gestion des categories
+- [ ] inventaire
+- [ ] historique
+- [ ] page evenement en mode "amdmin"
+- [ ] proposer un evenement
+- [ ] statistique departement / service
+- [ ] statistique evenement
+- [ ] statistique mes donnees
+- [ ] historique des evenements
 
 ### presidence
-- [ ] [ ] gerer les demandes
-- [ ] [ ] inventaire
-- [ ] [ ] historique
-- [ ] [ ] statistique - presidence
+- [ ] gerer les demandes
+- [ ] inventaire
+- [ ] historique
+- [ ] statistique - presidence
 
 ## Mettez la version au debut du commit puis le titre (exemple ci dessous) et faites une petite description des changements puis la mettre au dessus des autres versions
 > *ex : "v0.0 - Initial commit"*
