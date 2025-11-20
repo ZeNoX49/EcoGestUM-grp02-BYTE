@@ -21,12 +21,14 @@ INSERT INTO utilisateur (nom_utilisateur, prenom_utilisateur, email_utilisateur,
 
 -- Categories
 INSERT INTO categorie (nom_categorie, description_categorie) VALUES
-('Livres', 'Manuels scolaires et ouvrages universitaires'),
-('electronique', 'Materiel informatique et electronique'),
-('Mobilier', 'Meubles et equipements de bureau'),
-('Vetements', 'Vetements et accessoires'),
-('Sport', 'equipements sportifs'),
-('Papeterie', 'Fournitures de bureau et scolaires');
+('Materiel informatique', 'Materiel informatique et electronique', '💻'),
+('Mobilier', 'Meubles et equipements de bureau', '🪑'),
+('Livres', 'Manuels scolaires et ouvrages universitaires', '📚'),
+('Materiel Pedagogique', 'Fournitures de bureau et scolaires', '🎓');
+('Equipement sportif', 'equipements sportifs', '⚽'),
+('Petit electromenager', 'petit electromenager', '🔌'),
+('Materiel multimédia', 'materiel multimédia', '📺');
+('Vetements', 'vetements', '👕');
 
 -- Departements / Services
 INSERT INTO depser (nom_depser, id_utilisateur) VALUES

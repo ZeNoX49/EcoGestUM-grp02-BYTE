@@ -47,6 +47,7 @@ CREATE TABLE UTILISATEUR (
 CREATE TABLE CATEGORIE (
    id_categorie INT AUTO_INCREMENT PRIMARY KEY,
    nom_categorie VARCHAR(100) NOT NULL,
+   image_categorie VARCHAR(255) NOT NULL,
    description_categorie VARCHAR(250)
 );
 
@@ -140,7 +141,7 @@ CREATE TABLE POINTCOLLECTE (
 
 CREATE TABLE OBJET (
    id_objet INT AUTO_INCREMENT PRIMARY KEY,
-   image_objet VARCHAR(100),
+   image_objet VARCHAR(255),
    nom_objet VARCHAR(100) NOT NULL,
    description_objet VARCHAR(250),
    date_ajout_objet DATETIME NOT NULL,
