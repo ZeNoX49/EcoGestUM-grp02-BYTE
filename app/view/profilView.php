@@ -21,7 +21,7 @@
                     <p><i class="fas fa-envelope"></i> email@example.com</p>
                     <p><i class="fas fa-phone"></i> +33 6 12 34 56 78</p>
                     <p><i class="fas fa-building"></i> Service/Département</p>
-                    <a href="gestionObjetsView.php" class="btn-back">
+                    <a href="index.php?action=homePage/show" class="btn-back">
                         <i class="fa-solid fa-arrow-left"></i> Retour
                     </a>
                 </div>
