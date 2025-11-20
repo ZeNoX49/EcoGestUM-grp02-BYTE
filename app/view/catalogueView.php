@@ -82,7 +82,7 @@
                                     <span class="value"> <?php echo $objet['nom_point_collecte'] ?> | <?php echo $objet['adresse_point_collecte'] ?> </span>
                                 </div>
                             </div>
-                            <a href="MesReservationsView.php" class="card-action">
+                            <a href="mesReservationsView.php" class="card-action">
                                 <span>Réserver</span>
                             </a>
                         </article>

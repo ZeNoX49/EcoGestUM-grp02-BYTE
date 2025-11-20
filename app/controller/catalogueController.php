@@ -1,6 +1,6 @@
 <?php
 
-class CatalogueController
+class catalogueController
 {
     public function show()
     {
@@ -10,7 +10,7 @@ class CatalogueController
         $objets = getCatalogue($conn);
 
 
-        include "app/view/CatalogueView.php";
+        include "app/view/catalogueView.php";
 
     }
 }

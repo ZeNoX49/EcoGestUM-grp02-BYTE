@@ -1,9 +1,9 @@
 <?php
-class ConnexionController
+class connexionController
 {
     public function show()
     {
-        include "app/view/ConnexionView.php";
+        include "app/view/connexionView.php";
     }
 
     public function connect(){

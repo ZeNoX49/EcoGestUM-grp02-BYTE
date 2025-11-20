@@ -15,7 +15,7 @@
         
         <div class="gestion-header-bar">
             <h1>Gestion des Objets</h1>
-            <a href="ProfilView.php" class="back-icon">
+            <a href="profilView.php" class="back-icon">
                 <i class="fa-solid fa-arrow-turn-up"></i>
             </a>
         </div>
@@ -32,7 +32,7 @@
                 </div>
             </a>
 
-            <a href="objet-proposes.php" class="gestion-card">
+            <a href="objetProposesView.php" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-solid fa-box-open"></i>
                 </div>
@@ -42,7 +42,7 @@
                 </div>
             </a>
 
-            <a href="MesReservationsView.php" class="gestion-card">
+            <a href="mesReservationsView.php" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-regular fa-calendar-check"></i>
                 </div>
@@ -52,7 +52,7 @@
                 </div>
             </a>
 
-            <a href="GestionCategoriesView.php" class="gestion-card">
+            <a href="gestionCategoriesView.php" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-solid fa-tags"></i>
                 </div>
@@ -62,7 +62,7 @@
                 </div>
             </a>
 
-            <a href="GererDemandeView.php" class="gestion-card">
+            <a href="gererDemandeView.php" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-solid fa-square-check"></i>
                 </div>
@@ -72,7 +72,7 @@
                 </div>
             </a>
 
-            <a href="InventaireView.php" class="gestion-card">
+            <a href="inventaireView.php" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-solid fa-boxes-stacked"></i>
                 </div>
@@ -82,7 +82,7 @@
                 </div>
             </a>
 
-            <a href="HistoriqueView.php" class="gestion-card">
+            <a href="historiqueView.php" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-solid fa-file-lines"></i>
                 </div>

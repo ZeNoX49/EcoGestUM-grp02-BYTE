@@ -1,6 +1,6 @@
 <?php
 
-class DetailleController
+class detailleController
 {
     public function show()
     {
@@ -8,6 +8,6 @@ class DetailleController
             $conn = getDatabase();
             $objet = getObjet($_GET['id'], $conn);
         }
-        include "app/view/DetailleView.php";
+        include "app/view/detailleView.php";
     }
 }

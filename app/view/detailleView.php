@@ -114,8 +114,8 @@
                 </div>
 
                 <div class="action-buttons">
-                    <a href="MesReservationsView.php" class="btn-reserve">Réserver cet objet</a>
-                    <a href="MapView.php" class="btn-map">Voir sur la carte</a>
+                    <a href="mesReservationsView.php" class="btn-reserve">Réserver cet objet</a>
+                    <a href="mapView.php" class="btn-map">Voir sur la carte</a>
                     <a href="#" class="btn-contact">Contacter</a>
                 </div>
 
