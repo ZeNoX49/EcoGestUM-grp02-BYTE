@@ -7,8 +7,14 @@ class objetProposeController
     {
         if(isset($_SESSION['user'])){
             $objets = getNbObjectPropUtilisateur($_SESSION['user']);
+                
+            // Sécurité : si la fonction renvoie false, on force un tableau vide
+            if ($objets === false) {
+                $objets = [];
+            }
+
             include "app/view/objetProposeView.php";
-        }
+            }
         else{
             header('Location: index.php?action=connexion/show');
         }

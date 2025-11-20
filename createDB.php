@@ -37,11 +37,14 @@ function create_database() {
     }
 
     if (!execute('assets/sql/script_creation.sql')) return;
+
     if (!execute('assets/sql/script_insertion.sql')) return;
+    setHashedPassword();
 
     createUser("etudiant", "test.etudiant.etu@univ-lemans.fr", 1);
     createUser("enseignant", "test.enseignant@univ-lemans.fr", 2);
     createUser("presidence", "test.presidence@univ-lemans.fr", 3);
+
 
     execute('assets/sql/script_enseignant.sql');
     execute('assets/sql/script_etudiant.sql');

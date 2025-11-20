@@ -1,3 +1,4 @@
+<?php if(!isset($objets)) die('error')?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -39,7 +40,7 @@
             </div>
             <div class="stats-dashboard">
                 <div class="stat-card border-grey">
-                    <span class="stat-number">12</span>
+                    <span class="stat-number"><?= count($objets)?></span>
                     <span class="stat-label">Objets proposés</span>
                 </div>
                 <div class="stat-card border-yellow">
