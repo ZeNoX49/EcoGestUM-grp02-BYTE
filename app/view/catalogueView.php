@@ -90,27 +90,26 @@
                     <div class="catalogue-list">
 
                         <?php if(isset($objets)):
-                                foreach($objets as $objet): ?>
-                        <article class="card-objet">
-                            <div class="card-img-container">
-                                <div class="card-image-box" style="background-image: url('https://via.placeholder.com/140x140/A8A8A8/FFFFFF?text=Objet+Générique'); background-size: 80%; background-repeat: no-repeat;">
+                            foreach($objets as $objet): ?>
+                                <article class="card-objet">
+                                    <div class="card-img-container">
+                                        <div class="card-image-box" style="background-image: url('https://via.placeholder.com/140x140/A8A8A8/FFFFFF?text=Objet+Générique'); background-size: 80%; background-repeat: no-repeat;"></div>
                                     </div>
-                            </div>
-                            <div class="card-content" onclick="window.location.href='index.php?action=detaille/show&id=<?php echo $objet['id_objet']; ?>'">
-                                <h3><?php echo $objet['nom_objet']?> </h3>
-                                <div class="card-text">
-                                    <span class="label">Description :</span>
-                                    <p><?php echo $objet['description_objet']; ?></p>
-                                </div>
-                                <div class="card-text">
-                                    <span class="label">Localisation :</span>
-                                    <span class="value"> <?php echo $objet['nom_point_collecte'] ?> | <?php echo $objet['adresse_point_collecte'] ?> </span>
-                                </div>
-                            </div>
-                            <a href="#" class="card-action">
-                                <span>Réserver</span>
-                            </a>
-                        </article>
+                                    <div class="card-content" onclick='window.location.href="index.php?action=detaille/show&id=<?php echo $objet["id_objet"]; ?>"'>
+                                        <h3><?php echo $objet['nom_objet']?> </h3>
+                                        <div class="card-text">
+                                            <span class="label">Description :</span>
+                                            <p><?php echo $objet['description_objet']; ?></p>
+                                        </div>
+                                        <div class="card-text">
+                                            <span class="label">Localisation :</span>
+                                            <span class="value"> <?php echo $objet['nom_point_collecte'] ?> | <?php echo $objet['adresse_point_collecte'] ?> </span>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="card-action">
+                                        <span>Réserver</span>
+                                    </a>
+                                </article>
                         <?php endforeach; endif; ?>
                     </div>
                 </div>

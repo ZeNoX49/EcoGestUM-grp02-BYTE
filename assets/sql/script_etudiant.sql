@@ -10,10 +10,13 @@ USE ECOGESTUM;
 CREATE OR REPLACE VIEW objets_disponibles AS
 SELECT
     o.nom_objet,
-    o.description_objet
+    o.description_objet,
+    o.image_objet,
+    p.nom_point_collecte,
+    p.adresse_point_collecte
 FROM objet o
-JOIN statutdisponible s ON o.id_statut_disponibilite = s.id_statut_disponibilite
-WHERE s.nom_statut_disponibilite = 'Disponible';
+JOIN POINTCOLLECTE p ON p.id_point_collecte = o.id_point_collecte
+WHERE o.id_statut_disponibilite = 0;
 
 -- Requete 2 : Voir mes reservations (exemple pour utilisateur id=1)
 CREATE OR REPLACE VIEW mes_reservations AS

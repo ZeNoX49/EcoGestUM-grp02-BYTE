@@ -54,6 +54,7 @@
 **Mettez la version au debut du commit puis le titre (exemple ci dessous) et faites une petite description des changements puis la mettre au dessus des autres versions**
 > *ex : "v0.0 - Initial commit"*
 
+- v0.3.2 - correction d'un bug avec le catalogue (modification de la vue objets_disponible)
 - v0.3.1 - connexion entierement fonctionelle
 - v0.3 - maj de la bdd + fonctionnement de connexion et inscription avec en css en bonus
 - v0.2.2 - correction de la bdd ?
