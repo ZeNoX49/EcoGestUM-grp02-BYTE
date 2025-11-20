@@ -72,7 +72,7 @@
                 </div>
             </a>
 
-            <a href="inventaireView.php" class="gestion-card">
+            <a href="index.php?action=inventaire/show" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-solid fa-boxes-stacked"></i>
                 </div>
@@ -82,7 +82,7 @@
                 </div>
             </a>
 
-            <a href="historiqueView.php" class="gestion-card">
+            <a href="index.php?action=historique/show" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-solid fa-file-lines"></i>
                 </div>
