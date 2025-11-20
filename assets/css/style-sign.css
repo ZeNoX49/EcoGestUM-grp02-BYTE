@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Stack+Sans+Notch:wght@200..700&family=Yantramanav:wght@100;300;400;500;700;900&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Yantramanav';
+    background: #f0f2f5;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.form-section {
+    background: #fff;
+    width: 35%;
+    min-width: 350px;
+    padding: 40px 32px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    box-shadow: 2px 0 8px rgba(0,0,40,0.05);
+}
+
+.logo {
+    width: 350px;
+    margin-bottom: 8px;
+    margin-left: 50px;
+}
+
+h1 {
+    font-size: 1.6em;
+    margin-bottom: 32px;
+    font-weight: 700;
+    color: #233164;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+input, select {
+    margin-bottom: 18px;
+    padding: 12px;
+    border: 1px solid #d1d8e4;
+    border-radius: 5px;
+    font-size: 1em;
+    background: #f9fafd;
+}
+
+select {
+    color: #21345f;
+    background: #fafbff;
+}
+
+button {
+    padding: 12px 0;
+    background: #233164;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.05em;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s;
+}
+.buttonSignIn {
+    padding: 12px 0;
+    background: #D1E9EC;
+    color: #282F63;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.05em;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s;
+
+}
+button:hover {
+    background: #182041;
+}
+.buttonSignIn:hover {
+    background: #B0D7DA;
+}
+
+
+.image-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e5f0ff;
+}
+
+.campus-img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+    }
+    .form-section {
+        width: 100%;
+        min-width: unset;
+        box-shadow: none;
+    }
+    .image-section {
+        height: 300px;
+    }
+    .campus-img {
+        height: 300px;
+    }
+}
