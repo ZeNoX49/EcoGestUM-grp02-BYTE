@@ -24,9 +24,16 @@ function insert_object($image, $name, $description, $date, $id_collect_point, $i
 
 function getObject($id_object) {
     $bdd = get_bdd();
-    $query = $bdd->query("SELECT * FROM OBJET WHERE id_objet = '$id_object'");
-    $object = $query->fetchAll(PDO::FETCH_ASSOC);
-    return $object;
+    $sql = "SELECT * FROM objet o
+        JOIN CATEGORIE c ON c.id_categorie = o.id_categorie 
+        JOIN ETAT e ON e.id_etat = o.id_etat
+        JOIN POINTCOLLECTE p ON p.id_point_collecte = o.id_point_collecte
+        JOIN UTILISATEUR u ON u.id_utilisateur = o.id_utilisateur
+
+         WHERE id_objet = ?";
+    $stmt = $bdd->prepare($sql);
+    $stmt->execute([$id_object]);
+    return $stmt->fetch();
 }
 
 function getObjectDisponible() {
