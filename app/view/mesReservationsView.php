@@ -17,7 +17,7 @@
         
         <div class="gestion-header-bar header-blue">
             <h1>Mes Réservations</h1>
-            <a href="gestion-objets.php" class="back-icon">
+            <a href="gestionObjetsView.php" class="back-icon">
                 <i class="fa-solid fa-arrow-turn-up"></i>
             </a>
         </div>

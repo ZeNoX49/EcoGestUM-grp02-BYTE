@@ -13,7 +13,7 @@
     <div class="gestion-wrapper">
         <div class="gestion-header-bar header-blue">
             <h1>Mes objets proposés</h1>
-            <a href="gestion-objets.php" class="back-icon">
+            <a href="gestionObjetsView.php" class="back-icon">
                 <i class="fa-solid fa-arrow-turn-up"></i>
             </a>
         </div>
@@ -33,7 +33,7 @@
                         <option>Autre</option>
                     </select>
                 </div>
-                <a href="formObjeViewt.php" class="btn-add-new">
+                <a href="formObjeView.php" class="btn-add-new">
                     <i class="fa-solid fa-plus"></i> Proposer un nouvel objet
                 </a>
             </div>
