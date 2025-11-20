@@ -42,7 +42,10 @@ GROUP BY e.nom_etat;
 -- ===========================================================
 
 -- Procedure 4 : Ajouter un objet
-CREATE OR REPLACE PROCEDURE enseignant_ajouter_objet(
+DROP PROCEDURE IF EXISTS enseignant_ajouter_objet;
+DELIMITER $$
+
+CREATE PROCEDURE enseignant_ajouter_objet(
     IN p_nom VARCHAR(100),
     IN p_description VARCHAR(250),
     IN p_id_categorie INT,
@@ -64,14 +67,19 @@ BEGIN
         p_description,
         NOW(),
         p_id_utilisateur,
-        1,  -- Disponible par defaut
+        1,
         p_id_etat,
         p_id_categorie
     );
-END
+END $$
+
+DELIMITER ;
 
 -- Procedure 5 : Modifier un objet
-CREATE OR REPLACE PROCEDURE enseignant_modifier_objet(
+DROP PROCEDURE IF EXISTS enseignant_modifier_objet;
+DELIMITER $$
+
+CREATE PROCEDURE enseignant_modifier_objet(
     IN p_id_objet INT,
     IN p_description VARCHAR(250),
     IN p_id_etat INT
@@ -82,10 +90,15 @@ SET
     description_objet = p_description,
     id_etat = p_id_etat
 WHERE id_objet = p_id_objet;
-END
+END $$
+
+DELIMITER ;
 
 -- Procedure 6 : Creer un evenement
-CREATE OR REPLACE PROCEDURE enseignant_creer_evenement(
+DROP PROCEDURE IF EXISTS enseignant_creer_evenement;
+DELIMITER $$
+
+CREATE PROCEDURE enseignant_creer_evenement(
     IN p_titre VARCHAR(100),
     IN p_type VARCHAR(100),
     IN p_description VARCHAR(250),
@@ -113,4 +126,6 @@ VALUES (
     p_id_type_evenement,
     p_id_utilisateur
 );
-END
+END $$
+
+DELIMITER ;

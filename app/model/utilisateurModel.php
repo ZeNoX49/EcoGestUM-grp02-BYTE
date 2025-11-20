@@ -6,7 +6,7 @@ function insertUser($fname, $name, $mail, $password, $id_role) {
     $bdd = get_bdd();
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    $stmt = $bdd->prepare('INSERT INTO UTILISATEUR (nom_user, prenom_user, email_user, mdp_user, id_role) 
+    $stmt = $bdd->prepare('INSERT INTO UTILISATEUR (nom_utilisateur, prenom_utilisateur, email_utilisateur, mdp_utilisateur, id_role) 
                           VALUES (:nom_utilisateur, :prenom_utilisateur, :email_utilisateur, :mdp_utilisateur, :id_role)');
     return $stmt->execute([
         ':nom_utilisateur' => $fname,
@@ -40,7 +40,7 @@ function getUser($id_user) {
 
 function isUserExisting($mail){
     $bdd = get_bdd();
-    $stmt = $bdd->prepare("SELECT COUNT(*) FROM utilisateur WHERE email_utilisateur = '$mail'");
+    $stmt = $bdd->prepare("SELECT COUNT(*) FROM utilisateur WHERE email_utilisateur LIKE '$mail'");
     $stmt->execute();
     return $stmt->fetchColumn() > 0;
 }
@@ -49,8 +49,10 @@ function isUserPasswordCorrect($mail, $password){
     if(!isUserExisting($mail)) return false;
 
     $bdd = get_bdd();
-    $query = $bdd->query("SELECT * FROM UTILISATEUR WHERE email_utilisateur = '$mail'");
+    $query = $bdd->query("SELECT * FROM UTILISATEUR WHERE email_utilisateur LIKE '$mail'");
     $user = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    var_dump($user);
 
     return password_verify($password, $user['mdp_utilisateur']);
 }

@@ -40,7 +40,10 @@ WHERE date_debut_evenement >= NOW();
 -- ===========================================================
 
 -- Procedure 1 : Reserver un objet
-CREATE OR REPLACE PROCEDURE etudiant_reserver_objet(
+DROP PROCEDURE IF EXISTS etudiant_reserver_objet;
+DELIMITER $$
+
+CREATE PROCEDURE etudiant_reserver_objet(
     IN p_id_utilisateur INT,
     IN p_id_objet INT
 )
@@ -51,10 +54,15 @@ VALUES (p_id_objet, CURDATE(), p_id_utilisateur, 1);
 UPDATE objet
 SET id_statut_disponibilite = 2
 WHERE id_objet = p_id_objet;
-END
+END $$
+
+DELIMITER ;
 
 -- Procedure 2 : Annuler ma reservation
-CREATE OR REPLACE PROCEDURE etudiant_annuler_reservation(
+DROP PROCEDURE IF EXISTS etudiant_annuler_reservation;
+DELIMITER $$
+
+CREATE PROCEDURE etudiant_annuler_reservation(
     IN p_id_utilisateur INT
 )
 BEGIN
@@ -73,10 +81,15 @@ UPDATE objet
 SET id_statut_disponibilite = 1
 WHERE id_objet = v_id_objet;
 END IF;
-END
+END $$
+
+DELIMITER ;
 
 -- Procedure 3 : Rechercher un objet par categorie
-CREATE OR REPLACE PROCEDURE etudiant_rechercher_par_categorie(
+DROP PROCEDURE IF EXISTS etudiant_rechercher_par_categorie;
+DELIMITER $$
+
+CREATE PROCEDURE etudiant_rechercher_par_categorie(
     IN p_id_categorie INT
 )
 BEGIN
@@ -87,4 +100,6 @@ SELECT
 FROM objet o
          JOIN statutdisponible s ON o.id_statut_disponibilite = s.id_statut_disponibilite
 WHERE o.id_categorie = p_id_categorie;
-END
+END $$
+
+DELIMITER ;

@@ -38,7 +38,7 @@ CREATE TABLE UTILISATEUR (
    nom_utilisateur VARCHAR(50) NOT NULL,
    prenom_utilisateur VARCHAR(50) NOT NULL,
    email_utilisateur VARCHAR(100) UNIQUE NOT NULL,
-   mdp_utilisateur VARCHAR(50),
+   mdp_utilisateur VARCHAR(255),
    id_role INT NULL,
    CONSTRAINT fk_utilisateur_role FOREIGN KEY (id_role) REFERENCES ROLE(id_role) ON DELETE SET NULL
 );

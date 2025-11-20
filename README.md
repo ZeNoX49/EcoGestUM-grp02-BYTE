@@ -1,15 +1,11 @@
 # EcoGestUM-grp12-BYTE
 
-**Mettez la version au debut du commit puis le titre (exemple ci dessous) et faites une petite description des changements puis la mettre au dessus des autres versions**
-> *ex : "v0.0 - Initial commit"*
+*3 comptes (mail, mdp)*
+- test.etudiant.etu@univ-lemans.fr | test
+- test.enseignant@univ-lemans.fr | test
+- test.presidence@univ-lemans.fr | test
 
-- v0.2.2 - correction de la bdd ?
-- v0.2.1 - modification de la facon de se connecter/créer un compte, mon code est ok (en grosse partie) le problème vient d'autre part
-- v0.2 - merge (*sans git merge*) de toutes les branches
-- v0.1.2 - ajout de .gitignore / suppression de composer du git
-- v0.1.1 - correction du readme
-- v0.1 - base d'EcoGestUM
-- v0.0 - Initial commit
+**Merci de mettre a jour les cases des pages finis pour qu'on sache où on en est**
 
 ## Pages
 
@@ -54,3 +50,14 @@
 - [ ] inventaire
 - [ ] historique
 - [ ] statistique - presidence
+
+**Mettez la version au debut du commit puis le titre (exemple ci dessous) et faites une petite description des changements puis la mettre au dessus des autres versions**
+> *ex : "v0.0 - Initial commit"*
+
+- v0.2.2 - correction de la bdd ?
+- v0.2.1 - modification de la facon de se connecter/créer un compte, mon code est ok (en grosse partie) le problème vient d'autre part
+- v0.2 - merge (*sans git merge*) de toutes les branches
+- v0.1.2 - ajout de .gitignore / suppression de composer du git
+- v0.1.1 - correction du readme
+- v0.1 - base d'EcoGestUM
+- v0.0 - Initial commit

@@ -38,7 +38,10 @@ GROUP BY sr.nom_statut_reservation;
 -- ===========================================================
 
 -- Procedure 7 : Rapport mensuel
-CREATE OR REPLACE PROCEDURE presidence_rapport_mois(
+DROP PROCEDURE IF EXISTS presidence_rapport_mois;
+DELIMITER $$
+
+CREATE PROCEDURE presidence_rapport_mois(
     IN p_mois INT,
     IN p_annee INT
 )
@@ -50,10 +53,15 @@ SELECT
 FROM objet
 WHERE MONTH(date_ajout_objet) = p_mois
   AND YEAR(date_ajout_objet) = p_annee;
-END
+END $$
+
+DELIMITER ;
 
 -- Procedure 8 : Statistiques par departement
-CREATE OR REPLACE PROCEDURE presidence_stats_departement(
+DROP PROCEDURE IF EXISTS presidence_stats_departement;
+DELIMITER $$
+
+CREATE PROCEDURE presidence_stats_departement(
     IN p_id_departement INT
 )
 BEGIN
@@ -68,10 +76,15 @@ FROM depser d
          LEFT JOIN reserver r ON u.id_utilisateur = r.id_utilisateur
 WHERE d.id_depser = p_id_departement
 GROUP BY d.nom_depser;
-END
+END $$
+
+DELIMITER ;
 
 -- Procedure 9 : Liste complete des objets
-CREATE OR REPLACE PROCEDURE presidence_liste_complete_objets()
+DROP PROCEDURE IF EXISTS presidence_liste_complete_objets;
+DELIMITER $$
+
+CREATE PROCEDURE presidence_liste_complete_objets()
 BEGIN
 SELECT
     o.id_objet,
@@ -86,4 +99,6 @@ FROM objet o
          JOIN statutdisponible s ON o.id_statut_disponibilite = s.id_statut_disponibilite
          JOIN utilisateur u ON o.id_utilisateur = u.id_utilisateur
 ORDER BY o.date_ajout_objet DESC;
-END
+END $$
+
+DELIMITER ;

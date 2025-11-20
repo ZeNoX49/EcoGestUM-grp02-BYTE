@@ -1,4 +1,7 @@
 <?php
+
+require_once "app/model/utilisateurModel.php";
+
 class ConnexionController
 {
     public function show()
@@ -7,15 +10,20 @@ class ConnexionController
     }
 
     public function connect(){
-        if(!(isset($_POST['mail']) && isset($_POST['mdp']))) {
+        echo isUserExisting($_POST['mail']);
+        
+        if(!isUserExisting($_POST['mail'])) {
+            echo "L'utilisateur n'existe pas";
             $this->show();
+            return;
         }
-        else if(!isUserPasswordCorrect($_POST['mail'],$_POST['mdp'])) {
+
+        if(!isUserPasswordCorrect($_POST['mail'],$_POST['mdp'])) {
             echo "Le mdp n'est pas bon";
             $this->show();
+            return;
         }
-        else {
-            header('Location: index.php?action=catalogue/show');
-        }
+        
+        header('Location: index.php?action=catalogue/show');
     }
 }
