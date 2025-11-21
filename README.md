@@ -22,6 +22,7 @@
 - [ ] profil - new mdp
 - [X] catalogue recyclage
 - [ ] detaille objet
+- [X] formulaire objet
 - [ ] carte
 - [ ] gestion des objets : mes reservations
 - [ ] gestion des objets : proposer un objet
