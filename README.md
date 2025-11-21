@@ -37,7 +37,7 @@
 
 ### enseignant
 - [ ] gestion des objets - enseignant
-- [ ] gestion des categories
+- [X] gestion des categories
 - [ ] inventaire
 - [ ] historique
 - [ ] page evenement en mode "amdmin"
