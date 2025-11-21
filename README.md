@@ -7,9 +7,9 @@
 - test.enseignant@univ-lemans.fr | test
 - test.presidence@univ-lemans.fr | test
 - marie.dupont.etu@univ-lemans.fr | mdp123
-- pierre.martin.etu@univ-lemans.fr | mdp123
-- sophie.durand.etu@univ-lemans.fr | mdp123
-- luc.bernard@univ-lemans.fr | mdp123
+- pierre.martin.etu@univ-lemans.fr | mdp456
+- sophie.durand.etu@univ-lemans.fr | mdp789
+- luc.bernard@univ-lemans.fr | mdp321
 ## Pages
 
 **Merci de mettre a jour les cases des pages finis pour qu'on sache où on en est**
