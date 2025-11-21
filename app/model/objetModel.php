@@ -35,6 +35,19 @@ function getObject($id_object) {
     $stmt->execute([$id_object]);
     return $stmt->fetch();
 }
+function getNbObjectPropUtilisateur($id_utilisateur) {
+    $bdd = get_bdd();
+    $sql = "SELECT * FROM objet o
+        JOIN CATEGORIE c ON c.id_categorie = o.id_categorie 
+        JOIN ETAT e ON e.id_etat = o.id_etat
+        JOIN POINTCOLLECTE p ON p.id_point_collecte = o.id_point_collecte
+         JOIN STATUTDISPONIBLE s ON s.id_statut_disponibilite = o.id_statut_disponibilite
+
+         WHERE o.id_utilisateur = ? AND o.id_statut_disponibilite != 4";
+    $stmt = $bdd->prepare($sql);
+    $stmt->execute([$id_utilisateur]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
 function getObjectDisponible() {
     $bdd = get_bdd();
@@ -104,3 +117,19 @@ function getAllLocations() {
 //     $objects = $query->fetchAll(PDO::FETCH_ASSOC);
 //     return $objects;
 // }
+
+
+function countObjectStatus($objets,$id_status) {
+    $count = 0;
+    foreach ($objets as $objet) {
+        if ($objet['id_statut_disponibilite'] == $id_status) {
+            $count++;
+        }
+    }
+    return $count;
+}
+
+function deleteObject($id_object) {
+  $bdd = get_bdd();
+  $bdd->exec("DELETE FROM OBJET WHERE id_objet = $id_object");
+}

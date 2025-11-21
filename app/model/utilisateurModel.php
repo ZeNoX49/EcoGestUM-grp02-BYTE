@@ -30,6 +30,11 @@ function getUser($id_user) {
     $user = $query->fetchAll(PDO::FETCH_ASSOC);
     return $user;
 }
+function getUserByMail($mail) {
+    $bdd = get_bdd();
+    $query = $bdd->query("SELECT id_utilisateur FROM utilisateur WHERE email_utilisateur LIKE '$mail'");
+    return $query->fetch();
+}
 
 // function isUserExistingId($id_user){
 //     $bdd = get_bdd();
@@ -54,3 +59,5 @@ function isUserPasswordCorrect($mail, $password){
 
     return password_verify($password, $user[0]['mdp_utilisateur']);
 }
+
+
