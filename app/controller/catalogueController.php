@@ -1,6 +1,7 @@
 <?php
 
 require_once "app/model/objetModel.php";
+require_once "app/model/categorieModel.php";
 
 class CatalogueController
 {

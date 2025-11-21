@@ -6,7 +6,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style-gestion.css">
+    <link rel="stylesheet" href="/ecogestum-grp12-byte/assets/css/style-gestion.css">
     <title>Gestion des Objets</title>
 </head>
 <body>
@@ -15,7 +15,7 @@
 
     <div class="gestion-header-bar">
         <h1>Gestion des Objets</h1>
-        <a href="index.php?action=homePage/show" class="back-icon">
+        <a href="homePage/show" class="back-icon">
             <i class="fa-solid fa-arrow-turn-up"></i>
         </a>
     </div>
@@ -32,7 +32,7 @@
             </div>
         </a>
 
-        <a href="index.php?action=objetPropose/show" class="gestion-card">
+        <a href="objetPropose/show" class="gestion-card">
             <div class="card-icon-wrapper">
                 <i class="fa-solid fa-box-open"></i>
             </div>
@@ -42,7 +42,7 @@
             </div>
         </a>
 
-        <a href="index.php?action=mesReservations/show" class="gestion-card">
+        <a href="mesReservations/show" class="gestion-card">
             <div class="card-icon-wrapper">
                 <i class="fa-regular fa-calendar-check"></i>
             </div>
@@ -52,7 +52,7 @@
             </div>
         </a>
 
-        <a href="index.php?action=gestionCategories/show" class="gestion-card">
+        <a href="gestionCategories/show" class="gestion-card">
             <div class="card-icon-wrapper">
                 <i class="fa-solid fa-tags"></i>
             </div>
@@ -62,7 +62,7 @@
             </div>
         </a>
 
-        <a href="index.php?action=gestionDemande/show" class="gestion-card">
+        <a href="gestionDemande/show" class="gestion-card">
             <div class="card-icon-wrapper">
                 <i class="fa-solid fa-square-check"></i>
             </div>
@@ -72,7 +72,7 @@
             </div>
         </a>
 
-        <a href="index.php?action=inventaire/show" class="gestion-card">
+        <a href="action=inventaire/show" class="gestion-card">
             <div class="card-icon-wrapper">
                 <i class="fa-solid fa-boxes-stacked"></i>
             </div>
@@ -82,7 +82,7 @@
             </div>
         </a>
 
-        <a href="index.php?action=historique/show" class="gestion-card">
+        <a href="action=historique/show" class="gestion-card">
             <div class="card-icon-wrapper">
                 <i class="fa-solid fa-file-lines"></i>
             </div>

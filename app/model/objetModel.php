@@ -72,11 +72,7 @@ function getFilteredObjects($search = '', $catId = null, $etatNom = null, $locat
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function getAllCategories() {
-    $bdd = get_bdd();
-    $req = $bdd->query("SELECT * FROM CATEGORIE ORDER BY nom_categorie");
-    return $req->fetchAll(PDO::FETCH_ASSOC);
-}
+
 
 function getAllEtats() {
     $bdd = get_bdd();
