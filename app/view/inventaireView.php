@@ -20,7 +20,7 @@
 
         <div class="inv-header-bar">
             <h1>Inventaire</h1>
-            <a href="index.php?action=gestion/show" class="back-icon">
+            <a href="/ecogestum-grp12-byte/gestion/show" class="back-icon">
                 <i class="fa-solid fa-arrow-turn-up"></i>
             </a>
         </div>

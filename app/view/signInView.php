@@ -10,7 +10,7 @@
         <div class="form-section">
             <img src="assets/image/LogoLeMans.png"
                  alt="Le Mans Université" class="logo">
-            <form method="POST" action="index.php?action=signIn/signUp">
+            <form method="POST" action="/ecogestum-grp12-byte/signIn/signUp">
                 <input type="text" name="prenom" placeholder="Prénom" required>
                 <input type="text" name="nom" placeholder="Nom" required>
                 <input type="password" name="mdp" placeholder="Mot de passe" required>

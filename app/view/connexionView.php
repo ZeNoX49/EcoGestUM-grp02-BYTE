@@ -10,7 +10,7 @@
     <div class="container">
         <div class="form-section">
             <img src="assets/image/LogoLeMans.png" alt="Le Mans Université" class="logo">
-            <form method="post" action="index.php?action=Connexion/connect" method="post">
+            <form method="post" action="/ecogestum-grp12-byte/Connexion/connect" method="post">
                 <input type="text" name="mail" placeholder="Adresse mail" required>
                 <input type="password" name="mdp" placeholder="Mot de passe" required>
                 <button type="submit">Se Connecter</button>

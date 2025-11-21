@@ -21,10 +21,10 @@
                     <p><i class="fas fa-envelope"></i> email@example.com</p>
                     <p><i class="fas fa-phone"></i> +33 6 12 34 56 78</p>
                     <p><i class="fas fa-building"></i> Service/Département</p>
-                    <a href="index.php?action=homePage/show" class="btn-back">
+                    <a href="/ecogestum-grp12-byte/homePage/show" class="btn-back">
                         <i class="fa-solid fa-arrow-left"></i> Retour
                     </a>
-                    <a href="index.php?action=connexion/deconnexion" class="btn-back">
+                    <a href="/ecogestum-grp12-byte/connexion/deconnexion" class="btn-back">
                         <i class="fa-solid fa-arrow-left"></i> deconnexion
                     </a>
                 </div>

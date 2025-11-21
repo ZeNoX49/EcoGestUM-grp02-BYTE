@@ -50,7 +50,7 @@ class formController
             $result = insert_object($nomImage, $nom, $desc, $date, $idPointCollecte, $typeEchange, $user, $etat, $categorie, $quantite);
 
             if ($result) {
-                header('Location: index.php?action=objetPropose/show');
+                header('Location: /ecogestum-grp12-byte/objetPropose/show');
                 exit;
             } else {
                 echo "Erreur lors de l'insertion.";

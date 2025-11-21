@@ -11,12 +11,12 @@
     <?php include 'assets/html/header.html'; ?>
     <div class="main-detail">
         <div class="back-to-catalogue">
-            <a href="index.php?action=catalogue/show">Retour au catalogue</a>
+            <a href="/ecogestum-grp12-byte/catalogue/show">Retour au catalogue</a>
         </div>
         
         <div class="breadcrumb">
             <a href="index.php">Accueil</a> / 
-            <a href="index.php?action=catalogue/show">Catalogue</a> /
+            <a href="/ecogestum-grp12-byte/catalogue/show">Catalogue</a> /
             Matériel Informatique / Ordinateur portable Dell Latitude 5420
         </div>
 

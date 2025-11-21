@@ -14,7 +14,7 @@
     <div class="gestion-wrapper">
         <div class="gestion-header-bar header-blue">
             <h1>Mes objets proposés</h1>
-            <a href="index.php?action=gestion/show" class="back-icon">
+            <a href="/ecogestum-grp12-byte/gestion/show" class="back-icon">
                 <i class="fa-solid fa-arrow-turn-up"></i>
             </a>
         </div>
@@ -80,7 +80,7 @@
                         </div>
                         <div class="card-actions">
                             <button class="btn-action-modify">Modifier</button>
-                            <button class="btn-action-delete" onclick="openDeleteModal('Chaise en bois', 'index.php?action=objetPropose/delete&deleteId=<?=$objet['id_objet']?>')">
+                            <button class="btn-action-delete" onclick="openDeleteModal('Chaise en bois', '/ecogestum-grp12-byte/objetPropose/delete&deleteId=<?=$objet['id_objet']?>')">
                                 Supprimer
                             </button>
                         </div>

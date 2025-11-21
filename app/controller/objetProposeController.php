@@ -19,7 +19,7 @@ class objetProposeController
             include "app/view/objetProposeView.php";
             }
         else{
-            header('Location: index.php?action=connexion/show');
+            header('Location: /ecogestum-grp12-byte/connexion/show');
         }
     }
     

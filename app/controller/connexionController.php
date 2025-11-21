@@ -17,7 +17,6 @@ class connexionController
         }
 
         if(!isUserPasswordCorrect($_POST['mail'],$_POST['mdp'])) {
-          echo "L'utilisateur n'existe pas";
           $this->show();
             return;
         }
@@ -25,7 +24,7 @@ class connexionController
 
 
         $_SESSION['user'] = $user[0];
-        header('Location: index.php?action=catalogue/show');
+        header('Location: /ecogestum-grp12-byte/homePage/show');
     }
   public function deconnexion(){
     session_destroy();

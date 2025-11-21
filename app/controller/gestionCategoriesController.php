@@ -25,7 +25,7 @@ class GestionCategoriesController
 
             insertCategory($nom, $desc, $icone, $statut);
         }
-        header('Location: index.php?action=gestionCategories/show');
+        header('Location: /ecogestum-grp12-byte/gestionCategories/show');
     }
 
     public function update()
@@ -40,7 +40,7 @@ class GestionCategoriesController
 
             updateCategory($id, $nom, $desc, $icone, $statut);
         }
-        header('Location: index.php?action=gestionCategories/show');
+        header('Location: /ecogestum-grp12-byte/gestionCategories/show');
     }
 
     public function delete()
@@ -48,7 +48,7 @@ class GestionCategoriesController
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_categorie'])) {
             deleteCategory($_POST['id_categorie']);
         }
-        header('Location: index.php?action=gestionCategories/show');
+        header('Location: /ecogestum-grp12-byte/gestionCategories/show');
     }
 }
 ?>
