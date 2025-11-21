@@ -95,7 +95,7 @@ body {
 
 .elements nav ul li a {
     text-decoration: none;
-    font-family: Poppins;
+    font-family: 'Poppins', sans-serif;
     color: black;
     font-size: 15px;
     font-weight: 500;
@@ -416,9 +416,8 @@ body {
     width: 140px;
     height: 140px;
     border-radius: 10px;
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-position: center;
 }
 

@@ -1,20 +1,23 @@
-//ouvrir le popup de Confirmation (Vert)
-function openConfirmModal(objectName) {
-    document.getElementById('confirmObjectName').textContent = objectName;
+function openConfirmModal(name, id) {
+    document.getElementById('confirmObjectName').textContent = name;
+    document.getElementById('btnConfirmLink').href = "index.php?action=mesReservations/confirm&id=" + id;
     document.getElementById('confirmModal').style.display = 'flex';
 }
 
-// ouvrir le popup de Signalement
 function openReportModal(objectName) {
     document.getElementById('reportModal').style.display = 'flex';
 }
 
-// Ffermer un popup
+function openCancelModal(name, id) {
+    document.getElementById('cancelObjectName').textContent = name;
+    document.getElementById('btnCancelLink').href = "index.php?action=mesReservations/cancel&id=" + id;
+    document.getElementById('cancelModal').style.display = 'flex';
+}
+
 function closeModal(modalId) {
     document.getElementById(modalId).style.display = 'none';
 }
 
-//au clic en dehors de la boîte blanche
 window.onclick = function(event) {
     if (event.target.classList.contains('modal-overlay')) {
         event.target.style.display = 'none';

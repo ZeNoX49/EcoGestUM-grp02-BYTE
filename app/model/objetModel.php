@@ -4,7 +4,7 @@ require_once "bddModel.php";
 
 function insert_object($image, $name, $description, $date, $id_collect_point, $id_trade_type, $id_user, $id_etat, $id_category, $quantite) {
     $bdd = get_bdd();
-    $stmt = $bdd->prepare("INSERT INTO OBJET (image_objet, nom_objet, description_objet, date_ajout_objet, id_point_collecte, id_type_echange, id_utilisateur, id_statut_disponibilite, id_etat, id_categorie, quantite)
+    $stmt = $bdd->prepare("INSERT INTO OBJET (image_objet, nom_objet, description_objet, date_ajout_objet, id_point_collecte, id_type_echange, id_utilisateur, id_statut_disponibilite, id_etat, id_categorie, quantite) 
                           VALUES (:image_objet, :nom_objet, :description_objet, :date_ajout_objet, :id_point_collecte, :id_type_echange, :id_utilisateur, 1, :id_etat, :id_categorie, :quantite)");
 
     return $stmt->execute([
@@ -22,6 +22,7 @@ function insert_object($image, $name, $description, $date, $id_collect_point, $i
 }
 
 function getObject($id_object) {
+    // ... (code existant inchangé) ...
     $bdd = get_bdd();
     $sql = "SELECT * FROM OBJET o
         JOIN CATEGORIE c ON c.id_categorie = o.id_categorie 
@@ -32,30 +33,6 @@ function getObject($id_object) {
     $stmt = $bdd->prepare($sql);
     $stmt->execute([$id_object]);
     return $stmt->fetch();
-}
-
-function getObjectReserve($id_utilisateur) {
-    $bdd = get_bdd();
-    $sql = "SELECT * FROM RESERVER
-            JOIN OBJET ON RESERVER.id_objet = OBJET.id_objet
-            JOIN ecogestum.categorie c on OBJET.id_categorie = c.id_categorie
-            WHERE RESERVER.id_utilisateur = ?";
-    $stmt = $bdd->prepare($sql);
-    $stmt->execute([$id_utilisateur]);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
-function getNbObjectPropUtilisateur($id_utilisateur) {
-    $bdd = get_bdd();
-    $sql = "SELECT * FROM objet o
-        JOIN CATEGORIE c ON c.id_categorie = o.id_categorie
-        JOIN ETAT e ON e.id_etat = o.id_etat
-        JOIN POINTCOLLECTE p ON p.id_point_collecte = o.id_point_collecte
-         JOIN STATUTDISPONIBLE s ON s.id_statut_disponibilite = o.id_statut_disponibilite
-
-         WHERE o.id_utilisateur = ? AND o.id_statut_disponibilite != 4";
-    $stmt = $bdd->prepare($sql);
-    $stmt->execute([$id_utilisateur]);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function getFilteredObjects($search = '', $catId = null, $etatNom = null, $location = '') {
@@ -82,8 +59,6 @@ function getFilteredObjects($search = '', $catId = null, $etatNom = null, $locat
     $stmt->execute($params);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-
-
 
 function getAllEtats() {
     $bdd = get_bdd();
@@ -125,30 +100,3 @@ function createPointCollecte($nom) {
 //     return $objects;
 // }
 
-
-function countObjectStatus($objets,$id_status) {
-    $count = 0;
-    foreach ($objets as $objet) {
-        if ($objet['id_statut_disponibilite'] == $id_status) {
-            $count++;
-        }
-    }
-    return $count;
-}
-
-function deleteObject($id_object) {
-  $bdd = get_bdd();
-  $bdd->exec("DELETE FROM OBJET WHERE id_objet = $id_object");
-}
-function isReservationExisting($id_objet){
-    $bdd = get_bdd();
-    $stmt = $bdd->prepare("SELECT * FROM RESERVER WHERE id_objet = $id_objet");
-    $stmt->execute();
-    return $stmt->fetchColumn() > 0;
-}
-function createReservation($id_objet, $id_utilisateur) {
-    $bdd = get_bdd();
-    if(!isReservationExisting($id_objet)){
-        $bdd->exec("INSERT INTO RESERVER VALUES ($id_objet, NOW(), $id_utilisateur, 1)" );
-    }
-}

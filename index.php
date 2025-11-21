@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 function dispatch() {
 
     $action = isset($_GET['action']) ? $_GET['action'] : 'connexion';

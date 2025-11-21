@@ -3,128 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Koulen&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>Ordinateur portable Dell Latitude 5420</title>
+    <link rel="stylesheet" href="assets/css/style-catalogue.css">
+    <title><?= isset($objet) ? htmlspecialchars($objet['nom_objet']) : 'Détail Objet' ?></title>
 </head>
 <body>
-    <?php include 'assets/html/header.html'; ?>
-    <div class="main-detail">
-        <div class="back-to-catalogue">
-            <a href="/ecogestum-grp12-byte/catalogue/show">Retour au catalogue</a>
-        </div>
-        
+<?php include 'assets/html/header.html'; ?>
+
+<div class="main-detail">
+    <div class="back-to-catalogue">
+        <a href="index.php?action=catalogue/show">Retour au catalogue</a>
+    </div>
+
+    <?php if(isset($objet) && $objet): ?>
+
+        <?php
+        $imgSrc = !empty($objet['image_objet']) ? 'assets/image/uploads/'.$objet['image_objet'] : 'assets/image/logo.svg';
+        if(strpos($objet['image_objet'], 'http') === 0) { $imgSrc = $objet['image_objet']; }
+
+        $isAvailable = ($objet['id_statut_disponibilite'] == 1);
+        $tagColor = $isAvailable ? '#8BC34A' : '#DB4C3B';
+        $tagText = $objet['nom_statut_disponibilite'] ?? 'Indisponible';
+        ?>
+
         <div class="breadcrumb">
-            <a href="index.php">Accueil</a> / 
-            <a href="/ecogestum-grp12-byte/catalogue/show">Catalogue</a> /
-            Matériel Informatique / Ordinateur portable Dell Latitude 5420
+            <a href="index.php">Accueil</a> /
+            <a href="index.php?action=catalogue/show">Catalogue</a> /
+            <?= htmlspecialchars($objet['nom_categorie']) ?> /
+            <?= htmlspecialchars($objet['nom_objet']) ?>
         </div>
 
         <div class="detail-wrapper">
-            <?php if(isset($objet)): ?>
             <div class="left-column">
                 <div class="image-section">
-                    
-                    <input type="radio" name="gallery" id="img-1" class="gallery-input" checked>
-                    <input type="radio" name="gallery" id="img-2" class="gallery-input">
-                    <input type="radio" name="gallery" id="img-3" class="gallery-input">
-
                     <div class="image-display" style="width: 100%;">
-                        <div class="main-image-box view-1" style="background-image: url(http://googleusercontent.com/image_generation_content/1);"></div>
-                        <div class="main-image-box view-2" style="background-image: url('https://i.imgur.com/k9bT6Lg.png'); background-size: 70%;"></div>
-                        <div class="main-image-box view-3" style="background-image: url('https://i.imgur.com/jM8fJ0X.png'); background-size: 70%;"></div>
-                    </div>
-                    
-                    <div class="thumbnails">
-                        <label for="img-1" class="thumbnail-box thumb-1" style="background-image: url(http://googleusercontent.com/image_generation_content/1); background-size: 80%;"></label>
-                        <label for="img-2" class="thumbnail-box thumb-2" style="background-image: url('https://i.imgur.com/k9bT6Lg.png'); background-size: 70%;"></label>
-                        <label for="img-3" class="thumbnail-box thumb-3" style="background-image: url('https://i.imgur.com/jM8fJ0X.png'); background-size: 70%;"></label>
+                        <div class="main-image-box" style="display:block; background-image: url('<?= htmlspecialchars($imgSrc) ?>'); background-size: contain; background-repeat: no-repeat;"></div>
                     </div>
                 </div>
 
                 <div class="detailed-info">
-                    <h4>Informations détaillées</h4>
+                    <h4>Informations clés</h4>
                     <div class="info-grid">
                         <div class="info-item">
-                            <span class="label">Processeur</span>
-                            <span class="value">Intel Core i5-1135G7</span>
+                            <span class="label">Catégorie</span>
+                            <span class="value"><?= htmlspecialchars($objet['nom_categorie']) ?></span>
                         </div>
                         <div class="info-item">
-                            <span class="label">Mémoire RAM</span>
-                            <span class="value">8 Go DDR4</span>
+                            <span class="label">État</span>
+                            <span class="value"><?= htmlspecialchars($objet['nom_etat']) ?></span>
                         </div>
                         <div class="info-item">
-                            <span class="label">Stockage</span>
-                            <span class="value">SSD 256 Go NVMe</span>
+                            <span class="label">Date d'ajout</span>
+                            <span class="value"><?= date('d/m/Y', strtotime($objet['date_ajout_objet'])) ?></span>
                         </div>
                         <div class="info-item">
-                            <span class="label">Écran</span>
-                            <span class="value">14" Full HD (1920x1080)</span>
+                            <span class="label">Propriétaire</span>
+                            <span class="value"><?= htmlspecialchars($objet['prenom_utilisateur'] . ' ' . $objet['nom_utilisateur']) ?></span>
                         </div>
                         <div class="info-item">
-                            <span class="label">Système d'exploitation</span>
-                            <span class="value">Windows 11 Pro</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="label">Année d'achat</span>
-                            <span class="value">2021</span>
+                            <span class="label">Contact</span>
+                            <span class="value" style="font-size: 12px;"><?= htmlspecialchars($objet['email_utilisateur']) ?></span>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="right-column">
-                
-                <span class="dispo-tag">Disponible</span>
-                
-                <h1><?php echo $objet['nom_objet'] ?></h1>
-                
+
+                <span class="dispo-tag" style="background-color: <?= $tagColor ?>;"><?= $tagText ?></span>
+
+                <h1><?= htmlspecialchars($objet['nom_objet']) ?></h1>
+
                 <div class="main-attributes">
                     <div class="attribute-item">
-                        <span class="label">Catégorie</span>
-                        <span class="value"><?=$objet['nom_categorie']?></span>
-                    </div>
-                    <div class="attribute-item">
-                        <span class="label">État</span>
-                        <span class="value"><?=$objet['nom_etat']?></span>
-                    </div>
-                    <div class="attribute-item">
-                        <span class="label">Quantité</span>
-                        <span class="value">15 unités</span>
-                    </div>
-                    <div class="attribute-item">
                         <span class="label">Localisation</span>
-                        <span class="value"><?=$objet['nom_point_collecte']?> | <?=$objet['adresse_point_collecte']?></span>
+                        <span class="value">
+                                <i class="fa-solid fa-location-dot"></i> <?= htmlspecialchars($objet['nom_point_collecte']) ?>
+                            </span>
                     </div>
                     <div class="attribute-item">
-                        <span class="label">Date d'ajout</span>
-                        <span class="value"><?=$objet['date_ajout_objet']?></span>
+                        <span class="label">Adresse</span>
+                        <span class="value" style="font-size: 13px; font-weight: 500;">
+                                <?= htmlspecialchars($objet['adresse_point_collecte']) ?>
+                            </span>
                     </div>
                     <div class="attribute-item">
-                        <span class="label">Responsable</span>
-                        <span class="value"><?=$objet['nom_utilisateur']?></span>
+                        <span class="label">Quantité disponible</span>
+                        <span class="value"><?= htmlspecialchars($objet['quantite']) ?> unité(s)</span>
                     </div>
                 </div>
 
                 <div class="description-box">
                     <h2>Description</h2>
                     <p>
-                        <?=$objet['description_objet']?>
+                        <?= nl2br(htmlspecialchars($objet['description_objet'])) ?>
                     </p>
                 </div>
 
                 <div class="action-buttons">
-                    <a href="/ecogestum-grp12-BYTE/mesReservations/add&idObjet=<?=$objet['id_objet']?>" class="btn-reserve">Réserver cet objet</a>
-                    <a href="mapView.php" class="btn-map">Voir sur la carte</a>
-                    <a href="#" class="btn-contact">Contacter</a>
+                    <?php if($isAvailable): ?>
+                        <?php if(isset($_SESSION['user_id'])): ?>
+                            <a href="index.php?action=detaille/reserver&id=<?= $objet['id_objet'] ?>" class="btn-reserve" onclick="return confirm('Confirmer la réservation de cet objet ?');">
+                                Réserver cet objet
+                            </a>
+                        <?php else: ?>
+                            <a href="index.php?action=connexion/show" class="btn-reserve" style="background-color: #999;">
+                                Connectez-vous pour réserver
+                            </a>
+                        <?php endif; ?>
+                    <?php else: ?>
+                        <button class="btn-reserve" disabled style="background-color: #ccc; cursor: not-allowed;">
+                            Déjà réservé / Indisponible
+                        </button>
+                    <?php endif; ?>
+
+                    <a href="index.php?action=map/show" class="btn-map">
+                        Voir sur la carte
+                    </a>
+                    <a href="mailto:<?= $objet['email_utilisateur'] ?>?subject=EcoGestUM - Intérêt pour : <?= urlencode($objet['nom_objet']) ?>" class="btn-contact">
+                        Contacter
+                    </a>
                 </div>
 
             </div>
         </div>
-        <?php endif; ?>
-    </div>
 
+    <?php else: ?>
+        <div style="text-align: center; padding: 50px; background: white; border-radius: 20px;">
+            <h2>Objet introuvable</h2>
+            <p>Cet objet n'existe pas ou a été supprimé.</p>
+            <a href="index.php?action=catalogue/show" style="color: #DB4C3B; text-decoration: underline;">Retour au catalogue</a>
+        </div>
+    <?php endif; ?>
+</div>
 
-    <?php include 'assets/html/footer.html'; ?>
+<?php include 'assets/html/footer.html'; ?>
 </body>
 </html>
