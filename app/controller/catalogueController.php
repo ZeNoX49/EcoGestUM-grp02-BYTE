@@ -2,7 +2,7 @@
 
 require_once "app/model/objetModel.php";
 
-class CatalogueController
+class catalogueController
 {
     public function show()
     {
