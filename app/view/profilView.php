@@ -24,6 +24,9 @@
                     <a href="index.php?action=homePage/show" class="btn-back">
                         <i class="fa-solid fa-arrow-left"></i> Retour
                     </a>
+                    <a href="index.php?action=connexion/deconnexion" class="btn-back">
+                        <i class="fa-solid fa-arrow-left"></i> deconnexion
+                    </a>
                 </div>
             </div>
         </div>

@@ -25,4 +25,8 @@ class connexionController
         $_SESSION['user'] = $user[0];
         header('Location: index.php?action=catalogue/show');
     }
+  public function deconnexion(){
+    session_destroy();
+    $this->show();
+    }
 }
