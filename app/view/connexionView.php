@@ -7,19 +7,28 @@
     <link rel="stylesheet" href="assets/css/style-Sign.css">
 </head>
 <body>
-    <div class="container">
-        <div class="form-section">
-            <img src="assets/image/LogoLeMans.png" alt="Le Mans Université" class="logo">
-            <form method="post" action="index.php?action=Connexion/connect" method="post">
-                <input type="text" name="mail" placeholder="Adresse mail" required>
-                <input type="password" name="mdp" placeholder="Mot de passe" required>
-                <button type="submit">Se Connecter</button>
-                <button type="button" class="buttonSignIn" onclick="window.location='index.php?action=SignIn/show'">S'inscrire</button>
-            </form>
-        </div>
-        <div class="image-section">
-             <img src="assets/image/backgroundImageConnexion.png" alt="Campus" class="campus-img">
-        </div>
+<div class="container">
+    <div class="form-section">
+        <img src="assets/image/LogoLeMans.png" alt="Le Mans Université" class="logo">
+        <?php if (isset($_SESSION['error_message'])): ?>
+            <div class="error-message">
+                <?php
+                echo $_SESSION['error_message'];
+                unset($_SESSION['error_message']);
+                ?>
+            </div>
+        <?php endif; ?>
+        <form method="post" action="index.php?action=Connexion/connect" method="post">
+            <input type="text" name="mail" placeholder="Adresse mail" value="<?php echo isset($_SESSION['mail']) ? htmlspecialchars($_SESSION['mail']) : ''; ?>" required>
+            <input type="password" name="mdp" placeholder="Mot de passe" required>
+
+            <button type="submit">Se Connecter</button>
+            <button type="button" class="buttonSignIn" onclick="window.location='index.php?action=SignIn/show'">S'inscrire</button>
+        </form>
     </div>
+    <div class="image-section">
+        <img src="assets/image/backgroundImageConnexion.png" alt="Campus" class="campus-img">
+    </div>
+</div>
 </body>
 </html>

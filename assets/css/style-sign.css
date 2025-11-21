@@ -80,8 +80,20 @@ button {
     cursor: pointer;
     margin-top: 8px;
     transition: background 0.2s;
-
 }
+
+.error-message {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    font-size: 0.9em;
+    border-left: 4px solid #c62828;
+    width: 100%;
+    box-sizing: border-box;
+}
+
 button:hover {
     background: #182041;
 }
