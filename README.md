@@ -10,6 +10,7 @@
 - pierre.martin.etu@univ-lemans.fr | mdp456
 - sophie.durand.etu@univ-lemans.fr | mdp789
 - luc.bernard@univ-lemans.fr | mdp321
+- jean.moreau@univ-lemans.fr |  mdp987 | Président
 ## Pages
 
 **Merci de mettre a jour les cases des pages finis pour qu'on sache où on en est**
