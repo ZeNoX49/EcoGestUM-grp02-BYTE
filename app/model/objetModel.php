@@ -139,3 +139,15 @@ function deleteObject($id_object) {
   $bdd = get_bdd();
   $bdd->exec("DELETE FROM OBJET WHERE id_objet = $id_object");
 }
+function isReservationExisting($id_objet){
+    $bdd = get_bdd();
+    $stmt = $bdd->prepare("SELECT * FROM RESERVER WHERE id_objet = $id_objet");
+    $stmt->execute();
+    return $stmt->fetchColumn() > 0;
+}
+function createReservation($id_objet, $id_utilisateur) {
+    $bdd = get_bdd();
+    if(!isReservationExisting($id_objet)){
+        $bdd->exec("INSERT INTO RESERVER VALUES ($id_objet, NOW(), $id_utilisateur, 1)" );
+    }
+}

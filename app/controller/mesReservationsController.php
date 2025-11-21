@@ -10,8 +10,9 @@ class mesReservationsController
     }
     
     public function add(){
-      if(!isset($_GET['id'])){
-      $this->show();
+      if(isset($_GET['idObjet'])){
+          createReservation($_GET['idObjet'], $_SESSION['user']);
+          header('Location: /ecogestum-grp12-byte/mesReservations/show');
       }
     }
 }
