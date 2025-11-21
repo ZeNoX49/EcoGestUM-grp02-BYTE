@@ -12,7 +12,7 @@ class objetProposeController
             $nbRserve = countObjectStatus($objets, 2);
 
             // Sécurité : si la fonction renvoie false, on force un tableau vide
-            if ($objets === false) {
+            if (!$objets) {
                 $objets = [];
             }
 
@@ -21,5 +21,12 @@ class objetProposeController
         else{
             header('Location: index.php?action=connexion/show');
         }
+    }
+    
+    public function delete(){
+      if(isset($_GET['deleteId'])) {
+        deleteObject($_GET['deleteId']);
+      }
+      $this->show();
     }
 }

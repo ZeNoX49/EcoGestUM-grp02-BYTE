@@ -80,3 +80,8 @@ function countObjectStatus($objets,$id_status) {
     }
     return $count;
 }
+
+function deleteObject($id_object) {
+  $bdd = get_bdd();
+  $bdd->exec("DELETE FROM OBJET WHERE id_objet = $id_object");
+}

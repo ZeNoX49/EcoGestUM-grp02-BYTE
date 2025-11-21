@@ -80,7 +80,7 @@
                         </div>
                         <div class="card-actions">
                             <button class="btn-action-modify">Modifier</button>
-                            <button class="btn-action-delete" onclick="openDeleteModal('Chaise en bois', 'traitement-suppression.php?id=1')">
+                            <button class="btn-action-delete" onclick="openDeleteModal('Chaise en bois', 'index.php?action=objetPropose/delete&deleteId=<?=$objet['id_objet']?>')">
                                 Supprimer
                             </button>
                         </div>
@@ -115,6 +115,6 @@
         </div>
     </div>
 
-    <script src="../../assets/js/popup-objet.js"></script>
+    <script src="/EcoGestUm-grp12-BYTE/assets/js/popup-objet.js"></script>
 </body>
 </html>
