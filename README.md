@@ -6,7 +6,11 @@
 - test.etudiant.etu@univ-lemans.fr | test
 - test.enseignant@univ-lemans.fr | test
 - test.presidence@univ-lemans.fr | test
-
+- marie.dupont.etu@univ-lemans.fr | mdp123
+- pierre.martin.etu@univ-lemans.fr | mdp456
+- sophie.durand.etu@univ-lemans.fr | mdp789
+- luc.bernard@univ-lemans.fr | mdp321
+- jean.moreau@univ-lemans.fr |  mdp987 | Président
 ## Pages
 
 **Merci de mettre a jour les cases des pages finis pour qu'on sache où on en est**
@@ -22,6 +26,7 @@
 - [ ] profil - new mdp
 - [X] catalogue recyclage
 - [ ] detaille objet
+- [X] formulaire objet
 - [ ] carte
 - [ ] gestion des objets : mes reservations
 - [ ] gestion des objets : proposer un objet

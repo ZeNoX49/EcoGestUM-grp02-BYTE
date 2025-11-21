@@ -15,14 +15,14 @@
         
         <div class="gestion-header-bar">
             <h1>Gestion des Objets</h1>
-            <a href="index.php?action=homePage/show" class="back-icon">
+            <a href="/ecogestum-grp12-byte/homePage/show" class="back-icon">
                 <i class="fa-solid fa-arrow-turn-up"></i>
             </a>
         </div>
 
         <div class="gestion-grid">
             
-            <a href="index.php?action=form/show" class="gestion-card">
+            <a href="/ecogestum-grp12-byte/form/show" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </div>
@@ -32,7 +32,7 @@
                 </div>
             </a>
 
-            <a href="index.php?action=objetPropose/show" class="gestion-card">
+            <a href="/ecogestum-grp12-byte/objetPropose/show" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-solid fa-box-open"></i>
                 </div>
@@ -42,7 +42,7 @@
                 </div>
             </a>
 
-            <a href="index.php?action=mesReservations/show" class="gestion-card">
+            <a href="/ecogestum-grp12-byte/mesReservations/show" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-regular fa-calendar-check"></i>
                 </div>
@@ -52,7 +52,7 @@
                 </div>
             </a>
 
-            <a href="index.php?action=gestionCategories/show" class="gestion-card">
+            <a href="/ecogestum-grp12-byte/gestionCategories/show" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-solid fa-tags"></i>
                 </div>
@@ -62,7 +62,7 @@
                 </div>
             </a>
 
-            <a href="index.php?action=gestionDemande/show" class="gestion-card">
+            <a href="/ecogestum-grp12-byte/gestionDemande/show" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-solid fa-square-check"></i>
                 </div>
@@ -72,7 +72,7 @@
                 </div>
             </a>
 
-            <a href="index.php?action=inventaire/show" class="gestion-card">
+            <a href="/ecogestum-grp12-byte/inventaire/show" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-solid fa-boxes-stacked"></i>
                 </div>

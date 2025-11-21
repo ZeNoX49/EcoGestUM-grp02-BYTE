@@ -11,12 +11,12 @@
     <?php include 'assets/html/header.html'; ?>
     <div class="main-detail">
         <div class="back-to-catalogue">
-            <a href="index.php?action=catalogue/show">Retour au catalogue</a>
+            <a href="/ecogestum-grp12-byte/catalogue/show">Retour au catalogue</a>
         </div>
         
         <div class="breadcrumb">
             <a href="index.php">Accueil</a> / 
-            <a href="index.php?action=catalogue/show">Catalogue</a> /
+            <a href="/ecogestum-grp12-byte/catalogue/show">Catalogue</a> /
             Matériel Informatique / Ordinateur portable Dell Latitude 5420
         </div>
 
@@ -114,7 +114,7 @@
                 </div>
 
                 <div class="action-buttons">
-                    <a href="mesReservationsView.php" class="btn-reserve">Réserver cet objet</a>
+                    <a href="/ecogestum-grp12-BYTE/mesReservations/add&idObjet=<?=$objet['id_objet']?>" class="btn-reserve">Réserver cet objet</a>
                     <a href="mapView.php" class="btn-map">Voir sur la carte</a>
                     <a href="#" class="btn-contact">Contacter</a>
                 </div>

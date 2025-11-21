@@ -101,7 +101,7 @@
                 </div>
 
                 <?php if(!empty($_GET['search']) || !empty($_GET['category']) || !empty($_GET['etat']) || !empty($_GET['location'])): ?>
-                    <a href="index.php?action=catalogue/show" class="action-btn" title="Tout réinitialiser" style="text-decoration:none; display:flex; align-items:center; justify-content:center; padding: 10px 15px;">
+                    <a href="/ecogestum-grp12-byte/catalogue/show" class="action-btn" title="Tout réinitialiser" style="text-decoration:none; display:flex; align-items:center; justify-content:center; padding: 10px 15px;">
                         <i class="fa-solid fa-rotate-right"></i>
                     </a>
                 <?php endif; ?>
@@ -122,7 +122,7 @@
                                     ?>
                                     <div class="card-image-box" style="background-image: url('<?php echo htmlspecialchars($imgSrc); ?>');"></div>
                                 </div>
-                                <div class="card-content" style="cursor: pointer;" onclick="window.location.href='index.php?action=detaille/show&id=<?php echo $objet['id_objet']; ?>'">
+                                <div class="card-content" style="cursor: pointer;" onclick="window.location.href='/ecogestum-grp12-byte/detaille/show&id=<?php echo $objet['id_objet']; ?>'">
                                     <h3><?php echo htmlspecialchars($objet['nom_objet']); ?></h3>
                                     <div class="card-text">
                                         <span class="label">Description :</span>
@@ -140,7 +140,7 @@
                                         <span class="value"><?php echo htmlspecialchars($objet['nom_etat']); ?></span>
                                     </div>
                                 </div>
-                                <a href="index.php?action=detaille/show&id=<?php echo $objet['id_objet']; ?>" class="card-action">
+                                <a href="/ecogestum-grp12-byte/detaille/show&id=<?php echo $objet['id_objet']; ?>" class="card-action">
                                     <span>Reserver</span>
                                 </a>
                             </article>
@@ -149,7 +149,7 @@
                         <div style="text-align: center; padding: 50px;">
                             <h3>Aucun objet trouvé</h3>
                             <p>Essayez de modifier vos filtres de recherche.</p>
-                            <a href="index.php?action=catalogue/show" style="color: #DB4C3B; text-decoration: underline;">Réinitialiser les filtres</a>
+                            <a href="/ecogestum-grp12-byte/catalogue/show" style="color: #DB4C3B; text-decoration: underline;">Réinitialiser les filtres</a>
                         </div>
                     <?php endif; ?>
                 </div>

@@ -1,6 +1,7 @@
 <?php
 
 require_once "app/model/objetModel.php";
+require_once "app/model/categorieModel.php";
 
 class catalogueController
 {
@@ -21,6 +22,7 @@ class catalogueController
         $etatsList = getAllEtats();
         $locationsList = getAllLocations();
 
+   
         //Chargement de la vue
         include "app/view/catalogueView.php";
     }

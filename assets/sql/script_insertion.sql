@@ -47,11 +47,11 @@ VALUES ('Neuf'),
        ('Usage');
 
 -- Statuts disponibilite
-INSERT INTO statutdisponible (nom_statut_disponibilite)
-VALUES ('Disponible'),
-       ('Reserve'),
-       ('Prete'),
-       ('Indisponible');
+INSERT INTO statutdisponible (nom_statut_disponibilite) VALUES
+('Disponible'),
+('Reserve'),
+('Attente'),
+('Indisponible');
 
 -- Statuts reservation
 INSERT INTO statutreservation (nom_statut_reservation)

@@ -14,7 +14,7 @@
     <div class="proposition-wrapper">
         <div class="proposition-header">
             <h1>Proposer un objet</h1>
-            <a href="index.php?action=gestion/show" class="back-icon">
+            <a href="/ecogestum-grp12-byte/gestion/show" class="back-icon">
                 <i class="fa-solid fa-arrow-turn-up"></i>
             </a>
         </div>
@@ -25,7 +25,7 @@
                 <p>Information : Ce formulaire simplifié vous permet de proposer un objet.</p>
             </div>
 
-            <form action="index.php?action=form/submit" method="POST" enctype="multipart/form-data">
+            <form action="/ecogestum-grp12-byte/form/submit" method="POST" enctype="multipart/form-data">
                 <div class="form-grid">
 
                     <div class="left-col">

@@ -14,7 +14,7 @@
 <div class="gestion-wrapper">
     <div class="gestion-header-bar">
         <h1>Gestion des Catégories</h1>
-        <a href="index.php?action=gestion/show" class="back-icon">
+        <a href="/ecogestum-grp12-byte/gestion/show" class="back-icon">
             <i class="fa-solid fa-arrow-turn-up"></i>
         </a>
     </div>
@@ -111,7 +111,7 @@
         <div class="warning-box-yellow">
             <span id="delCatCount">0</span> objets sont actuellement associés à cette catégorie.
         </div>
-        <form action="index.php?action=gestionCategories/delete" method="POST" class="modal-buttons" style="justify-content: flex-end; margin-top: 20px;">
+        <form action="/ecogestum-grp12-byte/gestionCategories/delete" method="POST" class="modal-buttons" style="justify-content: flex-end; margin-top: 20px;">
             <input type="hidden" name="id_categorie" id="deleteIdInput">
             <button type="button" class="btn-modal-cancel" onclick="closeModal('modalDeleteCat')">Annuler</button>
             <button type="submit" class="btn-modal-confirm-red-solid">Supprimer définitivement</button>
@@ -124,7 +124,7 @@
         <h2 class="modal-title-blue" id="modalTitle">Modifier la catégorie</h2>
         <p class="modal-subtext" style="margin-bottom: 20px;">Mettez à jour les informations de la catégorie</p>
 
-        <form id="editCatForm" method="POST" action="index.php?action=gestionCategories/add">
+        <form id="editCatForm" method="POST" action="/ecogestum-grp12-byte/gestionCategories/add">
             <input type="hidden" name="id_categorie" id="editCatIdInput">
 
             <div class="form-group">
