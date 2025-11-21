@@ -54,7 +54,8 @@ function isUserPasswordCorrect($mail, $password){
     if(!isUserExisting($mail)) return false;
 
     $bdd = get_bdd();
-    $query = $bdd->query("SELECT * FROM UTILISATEUR WHERE email_utilisateur LIKE '$mail'");
+    $query = $bdd->prepare("SELECT * FROM UTILISATEUR WHERE email_utilisateur = '$mail'");
+    $query->execute();
     $user = $query->fetchAll(PDO::FETCH_ASSOC);
 
     return password_verify($password, $user[0]['mdp_utilisateur']);

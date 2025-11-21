@@ -10,13 +10,15 @@ class connexionController
     }
 
     public function connect(){
-        if(!isUserExisting($_POST['mail'])) {
+      echo "Connexion en cours";
+      if(!isUserExisting($_POST['mail'])) {
             $this->show();
             return;
         }
 
         if(!isUserPasswordCorrect($_POST['mail'],$_POST['mdp'])) {
-            $this->show();
+          echo "L'utilisateur n'existe pas";
+          $this->show();
             return;
         }
         $user = getUserByMail($_POST['mail']);

@@ -44,6 +44,7 @@ function setHashedPassword() {
     $stmt = $bdd->prepare("UPDATE UTILISATEUR SET mdp_utilisateur = :mdp WHERE id_utilisateur = :id");
 
     foreach ($users as $user) {
+      echo "coucou ". var_dump($user) ;
         $mdp_hash = password_hash($user["mdp_utilisateur"], PASSWORD_DEFAULT);
 
         $stmt->execute([
@@ -58,9 +59,7 @@ function create_database() {
 
     if (!execute('assets/sql/script_insertion.sql')) return;
     setHashedPassword();
-
-    setHashedPassword();
-
+    
     createUser("etudiant", "test.etudiant.etu@univ-lemans.fr", 1);
     createUser("enseignant", "test.enseignant@univ-lemans.fr", 2);
     createUser("presidence", "test.presidence@univ-lemans.fr", 3);
@@ -70,17 +69,4 @@ function create_database() {
     execute('assets/sql/script_etudiant.sql');
     execute('assets/sql/script_presidence.sql');
 }
-function setHashedPassword(){
-    $bdd = get_bdd();
-    $query = $bdd->query("SELECT COUNT(*) FROM UTILISATEUR");
-    $nb = $query->fetchColumn();
-    for($i=1;$i<=$nb;$i++){
-        $query = $bdd->query("SELECT mdp_utilisateur FROM UTILISATEUR WHERE id_utilisateur = $i");
-        $user = $query->fetchAll(PDO::FETCH_ASSOC);
-        $hashedPassword = password_hash($user[0]['mdp_utilisateur'], PASSWORD_DEFAULT);
-        $query = $bdd->query("UPDATE UTILISATEUR SET mdp_utilisateur = '$hashedPassword' WHERE id_utilisateur = $i");
-        $query->fetchAll();
-    }
-}
-
 create_database();
