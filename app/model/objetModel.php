@@ -38,6 +38,7 @@ function getObjectReserve($id_utilisateur) {
     $bdd = get_bdd();
     $sql = "SELECT * FROM RESERVER
             JOIN OBJET ON RESERVER.id_objet = OBJET.id_objet
+            JOIN ecogestum.categorie c on OBJET.id_categorie = c.id_categorie
             WHERE RESERVER.id_utilisateur = ?";
     $stmt = $bdd->prepare($sql);
     $stmt->execute([$id_utilisateur]);

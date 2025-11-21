@@ -69,8 +69,8 @@
                 
                 <div class="reservation-card">
                     <div class="res-card-header">
-                        <h3>Chaise en bois</h3>
-                        <span class="res-category-badge">Meuble</span>
+                        <h3><?=$objet['nom_objet']?></h3>
+                        <span class="res-category-badge"><?=$objet['nom_categorie']?></span>
                     </div>
                     
                     <div class="res-card-body">
