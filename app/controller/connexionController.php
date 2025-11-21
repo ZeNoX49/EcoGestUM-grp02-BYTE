@@ -23,7 +23,8 @@ class connexionController
         $user = getUserByMail($_POST['mail']);
 
 
-        $_SESSION['user'] = $user[0];
+        $_SESSION['user'] = $user[0]['id_utilisateur'];
+        $_SESSION['role'] = $user[0]['id_role'];
         header('Location: /ecogestum-grp12-byte/homePage/show');
     }
   public function deconnexion(){

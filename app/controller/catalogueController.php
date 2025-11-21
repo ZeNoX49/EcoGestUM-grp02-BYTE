@@ -22,6 +22,7 @@ class CatalogueController
         $etatsList = getAllEtats();
         $locationsList = getAllLocations();
 
+   
         //Chargement de la vue
         include "app/view/catalogueView.php";
     }

@@ -33,6 +33,16 @@ function getObject($id_object) {
     $stmt->execute([$id_object]);
     return $stmt->fetch();
 }
+
+function getObjectReserve($id_utilisateur) {
+    $bdd = get_bdd();
+    $sql = "SELECT * FROM RESERVER
+            JOIN OBJET ON RESERVER.id_objet = OBJET.id_objet
+            WHERE RESERVER.id_utilisateur = ?";
+    $stmt = $bdd->prepare($sql);
+    $stmt->execute([$id_utilisateur]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 function getNbObjectPropUtilisateur($id_utilisateur) {
     $bdd = get_bdd();
     $sql = "SELECT * FROM objet o

@@ -52,7 +52,7 @@
             </div>
         </a>
 
-        <a href="gestionCategories/show" class="gestion-card">
+        <a href="gestionCategories/show" class="gestion-card" style="display:  <?= (isset($role) && $role == 3)?'':'none' ?>">
             <div class="card-icon-wrapper">
                 <i class="fa-solid fa-tags"></i>
             </div>
@@ -61,8 +61,7 @@
                 <p>Créez et modifiez les catégories pour adapter le classement des objets recyclables aux besoins de votre service</p>
             </div>
         </a>
-
-        <a href="gestionDemande/show" class="gestion-card">
+        <a href="gestionDemande/show" class="gestion-card" style="display:  <?= (isset($role) && $role == 3)?'':'none' ?>">
             <div class="card-icon-wrapper">
                 <i class="fa-solid fa-square-check"></i>
             </div>

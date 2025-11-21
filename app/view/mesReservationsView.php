@@ -1,3 +1,5 @@
+<?php if(!isset($objets)) die('error')?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -63,6 +65,7 @@
             </div>
 
             <div class="my-objects-grid reservation-grid">
+                <?php foreach ($objets as $objet):?>
                 
                 <div class="reservation-card">
                     <div class="res-card-header">
@@ -105,45 +108,9 @@
                         </div>
                     </div>
                 </div>
+                <?php endforeach;?>
 
-                <div class="reservation-card">
-                    <div class="res-card-header">
-                        <h3>Écran Dell 24"</h3>
-                        <span class="res-category-badge">Informatique</span>
-                    </div>
-                    
-                    <div class="res-card-body">
-                        <span class="res-status-badge status-yellow">En attente</span>
 
-                        <ul class="res-info-list">
-                            <li>
-                                <span class="label"><i class="fa-regular fa-calendar-check"></i> Demandé le :</span>
-                                <span class="value">12/01/2025</span>
-                            </li>
-                            <li>
-                                <span class="label"><i class="fa-solid fa-clock"></i> Statut :</span>
-                                <span class="value">Validation...</span>
-                            </li>
-                            <li>
-                                <span class="label"><i class="fa-solid fa-location-dot"></i> Lieu :</span>
-                                <span class="value">IUT - Salle 12</span>
-                            </li>
-                            <li>
-                                <span class="label"><i class="fa-solid fa-envelope"></i> Proprio :</span>
-                                <span class="value" style="font-size:11px;">support.info@univ.fr</span>
-                            </li>
-                        </ul>
-
-                        <p class="res-desc">
-                            Moniteur fonctionnel, connectique HDMI fournie. Idéal pour double écran.
-                        </p>
-
-                        <div class="res-actions">
-                            <button class="res-btn btn-blue">Contacter</button>
-                            <button class="res-btn btn-red" style="background-color: #ddd; color: #555;">Annuler</button>
-                        </div>
-                    </div>
-                </div>
 
             </div>
 

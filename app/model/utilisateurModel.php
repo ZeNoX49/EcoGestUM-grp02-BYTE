@@ -32,8 +32,8 @@ function getUser($id_user) {
 }
 function getUserByMail($mail) {
     $bdd = get_bdd();
-    $query = $bdd->query("SELECT id_utilisateur FROM utilisateur WHERE email_utilisateur LIKE '$mail'");
-    return $query->fetch();
+    $query = $bdd->query("SELECT * FROM utilisateur WHERE email_utilisateur LIKE '$mail'");
+    return $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
 // function isUserExistingId($id_user){

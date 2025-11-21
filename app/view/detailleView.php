@@ -114,7 +114,7 @@
                 </div>
 
                 <div class="action-buttons">
-                    <a href="mesReservationsView.php" class="btn-reserve">Réserver cet objet</a>
+                    <a href="/ecogestum-grp12-BYTE/mesReservations/add&idObjet=<?=$objet['id_objet']?>" class="btn-reserve">Réserver cet objet</a>
                     <a href="mapView.php" class="btn-map">Voir sur la carte</a>
                     <a href="#" class="btn-contact">Contacter</a>
                 </div>

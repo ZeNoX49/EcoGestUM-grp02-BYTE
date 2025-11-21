@@ -55,11 +55,6 @@
                     <span class="stat-number"><?=$nbRserve?></span>
                     <span class="stat-label">Réservés</span>
                 </div>
-
-<!--                <div class="stat-card border-blue">-->
-<!--                    <span class="stat-number">4</span>-->
-<!--                    <span class="stat-label">Récupérés</span>-->
-<!--                </div>-->
             </div>
             <div class="my-objects-grid">
                 <?php foreach ($objets as $objet):?>
