@@ -6,7 +6,10 @@
 - test.etudiant.etu@univ-lemans.fr | test
 - test.enseignant@univ-lemans.fr | test
 - test.presidence@univ-lemans.fr | test
-
+- marie.dupont.etu@univ-lemans.fr | mdp123
+- pierre.martin.etu@univ-lemans.fr | mdp123
+- sophie.durand.etu@univ-lemans.fr | mdp123
+- luc.bernard@univ-lemans.fr | mdp123
 ## Pages
 
 **Merci de mettre a jour les cases des pages finis pour qu'on sache où on en est**
@@ -22,6 +25,7 @@
 - [ ] profil - new mdp
 - [X] catalogue recyclage
 - [ ] detaille objet
+- [X] formulaire objet
 - [ ] carte
 - [ ] gestion des objets : mes reservations
 - [ ] gestion des objets : proposer un objet
@@ -37,7 +41,7 @@
 
 ### enseignant
 - [ ] gestion des objets - enseignant
-- [ ] gestion des categories
+- [X] gestion des categories
 - [ ] inventaire
 - [ ] historique
 - [ ] page evenement en mode "amdmin"
