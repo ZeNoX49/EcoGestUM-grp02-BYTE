@@ -47,11 +47,11 @@ VALUES ('Neuf'),
        ('Usage');
 
 -- Statuts disponibilite
-INSERT INTO statutdisponible (nom_statut_disponibilite) VALUES
-('Disponible'),
-('Reserve'),
-('Attente'),
-('Indisponible');
+INSERT INTO statutdisponible (nom_statut_disponibilite)
+VALUES ('Disponible'),
+       ('Reserve'),
+       ('Prete'),
+       ('Indisponible');
 
 -- Statuts reservation
 INSERT INTO statutreservation (nom_statut_reservation)
@@ -74,11 +74,11 @@ VALUES ('Collecte'),
        ('Sensibilisation');
 
 -- Points de collecte
-INSERT INTO pointcollecte (adresse_point_collecte, nom_point_collecte)
-VALUES ('Bâtiment A, RDC', 'Point Central Campus'),
-       ('Bibliotheque Universitaire', 'Point BU'),
-       ('Restaurant Universitaire', 'Point RU'),
-       ('Maison des etudiants', 'Point MDE');
+INSERT INTO pointcollecte (adresse_point_collecte, nom_point_collecte, latitude, longitude)
+VALUES ('Bâtiment A, RDC', 'Point Central Campus', 48.08560704463375, -0.7579770016531365),
+       ('Bibliotheque Universitaire', 'Point BU', 48.085892413181135, -0.758704595070684),
+       ('Restaurant Universitaire', 'Point RU', 48.08658800126685, -0.7573470247388182),
+       ('Maison des etudiants', 'Point MDE', 48.08566571581335, -0.7590628596498333);
 
 -- Rapports
 INSERT INTO rapport (titre_rapport, contenu_rapport, date_rapport, id_utilisateur)

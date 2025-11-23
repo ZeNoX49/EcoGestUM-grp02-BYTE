@@ -156,7 +156,9 @@ CREATE TABLE POINTCOLLECTE
 (
     id_point_collecte      INT AUTO_INCREMENT PRIMARY KEY,
     adresse_point_collecte VARCHAR(100),
-    nom_point_collecte     VARCHAR(100)
+    nom_point_collecte     VARCHAR(100)   NOT NULL,
+    latitude               DECIMAL(10, 8) NOT NULL,
+    longitude              DECIMAL(11, 8) NOT NULL
 );
 
 CREATE TABLE OBJET
@@ -172,6 +174,7 @@ CREATE TABLE OBJET
     id_statut_disponibilite INT          NOT NULL,
     id_etat                 INT,
     id_categorie            INT,
+    quantite                INT DEFAULT 1,
     CONSTRAINT fk_objet_point_collecte FOREIGN KEY (id_point_collecte) REFERENCES POINTCOLLECTE (id_point_collecte) ON DELETE SET NULL,
     CONSTRAINT fk_objet_type_echange FOREIGN KEY (id_type_echange) REFERENCES TYPEECHANGE (id_type_echange) ON DELETE SET NULL,
     CONSTRAINT fk_objet_utilisateur FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR (id_utilisateur) ON DELETE CASCADE,

@@ -1,4 +1,5 @@
-USE ECOGESTUM;
+USE
+ECOGESTUM;
 
 -- ===========================================================
 -- VUES
@@ -7,18 +8,20 @@ USE ECOGESTUM;
 /* ------ ETUDIANT ------ */
 
 -- Requete 1 : Voir les objets disponibles
-CREATE OR REPLACE VIEW objets_disponibles AS
-SELECT
-    o.id_objet,
-    o.nom_objet,
-    o.description_objet,
-    o.image_objet,
-    o.date_ajout_objet,
-    o.id_categorie,
-    p.nom_point_collecte,
-    p.adresse_point_collecte,
-    e.nom_etat,
-    u.nom_utilisateur
+CREATE
+OR REPLACE VIEW objets_disponibles AS
+SELECT o.id_objet,
+       o.nom_objet,
+       o.description_objet,
+       o.image_objet,
+       o.date_ajout_objet,
+       o.id_categorie,
+       p.nom_point_collecte,
+       p.adresse_point_collecte,
+       p.latitude,
+       p.longitude,
+       e.nom_etat,
+       u.nom_utilisateur
 FROM objet o
          JOIN POINTCOLLECTE p ON p.id_point_collecte = o.id_point_collecte
          JOIN ETAT e ON e.id_etat = o.id_etat
@@ -26,22 +29,22 @@ FROM objet o
 WHERE o.id_statut_disponibilite = 1;
 
 -- Requete 2 : Voir mes reservations (exemple pour utilisateur id=1)
-CREATE OR REPLACE VIEW mes_reservations AS
-SELECT
-    o.nom_objet,
-    r.date_reservation,
-    sr.nom_statut_reservation
+CREATE
+OR REPLACE VIEW mes_reservations AS
+SELECT o.nom_objet,
+       r.date_reservation,
+       sr.nom_statut_reservation
 FROM reserver r
-JOIN objet o ON r.id_objet = o.id_objet
-JOIN statutreservation sr ON r.id_statut_reservation = sr.id_statut_reservation
+         JOIN objet o ON r.id_objet = o.id_objet
+         JOIN statutreservation sr ON r.id_statut_reservation = sr.id_statut_reservation
 WHERE r.id_utilisateur = 1;
 
 -- Requete 3 : Voir les evenements a venir
-CREATE OR REPLACE VIEW evenements_a_venir AS
-SELECT
-    titre_evenement,
-    description_evenement,
-    date_debut_evenement
+CREATE
+OR REPLACE VIEW evenements_a_venir AS
+SELECT titre_evenement,
+       description_evenement,
+       date_debut_evenement
 FROM evenement
 WHERE date_debut_evenement >= NOW();
 
@@ -70,17 +73,20 @@ CREATE PROCEDURE etudiant_annuler_reservation(
     IN p_id_utilisateur INT
 )
 BEGIN
-    DECLARE v_id_objet INT;
+    DECLARE
+v_id_objet INT;
 
-SELECT id_objet INTO v_id_objet
+SELECT id_objet
+INTO v_id_objet
 FROM reserver
-WHERE id_utilisateur = p_id_utilisateur
-    LIMIT 1;
+WHERE id_utilisateur = p_id_utilisateur LIMIT 1;
 
-DELETE FROM reserver
+DELETE
+FROM reserver
 WHERE id_utilisateur = p_id_utilisateur;
 
-IF v_id_objet IS NOT NULL THEN
+IF
+v_id_objet IS NOT NULL THEN
 UPDATE objet
 SET id_statut_disponibilite = 1
 WHERE id_objet = v_id_objet;
@@ -93,10 +99,9 @@ CREATE PROCEDURE etudiant_rechercher_par_categorie(
     IN p_id_categorie INT
 )
 BEGIN
-SELECT
-    o.nom_objet,
-    o.description_objet,
-    s.nom_statut_disponibilite
+SELECT o.nom_objet,
+       o.description_objet,
+       s.nom_statut_disponibilite
 FROM objet o
          JOIN statutdisponible s ON o.id_statut_disponibilite = s.id_statut_disponibilite
 WHERE o.id_categorie = p_id_categorie;
