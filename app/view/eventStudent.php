@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>EcoGestUM - Événements</title>
-  <link rel="stylesheet" href="../../assets/css/style-event.css">
-  <link rel="stylesheet" href="../../assets/css/footerAndHeader.css">
+  <link rel="stylesheet" href= <?php echo $_ENV['BONUS_PATH'].'assets/css/style-event.css' ?>>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Koulen&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
  </head>
@@ -15,7 +14,6 @@
     <div class="event-header-bar">
       <span class="event-title">Événements</span>
       <a href="#" class="event-back-btn" title="Retour">
-    <img src="../../assets/image/corner-up-left.svg" alt="Retour" class="event-back-icon" />
       </a>
     </div>
     <div class="event-content-area">
@@ -56,43 +54,9 @@
     </div>
   </details>
 </div>
-
-
-    </div>
-  </div>
+</div>
+</div>
 </main>
-    <footer>
-      <div class="footer">
-        <div class="footer-content">
-            <div class="elements-gauche">
-                <nav>
-                    <ul>
-                        <li><h4>Ressources</h4></li>
-                        <li><a href="../catalogue-recyclage.php">Catalogue des objets</a></li>
-                        <li><a href="#" onclick="alert('Page en construction')">Politique de recyclage</a></li>
-                        <li><a href="#" onclick="alert('Page en construction')">Guide utilisateur</a></li>
-                        <li><a href="#" onclick="alert('Page en construction')">Événements écoresponsables</a></li>
-                        <li><a href="#" onclick="alert('Page en construction')">Campagnes de sensibilisation</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="elements-droite">
-                <nav>
-                    <ul>
-                        <li><h4>Contact</h4></li>
-                        <li><p>ecogestum@univ-lemans.fr</p></li>
-                        <li><p>+33 2 43 83 30 30</p></li>
-                        <li><a href="#" onclick="alert('Page de contact en construction')">Nous contacter</a></li>
-                        <li><a href="#" onclick="alert('Page de signalement en construction')">Signaler un problème</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2025 Le Mans Université - EcoGestUM. Tous droits réservés. | <a href="#" onclick="alert('Page des mentions légales en construction')">Mentions légales</a> | <a href="#" onclick="alert('Page de politique de confidentialité en construction')">Politique de confidentialité</a></p>
-        </div>
-    </div>
-    </footer>
-  </div>
+</div>
 </body>
 </html>
