@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>EcoGestUM - Accueil</title>
-    <link rel="stylesheet" href="../../assets/css/style-Home.css">
+    <link rel="stylesheet" href=<?php echo $_ENV['BONUS_PATH']."assets/css/style-Home.css" ?>>
 </head>
 <header class="header">
-    <?php include 'assets/html/header.html'; ?>
+    <?php include $_ENV['BONUS_PATH'].'assets/html/header.html'; ?>
 </header>
 <body>
 <main>
@@ -95,7 +95,7 @@
     </div>
 </main>
 <footer>
-     <?php include 'assets/html/footer.html'; ?>
+     <?php include $_ENV['BONUS_PATH'].'assets/html/footer.html'; ?>
 </footer>
 </div>
 </body>
