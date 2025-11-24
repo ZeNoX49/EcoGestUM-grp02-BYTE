@@ -1,4 +1,4 @@
-USE ECOGESTUM;
+USE sae;
 
 -- Roles
 INSERT INTO role (nom_role)
