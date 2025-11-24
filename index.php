@@ -7,7 +7,7 @@ function dispatch() {
     $parts = explode('/', $action);
 
     // ucfirst() capitalizes the first letter
-    $controllerName = ucfirst($parts[0]) . 'Controller';
+    $controllerName = $parts[0] . 'Controller';
 
     $method = isset($parts[1]) ? $parts[1] : 'show';
 
