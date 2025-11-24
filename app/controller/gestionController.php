@@ -9,6 +9,6 @@ class gestionController
         header('Location: index.php?action=connexion/show');
       }
       $role = $_SESSION['user_role'];
-        include $_ENV['PATH']."app/view/gestionView.php";
+        include $_ENV['BONUS_PATH']."app/view/gestionView.php";
     }
 }

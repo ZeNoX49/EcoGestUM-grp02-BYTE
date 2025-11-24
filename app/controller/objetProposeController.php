@@ -1,6 +1,6 @@
 <?php
 
-require_once $_ENV['PATH']."app/model/objetModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/objetModel.php";
 
 class objetProposeController
 {
@@ -17,7 +17,7 @@ class objetProposeController
                 $objets = [];
             }
 
-            include $_ENV['PATH']."app/view/objetProposeView.php";
+            include $_ENV['BONUS_PATH']."app/view/objetProposeView.php";
         }
         else{
             header('Location: index.php?action=connexion/show');

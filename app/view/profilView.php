@@ -8,13 +8,13 @@
     <title>Mon Profil</title>
 </head>
 <body>
-    <?php include $_ENV['PATH'].'assets/html/header.html'; ?>
+    <?php include $_ENV['BONUS_PATH'].'assets/html/header.html'; ?>
     <div class="main">
         <div class="profile-container">
             <h1>Mon Profil</h1>
             <div class="profile-info">
                 <div class="profile-avatar">
-                    <img src=<?php echo $_ENV['PATH']."assets/images/default-avatar.png" ?> alt="Photo de profil">
+                    <img src=<?php echo $_ENV['BONUS_PATH']."assets/images/default-avatar.png" ?> alt="Photo de profil">
                 </div>
                 <div class="profile-details">
                     <h2>Nom Prénom</h2>
@@ -31,6 +31,6 @@
             </div>
         </div>
     </div>
-    <?php include $_ENV['PATH'].'assets/html/footer.html'; ?>
+    <?php include $_ENV['BONUS_PATH'].'assets/html/footer.html'; ?>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <?php
 
-require_once $_ENV['PATH']."app/model/objetModel.php";
-require_once $_ENV['PATH']."app/model/categorieModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/objetModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/categorieModel.php";
 
 class catalogueController
 {
@@ -24,6 +24,6 @@ class catalogueController
 
    
         //Chargement de la vue
-        include $_ENV['PATH']."app/view/catalogueView.php";
+        include $_ENV['BONUS_PATH']."app/view/catalogueView.php";
     }
 }

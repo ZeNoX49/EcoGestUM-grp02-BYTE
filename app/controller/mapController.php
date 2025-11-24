@@ -4,6 +4,6 @@ class MapController
 {
     public function show()
     {
-        include $_ENV['PATH']."app/view/mapView.php";
+        include $_ENV['BONUS_PATH']."app/view/mapView.php";
     }
 }

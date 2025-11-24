@@ -4,6 +4,6 @@ class homePageController
 {
     public function show()
     {
-        include $_ENV['PATH'].'app/view/homePageView.php';
+        include $_ENV['BONUS_PATH'].'app/view/homePageView.php';
     }
 }
