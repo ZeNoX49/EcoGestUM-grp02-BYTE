@@ -8,8 +8,7 @@ ECOGESTUM;
 /* ------ ETUDIANT ------ */
 
 -- Requete 1 : Voir les objets disponibles
-CREATE
-OR REPLACE VIEW objets_disponibles AS
+CREATE VIEW objets_disponibles AS
 SELECT o.id_objet,
        o.nom_objet,
        o.description_objet,
@@ -29,8 +28,7 @@ FROM objet o
 WHERE o.id_statut_disponibilite = 1;
 
 -- Requete 2 : Voir mes reservations (exemple pour utilisateur id=1)
-CREATE
-OR REPLACE VIEW mes_reservations AS
+CREATE VIEW mes_reservations AS
 SELECT o.nom_objet,
        r.date_reservation,
        sr.nom_statut_reservation
@@ -40,8 +38,7 @@ FROM reserver r
 WHERE r.id_utilisateur = 1;
 
 -- Requete 3 : Voir les evenements a venir
-CREATE
-OR REPLACE VIEW evenements_a_venir AS
+CREATE VIEW evenements_a_venir AS
 SELECT titre_evenement,
        description_evenement,
        date_debut_evenement
@@ -53,7 +50,7 @@ WHERE date_debut_evenement >= NOW();
 -- ===========================================================
 
 -- Procedure 1 : Reserver un objet
-DROP PROCEDURE IF EXISTS etudiant_reserver_objet;
+-- DROP PROCEDURE IF EXISTS etudiant_reserver_objet;
 CREATE PROCEDURE etudiant_reserver_objet(
     IN p_id_utilisateur INT,
     IN p_id_objet INT
@@ -68,7 +65,7 @@ WHERE id_objet = p_id_objet;
 END;
 
 -- Procedure 2 : Annuler ma reservation
-DROP PROCEDURE IF EXISTS etudiant_annuler_reservation;
+-- DROP PROCEDURE IF EXISTS etudiant_annuler_reservation;
 CREATE PROCEDURE etudiant_annuler_reservation(
     IN p_id_utilisateur INT
 )
@@ -94,7 +91,7 @@ END IF;
 END;
 
 -- Procedure 3 : Rechercher un objet par categorie
-DROP PROCEDURE IF EXISTS etudiant_rechercher_par_categorie;
+-- DROP PROCEDURE IF EXISTS etudiant_rechercher_par_categorie;
 CREATE PROCEDURE etudiant_rechercher_par_categorie(
     IN p_id_categorie INT
 )
