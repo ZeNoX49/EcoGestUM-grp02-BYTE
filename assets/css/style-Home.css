@@ -22,7 +22,6 @@ body::before {
   pointer-events: none;
 }
 
-<<<<<<< Updated upstream
 .main-content-wrapper {
   background: #fff;
   border-radius: 25px;
@@ -35,8 +34,6 @@ body::before {
 }
 
 
-=======
->>>>>>> Stashed changes
 .topbar {
   background: #234076;
   height: 33px;
