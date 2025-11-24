@@ -7,7 +7,7 @@ class signInController {
     public function signUp() {
         // On vérifie que les mdp sont les même
         if($_POST['mdp'] !== $_POST['confirmMdp']) {
-            //TODO: mettre une erreur
+            //TODO: mettre une erreur + garder les même champs
             $this->show();
             return;
         }
@@ -18,18 +18,19 @@ class signInController {
 
         // on vérifie que l'utilisateur n'existe pas
         if(isUserExisting($mail)) {
-            //TODO: mettre une erreur
+            //TODO: mettre une erreur + garder les même champs
             $this->show();
             return;
         }
         
         // on créer le compte de l'utilisateur
         if(!insertUser($_POST['prenom'], $_POST['nom'], $mail, $_POST['mdp'], 1)) {
-            //TODO: mettre une erreur
+            //TODO: mettre une erreur + garder les même champs
             $this->show();
             return;
         }
         
+        // TODO: mettre l'adresse mail dans la bar mail
         header('Location: index.php?action=Connexion/show');
     }
 }

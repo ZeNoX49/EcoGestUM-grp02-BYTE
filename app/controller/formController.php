@@ -34,7 +34,7 @@ class formController
             $desc = $_POST['description_objet'];
             $categorie = $_POST['id_categorie'];
             $etat = $_POST['id_etat'];
-            $quantite = isset($_POST['quantite']) ? $_POST['quantite'] : 1;
+            $quantite = $_POST['quantite'] ?? 1;
             $nomLieu = trim($_POST['nom_point_collecte']);
 
             $idPointCollecte = getIdPointCollecteByName($nomLieu);
@@ -45,7 +45,7 @@ class formController
 
             $date = date('Y-m-d H:i:s');
             $typeEchange = 1;
-            $user = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 1;
+            $user = $_SESSION['user_id'] ?? 1;
 
             $result = insert_object($nomImage, $nom, $desc, $date, $idPointCollecte, $typeEchange, $user, $etat, $categorie, $quantite);
 
