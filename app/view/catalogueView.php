@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style-catalogue.css">
+    <link rel="stylesheet" href=<?php echo $_ENV['BONUS_PATH']."assets/css/style-catalogue.css" ?>>
     <title>Catalogue Recyclage</title>
 </head>
 <body>
-<?php include 'assets/html/header.html'; ?>
+<?php include $_ENV['BONUS_PATH'].'assets/html/header.html'; ?>
 <div class="main">
     <div class="elements">
         <div class="search-barre">
@@ -21,7 +21,7 @@
 
                 <div class="search-input-container">
                     <button type="submit" style="border:none; background:none; cursor:pointer;">
-                        <img src="assets/image/search.svg" alt="Recherche" class="search-icon">
+                        <img src=<?php echo $_ENV['BONUS_PATH']."assets/image/search.svg" ?> alt="Recherche" class="search-icon">
                     </button>
                     <input type="text" name="search" placeholder="Rechercher un objet..." class="search-input" value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
                 </div>
@@ -81,7 +81,7 @@
                         <div class="filter-section">
                             <p class="filter-title">Localisation</p>
                             <div class="location-box">
-                                <img src="assets/image/map-pin.svg" alt="Loc" class="loc-icon">
+                                <img src=<?php echo $_ENV['BONUS_PATH']."assets/image/map-pin.svg" ?> alt="Loc" class="loc-icon">
                                 <input type="text"
                                        name="location"
                                        list="locations-list"
@@ -101,7 +101,7 @@
                 </div>
 
                 <?php if(!empty($_GET['search']) || !empty($_GET['category']) || !empty($_GET['etat']) || !empty($_GET['location'])): ?>
-                    <a href="/ecogestum-grp12-byte/catalogue/show" class="action-btn" title="Tout réinitialiser" style="text-decoration:none; display:flex; align-items:center; justify-content:center; padding: 10px 15px;">
+                    <a href="index.php?action=catalogue/show" class="action-btn" title="Tout réinitialiser" style="text-decoration:none; display:flex; align-items:center; justify-content:center; padding: 10px 15px;">
                         <i class="fa-solid fa-rotate-right"></i>
                     </a>
                 <?php endif; ?>
@@ -117,12 +117,12 @@
                             <article class="card-objet">
                                 <div class="card-img-container">
                                     <?php
-                                    $imgSrc = !empty($objet['image_objet']) ? 'assets/image/uploads/'.$objet['image_objet'] : 'https://via.placeholder.com/140x140/A8A8A8/FFFFFF?text=Pas+d\'image';
+                                    $imgSrc = !empty($objet['image_objet']) ? $_ENV['BONUS_PATH'].'assets/image/uploads/'.$objet['image_objet'] : 'https://via.placeholder.com/140x140/A8A8A8/FFFFFF?text=Pas+d\'image';
                                     if(strpos($objet['image_objet'], 'http') === 0) { $imgSrc = $objet['image_objet']; }
                                     ?>
                                     <div class="card-image-box" style="background-image: url('<?php echo htmlspecialchars($imgSrc); ?>');"></div>
                                 </div>
-                                <div class="card-content" style="cursor: pointer;" onclick="window.location.href='/ecogestum-grp12-byte/detaille/show&id=<?php echo $objet['id_objet']; ?>'">
+                                <div class="card-content" style="cursor: pointer;" onclick="window.location.href='index.php?action=detaille/show&id=<?php echo $objet['id_objet']; ?>'">
                                     <h3><?php echo htmlspecialchars($objet['nom_objet']); ?></h3>
                                     <div class="card-text">
                                         <span class="label">Description :</span>
@@ -140,7 +140,7 @@
                                         <span class="value"><?php echo htmlspecialchars($objet['nom_etat']); ?></span>
                                     </div>
                                 </div>
-                                <a href="/ecogestum-grp12-byte/detaille/show&id=<?php echo $objet['id_objet']; ?>" class="card-action">
+                                <a href="index.php?action=detaille/show&id=<?php echo $objet['id_objet']; ?>" class="card-action">
                                     <span>Reserver</span>
                                 </a>
                             </article>
@@ -149,7 +149,7 @@
                         <div style="text-align: center; padding: 50px;">
                             <h3>Aucun objet trouvé</h3>
                             <p>Essayez de modifier vos filtres de recherche.</p>
-                            <a href="/ecogestum-grp12-byte/catalogue/show" style="color: #DB4C3B; text-decoration: underline;">Réinitialiser les filtres</a>
+                            <a href="index.php?action=catalogue/show" style="color: #DB4C3B; text-decoration: underline;">Réinitialiser les filtres</a>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -157,7 +157,7 @@
         </div>
     </div>
 </div>
-<?php include 'assets/html/footer.html'; ?>
+<?php include $_ENV['BONUS_PATH'].'assets/html/footer.html'; ?>
 
 <script>
     function setFilter(inputId, value, element) {

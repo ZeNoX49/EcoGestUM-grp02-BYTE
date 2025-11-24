@@ -6,13 +6,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link rel="stylesheet" href="/EcoGestUM-grp12-BYTE/assets/css/style-catalogue.css">
-    <link rel="stylesheet" href="/EcoGestUM-grp12-BYTE/assets/css/style-inventaire.css?v=3">
+    <link rel="stylesheet" href=<?php echo $_ENV['PATH']."css/style-catalogue.css" ?>>
+    <link rel="stylesheet" href=<?php echo $_ENV['PATH']."css/style-inventaire.css?v=3" ?>>
 
     <title>Inventaire</title>
 </head>
 <body>
-<?php include 'assets/html/header.html'; ?>
+<?php include $_ENV['PATH'].'assets/html/header.html'; ?>
 
 <div class="inv-wrapper">
 
@@ -20,7 +20,7 @@
 
         <div class="inv-header-bar">
             <h1>Inventaire</h1>
-            <a href="/ecogestum-grp12-byte/gestion/show" class="back-icon">
+            <a href="index.php?action=gestion/show" class="back-icon">
                 <i class="fa-solid fa-arrow-turn-up"></i>
             </a>
         </div>
@@ -129,7 +129,7 @@
 
     </div> </div>
 
-<?php include 'assets/html/footer.html'; ?>
+<?php include $_ENV['PATH'].'assets/html/footer.html'; ?>
 
 <div id="modalEditObject" class="modal-overlay">
     <div class="modal-box">
@@ -148,6 +148,6 @@
         </form>
     </div>
 </div>
-<script src="../../assets/js/popup-inventaire.js"></script>
+<script src=<?php $_ENV['PATH']."assets/js/popup-inventaire.js" ?>></script>
 </body>
 </html>

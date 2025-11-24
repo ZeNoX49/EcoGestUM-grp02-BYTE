@@ -4,6 +4,6 @@ class homePageController
 {
     public function show()
     {
-        include 'app/view/homePageView.php';
+        include $_ENV['PATH'].'app/view/homePageView.php';
     }
 }

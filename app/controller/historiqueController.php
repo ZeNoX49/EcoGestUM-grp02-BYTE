@@ -4,6 +4,6 @@ class historiqueController
 {
     public function show()
     {
-        include "app/view/historiqueView.php";
+        include $_ENV['PATH']."app/view/historiqueView.php";
     }
 }

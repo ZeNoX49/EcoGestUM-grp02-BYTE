@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style-catalogue.css">
+    <link rel="stylesheet" href=<?php echo $_ENV['PATH']."assets/css/style-catalogue.css" ?>>
     <title><?= isset($objet) ? htmlspecialchars($objet['nom_objet']) : 'Détail Objet' ?></title>
 </head>
 <body>
-<?php include 'assets/html/header.html'; ?>
+<?php include $_ENV['PATH'].'assets/html/header.html'; ?>
 
 <div class="main-detail">
     <div class="back-to-catalogue">
@@ -19,7 +19,7 @@
     <?php if(isset($objet) && $objet): ?>
 
         <?php
-        $imgSrc = !empty($objet['image_objet']) ? 'assets/image/uploads/'.$objet['image_objet'] : 'assets/image/logo.svg';
+        $imgSrc = !empty($objet['image_objet']) ? $_ENV['PATH'].'assets/image/uploads/'.$objet['image_objet'] : $_ENV['PATH'].'assets/image/logo.svg';
         if(strpos($objet['image_objet'], 'http') === 0) { $imgSrc = $objet['image_objet']; }
 
         $isAvailable = ($objet['id_statut_disponibilite'] == 1);
@@ -138,6 +138,6 @@
     <?php endif; ?>
 </div>
 
-<?php include 'assets/html/footer.html'; ?>
+<?php include $_ENV['PATH'].'assets/html/footer.html'; ?>
 </body>
 </html>

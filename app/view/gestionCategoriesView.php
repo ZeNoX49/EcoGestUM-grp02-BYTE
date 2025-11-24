@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style-gestion.css?v=2">
+    <link rel="stylesheet" href=<?php echo $_ENV['PATH']."assets/css/style-gestion.css?v=2" ?>>
     <title>Gestion des Catégories</title>
 </head>
 <body>
-<?php include 'assets/html/header.html'; ?>
+<?php include $_ENV['PATH'].'assets/html/header.html'; ?>
 
 <div class="gestion-wrapper">
     <div class="gestion-header-bar">
         <h1>Gestion des Catégories</h1>
-        <a href="/ecogestum-grp12-byte/gestion/show" class="back-icon">
+        <a href="index.php?action=gestion/show" class="back-icon">
             <i class="fa-solid fa-arrow-turn-up"></i>
         </a>
     </div>
@@ -99,7 +99,7 @@
     </div>
 </div>
 
-<?php include 'assets/html/footer.html'; ?>
+<?php include $_ENV['PATH'].'assets/html/footer.html'; ?>
 
 <div id="modalDeleteCat" class="modal-overlay">
     <div class="modal-box" style="max-width: 600px;">
@@ -111,7 +111,7 @@
         <div class="warning-box-yellow">
             <span id="delCatCount">0</span> objets sont actuellement associés à cette catégorie.
         </div>
-        <form action="/ecogestum-grp12-byte/gestionCategories/delete" method="POST" class="modal-buttons" style="justify-content: flex-end; margin-top: 20px;">
+        <form action="index.php?action=gestionCategories/delete" method="POST" class="modal-buttons" style="justify-content: flex-end; margin-top: 20px;">
             <input type="hidden" name="id_categorie" id="deleteIdInput">
             <button type="button" class="btn-modal-cancel" onclick="closeModal('modalDeleteCat')">Annuler</button>
             <button type="submit" class="btn-modal-confirm-red-solid">Supprimer définitivement</button>
@@ -124,7 +124,7 @@
         <h2 class="modal-title-blue" id="modalTitle">Modifier la catégorie</h2>
         <p class="modal-subtext" style="margin-bottom: 20px;">Mettez à jour les informations de la catégorie</p>
 
-        <form id="editCatForm" method="POST" action="/ecogestum-grp12-byte/gestionCategories/add">
+        <form id="editCatForm" method="POST" action="index.php?action=gestionCategories/add">
             <input type="hidden" name="id_categorie" id="editCatIdInput">
 
             <div class="form-group">
@@ -179,6 +179,6 @@
     </div>
 </div>
 
-<script src="assets/js/popup-categories.js"></script>
+<script src=<?php echo $_ENV['PATH']."assets/js/popup-categories.js" ?>></script>
 </body>
 </html>
