@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Inscritpion - Le Mans Université</title>
-    <link rel="stylesheet" href=<?php $_ENV['PATH']."assets/css/style-Sign.css" ?>>
+    <link rel="stylesheet" href=<?php $_ENV['BONUS_PATH']."assets/css/style-Sign.css" ?>>
 </head>
 <body>
     <div class="container">
         <div class="form-section">
-            <img src=<?php $_ENV['PATH']."assets/image/LogoLeMans.png" ?>
+            <img src=<?php $_ENV['BONUS_PATH']."assets/image/LogoLeMans.png" ?>
                  alt="Le Mans Université" class="logo">
             <form method="POST" action="index.php?action=signIn/signUp">
                 <input type="text" name="prenom" placeholder="Prénom" required>
@@ -25,7 +25,7 @@
             </form>
         </div>
         <div class="image-section">
-            <img src=<?php echo $_ENV['PATH']."assets/image/backgroundImageConnexion.png" ?> alt="Campus" class="campus-img">
+            <img src=<?php echo $_ENV['BONUS_PATH']."assets/image/backgroundImageConnexion.png" ?> alt="Campus" class="campus-img">
         </div>
     </div>
 </body>

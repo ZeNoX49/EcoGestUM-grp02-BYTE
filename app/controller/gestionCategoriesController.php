@@ -1,5 +1,5 @@
 <?php
-require_once $_ENV['PATH']."app/model/categorieModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/categorieModel.php";
 
 class GestionCategoriesController
 {
@@ -12,7 +12,7 @@ class GestionCategoriesController
         }
         unset($cat);
 
-        include $_ENV['PATH']."app/view/gestionCategoriesView.php";
+        include $_ENV['BONUS_PATH']."app/view/gestionCategoriesView.php";
     }
 
     public function add()

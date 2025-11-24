@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href=<?php echo $_ENV['PATH']."assets/css/style-form.css" ?>>
+    <link rel="stylesheet" href=<?php echo $_ENV['BONUS_PATH']."assets/css/style-form.css" ?>>
     <title>Proposer un objet</title>
 </head>
 <body>
-<?php include $_ENV['PATH'].'assets/html/header.html'; ?>
+<?php include $_ENV['BONUS_PATH'].'assets/html/header.html'; ?>
 <div class="main">
     <div class="proposition-wrapper">
         <div class="proposition-header">
@@ -116,7 +116,7 @@
         </div>
     </div>
 </div>
-<?php include $_ENV['PATH'].'assets/html/footer.html'; ?>
-<script src=<?php echo $_ENV['PATH']."assets/js/preview.js" ?>></script>
+<?php include $_ENV['BONUS_PATH'].'assets/html/footer.html'; ?>
+<script src=<?php echo $_ENV['BONUS_PATH']."assets/js/preview.js" ?>></script>
 </body>
 </html>

@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href=<?php echo $_ENV['PATH']."/css/style-gestion.css" ?>>
+    <link rel="stylesheet" href=<?php echo $_ENV['BONUS_PATH']."/css/style-gestion.css" ?>>
     <title>Gérer les demandes</title>
 </head>
 <body>
-    <?php include $_ENV['PATH'].'assets/html/header.html'; ?>
+    <?php include $_ENV['BONUS_PATH'].'assets/html/header.html'; ?>
     
     <div class="gestion-wrapper">
         
@@ -152,7 +152,7 @@
         </div>
     </div>
 
-    <?php include $_ENV['PATH'].'assets/html/footer.html'; ?>
+    <?php include $_ENV['BONUS_PATH'].'assets/html/footer.html'; ?>
 
     <div id="modalApprove" class="modal-overlay">
         <div class="modal-box">
@@ -186,6 +186,6 @@
         </div>
     </div>
 
-    <script src=<?php echo $_ENV['PATH']."assets/js/popup-demandes.js" ?>></script>
+    <script src=<?php echo $_ENV['BONUS_PATH']."assets/js/popup-demandes.js" ?>></script>
 </body>
 </html>

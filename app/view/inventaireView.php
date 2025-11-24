@@ -6,13 +6,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link rel="stylesheet" href=<?php echo $_ENV['PATH']."css/style-catalogue.css" ?>>
-    <link rel="stylesheet" href=<?php echo $_ENV['PATH']."css/style-inventaire.css?v=3" ?>>
+    <link rel="stylesheet" href=<?php echo $_ENV['BONUS_PATH']."css/style-catalogue.css" ?>>
+    <link rel="stylesheet" href=<?php echo $_ENV['BONUS_PATH']."css/style-inventaire.css?v=3" ?>>
 
     <title>Inventaire</title>
 </head>
 <body>
-<?php include $_ENV['PATH'].'assets/html/header.html'; ?>
+<?php include $_ENV['BONUS_PATH'].'assets/html/header.html'; ?>
 
 <div class="inv-wrapper">
 
@@ -129,7 +129,7 @@
 
     </div> </div>
 
-<?php include $_ENV['PATH'].'assets/html/footer.html'; ?>
+<?php include $_ENV['BONUS_PATH'].'assets/html/footer.html'; ?>
 
 <div id="modalEditObject" class="modal-overlay">
     <div class="modal-box">
@@ -148,6 +148,6 @@
         </form>
     </div>
 </div>
-<script src=<?php $_ENV['PATH']."assets/js/popup-inventaire.js" ?>></script>
+<script src=<?php $_ENV['BONUS_PATH']."assets/js/popup-inventaire.js" ?>></script>
 </body>
 </html>
