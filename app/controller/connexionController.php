@@ -29,6 +29,6 @@ class connexionController
         $_SESSION['user_role'] = $user['id_role'];
 
         $_SESSION['user_mail'] = $_POST['mail'];
-        header('Location: index.php?action=catalogue/show');
+        header('Location: index.php?action=homePage/show');
     }
 }
