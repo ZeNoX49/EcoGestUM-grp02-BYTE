@@ -1,7 +1,7 @@
 <?php
 
-require_once "app/model/objetModel.php";
-require_once "app/model/categorieModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/objetModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/categorieModel.php";
 
 class formController
 {
@@ -10,7 +10,7 @@ class formController
         $categories = getAllCategories();
         $pointsCollecte = getAllLocations();
 
-        include "app/view/formView.php";
+        include $_ENV['BONUS_PATH']."app/view/formView.php";
     }
 
     public function submit()
@@ -20,7 +20,7 @@ class formController
             if (isset($_FILES['photos_objet']) && $_FILES['photos_objet']['error'][0] == 0) {
                 $tmpName = $_FILES['photos_objet']['tmp_name'][0];
                 $name = basename($_FILES['photos_objet']['name'][0]);
-                $uploadDir = 'assets/image/uploads/';
+                $uploadDir = $_ENV['BONUS_PATH'].'assets/image/uploads/';
 
                 if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
                 $finalName = time() . "_" . $name;
@@ -50,10 +50,10 @@ class formController
             $result = insert_object($nomImage, $nom, $desc, $date, $idPointCollecte, $typeEchange, $user, $etat, $categorie, $quantite);
 
             if ($result) {
-                header('Location: /ecogestum-grp12-byte/objetPropose/show');
+                header('Location: index.php?action=objetPropose/show');
                 exit;
             } else {
-                echo "Erreur lors de l'insertion.";
+                echo $_ENV['BONUS_PATH']."Erreur lors de l'insertion.";
             }
         }
     }

@@ -1,5 +1,5 @@
 <?php
-require_once "app/model/reservationModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/reservationModel.php";
 
 class mesReservationsController
 {
@@ -25,7 +25,7 @@ class mesReservationsController
             if($res['id_statut_reservation'] == 4) $stats['recuperees']++; // Complétée
         }
 
-        include "app/view/mesReservationsView.php";
+        include $_ENV['BONUS_PATH']."app/view/mesReservationsView.php";
     }
 
     public function cancel() {

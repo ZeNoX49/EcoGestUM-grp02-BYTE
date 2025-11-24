@@ -1,5 +1,6 @@
 <?php
-require_once "app/model/objetModel.php";
+
+require_once $_ENV['BONUS_PATH']."app/model/objetModel.php";
 
 class objetProposeController
 {
@@ -16,17 +17,17 @@ class objetProposeController
                 $objets = [];
             }
 
-            include "app/view/objetProposeView.php";
-            }
+            include $_ENV['BONUS_PATH']."app/view/objetProposeView.php";
+        }
         else{
-            header('Location: /ecogestum-grp12-byte/connexion/show');
+            header('Location: index.php?action=connexion/show');
         }
     }
     
     public function delete(){
-      if(isset($_GET['deleteId'])) {
-        deleteObject($_GET['deleteId']);
-      }
-      $this->show();
+        if(isset($_GET['deleteId'])) {
+            deleteObject($_GET['deleteId']);
+        }
+        $this->show();
     }
 }

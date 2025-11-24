@@ -6,9 +6,9 @@ class gestionController
     {
       //Récuperer le rôle de l'utilisateur
       if(!isset($_SESSION['user_role'])){
-        header('Location: /ecogestum-grp12-byte/connexion/show');
+        header('Location: index.php?action=connexion/show');
       }
       $role = $_SESSION['user_role'];
-        include "app/view/gestionView.php";
+        include $_ENV['BONUS_PATH']."app/view/gestionView.php";
     }
 }

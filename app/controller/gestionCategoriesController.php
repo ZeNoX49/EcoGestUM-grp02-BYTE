@@ -1,5 +1,5 @@
 <?php
-require_once "app/model/categorieModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/categorieModel.php";
 
 class GestionCategoriesController
 {
@@ -12,7 +12,7 @@ class GestionCategoriesController
         }
         unset($cat);
 
-        include "app/view/gestionCategoriesView.php";
+        include $_ENV['BONUS_PATH']."app/view/gestionCategoriesView.php";
     }
 
     public function add()
@@ -25,7 +25,7 @@ class GestionCategoriesController
 
             insertCategory($nom, $desc, $icone, $statut);
         }
-        header('Location: /ecogestum-grp12-byte/gestionCategories/show');
+        header('Location: index.php?action=gestionCategories/show');
     }
 
     public function update()

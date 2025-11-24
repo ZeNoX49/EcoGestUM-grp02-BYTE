@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style-gestion.css">
+    <link rel="stylesheet" href=<?php $_ENV['BONUS_PATH']."assets/css/style-gestion.css" ?>>
     <title>Mes Réservations</title>
 </head>
 <body>
-<?php include 'assets/html/header.html'; ?>
+<?php include $_ENV['BONUS_PATH'].'assets/html/header.html'; ?>
 <div class="gestion-wrapper">
 
     <div class="gestion-header-bar header-blue">
@@ -60,7 +60,7 @@
             <?php foreach($reservations as $res): ?>
                 <?php
                 // Gestion de l'image
-                $imgSrc = !empty($res['image_objet']) ? 'assets/image/uploads/'.$res['image_objet'] : 'https://via.placeholder.com/400x300?text=Pas+d\'image';
+                $imgSrc = !empty($res['image_objet']) ? $_ENV['BONUS_PATH'].'assets/image/uploads/'.$res['image_objet'] : 'https://via.placeholder.com/400x300?text=Pas+d\'image';
                 if(strpos($res['image_objet'], 'http') === 0) { $imgSrc = $res['image_objet']; }
 
                 $statusClass = "status-yellow";
@@ -131,7 +131,7 @@
         </div>
     </div>
 </div>
-<?php include 'assets/html/footer.html'; ?>
+<?php include $_ENV['BONUS_PATH'].'assets/html/footer.html'; ?>
 
 <div id="confirmModal" class="modal-overlay">
     <div class="modal-box">
@@ -156,6 +156,6 @@
         </div>
     </div>
 </div>
-<script src="assets/js/popup-reservation.js"></script>
+<script src=<?php echo $_ENV['BONUS_PATH']."assets/js/popup-reservation.js" ?>></script>
 </body>
 </html>

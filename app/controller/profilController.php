@@ -4,6 +4,6 @@ class profilController
 {
     public function show()
     {
-        include "app/view/profilView.php";
+        include $_ENV['BONUS_PATH']."app/view/profilView.php";
     }
 }

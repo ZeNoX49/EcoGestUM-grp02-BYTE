@@ -20,7 +20,7 @@
 - [ ] header
 - [ ] footer
 - [X] connexion
-- [X] premiere Connexion
+- [ ] inscription
 - [ ] accueil
 - [ ] profil - donnees personelles
 - [ ] profil - notifications

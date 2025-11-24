@@ -6,23 +6,23 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style-gestion.css">
+    <link rel="stylesheet" href=<?php echo $_ENV['BONUS_PATH']."assets/css/style-gestion.css" ?>>
     <title>Gestion des Objets</title>
 </head>
 <body>
-    <?php include 'assets/html/header.html'; ?>
+    <?php include $_ENV['BONUS_PATH'].'assets/html/header.html'; ?>
     <div class="gestion-wrapper">
         
         <div class="gestion-header-bar">
             <h1>Gestion des Objets</h1>
-            <a href="/ecogestum-grp12-byte/homePage/show" class="back-icon">
+            <a href="index.php?action=homePage/show" class="back-icon">
                 <i class="fa-solid fa-arrow-turn-up"></i>
             </a>
         </div>
 
         <div class="gestion-grid">
             
-            <a href="/ecogestum-grp12-byte/form/show" class="gestion-card">
+            <a href="index.php?action=form/show" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </div>
@@ -32,7 +32,7 @@
                 </div>
             </a>
 
-            <a href="/ecogestum-grp12-byte/objetPropose/show" class="gestion-card">
+            <a href="index.php?action=objetPropose/show" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-solid fa-box-open"></i>
                 </div>
@@ -42,7 +42,7 @@
                 </div>
             </a>
 
-            <a href="/ecogestum-grp12-byte/mesReservations/show" class="gestion-card">
+            <a href="index.php?action=mesReservations/show" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-regular fa-calendar-check"></i>
                 </div>
@@ -52,7 +52,7 @@
                 </div>
             </a>
 
-            <a href="/ecogestum-grp12-byte/gestionCategories/show" class="gestion-card">
+            <a href="index.php?action=gestionCategories/show" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-solid fa-tags"></i>
                 </div>
@@ -62,7 +62,7 @@
                 </div>
             </a>
 
-            <a href="/ecogestum-grp12-byte/gestionDemande/show" class="gestion-card">
+            <a href="index.php?action=gestionDemande/show" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-solid fa-square-check"></i>
                 </div>
@@ -72,7 +72,7 @@
                 </div>
             </a>
 
-            <a href="/ecogestum-grp12-byte/inventaire/show" class="gestion-card">
+            <a href="index.php?action=inventaire/show" class="gestion-card">
                 <div class="card-icon-wrapper">
                     <i class="fa-solid fa-boxes-stacked"></i>
                 </div>
@@ -94,6 +94,6 @@
 
         </div>
     </div>
-    <?php include 'assets/html/footer.html'; ?>
+    <?php include $_ENV['BONUS_PATH'].'assets/html/footer.html'; ?>
 </body>
 </html>

@@ -1,12 +1,12 @@
 <?php
 
-require_once "app/model/utilisateurModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/utilisateurModel.php";
 
 class connexionController
 {
     public function show()
     {
-        include "app/view/connexionView.php";
+        include $_ENV['BONUS_PATH']."app/view/connexionView.php";
     }
 
     public function connect(){
