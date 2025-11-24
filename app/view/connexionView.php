@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Connexion - Le Mans Université</title>
-    <link rel="stylesheet" href="assets/css/style-Sign.css">
+    <link rel="stylesheet" href=<?php echo $_ENV['BONUS_PATH']."assets/css/style-Sign.css" ?>>
 </head>
 <body>
 <div class="container">
     <div class="form-section">
-        <img src="assets/image/LogoLeMans.png" alt="Le Mans Université" class="logo">
+        <img src=<?php echo $_ENV['BONUS_PATH']."assets/image/LogoLeMans.png" ?> alt="Le Mans Université" class="logo">
         <?php if (isset($_SESSION['error_message'])): ?>
             <div class="error-message">
                 <?php
@@ -18,7 +18,7 @@
                 ?>
             </div>
         <?php endif; ?>
-        <form method="post" action="index.php?action=Connexion/connect" method="post">
+        <form method="post" action="index.php?action=connexion/connect" method="post">
             <input type="text" name="mail" placeholder="Adresse mail" value="<?php echo isset($_SESSION['mail']) ? htmlspecialchars($_SESSION['mail']) : ''; ?>" required>
             <input type="password" name="mdp" placeholder="Mot de passe" required>
             <button type="submit">Se Connecter</button>
@@ -26,7 +26,7 @@
         </form>
     </div>
     <div class="image-section">
-        <img src="assets/image/backgroundImageConnexion.png" alt="Campus" class="campus-img">
+        <img src=<?php echo $_ENV['BONUS_PATH']."assets/image/backgroundImageConnexion.png" ?> alt="Campus" class="campus-img">
     </div>
 </div>
 </body>

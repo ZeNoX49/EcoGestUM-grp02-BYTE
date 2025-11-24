@@ -1,5 +1,5 @@
 vendor/
 .env
-.idea
 composer.json
 composer.lock
+.idea

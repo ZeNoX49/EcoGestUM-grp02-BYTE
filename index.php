@@ -1,13 +1,17 @@
 <?php
 session_start();
+
+require __DIR__ . '/vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 function dispatch() {
 
     $action = isset($_GET['action']) ? $_GET['action'] : 'connexion';
-
     $parts = explode('/', $action);
 
-    // ucfirst() capitalizes the first letter
-    $controllerName = ucfirst($parts[0]) . 'Controller';
+    $controllerName = $parts[0] . 'Controller';
 
     $method = isset($parts[1]) ? $parts[1] : 'show';
 
