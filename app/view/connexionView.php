@@ -18,7 +18,7 @@
                 ?>
             </div>
         <?php endif; ?>
-        <form method="post" action="index.php?action=Connexion/connect" method="post">
+        <form method="post" action="index.php?action=connexion/connect" method="post">
             <input type="text" name="mail" placeholder="Adresse mail" value="<?php echo isset($_SESSION['mail']) ? htmlspecialchars($_SESSION['mail']) : ''; ?>" required>
             <input type="password" name="mdp" placeholder="Mot de passe" required>
             <button type="submit">Se Connecter</button>
