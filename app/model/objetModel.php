@@ -87,6 +87,29 @@ function createPointCollecte($nom) {
     $stmt->execute([$nom, "Adresse non spécifiée"]);
     return $bdd->lastInsertId();
 }
+function getNbObjectPropUtilisateur($id_utilisateur) {
+    $bdd = get_bdd();
+    $sql = "SELECT * FROM OBJET o
+        JOIN CATEGORIE c ON c.id_categorie = o.id_categorie
+        JOIN ETAT e ON e.id_etat = o.id_etat
+        JOIN POINTCOLLECTE p ON p.id_point_collecte = o.id_point_collecte
+         JOIN STATUTDISPONIBLE s ON s.id_statut_disponibilite = o.id_statut_disponibilite
+
+         WHERE o.id_utilisateur = ? AND o.id_statut_disponibilite != 4";
+    $stmt = $bdd->prepare($sql);
+    $stmt->execute([$id_utilisateur]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function countObjectStatus($objets,$id_status) {
+    $count = 0;
+    foreach ($objets as $objet) {
+        if ($objet['id_statut_disponibilite'] == $id_status) {
+            $count++;
+        }
+    }
+    return $count;
+}
 
 // function getNbObjPropUser($id_user) {
 //     $bdd = get_bdd();

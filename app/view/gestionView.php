@@ -32,7 +32,7 @@
             </div>
         </a>
 
-        <a href="objetPropose/show" class="gestion-card">
+        <a href="index.php?action=objetPropose/show" class="gestion-card">
             <div class="card-icon-wrapper">
                 <i class="fa-solid fa-box-open"></i>
             </div>

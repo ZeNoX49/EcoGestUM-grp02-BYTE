@@ -27,6 +27,7 @@ JOIN objet o ON r.id_objet = o.id_objet
 JOIN utilisateur u ON r.id_utilisateur = u.id_utilisateur
 WHERE o.id_utilisateur = 2;
 
+
 -- Requete 6 : Voir tous les objets par etat
 CREATE VIEW objets_par_etat AS
 SELECT
