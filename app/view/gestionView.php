@@ -42,7 +42,7 @@
             </div>
         </a>
 
-        <a href="mesReservations/show" class="gestion-card">
+        <a href="index.php?action=mesReservations/show" class="gestion-card">
             <div class="card-icon-wrapper">
                 <i class="fa-regular fa-calendar-check"></i>
             </div>

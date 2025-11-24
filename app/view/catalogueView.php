@@ -122,7 +122,7 @@
                                     ?>
                                     <div class="card-image-box" style="background-image: url('<?php echo htmlspecialchars($imgSrc); ?>');"></div>
                                 </div>
-                                <div class="card-content" style="cursor: pointer;" onclick="window.location.href='/ecogestum-grp12-byte/detaille/show&id=<?php echo $objet['id_objet']; ?>'">
+                                <div class="card-content" style="cursor: pointer;" onclick="window.location.href='index?action=detaille/show&id=<?php echo $objet['id_objet']; ?>'">
                                     <h3><?php echo htmlspecialchars($objet['nom_objet']); ?></h3>
                                     <div class="card-text">
                                         <span class="label">Description :</span>
