@@ -1,5 +1,4 @@
 -- DROP DATABASE IF EXISTS ECOGESTUM;
-CREATE DATABASE sae;
 USE sae;
 
 -- -- Suppression des tables (ordre securise)
