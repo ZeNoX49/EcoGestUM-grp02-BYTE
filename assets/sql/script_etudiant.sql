@@ -20,7 +20,7 @@ SELECT o.id_objet,
        p.longitude,
        e.nom_etat,
        u.nom_utilisateur
-FROM objet o
+    FROM OBJET o
          JOIN POINTCOLLECTE p ON p.id_point_collecte = o.id_point_collecte
          JOIN ETAT e ON e.id_etat = o.id_etat
          JOIN UTILISATEUR u ON u.id_utilisateur = o.id_utilisateur
@@ -31,9 +31,9 @@ CREATE VIEW mes_reservations AS
 SELECT o.nom_objet,
        r.date_reservation,
        sr.nom_statut_reservation
-FROM reserver r
-         JOIN objet o ON r.id_objet = o.id_objet
-         JOIN statutreservation sr ON r.id_statut_reservation = sr.id_statut_reservation
+FROM RESERVER r
+         JOIN OBJET o ON r.id_objet = o.id_objet
+         JOIN STATUTRESERVATION sr ON r.id_statut_reservation = sr.id_statut_reservation
 WHERE r.id_utilisateur = 1;
 
 -- Requete 3 : Voir les evenements a venir
@@ -41,7 +41,7 @@ CREATE VIEW evenements_a_venir AS
 SELECT titre_evenement,
        description_evenement,
        date_debut_evenement
-FROM evenement
+FROM EVENEMENT
 WHERE date_debut_evenement >= NOW();
 
 -- ===========================================================
@@ -55,10 +55,10 @@ CREATE PROCEDURE etudiant_reserver_objet(
     IN p_id_objet INT
 )
 BEGIN
-INSERT INTO reserver (id_objet, date_reservation, id_utilisateur, id_statut_reservation)
+INSERT INTO RESERVER (id_objet, date_reservation, id_utilisateur, id_statut_reservation)
 VALUES (p_id_objet, CURDATE(), p_id_utilisateur, 1);
 
-UPDATE objet
+UPDATE OBJET
 SET id_statut_disponibilite = 2
 WHERE id_objet = p_id_objet;
 END;
@@ -74,16 +74,16 @@ v_id_objet INT;
 
 SELECT id_objet
 INTO v_id_objet
-FROM reserver
+FROM RESERVER
 WHERE id_utilisateur = p_id_utilisateur LIMIT 1;
 
 DELETE
-FROM reserver
+FROM RESERVER
 WHERE id_utilisateur = p_id_utilisateur;
 
 IF
 v_id_objet IS NOT NULL THEN
-UPDATE objet
+UPDATE OBJET
 SET id_statut_disponibilite = 1
 WHERE id_objet = v_id_objet;
 END IF;
@@ -98,7 +98,7 @@ BEGIN
 SELECT o.nom_objet,
        o.description_objet,
        s.nom_statut_disponibilite
-FROM objet o
-         JOIN statutdisponible s ON o.id_statut_disponibilite = s.id_statut_disponibilite
+FROM OBJET o
+         JOIN STATUTDISPONIBLE s ON o.id_statut_disponibilite = s.id_statut_disponibilite
 WHERE o.id_categorie = p_id_categorie;
 END;

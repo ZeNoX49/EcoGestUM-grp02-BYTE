@@ -30,6 +30,8 @@ function getObject($id_object) {
         JOIN POINTCOLLECTE p ON p.id_point_collecte = o.id_point_collecte
         JOIN UTILISATEUR u ON u.id_utilisateur = o.id_utilisateur
          WHERE id_objet = ?";
+    
+    
     $stmt = $bdd->prepare($sql);
     $stmt->execute([$id_object]);
     return $stmt->fetch();
