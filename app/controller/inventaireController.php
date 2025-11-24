@@ -4,6 +4,6 @@ class inventaireController
 {
     public function show()
     {
-        include "app/view/inventaireView.php";
+        include $_ENV['PATH']."app/view/inventaireView.php";
     }
 }

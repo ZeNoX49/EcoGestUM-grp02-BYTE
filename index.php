@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+require __DIR__ . '/vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 function dispatch() {
 
     $action = isset($_GET['action']) ? $_GET['action'] : 'connexion';

@@ -8,29 +8,29 @@
     <title>Mon Profil</title>
 </head>
 <body>
-    <?php include 'assets/html/header.html'; ?>
+    <?php include $_ENV['PATH'].'assets/html/header.html'; ?>
     <div class="main">
         <div class="profile-container">
             <h1>Mon Profil</h1>
             <div class="profile-info">
                 <div class="profile-avatar">
-                    <img src="assets/images/default-avatar.png" alt="Photo de profil">
+                    <img src=<?php echo $_ENV['PATH']."assets/images/default-avatar.png" ?> alt="Photo de profil">
                 </div>
                 <div class="profile-details">
                     <h2>Nom Prénom</h2>
                     <p><i class="fas fa-envelope"></i> email@example.com</p>
                     <p><i class="fas fa-phone"></i> +33 6 12 34 56 78</p>
                     <p><i class="fas fa-building"></i> Service/Département</p>
-                    <a href="/ecogestum-grp12-byte/homePage/show" class="btn-back">
+                    <a href="index.php?action=homePage/show" class="btn-back">
                         <i class="fa-solid fa-arrow-left"></i> Retour
                     </a>
-                    <a href="/ecogestum-grp12-byte/connexion/deconnexion" class="btn-back">
+                    <a href="index.php?action=connexion/deconnexion" class="btn-back">
                         <i class="fa-solid fa-arrow-left"></i> deconnexion
                     </a>
                 </div>
             </div>
         </div>
     </div>
-    <?php include 'assets/html/footer.html'; ?>
+    <?php include $_ENV['PATH'].'assets/html/footer.html'; ?>
 </body>
 </html>

@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Inscritpion - Le Mans Université</title>
-    <link rel="stylesheet" href="assets/css/style-Sign.css">
+    <link rel="stylesheet" href=<?php $_ENV['PATH']."assets/css/style-Sign.css" ?>>
 </head>
 <body>
     <div class="container">
         <div class="form-section">
-            <img src="assets/image/LogoLeMans.png"
+            <img src=<?php $_ENV['PATH']."assets/image/LogoLeMans.png" ?>
                  alt="Le Mans Université" class="logo">
-            <form method="POST" action="/ecogestum-grp12-byte/signIn/signUp">
+            <form method="POST" action="index.php?action=signIn/signUp">
                 <input type="text" name="prenom" placeholder="Prénom" required>
                 <input type="text" name="nom" placeholder="Nom" required>
                 <input type="password" name="mdp" placeholder="Mot de passe" required>
@@ -25,7 +25,7 @@
             </form>
         </div>
         <div class="image-section">
-            <img src="assets/image/backgroundImageConnexion.png" alt="Campus" class="campus-img">
+            <img src=<?php echo $_ENV['PATH']."assets/image/backgroundImageConnexion.png" ?> alt="Campus" class="campus-img">
         </div>
     </div>
 </body>

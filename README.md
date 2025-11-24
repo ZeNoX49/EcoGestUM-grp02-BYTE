@@ -11,6 +11,7 @@
 - sophie.durand.etu@univ-lemans.fr | mdp789
 - luc.bernard@univ-lemans.fr | mdp321
 - jean.moreau@univ-lemans.fr |  mdp987 | Président
+
 ## Pages
 
 **Merci de mettre a jour les cases des pages finis pour qu'on sache où on en est**
@@ -19,7 +20,7 @@
 - [ ] header
 - [ ] footer
 - [X] connexion
-- [X] premiere Connexion
+- [ ] inscription
 - [ ] accueil
 - [ ] profil - donnees personelles
 - [ ] profil - notifications
@@ -57,3 +58,14 @@
 - [ ] inventaire
 - [ ] historique
 - [ ] statistique - presidence
+
+## Exemple de .env
+
+```env
+BONUS_PATH=
+
+DB_NAME=ECOGESTUM
+DB_HOST=localhost
+DB_USER=root
+DB_PASS=
+```

@@ -1,5 +1,10 @@
 <?php
 
+require __DIR__ . '/vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 require_once "app/model/utilisateurModel.php";
 
 function execute($sqlFile) {
@@ -44,7 +49,6 @@ function setHashedPassword() {
     $stmt = $bdd->prepare("UPDATE UTILISATEUR SET mdp_utilisateur = :mdp WHERE id_utilisateur = :id");
 
     foreach ($users as $user) {
-      echo "coucou ". var_dump($user) ;
         $mdp_hash = password_hash($user["mdp_utilisateur"], PASSWORD_DEFAULT);
 
         $stmt->execute([
