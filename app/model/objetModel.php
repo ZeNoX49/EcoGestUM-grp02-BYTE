@@ -87,7 +87,7 @@ function createPointCollecte($nom) {
     $stmt->execute([$nom, "Adresse non spécifiée"]);
     return $bdd->lastInsertId();
 }
-function getNbObjectPropUtilisateur($id_utilisateur) {
+function getObjectUtilisateur($id_utilisateur) {
     $bdd = get_bdd();
     $sql = "SELECT * FROM OBJET o
         JOIN CATEGORIE c ON c.id_categorie = o.id_categorie
@@ -98,6 +98,18 @@ function getNbObjectPropUtilisateur($id_utilisateur) {
     $stmt = $bdd->prepare($sql);
     $stmt->execute([$id_utilisateur]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function getAllObject(){
+    $bdd = get_bdd();
+    $req = $bdd->query("SELECT * FROM OBJET o
+        JOIN CATEGORIE c ON c.id_categorie = o.id_categorie
+        JOIN ETAT e ON e.id_etat = o.id_etat
+        JOIN POINTCOLLECTE p ON p.id_point_collecte = o.id_point_collecte
+         JOIN STATUTDISPONIBLE s ON s.id_statut_disponibilite = o.id_statut_disponibilite
+         JOIN UTILISATEUR u ON u.id_utilisateur = o.id_utilisateur");
+    $req->execute();
+    return $req->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function countObjectStatus($objets,$id_status) {

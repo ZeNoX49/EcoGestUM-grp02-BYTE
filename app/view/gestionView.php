@@ -52,7 +52,7 @@
             </div>
         </a>
 
-        <a href="gestionCategories/show" class="gestion-card" style="display:  <?= (isset($role) && $role == 3)?'':'none' ?>">
+        <a href="index.php?action=gestionCategories/show" class="gestion-card" style="display:  <?= (isset($role) && $role == 3)?'':'none' ?>">
             <div class="card-icon-wrapper">
                 <i class="fa-solid fa-tags"></i>
             </div>
@@ -61,7 +61,7 @@
                 <p>Créez et modifiez les catégories pour adapter le classement des objets recyclables aux besoins de votre service</p>
             </div>
         </a>
-        <a href="gestionDemande/show" class="gestion-card" style="display:  <?= (isset($role) && $role == 3)?'':'none' ?>">
+        <a href="index.php?action=gestionDemande/show" class="gestion-card" style="display:  <?= (isset($role) && $role == 3)?'':'none' ?>">
             <div class="card-icon-wrapper">
                 <i class="fa-solid fa-square-check"></i>
             </div>
@@ -71,7 +71,7 @@
             </div>
         </a>
 
-        <a href="action=inventaire/show" class="gestion-card" style="display:  <?= (isset($role) && $role == 3)?'':'none' ?>">
+        <a href="index.php?action=inventaire/show" class="gestion-card" style="display:  <?= (isset($role) && $role == 3)?'':'none' ?>">
             <div class="card-icon-wrapper">
                 <i class="fa-solid fa-boxes-stacked"></i>
             </div>
@@ -81,7 +81,7 @@
             </div>
         </a>
 
-        <a href="action=historique/show" class="gestion-card">
+        <a href="index.php?action=historique/show" class="gestion-card">
             <div class="card-icon-wrapper">
                 <i class="fa-solid fa-file-lines"></i>
             </div>

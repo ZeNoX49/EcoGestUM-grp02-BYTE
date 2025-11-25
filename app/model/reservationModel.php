@@ -67,9 +67,9 @@ function confirmReception($idUser, $idObjet) {
 
 
 
-function getReservationsByStatut($idStatut){
+function getReservationsByStatutDisp($idStatut){
     $bdd = get_bdd();
-    $sql = "SELECT * FROM reservations WHERE id_statut_reservation = ?";
+    $sql = "SELECT * FROM OBJET WHERE id_statut_disponibilite = ?";
     $stmt = $bdd->prepare($sql);
     $stmt->execute([$idStatut]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);

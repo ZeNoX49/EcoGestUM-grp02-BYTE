@@ -7,7 +7,7 @@ class objetProposeController
     public function show()
     {
         if(isset($_SESSION['user_id'])){
-            $objets = getNbObjectPropUtilisateur($_SESSION['user_id']);
+            $objets = getObjectUtilisateur($_SESSION['user_id']);
             $nbAttente = countObjectStatus($objets, 3);
             $nbDisponible = countObjectStatus($objets, 1);
             $nbRserve = countObjectStatus($objets, 2);

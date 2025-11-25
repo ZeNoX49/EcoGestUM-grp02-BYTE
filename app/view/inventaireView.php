@@ -6,8 +6,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link rel="stylesheet" href=<?php echo $_ENV['BONUS_PATH']."css/style-catalogue.css" ?>>
-    <link rel="stylesheet" href=<?php echo $_ENV['BONUS_PATH']."css/style-inventaire.css?v=3" ?>>
+    <link rel="stylesheet" href=<?php echo $_ENV['BONUS_PATH']."assets/css/style-catalogue.css" ?>>
+    <link rel="stylesheet" href=<?php echo $_ENV['BONUS_PATH']."assets/css/style-inventaire.css?v=3" ?>>
 
     <title>Inventaire</title>
 </head>
@@ -27,16 +27,12 @@
 
         <div class="inv-stats-row">
             <div class="inv-stat-card border-green">
-                <span class="num">12</span>
+                <span class="num"><?php if(isset($nbObjetsDisponibles))echo $nbObjetsDisponibles?></span>
                 <span class="lbl">Disponible</span>
             </div>
             <div class="inv-stat-card border-yellow">
-                <span class="num">3</span>
+                <span class="num"><?php if(isset($nbObjetsReserve))echo $nbObjetsReserve?></span>
                 <span class="lbl">Réservé</span>
-            </div>
-            <div class="inv-stat-card border-blue">
-                <span class="num">5</span>
-                <span class="lbl">En cours</span>
             </div>
             <div class="inv-stat-card border-red">
                 <span class="num">4</span>
@@ -84,22 +80,24 @@
                 </tr>
                 </thead>
                 <tbody>
+                <?php if(isset($objets)) foreach($objets as $objet): ?>
                 <tr>
                     <td>
                         <div class="obj-cell">
                             <div class="obj-img" style="background-image: url('https://via.placeholder.com/50');"></div>
-                            <span>Chaise en bois</span>
+                            <span><?=$objet['nom_objet']?></span>
                         </div>
                     </td>
                     <td><span class="badge badge-green">Disponible</span></td>
-                    <td><strong>15</strong></td>
-                    <td>Bâtiment B - Salle 201</td>
-                    <td>M. Dubois</td>
+                    <td><strong><?=$objet['quantite'] ?></strong></td>
+                    <td><?=$objet['nom_point_collecte']?> - <?=$objet['adresse_point_collecte']?></td>
+                    <td><?=$objet['nom_utilisateur']?></td>
                     <td>Il y a 12 min</td>
                     <td>
                         <button class="btn-edit-icon" onclick="openEditModal()"><i class="fa-solid fa-pen"></i></button>
                     </td>
                 </tr>
+                <?php endforeach?>
                 <tr>
                     <td>
                         <div class="obj-cell">
