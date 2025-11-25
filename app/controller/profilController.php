@@ -1,20 +1,16 @@
 <?php
-<<<<<<< HEAD
 require_once $_ENV['BONUS_PATH']."app/model/utilisateurModel.php";
-=======
 
 require_once "app/model/utilisateurModel.php";
 require_once "app/model/categorieModel.php";
 require_once "app/model/typeEvenementModel.php";
 require_once "app/model/pointCollecteModel.php";
 require_once "app/model/choixNotificationModel.php";
->>>>>>> 5e0f75cd017b3e39a06a4a2e632f527bc22a788e
 
 class profilController
 {
     public function show()
     {
-<<<<<<< HEAD
         // Vérification de connexion
         if (!isset($_SESSION['user_id'])) {
             header('Location: index.php?action=connexion/show');
@@ -28,7 +24,7 @@ class profilController
             session_destroy();
             header('Location: index.php?action=connexion/show');
             exit;
-=======
+        }
         // Utilisateur
         $user = getUser($_SESSION['user_id']);
 
@@ -70,7 +66,6 @@ class profilController
         $notif_event_loc = getChoixNotification($_SESSION['user_id'], "events", "categorie");
         foreach($notif_event_loc as $event_loc) {
             $event_localisation_possible = array_diff($event_localisation_possible, [$event_localisation[$obj_cat["id_choix"]]["nom_categorie"]]);
->>>>>>> 5e0f75cd017b3e39a06a4a2e632f527bc22a788e
         }
 
         include $_ENV['BONUS_PATH']."app/view/profilView.php";
