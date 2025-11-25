@@ -5,11 +5,6 @@ class mesReservationsController
 {
     public function show()
     {
-        if (!isset($_SESSION['user_id'])) {
-            header('Location: index.php?action=connexion/show');
-            exit;
-        }
-
         $reservations = getReservationsByUser($_SESSION['user_id']);
         $stats = [
             'actives' => 0,
@@ -34,7 +29,6 @@ class mesReservationsController
         }
         header('Location: index.php?action=mesReservations/show');
     }
-
     public function confirm() {
         if (isset($_SESSION['user_id']) && isset($_GET['id'])) {
             confirmReception($_SESSION['user_id'], $_GET['id']);

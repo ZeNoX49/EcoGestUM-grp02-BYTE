@@ -33,8 +33,8 @@ function execute($sqlFile) {
     }
 }
 
-function createUser($fname, $mail, $id_role) {
-    if(insertUser("test", $fname, $mail, "test", $id_role)) {
+function createUser($fname, $mail, $id_role, $id_depser) {
+    if(insertUser("test", $fname, $mail, "test", $id_role, $id_depser)) {
         echo "✔️ Utilisateur $fname créer avec succès<br>";
     } else {
         echo "❌ L'tilisateur $fname n'as pu être créer<br>";
@@ -64,9 +64,9 @@ function create_database() {
     if (!execute('assets/sql/script_insertion.sql')) return;
     setHashedPassword();
     
-    createUser("etudiant", "test.etudiant.etu@univ-lemans.fr", 1);
-    createUser("enseignant", "test.enseignant@univ-lemans.fr", 2);
-    createUser("presidence", "test.presidence@univ-lemans.fr", 3);
+    createUser("etudiant", "test.etudiant.etu@univ-lemans.fr", 1, 1);
+    createUser("enseignant", "test.enseignant@univ-lemans.fr", 2, 1);
+    createUser("presidence", "test.presidence@univ-lemans.fr", 3, 3);
 
 
     execute('assets/sql/script_enseignant.sql');

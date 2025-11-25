@@ -31,4 +31,10 @@ class connexionController
         $_SESSION['user_mail'] = $_POST['mail'];
         header('Location: index.php?action=homePage/show');
     }
+
+    public function disconnect(){
+        session_start();
+        session_destroy();
+        header('Location: index.php?action=connexion/show');
+    }
 }

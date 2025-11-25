@@ -1,4 +1,4 @@
-<?php if(!isset($objets) || !isset($nbAttente) || !isset($nbDisponible) || !isset($nbRserve)) die('error')?>
+<?php if(!isset($objets) || !isset($nbAttente) || !isset($nbDisponible) || !isset($nbRserve) || !isset($correspStyleStatutDisponible)) die('error')?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href=<?php echo $_ENV['BONUS_PATH']."assets/css/style-gestion.css" ?>>
+    <link rel="stylesheet" href="<?php echo $_ENV['BONUS_PATH']."assets/css/style-gestion.css" ?>">
     <title>Mes Objets Proposés</title>
 </head>
 <body>
@@ -34,7 +34,7 @@
                         <option>Autre</option>
                     </select>
                 </div>
-                <a href="formView.php" class="btn-add-new">
+                <a href="index.php?action=form/show" class="btn-add-new">
                     <i class="fa-solid fa-plus"></i> Proposer un nouvel objet
                 </a>
             </div>
@@ -59,7 +59,7 @@
             <div class="my-objects-grid">
                 <?php foreach ($objets as $objet):?>
                     <div class="my-object-card">
-                    <div class="status-badge status-pending"><?=$objet['nom_statut_disponibilite']?></div>
+                    <div class="status-badge <?=$correspStyleStatutDisponible[$objet['nom_statut_disponibilite']]?>"><?=$objet['nom_statut_disponibilite']?></div>
                     <div class="card-img-top" style="background-image: url('http://googleusercontent.com/image_generation_content/0');"></div>
                     <div class="card-body">
                         <h3>
@@ -105,7 +105,7 @@
 
             <div class="modal-buttons">
                 <button class="btn-modal-cancel" onclick="closeDeleteModal()">Annuler</button>
-                <a href="#" id="confirmDeleteBtn" class="btn-modal-confirm">Supprimer définitivement</a>
+                <a href="index?objetPropose/delete&deleteId=<?=$objet['id_objet']?>" id="confirmDeleteBtn" class="btn-modal-confirm">Supprimer définitivement</a>
             </div>
         </div>
     </div>

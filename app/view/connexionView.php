@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Connexion - Le Mans Université</title>
-    <link rel="stylesheet" href=<?php echo $_ENV['BONUS_PATH']."assets/css/style-Sign.css" ?>>
+    <link rel="stylesheet" href=<?php echo $_ENV['BONUS_PATH']."assets/css/style-sign.css" ?>>
 </head>
 <body>
 <div class="container">
@@ -22,7 +22,7 @@
             <input type="text" name="mail" placeholder="Adresse mail" value="<?php echo isset($_SESSION['mail']) ? htmlspecialchars($_SESSION['mail']) : ''; ?>" required>
             <input type="password" name="mdp" placeholder="Mot de passe" required>
             <button type="submit">Se Connecter</button>
-            <button type="button" class="buttonSignIn" onclick="window.location='index.php?action=SignIn/show'">S'inscrire</button>
+            <button type="button" class="buttonSignIn" onclick="window.location='index.php?action=signIn/show'">S'inscrire</button>
         </form>
     </div>
     <div class="image-section">

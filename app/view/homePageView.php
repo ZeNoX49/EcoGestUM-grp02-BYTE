@@ -60,36 +60,13 @@
             <h1>Ils Témoignent</h1>
             <p>Les utilisateurs d'EcoGestUM partagent leur expérience</p>
             <div class="testimonial-list">
-                <div class="testimonial">
-                    <p>"Grâce à ÉcoGestUM, j'ai pu équiper mon laboratoire avec du matériel informatique parfaitement fonctionnel. Plutôt que d'acheter du neuf, nous avons récupéré 10 ordinateurs du Service Informatique. Une économie de 8 000€ et un geste concret pour l'environnement !"</p>
-                    <span class="user">Dr. Marie Dubois</span>
-                    <span class="role-user">Directrice du Laboratoire LIUM</span>
-                </div>
-                <div class="testimonial">
-                    <p>"Grâce à ÉcoGestUM, j'ai pu équiper mon laboratoire avec du matériel informatique parfaitement fonctionnel. Plutôt que d'acheter du neuf, nous avons récupéré 10 ordinateurs du Service Informatique. Une économie de 8 000€ et un geste concret pour l'environnement !"</p>
-                    <span class="user">Dr. Marie Dubois</span>
-                    <span class="role-user">Directrice du Laboratoire LIUM</span>
-                </div>
-                <div class="testimonial">
-                    <p>"Grâce à ÉcoGestUM, j'ai pu équiper mon laboratoire avec du matériel informatique parfaitement fonctionnel. Plutôt que d'acheter du neuf, nous avons récupéré 10 ordinateurs du Service Informatique. Une économie de 8 000€ et un geste concret pour l'environnement !"</p>
-                    <span class="user">Dr. Marie Dubois</span>
-                    <span class="role-user">Directrice du Laboratoire LIUM</span>
-                </div>
-                <div class="testimonial">
-                    <p>"Grâce à ÉcoGestUM, j'ai pu équiper mon laboratoire avec du matériel informatique parfaitement fonctionnel. Plutôt que d'acheter du neuf, nous avons récupéré 10 ordinateurs du Service Informatique. Une économie de 8 000€ et un geste concret pour l'environnement !"</p>
-                    <span class="user">Dr. Marie Dubois</span>
-                    <span class="role-user">Directrice du Laboratoire LIUM</span>
-                </div>
-                <div class="testimonial">
-                    <p>"Grâce à ÉcoGestUM, j'ai pu équiper mon laboratoire avec du matériel informatique parfaitement fonctionnel. Plutôt que d'acheter du neuf, nous avons récupéré 10 ordinateurs du Service Informatique. Une économie de 8 000€ et un geste concret pour l'environnement !"</p>
-                    <span class="user">Dr. Marie Dubois</span>
-                    <span class="role-user">Directrice du Laboratoire LIUM</span>
-                </div>
-                <div class="testimonial">
-                    <p>"Grâce à ÉcoGestUM, j'ai pu équiper mon laboratoire avec du matériel informatique parfaitement fonctionnel. Plutôt que d'acheter du neuf, nous avons récupéré 10 ordinateurs du Service Informatique. Une économie de 8 000€ et un geste concret pour l'environnement !"</p>
-                    <span class="user">Dr. Marie Dubois</span>
-                    <span class="role-user">Directrice du Laboratoire LIUM</span>
-                </div>
+                <?php foreach($temoignages_display as $temoignage_display) : ?>
+                    <div class="testimonial">
+                        <p><?php echo $temoignage_display["temoignage"] ?></p>
+                        <span class="user"><?php echo $temoignage_display["auteur"] ?></span>
+                        <span class="role-user"><?php echo $temoignage_display["role"] ?></span>
+                    </div>
+                <?php endforeach ?>
             </div>
         </section>
     </div>

@@ -1,6 +1,6 @@
 <?php
 
-require_once "app/model/eventModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/eventModel.php";
 
 class EventController {
     public function show()
