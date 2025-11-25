@@ -1,21 +1,20 @@
-USE
-ECOGESTUM;
+USE ECOGESTUM;
 
 -- Roles
-INSERT INTO role (nom_role)
+INSERT INTO ROLE (nom_role)
 VALUES ('etudiant'),
        ('Enseignant'),
        ('Presidence de l''universite');
 
 -- Departements / Services
-INSERT INTO depser (nom_depser)
+INSERT INTO DEPSER (nom_depser)
 VALUES ('Departement Informatique'),
        ('Departement Mathematiques'),
        ('Departement Langues'),
        ('Service Administratif');
 
 -- Utilisateurs
-INSERT INTO utilisateur (nom_utilisateur, prenom_utilisateur, email_utilisateur, mdp_utilisateur, id_role, id_depser)
+INSERT INTO UTILISATEUR (nom_utilisateur, prenom_utilisateur, email_utilisateur, mdp_utilisateur, id_role, id_depser)
 VALUES ('Dupont', 'Marie', 'marie.dupont.etu@univ-lemans.fr', 'mdp123', 1, 1),
        ('Martin', 'Pierre', 'pierre.martin.etu@univ-lemans.fr', 'mdp456', 1, 2),
        ('Durand', 'Sophie', 'sophie.durand.etu@univ-lemans.fr', 'mdp789', 1, 3),
@@ -28,7 +27,7 @@ VALUES ('Dupont', 'Marie', 'marie.dupont.etu@univ-lemans.fr', 'mdp123', 1, 1),
        ('Lefebvre', 'Thomas', 'thomas.lefebvre.etu@univ-lemans.fr', 'mdp741', 1, 3);
 
 -- Categories
-INSERT INTO categorie (nom_categorie, description_categorie, image_categorie)
+INSERT INTO CATEGORIE (nom_categorie, description_categorie, image_categorie)
 VALUES ('Materiel informatique', 'Materiel informatique et electronique', 'fa-solid fa-laptop'),
        ('Mobilier', 'Meubles et equipements de bureau', 'fa-solid fa-chair'),
        ('Livres', 'Manuels scolaires et ouvrages universitaires', 'fa-solid fa-book'),
@@ -37,13 +36,6 @@ VALUES ('Materiel informatique', 'Materiel informatique et electronique', 'fa-so
        ('Petit electromenager', 'petit electromenager', 'fa-solid fa-plug'),
        ('Materiel multimédia', 'materiel multimédia', 'fa-solid fa-tv'),
        ('Vetements', 'vetements', 'fa-solid fa-shirt');
-
--- Departements / Services
-INSERT INTO DEPSER (nom_depser, id_utilisateur)
-VALUES ('Departement Informatique', 4),
-       ('Departement Mathematiques', 5),
-       ('Service Administratif', 6),
-       ('Departement Langues', 9);
 
 -- etats
 INSERT INTO ETAT (nom_etat)

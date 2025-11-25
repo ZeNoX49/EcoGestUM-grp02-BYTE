@@ -1,4 +1,4 @@
-USE sae;
+USE ECOGESTUM;
 
 -- ===========================================================
 -- VUES
@@ -48,7 +48,7 @@ FROM RESERVER r
          JOIN STATUTRESERVATION s ON r.id_statut_reservation = s.id_statut_reservation
          JOIN POINTCOLLECTE pc ON o.id_point_collecte = pc.id_point_collecte
          JOIN UTILISATEUR u ON o.id_utilisateur = u.id_utilisateur
-         JOIN sae.DEPSER d ON d.id_utilisateur = u.id_utilisateur;
+         JOIN DEPSER d ON u.id_depser = d.id_depser;
 -- ===========================================================
 -- PROCEDURES STOCKeES
 -- ===========================================================
