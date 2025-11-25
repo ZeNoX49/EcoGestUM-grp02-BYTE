@@ -82,14 +82,14 @@
                             <label>Localisation</label>
                             <select class="profil-input" style="cursor: pointer;">
                                 <option>Sélectionnez</option>
-                                <?php foreach($objet_position_possible as $obj_cat_p) : ?>
-                                    <option><?php echo $obj_cat_p["nom_categorie"] ?></option>
+                                <?php foreach($objet_position_possible as $obj_pos_p) : ?>
+                                    <option><?php echo $obj_pos_p["adresse_point_collecte"] ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
                         <div class="tag-box">
-                            <?php foreach($notif_obj_cat as $obj_cat) : ?>
-                                <option><span class="tag-close">×</span><?php echo " ".$objet_position[$obj_cat["id_choix"]]["nom_categorie"] ?></option>
+                            <?php foreach($notif_obj_loc as $obj_pos) : ?>
+                                <option><span class="tag-close">×</span><?php echo " ".$objet_position[$obj_pos["id_choix"]]["adresse_point_collecte"] ?></option>
                             <?php endforeach ?>
                         </div>
                     </div>
@@ -104,14 +104,14 @@
                             <label>Catégorie</label>
                             <select class="profil-input">
                                 <option>Sélectionnez</option>
-                                <?php foreach(getAllEventType() as $eventType) : ?>
-                                    <option><?php echo $eventType["nom_type_evenement"] ?></option>
+                                <?php foreach($event_categories_possible as $event_cat_p) : ?>
+                                    <option><?php echo $event_cat_p["nom_type_evenement"] ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
                         <div class="tag-box">
-                            <?php foreach($notif_obj_cat as $obj_cat) : ?>
-                                <option><span class="tag-close">×</span><?php echo " ".$objet_position[$obj_cat["id_choix"]]["nom_categorie"] ?></option>
+                            <?php foreach($notif_event_cat as $event_cat) : ?>
+                                <option><span class="tag-close">×</span><?php echo " ".$event_categories[$event_cat["id_choix"]]["nom_type_evenement"] ?></option>
                             <?php endforeach ?>
                         </div>
                     </div>
@@ -120,13 +120,13 @@
                             <label>Organisateurs</label>
                             <select class="profil-input">
                                 <option>Sélectionnez</option>
-                                <?php foreach(getAllEventType() as $eventType) : ?>
-                                    <option><?php echo $eventType["nom_type_evenement"] ?></option>
+                                <?php foreach($event_organisateur_possible as $event_org_p) : ?>
+                                    <option><?php echo $event_org_p["email_utilisateur"] ?></option>
                                 <?php endforeach ?>
                             </select>                        </div>
                         <div class="tag-box">
-                            <?php foreach($notif_obj_cat as $obj_cat) : ?>
-                                <option><span class="tag-close">×</span><?php echo " ".$objet_position[$obj_cat["id_choix"]]["nom_categorie"] ?></option>
+                            <?php foreach($notif_event_org as $event_org) : ?>
+                                <option><span class="tag-close">×</span><?php echo " ".$event_organisateur[$event_org["id_choix"]]["email_utilisateur"] ?></option>
                             <?php endforeach ?>
                         </div>
                     </div>
@@ -135,13 +135,14 @@
                             <label>Localisation</label>
                             <select class="profil-input">
                                 <option>Sélectionnez</option>
-                                <?php foreach(getAllEventType() as $eventType) : ?>
-                                    <option><?php echo $eventType["nom_type_evenement"] ?></option>
+                                <?php foreach($event_localisation_possible as $event_loc_p) : ?>
+                                    <option><?php echo $event_loc_p["adresse_point_collecte"] ?></option>
                                 <?php endforeach ?>
-                            </select>                        </div>
+                            </select>
+                        </div>
                         <div class="tag-box">
-                            <?php foreach($notif_obj_cat as $obj_cat) : ?>
-                                <option><span class="tag-close">×</span><?php echo " ".$objet_position[$obj_cat["id_choix"]]["nom_categorie"] ?></option>
+                            <?php foreach($notif_event_loc as $event_loc) : ?>
+                                <option><span class="tag-close">×</span><?php echo " ".$event_localisation[$event_loc["id_choix"]]["adresse_point_collecte"] ?></option>
                             <?php endforeach ?>
                         </div>
                     </div>
@@ -154,7 +155,7 @@
                         Communications sur les initiatives écologiques de l'université
                     </label>
                     <label class="checkbox-item">
-                        <input type="checkbox" checked>
+                        <input type="checkbox" !checked>
                         Communications sur ...
                     </label>
                 </div>
