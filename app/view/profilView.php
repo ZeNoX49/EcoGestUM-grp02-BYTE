@@ -70,8 +70,9 @@
                             <label>Catégorie</label>
                             <select class="profil-input" style="cursor: pointer;">
                                 <option>Sélectionnez</option>
-                                <option>Informatique</option>
-                                <option>Mobilier</option>
+                                <?php foreach(getAllCategories() as $categorie) : ?>
+                                    <option><?php echo $categorie["nom_categorie"] ?></option>
+                                <?php  endforeach ?>
                             </select>
                         </div>
                         <div class="tag-box">

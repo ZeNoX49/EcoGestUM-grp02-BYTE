@@ -135,13 +135,13 @@ VALUES ('livre1.jpg', 'Manuel de Mathematiques L1', 'Analyse et algebre lineaire
 -- evenements
 INSERT INTO evenement (titre_evenement, type_evenement, description_evenement, date_debut_evenement, date_fin_evenement,
                        id_type_evenement, id_utilisateur)
-VALUES ('Grande Collecte de Printemps', 'Collecte g�n�rale', 'Collecte de tous types d''''objets', '2025-03-15',
+VALUES ('Grande Collecte de Printemps', 'Collecte generale', 'Collecte de tous types d''''objets', '2025-03-15',
         '2025-03-17', 1, 4),
-       ('Atelier R�paration �lectronique', 'Atelier pratique', 'Apprenez � r�parer vos appareils', '2025-03-20',
+       ('Atelier Reparation electronique', 'Atelier pratique', 'Apprenez a reparer vos appareils', '2025-03-20',
         '2025-03-20', 2, 5),
-       ('Brocante Solidaire', 'Vente et �change', 'Donnez une seconde vie aux objets', '2025-04-05', '2025-04-06', 3,
+       ('Brocante Solidaire', 'Vente et echange', 'Donnez une seconde vie aux objets', '2025-04-05', '2025-04-06', 3,
         6),
-       ('Sensibilisation au Gaspillage', 'Conf�rence', 'Impact environnemental', '2025-04-10', '2025-04-10', 4, 9);
+       ('Sensibilisation au Gaspillage', 'Conference', 'Impact environnemental', '2025-04-10', '2025-04-10', 4, 9);
 
 -- Reservations
 INSERT INTO reserver (id_objet, date_reservation, id_utilisateur, id_statut_reservation)
