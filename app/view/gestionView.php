@@ -71,7 +71,7 @@
             </div>
         </a>
 
-        <a href="action=inventaire/show" class="gestion-card">
+        <a href="action=inventaire/show" class="gestion-card" style="display:  <?= (isset($role) && $role == 3)?'':'none' ?>">
             <div class="card-icon-wrapper">
                 <i class="fa-solid fa-boxes-stacked"></i>
             </div>

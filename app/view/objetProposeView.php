@@ -34,7 +34,7 @@
                         <option>Autre</option>
                     </select>
                 </div>
-                <a href="formView.php" class="btn-add-new">
+                <a href="index.php?action=form/show" class="btn-add-new">
                     <i class="fa-solid fa-plus"></i> Proposer un nouvel objet
                 </a>
             </div>
