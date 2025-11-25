@@ -40,7 +40,7 @@ function getUser($id_user) {
 
 function isUserExisting($mail){
     $bdd = get_bdd();
-    $stmt = $bdd->prepare("SELECT COUNT(*) FROM utilisateur WHERE email_utilisateur LIKE '$mail'");
+    $stmt = $bdd->prepare("SELECT COUNT(*) FROM UTILISATEUR WHERE email_utilisateur LIKE '$mail'");
     $stmt->execute();
     return $stmt->fetchColumn() > 0;
 }

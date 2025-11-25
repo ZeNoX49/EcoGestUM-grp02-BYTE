@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href=<?php echo $_ENV['BONUS_PATH']."/css/style-gestion.css" ?>>
+    <link rel="stylesheet" href=<?php echo $_ENV['BONUS_PATH']."assets/css/style-gestion.css" ?>>
     <title>Gérer les demandes</title>
 </head>
 <body>
@@ -69,7 +69,7 @@
             </div>
 
             <div class="requests-list">
-
+                <?php if(isset($reservationEnAttente)) foreach($reservationEnAttente as $res ) : ?>
                 <div class="request-card">
                     <div class="req-header">
                         <span class="req-tag tag-yellow">Demande de réservation</span>
@@ -79,9 +79,9 @@
                     <h2 class="req-title">Demande de chaises de bureau ergonomiques</h2>
                     
                     <div class="req-meta">
-                        <span>Demandeur: <strong>Dr. Sophie Leroy</strong></span>
-                        <span>Date: <strong>28 janvier 2025</strong></span>
-                        <span>Département: <strong>Laboratoire LIUM</strong></span>
+                        <span>Demandeur: <strong><?=$res['nom_proprietaire']?></strong></span>
+                        <span>Date: <strong><?=$res['date_reservation']?></strong></span>
+                        <span>Département: <strong><?=$res['nom_departement'] ?></strong></span>
                     </div>
 
                     <p class="req-description">
@@ -112,6 +112,7 @@
                         <button class="btn-approve" onclick="openApproveModal('Demande de chaises de bureau ergonomiques')">Approuver</button>
                     </div>
                 </div>
+                <?php endforeach  ?>
 
                 <div class="request-card">
                     <div class="req-header">

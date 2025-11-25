@@ -1,4 +1,4 @@
-USE ECOGESTUM;
+USE sae;
 
 -- ===========================================================
 -- VUES
@@ -7,7 +7,7 @@ USE ECOGESTUM;
 /* ------ ENSEIGNANT ------ */
 
 -- Requete 4 : Voir mes objets donnes (exemple pour id_utilisateur = 2)
-CREATE OR REPLACE VIEW mes_objets_donnes AS
+CREATE VIEW mes_objets_donnes AS
 SELECT
     nom_objet,
     description_objet,
@@ -16,7 +16,7 @@ FROM objet
 WHERE id_utilisateur = 2;
 
 -- Requete 5 : Voir les reservations de mes objets
-CREATE OR REPLACE VIEW reservations_de_mes_objets AS
+CREATE VIEW reservations_de_mes_objets AS
 SELECT
     u.nom_utilisateur,
     u.prenom_utilisateur,
@@ -27,8 +27,9 @@ JOIN objet o ON r.id_objet = o.id_objet
 JOIN utilisateur u ON r.id_utilisateur = u.id_utilisateur
 WHERE o.id_utilisateur = 2;
 
+
 -- Requete 6 : Voir tous les objets par etat
-CREATE OR REPLACE VIEW objets_par_etat AS
+CREATE VIEW objets_par_etat AS
 SELECT
     e.nom_etat,
     COUNT(o.id_objet) AS nombre
@@ -42,7 +43,7 @@ GROUP BY e.nom_etat;
 -- ===========================================================
 
 -- Procedure 4 : Ajouter un objet
-DROP PROCEDURE IF EXISTS enseignant_ajouter_objet;
+-- DROP PROCEDURE IF EXISTS enseignant_ajouter_objet;
 CREATE PROCEDURE enseignant_ajouter_objet(
     IN p_nom VARCHAR(100),
     IN p_description VARCHAR(250),
@@ -72,7 +73,7 @@ BEGIN
 END;
 
 -- Procedure 5 : Modifier un objet
-DROP PROCEDURE IF EXISTS enseignant_modifier_objet;
+-- DROP PROCEDURE IF EXISTS enseignant_modifier_objet;
 CREATE PROCEDURE enseignant_modifier_objet(
     IN p_id_objet INT,
     IN p_description VARCHAR(250),
@@ -87,7 +88,7 @@ WHERE id_objet = p_id_objet;
 END;
 
 -- Procedure 6 : Creer un evenement
-DROP PROCEDURE IF EXISTS enseignant_creer_evenement;
+-- DROP PROCEDURE IF EXISTS enseignant_creer_evenement;
 CREATE PROCEDURE enseignant_creer_evenement(
     IN p_titre VARCHAR(100),
     IN p_type VARCHAR(100),
