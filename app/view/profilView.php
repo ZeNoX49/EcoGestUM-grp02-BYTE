@@ -32,6 +32,12 @@
                 </ul>
             </div>
 
+            <div class="sidebar-group">
+                <ul>
+                    <li onclick="showSection('deco', this)">Déconnexion</li>
+                </ul>
+            </div>
+
         </div>
 
         <div class="profile-content">
@@ -184,12 +190,17 @@
                             <input type="password" class="profil-input">
                         </div>
                     </div>
-
                     <div class="center-btn" style="margin-top: 40px;">
                         <button type="button" class="btn-confirm">CONFIRMER</button>
                     </div>
                 </form>
             </div>
+
+            <div id="deco" class="content-section">
+                <h2>Déconnexion</h2>
+                <div class="center-btn">
+                    <button type="button" class="btn-confirm" onclick="window.location.href='index.php?action=connexion/disconnect'">SE DÉCONNECTER</button>
+                </div>
 
         </div>
     </div>
