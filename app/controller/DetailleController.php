@@ -1,7 +1,7 @@
 <?php
 
-require_once "app/model/objetModel.php";
-require_once "app/model/reservationModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/objetModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/reservationModel.php";
 
 class DetailleController
 {
@@ -18,7 +18,7 @@ class DetailleController
             exit;
         }
 
-        include "app/view/detailleView.php";
+        include $_ENV['BONUS_PATH']."app/view/detailleView.php";
     }
 
     public function reserver() {
