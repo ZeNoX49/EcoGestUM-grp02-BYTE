@@ -26,6 +26,7 @@ DROP TABLE IF EXISTS DEPSER;
 DROP TABLE IF EXISTS CATEGORIE;
 DROP TABLE IF EXISTS UTILISATEUR;
 DROP TABLE IF EXISTS ROLE;
+DROP TABLE IF EXISTS CHOIXNOTIFICATION;
 
 
 -- Creation des tables
@@ -33,6 +34,12 @@ CREATE TABLE ROLE
 (
     id_role  INT AUTO_INCREMENT PRIMARY KEY,
     nom_role VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE DEPSER
+(
+    id_depser      INT AUTO_INCREMENT PRIMARY KEY,
+    nom_depser     VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE UTILISATEUR
@@ -43,7 +50,9 @@ CREATE TABLE UTILISATEUR
     email_utilisateur  VARCHAR(100) UNIQUE NOT NULL,
     mdp_utilisateur    VARCHAR(255),
     id_role            INT NULL,
-    CONSTRAINT fk_utilisateur_role FOREIGN KEY (id_role) REFERENCES ROLE (id_role) ON DELETE SET NULL
+    id_depser          INT NULL,
+    CONSTRAINT fk_utilisateur_role FOREIGN KEY (id_role) REFERENCES ROLE (id_role) ON DELETE SET NULL,
+    CONSTRAINT fk_utilisateur_depser FOREIGN KEY (id_depser) REFERENCES DEPSER (id_depser) ON DELETE SET NULL
 );
 
 CREATE TABLE CATEGORIE
@@ -53,14 +62,6 @@ CREATE TABLE CATEGORIE
     image_categorie       VARCHAR(255) NOT NULL,
     description_categorie VARCHAR(250),
     statut_categorie      VARCHAR(20) DEFAULT 'Active'
-);
-
-CREATE TABLE DEPSER
-(
-    id_depser      INT AUTO_INCREMENT PRIMARY KEY,
-    nom_depser     VARCHAR(100) NOT NULL,
-    id_utilisateur INT UNIQUE,
-    CONSTRAINT fk_depser_utilisateur FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR (id_utilisateur) ON DELETE SET NULL
 );
 
 CREATE TABLE ETAT
@@ -104,7 +105,7 @@ CREATE TABLE COMMUNIQUE
 CREATE TABLE TEMOIGNAGE
 (
     id_temoignage      INT AUTO_INCREMENT PRIMARY KEY,
-    contenu_temoignage VARCHAR(100) NOT NULL,
+    contenu_temoignage VARCHAR(255) NOT NULL,
     date_temoignage    DATETIME     NOT NULL,
     id_utilisateur     INT,
     CONSTRAINT fk_temoignage_utilisateur FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR (id_utilisateur) ON DELETE SET NULL
@@ -114,7 +115,7 @@ CREATE TABLE CONSEIL
 (
     id_conseil      INT AUTO_INCREMENT PRIMARY KEY,
     titre_conseil   VARCHAR(250) NOT NULL,
-    contenu_conseil VARCHAR(100) NOT NULL,
+    contenu_conseil VARCHAR(255) NOT NULL,
     date_conseil    DATETIME     NOT NULL,
     id_utilisateur  INT,
     CONSTRAINT fk_conseil_utilisateur FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR (id_utilisateur) ON DELETE SET NULL
@@ -196,7 +197,7 @@ CREATE TABLE EVENEMENT
 
 CREATE TABLE RESERVER
 (
-    id_objet              INT PRIMARY KEY,
+    id_objet              INT AUTO_INCREMENT PRIMARY KEY,
     date_reservation      DATE NOT NULL,
     id_utilisateur        INT  NOT NULL,
     id_statut_reservation INT  NOT NULL,
@@ -245,11 +246,10 @@ CREATE TABLE RECEVOIR
 
 CREATE TABLE CHOIXNOTIFICATION
 (
-    id_choixnotification INT,
+    id_choixnotification INT AUTO_INCREMENT PRIMARY KEY,
     id_utilisateur INT,
     categorie_choix VARCHAR(100),
     type_choix VARCHAR(100),
     id_choix INT,
-    PRIMARY KEY (id_choixnotification),
     CONSTRAINT fk_choixnotification_utilisateur FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR (id_utilisateur) ON DELETE CASCADE
 );

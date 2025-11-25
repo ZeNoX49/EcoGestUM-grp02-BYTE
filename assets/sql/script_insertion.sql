@@ -6,18 +6,25 @@ VALUES ('etudiant'),
        ('Enseignant'),
        ('Presidence de l''universite');
 
+-- Departements / Services
+INSERT INTO depser (nom_depser)
+VALUES ('Departement Informatique'),
+       ('Departement Mathematiques'),
+       ('Service Administratif'),
+       ('Departement Langues');
+
 -- Utilisateurs
-INSERT INTO utilisateur (nom_utilisateur, prenom_utilisateur, email_utilisateur, mdp_utilisateur, id_role)
-VALUES ('Dupont', 'Marie', 'marie.dupont.etu@univ-lemans.fr', 'mdp123', 1),
-       ('Martin', 'Pierre', 'pierre.martin.etu@univ-lemans.fr', 'mdp456', 1),
-       ('Durand', 'Sophie', 'sophie.durand.etu@univ-lemans.fr', 'mdp789', 1),
-       ('Bernard', 'Luc', 'luc.bernard@univ-lemans.fr', 'mdp321', 2),
-       ('Petit', 'Anne', 'anne.petit@univ-lemans.fr', 'mdp654', 2),
-       ('Moreau', 'Jean', 'jean.moreau@univ-lemans.fr', 'mdp987', 3),
-       ('Leroy', 'Claire', 'claire.leroy.etu@univ-lemans.fr', 'mdp147', 1),
-       ('Simon', 'Paul', 'paul.simon.etu@univ-lemans.fr', 'mdp258', 1),
-       ('Laurent', 'Emma', 'emma.laurent@univ-lemans.fr', 'mdp369', 2),
-       ('Lefebvre', 'Thomas', 'thomas.lefebvre.etu@univ-lemans.fr', 'mdp741', 1);
+INSERT INTO utilisateur (nom_utilisateur, prenom_utilisateur, email_utilisateur, mdp_utilisateur, id_role, id_depser)
+VALUES ('Dupont', 'Marie', 'marie.dupont.etu@univ-lemans.fr', 'mdp123', 1, 1),
+       ('Martin', 'Pierre', 'pierre.martin.etu@univ-lemans.fr', 'mdp456', 1, 2),
+       ('Durand', 'Sophie', 'sophie.durand.etu@univ-lemans.fr', 'mdp789', 1, 3),
+       ('Bernard', 'Luc', 'luc.bernard@univ-lemans.fr', 'mdp321', 2, 1),
+       ('Petit', 'Anne', 'anne.petit@univ-lemans.fr', 'mdp654', 2, 2),
+       ('Moreau', 'Jean', 'jean.moreau@univ-lemans.fr', 'mdp987', 3, 3),
+       ('Leroy', 'Claire', 'claire.leroy.etu@univ-lemans.fr', 'mdp147', 1, 1),
+       ('Simon', 'Paul', 'paul.simon.etu@univ-lemans.fr', 'mdp258', 1, 2),
+       ('Laurent', 'Emma', 'emma.laurent@univ-lemans.fr', 'mdp369', 2, 4),
+       ('Lefebvre', 'Thomas', 'thomas.lefebvre.etu@univ-lemans.fr', 'mdp741', 1, 3);
 
 -- Categories
 INSERT INTO categorie (nom_categorie, description_categorie, image_categorie)
@@ -29,13 +36,6 @@ VALUES ('Materiel informatique', 'Materiel informatique et electronique', 'fa-so
        ('Petit electromenager', 'petit electromenager', 'fa-solid fa-plug'),
        ('Materiel multimédia', 'materiel multimédia', 'fa-solid fa-tv'),
        ('Vetements', 'vetements', 'fa-solid fa-shirt');
-
--- Departements / Services
-INSERT INTO depser (nom_depser, id_utilisateur)
-VALUES ('Departement Informatique', 4),
-       ('Departement Mathematiques', 5),
-       ('Service Administratif', 6),
-       ('Departement Langues', 9);
 
 -- etats
 INSERT INTO etat (nom_etat)
@@ -95,7 +95,8 @@ VALUES ('Nouvelle plateforme', 'Lancement de la plateforme anti-gaspillage', '20
 INSERT INTO temoignage (contenu_temoignage, date_temoignage, id_utilisateur)
 VALUES ('Tres satisfait de cette initiative, j''ai pu trouver les livres dont j''avais besoin', '2025-02-10 11:00:00', 1),
        ('Super concept ! J''ai donne mon ancien ordinateur qui peut servir a d''autres', '2025-02-15 16:30:00', 2),
-       ('Plateforme facile a utiliser, je recommande', '2025-02-20 10:15:00', 3);
+       ('Plateforme facile a utiliser, je recommande', '2025-02-20 10:15:00', 3),
+       ('Grâce à ÉcoGestUM, j''ai pu équiper mon laboratoire avec du matériel informatique parfaitement fonctionnel. Plutôt que d''acheter du neuf, nous avons récupéré 10 ordinateurs du Service Informatique. Une économie de 8 000€ et un geste concret pour l''environnement !', '2025-01-27 16:30:29', 4);
 
 -- Conseils
 INSERT INTO conseil (titre_conseil, contenu_conseil, date_conseil, id_utilisateur)

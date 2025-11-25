@@ -1,18 +1,19 @@
 <?php
 require_once "bddModel.php";
 
-function insertUser($name, $fname, $mail, $password, $id_role) {
+function insertUser($name, $fname, $mail, $password, $id_role, $id_depser) {
     $bdd = get_bdd();
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    $stmt = $bdd->prepare('INSERT INTO UTILISATEUR (nom_utilisateur, prenom_utilisateur, email_utilisateur, mdp_utilisateur, id_role) 
-                          VALUES (:nom_utilisateur, :prenom_utilisateur, :email_utilisateur, :mdp_utilisateur, :id_role)');
+    $stmt = $bdd->prepare('INSERT INTO UTILISATEUR (nom_utilisateur, prenom_utilisateur, email_utilisateur, mdp_utilisateur, id_role, id_depser) 
+                          VALUES (:nom_utilisateur, :prenom_utilisateur, :email_utilisateur, :mdp_utilisateur, :id_role, :id_depser)');
     return $stmt->execute([
         ':nom_utilisateur' => $fname,
         ':prenom_utilisateur' => $name,
         ':email_utilisateur' => $mail,
         ':mdp_utilisateur' => $hashedPassword,
-        ':id_role' => $id_role
+        ':id_role' => $id_role,
+        ':id_depser' => $id_depser
     ]);
 }
 
