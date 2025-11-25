@@ -107,7 +107,8 @@ function getAllObject(){
         JOIN ETAT e ON e.id_etat = o.id_etat
         JOIN POINTCOLLECTE p ON p.id_point_collecte = o.id_point_collecte
          JOIN STATUTDISPONIBLE s ON s.id_statut_disponibilite = o.id_statut_disponibilite
-         JOIN UTILISATEUR u ON u.id_utilisateur = o.id_utilisateur");
+         JOIN UTILISATEUR u ON u.id_utilisateur = o.id_utilisateur
+         LEFT JOIN RESERVER r ON r.id_objet = o.id_objet");
     $req->execute();
     return $req->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -117,6 +118,18 @@ function countObjectStatus($objets, $id_status) {
     if (is_array($objets)) {
         foreach($objets as $objet) {
             if(isset($objet['id_statut_disponibilite']) && $objet['id_statut_disponibilite'] == $id_status) {
+                $count++;
+            }
+        }
+    }
+    return $count;
+}
+
+function countObjectReserve($objets, $id_status) {
+    $count = 0;
+    if (is_array($objets)) {
+        foreach($objets as $objet) {
+            if(isset($objet['id_statut_reservation']) && $objet['id_statut_reservation'] == $id_status) {
                 $count++;
             }
         }

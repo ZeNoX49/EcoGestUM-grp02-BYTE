@@ -12,6 +12,8 @@ class inventaireController
         $nbObjetsDisponibles = countObjectStatus($objets, 1);
         $nbObjetsReserve = countObjectStatus($objets, 2);
         $nbObjetsEnAttente = countObjectStatus($objets, 3);
+        $nbObjetsRefusee = countObjectReserve($objets, 5);
+        
         
         include $_ENV['BONUS_PATH']."app/view/inventaireView.php";
     }

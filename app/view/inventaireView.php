@@ -35,7 +35,7 @@
                 <span class="lbl">Réservé</span>
             </div>
             <div class="inv-stat-card border-red">
-                <span class="num">4</span>
+                <span class="num"><?php if(isset($nbObjetsRefusee))echo $nbObjetsRefusee?></span>
                 <span class="lbl">Supprimé</span>
             </div>
         </div>
@@ -57,7 +57,7 @@
 
             <div class="inv-filters-right">
                 <button class="btn-export"><i class="fa-solid fa-file-export"></i> Exporter</button>
-                <button class="btn-add" onclick="openEditModal()"><i class="fa-solid fa-plus"></i> Ajouter un objet</button>
+                <button class="btn-add" onclick="window.location.href = 'index.php?action=form/show'"><i class="fa-solid fa-plus"></i> Ajouter un objet</button>
             </div>
         </div>
 
@@ -146,6 +146,6 @@
         </form>
     </div>
 </div>
-<script src=<?php $_ENV['BONUS_PATH']."assets/js/popup-inventaire.js" ?>></script>
+<script src=<?= $_ENV['BONUS_PATH']."assets/js/popup-inventaire.js" ?>></script>
 </body>
 </html>

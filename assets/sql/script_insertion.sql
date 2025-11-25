@@ -1,4 +1,4 @@
-USE ECOGESTUM;
+USE sae;
 
 -- Roles
 INSERT INTO ROLE (nom_role)
@@ -15,12 +15,12 @@ VALUES ('Departement Informatique'),
 
 -- Utilisateurs
 INSERT INTO UTILISATEUR (nom_utilisateur, prenom_utilisateur, email_utilisateur, mdp_utilisateur, id_role, id_depser)
-VALUES ('Dupont', 'Marie', 'marie.dupont.etu@univ-lemans.fr', 'mdp123', 1, 1),
-       ('Martin', 'Pierre', 'pierre.martin.etu@univ-lemans.fr', 'mdp456', 1, 2),
+VALUES ('Dupont', 'Marie', 'marie.dupont.etu@univ-lemans.fr', '$2y$10$xP240TF99bEdbsIlMWy.jeyRqi7RtPFigmvSBXghqD2r0SeEjYuEK', 1, 1),
+       ('Martin', 'Pierre', 'pierre.martin.etu@univ-lemans.fr', '$2y$10$pDe0Vkt.VXHvLoh.z5.uhOWSt/g7SHkVfGVx.fbe0Vz5B7mPvuXtK', 1, 2),
        ('Durand', 'Sophie', 'sophie.durand.etu@univ-lemans.fr', 'mdp789', 1, 3),
        ('Bernard', 'Luc', 'luc.bernard@univ-lemans.fr', 'mdp321', 2, 1),
        ('Petit', 'Anne', 'anne.petit@univ-lemans.fr', 'mdp654', 2, 2),
-       ('Moreau', 'Jean', 'jean.moreau@univ-lemans.fr', 'mdp987', 3, 4),
+       ('Moreau', 'Jean', 'jean.moreau@univ-lemans.fr', '$2y$10$A.1rivSfxgL2XLXt2GDupuZmGjVA0.qAO7ardlE.3Zcif0WcdYdrO', 3, 4),
        ('Leroy', 'Claire', 'claire.leroy.etu@univ-lemans.fr', 'mdp147', 1, 1),
        ('Simon', 'Paul', 'paul.simon.etu@univ-lemans.fr', 'mdp258', 1, 2),
        ('Laurent', 'Emma', 'emma.laurent@univ-lemans.fr', 'mdp369', 2, 4),
@@ -94,7 +94,7 @@ VALUES ('Nouvelle plateforme', 'Lancement de la plateforme anti-gaspillage', '20
        ('Bilan positif', 'Merci pour votre participation', '2025-02-28 14:30:00', 6);
 
 -- Temoignages
-INSERT INTO temoignage (contenu_temoignage, date_temoignage, id_utilisateur)
+INSERT INTO TEMOIGNAGE (contenu_temoignage, date_temoignage, id_utilisateur)
 VALUES ('Tres satisfait de cette initiative, j''ai pu trouver les livres dont j''avais besoin', '2025-02-10 11:00:00', 1),
        ('Super concept ! J''ai donne mon ancien ordinateur qui peut servir a d''autres', '2025-02-15 16:30:00', 2),
        ('Plateforme facile a utiliser, je recommande', '2025-02-20 10:15:00', 5),
