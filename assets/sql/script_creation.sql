@@ -105,7 +105,7 @@ CREATE TABLE COMMUNIQUE
 CREATE TABLE TEMOIGNAGE
 (
     id_temoignage      INT AUTO_INCREMENT PRIMARY KEY,
-    contenu_temoignage VARCHAR(255) NOT NULL,
+    contenu_temoignage VARCHAR(500) NOT NULL,
     date_temoignage    DATETIME     NOT NULL,
     id_utilisateur     INT,
     CONSTRAINT fk_temoignage_utilisateur FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR (id_utilisateur) ON DELETE SET NULL
