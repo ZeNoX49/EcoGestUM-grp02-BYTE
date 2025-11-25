@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href=<?php echo $_ENV['BONUS_PATH']."assets/css/style-profil.css "?>>
+    <link rel="stylesheet" href="assets/css/style-profil.css">
     <title>Mon Profil</title>
 </head>
 <body>
@@ -78,7 +78,6 @@
                         </div>
                     </div>
                     <div class="col">
-<<<<<<< HEAD
                         <div class="profil-form-group" style="margin-bottom: 10px; ">
                             <label>Localisation</label>
                             <select class="profil-input" style="cursor: pointer;">
@@ -87,10 +86,6 @@
                                     <option><?php echo $obj_cat_p["nom_categorie"] ?></option>
                                 <?php endforeach ?>
                             </select>
-=======
-                        <div class="profil-input" style="margin-bottom: 10px;">
-                            <label>Localisation</label>
->>>>>>> 5e0f75cd017b3e39a06a4a2e632f527bc22a788e
                         </div>
                         <div class="tag-box">
                             <?php foreach($notif_obj_cat as $obj_cat) : ?>
