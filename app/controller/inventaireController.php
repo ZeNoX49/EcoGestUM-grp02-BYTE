@@ -1,5 +1,6 @@
 <?php
 require_once $_ENV['BONUS_PATH']."app/model/objetModel.php";
+
 class inventaireController
 {
     public function show()

@@ -1,5 +1,5 @@
 <?php
-require_once "bddModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/bddModel.php";
 
 function insertUser($name, $fname, $mail, $password, $id_role, $id_depser) {
     $bdd = get_bdd();

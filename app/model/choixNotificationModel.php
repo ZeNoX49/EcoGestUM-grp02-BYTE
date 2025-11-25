@@ -1,5 +1,5 @@
 <?php
-require_once "bddModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/bddModel.php";
 
 function insertChoixNotification($id_utilisateur, $categorie_choix, $type_choix, $id_choix) {
     $bdd = get_bdd();

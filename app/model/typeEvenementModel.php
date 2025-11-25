@@ -1,5 +1,5 @@
 <?php
-require_once "app/model/bddModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/bddModel.php";
 
 function getAllEventType() {
     $bdd = get_bdd();

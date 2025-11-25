@@ -5,11 +5,6 @@ class mesReservationsController
 {
     public function show()
     {
-        if (!isset($_SESSION['user_id'])) {
-            header('Location: index.php?action=connexion/show');
-            exit;
-        }
-
         $reservations = getReservationsByUser($_SESSION['user_id']);
         $stats = [
             'actives' => 0,

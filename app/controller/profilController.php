@@ -1,10 +1,10 @@
 <?php
 
-require_once "app/model/utilisateurModel.php";
-require_once "app/model/categorieModel.php";
-require_once "app/model/typeEvenementModel.php";
-require_once "app/model/pointCollecteModel.php";
-require_once "app/model/choixNotificationModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/utilisateurModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/categorieModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/typeEvenementModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/pointCollecteModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/choixNotificationModel.php";
 
 class profilController
 {

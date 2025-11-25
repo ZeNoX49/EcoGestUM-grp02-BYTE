@@ -1,6 +1,6 @@
 <?php
 
-require_once "bddModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/bddModel.php";
 
 function insert_object($image, $name, $description, $date, $id_collect_point, $id_trade_type, $id_user, $id_etat, $id_category, $quantite) {
     $bdd = get_bdd();

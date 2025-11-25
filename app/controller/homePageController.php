@@ -1,7 +1,7 @@
 <?php
-require_once "app/model/depserModel.php";
-require_once "app/model/temoignageModel.php";
-require_once "app/model/utilisateurModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/depserModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/temoignageModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/utilisateurModel.php";
 
 class homePageController
 {

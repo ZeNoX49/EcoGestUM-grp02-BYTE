@@ -1,6 +1,6 @@
 <?php
 
-require_once "app/model/mapModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/mapModel.php";
 
 class MapController
 {

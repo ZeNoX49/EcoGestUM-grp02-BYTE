@@ -1,5 +1,5 @@
 <?php
-require_once "app/model/roleModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/roleModel.php";
 
 class signInController {
     public function show() {
