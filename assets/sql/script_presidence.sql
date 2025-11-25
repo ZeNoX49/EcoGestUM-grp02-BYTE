@@ -33,6 +33,22 @@ FROM reserver r
 JOIN statutreservation sr ON r.id_statut_reservation = sr.id_statut_reservation
 GROUP BY sr.nom_statut_reservation;
 
+CREATE VIEW reservations AS
+SELECT r.*,
+       o.nom_objet, o.description_objet, o.image_objet,
+       c.nom_categorie,
+       s.nom_statut_reservation,
+       pc.nom_point_collecte, pc.adresse_point_collecte,
+       u.email_utilisateur as email_proprietaire,
+       u.nom_utilisateur as nom_proprietaire,
+       d.nom_depser as nom_departement
+FROM RESERVER r
+         JOIN OBJET o ON r.id_objet = o.id_objet
+         JOIN CATEGORIE c ON o.id_categorie = c.id_categorie
+         JOIN STATUTRESERVATION s ON r.id_statut_reservation = s.id_statut_reservation
+         JOIN POINTCOLLECTE pc ON o.id_point_collecte = pc.id_point_collecte
+         JOIN UTILISATEUR u ON o.id_utilisateur = u.id_utilisateur
+         JOIN sae.DEPSER d ON d.id_utilisateur = u.id_utilisateur;
 -- ===========================================================
 -- PROCEDURES STOCKeES
 -- ===========================================================

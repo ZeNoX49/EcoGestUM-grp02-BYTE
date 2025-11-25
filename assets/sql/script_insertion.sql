@@ -57,7 +57,9 @@ INSERT INTO STATUTRESERVATION (nom_statut_reservation)
 VALUES ('En attente'),
        ('Confirmee'),
        ('Annulee'),
-       ('Completee');
+       ('Completee'),
+       ('Refusee'),
+       ('Approuvee');
 
 -- Types d'echange
 INSERT INTO TYPEECHANGE (nom_type_echange)
