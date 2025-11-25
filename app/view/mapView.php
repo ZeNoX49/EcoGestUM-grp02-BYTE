@@ -1,68 +1,3 @@
-<?php
-// --- 1. CONFIGURATION & CONNEXION BASE DE DONNÉES ---
-// Remplace ces infos par les tiennes (root, pas de mot de passe souvent sur WAMP/XAMPP)
-$host = 'localhost';
-$dbname = 'ecogestum'; // <--- METS LE NOM DE TA BDD ICI
-$user = 'root';
-$pass = '';
-
-try {
-    $bdd = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
-    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (Exception $e) {
-    // Si pas de BDD, on affiche l'erreur mais on continue pour afficher la page quand même
-    $erreur_bdd = "Erreur de connexion : " . $e->getMessage();
-}
-
-// --- 2. SYSTÈME DE TRADUCTION (ADRESSE -> GPS) ---
-// La carte ne comprend pas "Bâtiment E", elle veut "48.016, 0.166".
-// Cette liste sert à convertir tes lieux BDD en points sur la carte.
-function getCoordonnees($lieu) {
-    // Tu peux ajouter autant de lieux que tu veux ici
-    $lieux = [
-            'IUT' => [48.0163, 0.1665],
-            'IUT Informatique' => [48.0163, 0.1665],
-            'Bâtiment E' => [48.0180, 0.1630],
-            'Bibliothèque' => [48.0175, 0.1610],
-            'BU' => [48.0175, 0.1610],
-            'Gymnase' => [48.0155, 0.1645],
-            'Restaurant U' => [48.0140, 0.1600],
-        // Ajoute d'autres variantes si besoin
-    ];
-
-    // On cherche si le lieu de la BDD existe dans notre liste (insensible à la casse)
-    foreach ($lieux as $nom => $coords) {
-        if (stripos($lieu, $nom) !== false) {
-            return $coords;
-        }
-    }
-    return null; // Pas de coordonnées trouvées
-}
-
-// --- 3. RÉCUPÉRATION DES OBJETS ---
-$objets_a_afficher = [];
-
-if (isset($bdd)) {
-    // On sélectionne les objets disponibles qui ont une localisation
-    if (isset($_GET['id'])) {
-        $sql = "SELECT * FROM objets_disponibles WHERE id_objet = ?";
-        $req = $bdd->prepare($sql);
-        $req->execute([$_GET['id']]);
-    }
-    else
-    {
-        $req = $bdd->query("SELECT * FROM objets_disponibles");
-    }
-    $objets_a_afficher = $req->fetchAll(PDO::FETCH_ASSOC);
-} else {
-    // DONNÉES DE TEST (Si la BDD n'est pas connectée, pour que tu voies le résultat)
-    $objets_a_afficher = [
-            ['id_objet'=>1, 'nom_objet'=>'Chaise Test', 'adresse_point_collecte'=>'Bâtiment E', 'description'=>'Test sans BDD', 'photo'=>'assets/images/logo.svg'],
-            ['id_objet'=>2, 'nom_objet'=>'PC Test', 'adresse_point_collecte'=>'IUT', 'description'=>'Test sans BDD', 'photo'=>'assets/images/logo.svg']
-    ];
-}
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -191,30 +126,45 @@ if (isset($bdd)) {
         // On traduit l'adresse textuelle en GPS
         $coords = [$objet['latitude'], $objet['longitude']];
 
-        // Si on a trouvé des coordonnées pour cet objet
+        $img = !empty($objet['image_objet']) ? 'assets/image/uploads/'.$objet['image_objet'] : 'assets/image/logo.svg';
+
+        if(strpos($objet['image_objet'], 'http') === 0) { $img = $objet['image_objet']; }
+
         if ($coords):
-        // On prépare l'image (ou image par défaut si vide)
-        $img = !empty($objet['photo']) ? $objet['photo'] : 'assets/images/logo.svg';
         ?>
 
         var marker = L.marker([<?php echo $coords[0]; ?>, <?php echo $coords[1]; ?>]).addTo(map);
 
         // Contenu HTML du popup
         var content = `
-                        <div class="popup-content">
-                            <img src="<?php echo htmlspecialchars($img); ?>" alt="Objet">
-                            <h3><?php echo addslashes($objet['nom_objet']); ?></h3>
-                            <p>📍 <?php echo addslashes($objet['adresse_point_collecte']); ?></p>
-                            <a href="detaille-objet.php?id=<?php echo $objet['id_objet']; ?>" class="btn-detail">Voir l'objet</a>
-                        </div>
-                    `;
+                <div class="popup-content">
+                    <img src="<?php echo htmlspecialchars($img); ?>" alt="Objet">
+                    <h3><?php echo addslashes($objet['nom_objet']); ?></h3>
+                    <p>📍 <?php echo addslashes($objet['nom_point_collecte']); ?></p>
+                    <a href="index.php?action=detaille/show&id=<?php echo $objet['id_objet']; ?>" class="btn-detail">Voir l'objet</a>
+                </div>
+            `;
 
         marker.bindPopup(content);
+        marker.addTo(markersGroup);
 
         <?php endif; ?>
         <?php endforeach; ?>
+        // ça marche pas pour linstant
+        if (markersGroup.getLayers().length > 0) {
+            map.addLayer(markersGroup);
 
-        // Petit fix pour être sûr que la carte s'affiche bien
+            // Si un seul marqueur on centre et on zoom fort
+            if (markersGroup.getLayers().length === 1) {
+                map.fitBounds(markersGroup.getBounds(), {maxZoom: 18});
+                markersGroup.getLayers()[0].openPopup();
+            } else {
+                // Sinon ajuster pour tout voir
+                map.fitBounds(markersGroup.getBounds(), {padding: [50, 50]});
+            }
+        }
+
+        //pour être sûr que la carte s'affiche bien
         setTimeout(function(){ map.invalidateSize(); }, 500);
     });
 </script>
