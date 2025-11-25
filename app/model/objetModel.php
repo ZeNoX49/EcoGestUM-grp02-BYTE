@@ -110,6 +110,12 @@ function countObjectStatus($objets,$id_status) {
     return $count;
 }
 
+function deleteObject($id_objet){
+    $bdd = get_bdd();
+    $stmt = $bdd->prepare("DELETE FROM OBJET WHERE id_objet = :id");
+    return $stmt->execute([':id' => $id_objet]);
+}
+
 // function getNbObjPropUser($id_user) {
 //     $bdd = get_bdd();
 //     $query = $bdd->query("SELECT COUNT(*) FROM mes_objets_donnes $id_user");
