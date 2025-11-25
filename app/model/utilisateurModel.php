@@ -31,19 +31,24 @@ function getUser($id_user) {
     return $user;
 }
 
-function getUserById($id) {
-    $bdd = get_bdd();
-    $stmt = $bdd->prepare("SELECT * FROM UTILISATEUR WHERE id_utilisateur = ?");
-    $stmt->execute([$id]);
-    return $stmt->fetch(PDO::FETCH_ASSOC);
-}
-
 // function isUserExistingId($id_user){
 //     $bdd = get_bdd();
 //     $stmt = $bdd->prepare("SELECT COUNT(*) FROM utilisateur WHERE id_utilisateur = ".$id_user);
 //     $stmt->execute();
 //     return $stmt->fetchColumn() > 0;
 // }
+
+function updateUser($id, $name, $fname, $mail) {
+    $bdd = get_bdd();
+    $stmt = $bdd->prepare(
+        "UPDATE UTILISATEUR SET 
+        prenom_utilisateur = ? AND
+        nom_utilisateur = ? AND
+        email_utilisateur = ?
+        WHERE id_utilisateur = ?"
+    );
+    return $stmt->execute([$name, $fname, $mail, $id]);
+}
 
 function updateUserPassword($id, $password) {
     $bdd = get_bdd();

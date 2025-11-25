@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style-profil.css">
+    <link rel="stylesheet" href=<?php echo $_ENV["BONUS_PATH"]."assets/css/style-profil.css" ?>>
     <title>Mon Profil</title>
 </head>
 <body>
-<?php include 'assets/html/header.html'; ?>
+<?php include  $_ENV["BONUS_PATH"].'assets/html/header.html'; ?>
 
 <div class="main-profil">
 
@@ -193,7 +193,7 @@
         </div>
     </div>
 </div>
-<?php include 'assets/html/footer.html'; ?>
-<script src="assets/js/page-profil.js"></script>
+<?php include  $_ENV["BONUS_PATH"].'assets/html/footer.html'; ?>
+<script src=<?php echo  $_ENV["BONUS_PATH"]."assets/js/page-profil.js" ?>></script>
 </body>
 </html>
