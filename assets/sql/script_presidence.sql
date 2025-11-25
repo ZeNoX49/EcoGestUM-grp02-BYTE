@@ -7,7 +7,7 @@ USE ECOGESTUM;
 /* ------ PRESIDENCE ------ */
 
 -- Requete 7 : Statistiques par categorie
-CREATE OR REPLACE VIEW statistiques_par_categorie AS
+CREATE VIEW statistiques_par_categorie AS
 SELECT
     c.nom_categorie,
     COUNT(o.id_objet) AS nombre_objets
@@ -16,7 +16,7 @@ LEFT JOIN objet o ON c.id_categorie = o.id_categorie
 GROUP BY c.nom_categorie;
 
 -- Requete 8 : Nombre d'utilisateurs par rôle
-CREATE OR REPLACE VIEW utilisateurs_par_role AS
+CREATE VIEW utilisateurs_par_role AS
 SELECT
     r.nom_role,
     COUNT(u.id_utilisateur) AS nombre_utilisateurs
@@ -25,7 +25,7 @@ LEFT JOIN utilisateur u ON r.id_role = u.id_role
 GROUP BY r.nom_role;
 
 -- Requete 9 : Vue globale des reservations
-CREATE OR REPLACE VIEW vue_reservations AS
+CREATE VIEW vue_reservations AS
 SELECT
     sr.nom_statut_reservation,
     COUNT(*) AS nombre
@@ -33,12 +33,28 @@ FROM reserver r
 JOIN statutreservation sr ON r.id_statut_reservation = sr.id_statut_reservation
 GROUP BY sr.nom_statut_reservation;
 
+CREATE VIEW reservations AS
+SELECT r.*,
+       o.nom_objet, o.description_objet, o.image_objet,
+       c.nom_categorie,
+       s.nom_statut_reservation,
+       pc.nom_point_collecte, pc.adresse_point_collecte,
+       u.email_utilisateur as email_proprietaire,
+       u.nom_utilisateur as nom_proprietaire,
+       d.nom_depser as nom_departement
+FROM RESERVER r
+         JOIN OBJET o ON r.id_objet = o.id_objet
+         JOIN CATEGORIE c ON o.id_categorie = c.id_categorie
+         JOIN STATUTRESERVATION s ON r.id_statut_reservation = s.id_statut_reservation
+         JOIN POINTCOLLECTE pc ON o.id_point_collecte = pc.id_point_collecte
+         JOIN UTILISATEUR u ON o.id_utilisateur = u.id_utilisateur
+         JOIN DEPSER d ON u.id_depser = d.id_depser;
 -- ===========================================================
 -- PROCEDURES STOCKeES
 -- ===========================================================
 
 -- Procedure 7 : Rapport mensuel
-DROP PROCEDURE IF EXISTS presidence_rapport_mois;
+-- DROP PROCEDURE IF EXISTS presidence_rapport_mois;
 CREATE PROCEDURE presidence_rapport_mois(
     IN p_mois INT,
     IN p_annee INT
@@ -54,7 +70,7 @@ WHERE MONTH(date_ajout_objet) = p_mois
 END;
 
 -- Procedure 8 : Statistiques par departement
-DROP PROCEDURE IF EXISTS presidence_stats_departement;
+-- DROP PROCEDURE IF EXISTS presidence_stats_departement;
 CREATE PROCEDURE presidence_stats_departement(
     IN p_id_departement INT
 )
@@ -73,7 +89,7 @@ GROUP BY d.nom_depser;
 END;
 
 -- Procedure 9 : Liste complete des objets
-DROP PROCEDURE IF EXISTS presidence_liste_complete_objets;
+-- DROP PROCEDURE IF EXISTS presidence_liste_complete_objets;
 CREATE PROCEDURE presidence_liste_complete_objets()
 BEGIN
 SELECT

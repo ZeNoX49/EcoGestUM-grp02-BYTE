@@ -7,10 +7,15 @@ class objetProposeController
     public function show()
     {
         if(isset($_SESSION['user_id'])){
+<<<<<<< HEAD
             $objets = getNbObjectPropUtilisateur($_SESSION['user_id']);
+=======
+            $objets = getObjectUtilisateur($_SESSION['user_id']);
+>>>>>>> 5e0f75cd017b3e39a06a4a2e632f527bc22a788e
             $nbAttente = countObjectStatus($objets, 3);
             $nbDisponible = countObjectStatus($objets, 1);
             $nbRserve = countObjectStatus($objets, 2);
+            $correspStyleStatutDisponible = ['En attente' =>'status-pending', 'Disponible' => 'status-accepted', 'Indisponible'=>'status-refused', 'Reserve' => 'status-collected'];
 
             // Sécurité : si la fonction renvoie false, on force un tableau vide
             if (!$objets) {

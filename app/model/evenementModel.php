@@ -1,5 +1,4 @@
 <?php
-
 require_once "bddModel.php";
 
 function getAllEvents() {

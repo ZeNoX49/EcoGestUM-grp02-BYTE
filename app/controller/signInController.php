@@ -1,4 +1,6 @@
 <?php
+require_once "app/model/roleModel.php";
+
 class signInController {
     public function show() {
         include $_ENV['BONUS_PATH']."app/view/signInView.php";
@@ -23,8 +25,12 @@ class signInController {
             return;
         }
         
+        // $id_role = getAllRoles()[$_POST['role']]["id_role"];
+        //TODO: mettre un champ departement/service dans la page d'inscription
+        // $id_depser = 
+
         // on créer le compte de l'utilisateur
-        if(!insertUser($_POST['prenom'], $_POST['nom'], $mail, $_POST['mdp'], 1)) {
+        if(!insertUser($_POST['prenom'], $_POST['nom'], $mail, $_POST['mdp'], $id_role, $id_depser)) {
             //TODO: mettre une erreur + garder les même champs
             $this->show();
             return;
