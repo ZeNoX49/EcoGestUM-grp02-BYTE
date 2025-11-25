@@ -1,5 +1,4 @@
-USE
-ECOGESTUM;
+USE ECOGESTUM;
 
 -- Roles
 INSERT INTO role (nom_role)
@@ -94,15 +93,14 @@ VALUES ('Nouvelle plateforme', 'Lancement de la plateforme anti-gaspillage', '20
 
 -- Temoignages
 INSERT INTO temoignage (contenu_temoignage, date_temoignage, id_utilisateur)
-VALUES ('Tres satisfait de cette initiative, j\'ai pu trouver les livres dont j\'avais besoin', '2025-02-10 11:00:00',
-        1),
-       ('Super concept ! J\'ai donne mon ancien ordinateur qui peut servir a d\'autres', '2025-02-15 16:30:00', 2),
+VALUES ('Tres satisfait de cette initiative, j''ai pu trouver les livres dont j''avais besoin', '2025-02-10 11:00:00', 1),
+       ('Super concept ! J''ai donne mon ancien ordinateur qui peut servir a d''autres', '2025-02-15 16:30:00', 2),
        ('Plateforme facile a utiliser, je recommande', '2025-02-20 10:15:00', 3);
 
 -- Conseils
 INSERT INTO conseil (titre_conseil, contenu_conseil, date_conseil, id_utilisateur)
 VALUES ('Comment bien donner', 'Assurez-vous que vos objets soient propres et en bon etat', '2025-01-20 10:00:00', 4),
-       ('Reduire le gaspillage', 'Pensez a reparer avant de jeter', '2025-02-05 14:00:00', 5),
+       ('Reduire le gaspillage', 'Pensez a reparer et/ou donner avant de jeter', '2025-02-05 14:00:00', 5),
        ('Organiser son don', 'Apportez vos objets aux points de collecte', '2025-02-18 09:00:00', 9);
 
 -- Notifications
@@ -122,8 +120,7 @@ VALUES ('2025-01-31', 'Objets donnes', '125', 6),
 -- Objets
 INSERT INTO objet (image_objet, nom_objet, description_objet, date_ajout_objet, id_point_collecte, id_type_echange,
                    id_utilisateur, id_statut_disponibilite, id_etat, id_categorie)
-VALUES ('livre1.jpg', 'Manuel de Mathematiques L1', 'Analyse et algebre lineaire', '2025-02-10 10:00:00', 1, 1, 1, 1, 2,
-        1),
+VALUES ('livre1.jpg', 'Manuel de Mathematiques L1', 'Analyse et algebre lineaire', '2025-02-10 10:00:00', 1, 1, 1, 1, 2, 1),
        ('ordi1.jpg', 'Ordinateur portable HP', 'Core i5, 8Go RAM, bon etat', '2025-02-12 14:30:00', 2, 2, 2, 1, 3, 2),
        ('bureau1.jpg', 'Bureau etudiant', 'Bureau avec tiroirs', '2025-02-14 09:00:00', 4, 1, 3, 1, 2, 3),
        ('livre2.jpg', 'Dictionnaire Anglais-Français', 'edition recente', '2025-02-15 11:00:00', 2, 1, 7, 2, 1, 1),
@@ -135,12 +132,9 @@ VALUES ('livre1.jpg', 'Manuel de Mathematiques L1', 'Analyse et algebre lineaire
 -- evenements
 INSERT INTO evenement (titre_evenement, type_evenement, description_evenement, date_debut_evenement, date_fin_evenement,
                        id_type_evenement, id_utilisateur)
-VALUES ('Grande Collecte de Printemps', 'Collecte generale', 'Collecte de tous types d''''objets', '2025-03-15',
-        '2025-03-17', 1, 4),
-       ('Atelier Reparation electronique', 'Atelier pratique', 'Apprenez a reparer vos appareils', '2025-03-20',
-        '2025-03-20', 2, 5),
-       ('Brocante Solidaire', 'Vente et echange', 'Donnez une seconde vie aux objets', '2025-04-05', '2025-04-06', 3,
-        6),
+VALUES ('Grande Collecte de Printemps', 'Collecte generale', 'Collecte de tous types d''''objets', '2025-03-15', '2025-03-17', 1, 4),
+       ('Atelier Reparation electronique', 'Atelier pratique', 'Apprenez a reparer vos appareils', '2025-03-20', '2025-03-20', 2, 5),
+       ('Brocante Solidaire', 'Vente et echange', 'Donnez une seconde vie aux objets', '2025-04-05', '2025-04-06', 3, 6),
        ('Sensibilisation au Gaspillage', 'Conference', 'Impact environnemental', '2025-04-10', '2025-04-10', 4, 9);
 
 -- Reservations

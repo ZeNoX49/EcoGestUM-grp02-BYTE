@@ -1,6 +1,5 @@
 <?php
-
-require "bddModel.php";
+require_once "bddModel.php";
 
 function insertUser($name, $fname, $mail, $password, $id_role) {
     $bdd = get_bdd();
@@ -26,7 +25,7 @@ function getUsers() {
 
 function getUser($id_user) {
     $bdd = get_bdd();
-    $query = $bdd->query("SELECT * FROM UTILISATEUR WHERE id_utilisateur = '$id_user'");
+    $query = $bdd->query("SELECT * FROM UTILISATEUR WHERE id_utilisateur = $id_user");
     $user = $query->fetchAll(PDO::FETCH_ASSOC);
     return $user;
 }
@@ -60,4 +59,11 @@ function getUserByMail($mail){
     $stmt = $bdd->prepare("SELECT * FROM UTILISATEUR WHERE email_utilisateur = ?");
     $stmt->execute([$mail]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+function getEventUsers() {
+    $bdd = get_bdd();
+    $query = $bdd->query('SELECT * FROM UTILISATEUR WHERE id_role IN (2, 3)');
+    $users = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $users;
 }

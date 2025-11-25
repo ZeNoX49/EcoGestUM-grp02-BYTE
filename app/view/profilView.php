@@ -41,19 +41,15 @@
                 <form>
                     <div class="profil-form-group">
                         <label>Nom</label>
-                        <input type="text" class="profil-input" value="Dupont">
+                        <input type="text" class="profil-input" value="<?php echo $user[0]["nom_utilisateur"] ?>">
                     </div>
                     <div class="profil-form-group">
                         <label>Prénom</label>
-                        <input type="text" class="profil-input" value="Jean">
+                        <input type="text" class="profil-input" value="<?php echo $user[0]["prenom_utilisateur"] ?>">
                     </div>
                     <div class="profil-form-group">
                         <label>Email</label>
-                        <input type="email" class="profil-input" value="jean.dupont@univ-lemans.fr">
-                    </div>
-                    <div class="profil-form-group">
-                        <label>Identifiant</label>
-                        <input type="text" class="profil-input" value="jdupont24" readonly style="background-color: #f9f9f9; color: #888;">
+                        <input type="email" class="profil-input" value="<?php echo $user[0]["email_utilisateur"] ?>">
                     </div>
                 </form>
             </div>
@@ -70,20 +66,20 @@
                             <label>Catégorie</label>
                             <select class="profil-input" style="cursor: pointer;">
                                 <option>Sélectionnez</option>
-                                <?php foreach(getAllCategories() as $categorie) : ?>
-                                    <option><?php echo $categorie["nom_categorie"] ?></option>
-                                <?php  endforeach ?>
+                                <?php foreach($objet_categories_possible as $obj_cat_p) : ?>
+                                    <option><?php echo $obj_cat_p["nom_categorie"] ?></option>
+                                <?php endforeach ?>
                             </select>
                         </div>
                         <div class="tag-box">
-                            <div class="tag-item"><span class="tag-close">×</span> Informatique</div>
-                            <div class="tag-item"><span class="tag-close">×</span> Pédagogique</div>
+                            <?php foreach($notif_obj_cat as $obj_cat) : ?>
+                                <option><span class="tag-close">×</span><?php echo " ".$objet_categories[$obj_cat["id_choix"]]["nom_categorie"] ?></option>
+                            <?php endforeach ?>
                         </div>
                     </div>
                     <div class="col">
-                        <div class="profil-form-group" style="margin-bottom: 10px;">
+                        <div class="profil-input" style="margin-bottom: 10px;">
                             <label>Localisation</label>
-                            <input type="text" class="profil-input" placeholder="Rechercher...">
                         </div>
                         <div class="tag-box">
                             <div class="tag-item"><span class="tag-close">×</span> Laval</div>
@@ -100,6 +96,9 @@
                             <label>Catégorie</label>
                             <select class="profil-input">
                                 <option>Sélectionnez</option>
+                                <?php foreach(getAllEventType() as $eventType) : ?>
+                                    <option><?php echo $eventType["nom_type_evenement"] ?></option>
+                                <?php endforeach ?>
                             </select>
                         </div>
                         <div class="tag-box">

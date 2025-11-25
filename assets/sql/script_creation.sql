@@ -1,9 +1,6 @@
-DROP
-DATABASE IF EXISTS ECOGESTUM;
-CREATE
-DATABASE ECOGESTUM;
-USE
-ECOGESTUM;
+DROP DATABASE IF EXISTS ECOGESTUM;
+CREATE DATABASE ECOGESTUM;
+USE ECOGESTUM;
 
 -- Suppression des tables (ordre securise)
 DROP TABLE IF EXISTS RECEVOIR;
@@ -244,4 +241,15 @@ CREATE TABLE RECEVOIR
     PRIMARY KEY (id_utilisateur, id_notification),
     CONSTRAINT fk_recevoir_utilisateur FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR (id_utilisateur) ON DELETE CASCADE,
     CONSTRAINT fk_recevoir_notification FOREIGN KEY (id_notification) REFERENCES NOTIFICATION (id_notification)
+);
+
+CREATE TABLE CHOIXNOTIFICATION
+(
+    id_choixnotification INT,
+    id_utilisateur INT,
+    categorie_choix VARCHAR(100),
+    type_choix VARCHAR(100),
+    id_choix INT,
+    PRIMARY KEY (id_choixnotification),
+    CONSTRAINT fk_choixnotification_utilisateur FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR (id_utilisateur) ON DELETE CASCADE
 );
