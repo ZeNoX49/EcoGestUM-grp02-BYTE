@@ -1,4 +1,4 @@
-<?php if(!isset($objets) || !isset($nbAttente) || !isset($nbDisponible) || !isset($nbRserve)) die('error')?>
+<?php if(!isset($objets) || !isset($nbAttente) || !isset($nbDisponible) || !isset($nbRserve) || !isset($correspStyleStatutDisponible)) die('error')?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -59,7 +59,7 @@
             <div class="my-objects-grid">
                 <?php foreach ($objets as $objet):?>
                     <div class="my-object-card">
-                    <div class="status-badge status-pending"><?=$objet['nom_statut_disponibilite']?></div>
+                    <div class="status-badge <?=$correspStyleStatutDisponible[$objet['nom_statut_disponible']]?>"><?=$objet['nom_statut_disponible']?></div>
                     <div class="card-img-top" style="background-image: url('http://googleusercontent.com/image_generation_content/0');"></div>
                     <div class="card-body">
                         <h3>

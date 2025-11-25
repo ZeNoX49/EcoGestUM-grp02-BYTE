@@ -11,6 +11,7 @@ class objetProposeController
             $nbAttente = countObjectStatus($objets, 3);
             $nbDisponible = countObjectStatus($objets, 1);
             $nbRserve = countObjectStatus($objets, 2);
+            $correspStyleStatutDisponible = ['En attente' =>'status-pending', 'Approuvee' => 'status-accepted', 'Refusee'=>'status-refused', 'Completee' => 'status-collected'];
 
             // Sécurité : si la fonction renvoie false, on force un tableau vide
             if (!$objets) {

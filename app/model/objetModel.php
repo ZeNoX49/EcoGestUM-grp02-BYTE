@@ -5,7 +5,7 @@ require_once "bddModel.php";
 function insert_object($image, $name, $description, $date, $id_collect_point, $id_trade_type, $id_user, $id_etat, $id_category, $quantite) {
     $bdd = get_bdd();
     $stmt = $bdd->prepare("INSERT INTO OBJET (image_objet, nom_objet, description_objet, date_ajout_objet, id_point_collecte, id_type_echange, id_utilisateur, id_statut_disponibilite, id_etat, id_categorie, quantite) 
-                          VALUES (:image_objet, :nom_objet, :description_objet, :date_ajout_objet, :id_point_collecte, :id_type_echange, :id_utilisateur, 1, :id_etat, :id_categorie, :quantite)");
+                          VALUES (:image_objet, :nom_objet, :description_objet, :date_ajout_objet, :id_point_collecte, :id_type_echange, :id_utilisateur, 3, :id_etat, :id_categorie, :quantite)");
 
     return $stmt->execute([
         ':image_objet' => $image,
@@ -94,8 +94,7 @@ function getNbObjectPropUtilisateur($id_utilisateur) {
         JOIN ETAT e ON e.id_etat = o.id_etat
         JOIN POINTCOLLECTE p ON p.id_point_collecte = o.id_point_collecte
          JOIN STATUTDISPONIBLE s ON s.id_statut_disponibilite = o.id_statut_disponibilite
-
-         WHERE o.id_utilisateur = ? AND o.id_statut_disponibilite != 4";
+         WHERE o.id_utilisateur = ?";
     $stmt = $bdd->prepare($sql);
     $stmt->execute([$id_utilisateur]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);

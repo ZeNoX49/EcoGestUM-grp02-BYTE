@@ -47,10 +47,10 @@ VALUES ('Neuf'),
 
 -- Statuts disponibilite
 INSERT INTO STATUTDISPONIBLE (nom_statut_disponibilite)
-VALUES ('Disponible'),
-       ('Reserve'),
-       ('Prete'),
-       ('Indisponible');
+VALUES       ('En attente'),
+             ('Disponible'),
+             ('Reserve'),
+             ('Indisponible');
 
 -- Statuts reservation
 INSERT INTO STATUTRESERVATION (nom_statut_reservation)
