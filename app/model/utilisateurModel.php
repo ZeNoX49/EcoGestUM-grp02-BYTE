@@ -31,12 +31,26 @@ function getUser($id_user) {
     return $user;
 }
 
+function getUserById($id) {
+    $bdd = get_bdd();
+    $stmt = $bdd->prepare("SELECT * FROM UTILISATEUR WHERE id_utilisateur = ?");
+    $stmt->execute([$id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
 // function isUserExistingId($id_user){
 //     $bdd = get_bdd();
 //     $stmt = $bdd->prepare("SELECT COUNT(*) FROM utilisateur WHERE id_utilisateur = ".$id_user);
 //     $stmt->execute();
 //     return $stmt->fetchColumn() > 0;
 // }
+
+function updateUserPassword($id, $password) {
+    $bdd = get_bdd();
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    $stmt = $bdd->prepare("UPDATE UTILISATEUR SET mdp_utilisateur = ? WHERE id_utilisateur = ?");
+    return $stmt->execute([$hashedPassword, $id]);
+}
 
 function isUserExisting($mail){
     $bdd = get_bdd();
