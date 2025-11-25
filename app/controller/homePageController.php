@@ -40,7 +40,6 @@ class homePageController
             }
             $temoignages_display[$i]["role"] = $role;
         }
-        var_dump($temoignages_display);
 
         include $_ENV['BONUS_PATH'].'app/view/homePageView.php';
     }

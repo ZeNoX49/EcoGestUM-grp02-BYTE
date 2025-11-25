@@ -112,35 +112,6 @@ function getAllObject(){
     return $req->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function countObjectStatus($objets,$id_status) {
-    $count = 0;
-    foreach ($objets as $objet) {
-        if ($objet['id_statut_disponibilite'] == $id_status) {
-            $count++;
-        }
-    }
-    return $count;
-}
-
-function deleteObject($id_objet){
-    $bdd = get_bdd();
-    $stmt = $bdd->prepare("DELETE FROM OBJET WHERE id_objet = :id");
-    return $stmt->execute([':id' => $id_objet]);
-}
-
-function getNbObjectPropUtilisateur($id_user) {
-    $bdd = get_bdd();
-    $sql = "SELECT o.*, s.nom_statut_disponibilite, c.nom_categorie, p.nom_point_collecte, p.adresse_point_collecte 
-            FROM OBJET o 
-            LEFT JOIN STATUTDISPONIBLE s ON o.id_statut_disponibilite = s.id_statut_disponibilite
-            LEFT JOIN CATEGORIE c ON o.id_categorie = c.id_categorie
-            LEFT JOIN POINTCOLLECTE p ON o.id_point_collecte = p.id_point_collecte
-            WHERE o.id_utilisateur = ?";
-    $stmt = $bdd->prepare($sql);
-    $stmt->execute([$id_user]);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
-
 function countObjectStatus($objets, $id_status) {
     $count = 0;
     if (is_array($objets)) {
@@ -153,10 +124,10 @@ function countObjectStatus($objets, $id_status) {
     return $count;
 }
 
-function deleteObject($id_objet) {
+function deleteObject($id_objet){
     $bdd = get_bdd();
-    $stmt = $bdd->prepare("DELETE FROM OBJET WHERE id_objet = ?");
-    return $stmt->execute([$id_objet]);
+    $stmt = $bdd->prepare("DELETE FROM OBJET WHERE id_objet = :id");
+    return $stmt->execute([':id' => $id_objet]);
 }
 
 function updateObject($id, $nom, $desc, $idPoint, $idEtat, $idCat, $quantite, $image) {

@@ -15,7 +15,7 @@
 
     <div class="gestion-header-bar">
         <h1>Gestion des Objets</h1>
-        <a href="homePage/show" class="back-icon">
+        <a href="index.php?action=homePage/show" class="back-icon">
             <i class="fa-solid fa-arrow-turn-up"></i>
         </a>
     </div>
@@ -42,11 +42,7 @@
             </div>
         </a>
 
-<<<<<<< HEAD
-        <a href="index.php?actionmesReservations/show" class="gestion-card">
-=======
         <a href="index.php?action=mesReservations/show" class="gestion-card">
->>>>>>> 5e0f75cd017b3e39a06a4a2e632f527bc22a788e
             <div class="card-icon-wrapper">
                 <i class="fa-regular fa-calendar-check"></i>
             </div>
@@ -56,11 +52,7 @@
             </div>
         </a>
 
-<<<<<<< HEAD
-        <a href="index.php?actiongestionCategories/show" class="gestion-card" style="display:  <?= (isset($role) && $role == 3)?'':'none' ?>">
-=======
         <a href="index.php?action=gestionCategories/show" class="gestion-card" style="display:  <?= (isset($role) && $role == 3)?'':'none' ?>">
->>>>>>> 5e0f75cd017b3e39a06a4a2e632f527bc22a788e
             <div class="card-icon-wrapper">
                 <i class="fa-solid fa-tags"></i>
             </div>
@@ -69,11 +61,7 @@
                 <p>Créez et modifiez les catégories pour adapter le classement des objets recyclables aux besoins de votre service</p>
             </div>
         </a>
-<<<<<<< HEAD
-        <a href="index.php?actiongestionDemande/show" class="gestion-card" style="display:  <?= (isset($role) && $role == 3)?'':'none' ?>">
-=======
         <a href="index.php?action=gestionDemande/show" class="gestion-card" style="display:  <?= (isset($role) && $role == 3)?'':'none' ?>">
->>>>>>> 5e0f75cd017b3e39a06a4a2e632f527bc22a788e
             <div class="card-icon-wrapper">
                 <i class="fa-solid fa-square-check"></i>
             </div>
