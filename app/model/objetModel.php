@@ -5,7 +5,7 @@ require_once $_ENV['BONUS_PATH']."app/model/bddModel.php";
 function insert_object($image, $name, $description, $date, $id_collect_point, $id_trade_type, $id_user, $id_etat, $id_category, $quantite) {
     $bdd = get_bdd();
     $stmt = $bdd->prepare("INSERT INTO OBJET (image_objet, nom_objet, description_objet, date_ajout_objet, id_point_collecte, id_type_echange, id_utilisateur, id_statut_disponibilite, id_etat, id_categorie, quantite) 
-                          VALUES (:image_objet, :nom_objet, :description_objet, :date_ajout_objet, :id_point_collecte, :id_type_echange, :id_utilisateur, 3, :id_etat, :id_categorie, :quantite)");
+                          VALUES (:image_objet, :nom_objet, :description_objet, :date_ajout_objet, :id_point_collecte, :id_type_echange, :id_utilisateur, 1, :id_etat, :id_categorie, :quantite)");
 
     return $stmt->execute([
         ':image_objet' => $image,
@@ -166,6 +166,20 @@ function updateObject($id, $nom, $desc, $idPoint, $idEtat, $idCat, $quantite, $i
         ':img' => $image,
         ':id' => $id
     ]);
+}
+
+function getNewObjectForReservation(): array
+{
+    $bdd = get_bdd();
+    $sql = "SELECT o.*, u.nom_utilisateur, u.prenom_utilisateur, s.nom_statut_disponibilite,  pc.nom_point_collecte, pc.adresse_point_collecte, d.nom_depser AS nom_departement FROM OBJET o
+            JOIN UTILISATEUR u ON o.id_utilisateur = u.id_utilisateur
+            JOIN DEPSER d ON d.id_depser = u.id_depser
+            JOIN STATUTDISPONIBLE s ON s.id_statut_disponibilite = o.id_statut_disponibilite
+            JOIN POINTCOLLECTE pc on pc.id_point_collecte = o.id_point_collecte
+            WHERE s.id_statut_disponibilite = 1";
+    $stmt = $bdd->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 // function getNbObjPropUser($id_user) {

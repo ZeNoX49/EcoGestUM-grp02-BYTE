@@ -69,19 +69,19 @@
             </div>
 
             <div class="requests-list">
-                <?php if(isset($reservationEnAttente)) foreach($reservationEnAttente as $res ) : ?>
+                <?php if(isset($reservationEnAttente)) foreach($reservationEnAttente as $object ) : ?>
                 <div class="request-card">
                     <div class="req-header">
                         <span class="req-tag tag-yellow">Demande de réservation</span>
-                        <span class="req-priority priority-urgent">Urgent</span>
+                        <span class="req-priority priority-urgent"><?=$object['nom_statut_disponibilite']?></span>
                     </div>
                     
-                    <h2 class="req-title">Demande de chaises de bureau ergonomiques</h2>
+                    <h2 class="req-title"><?=$object['nom_objet'] ?></h2>
                     
                     <div class="req-meta">
-                        <span>Demandeur: <strong><?=$res['nom_proprietaire']?></strong></span>
-                        <span>Date: <strong><?=$res['date_reservation']?></strong></span>
-                        <span>Département: <strong><?=$res['nom_departement'] ?></strong></span>
+                        <span>Demandeur: <strong><?=$object['nom_utilisateur']?></strong></span>
+                        <span>Date: <strong><?=$object['date_ajout_objet']?></strong></span>
+                        <span>Département: <strong><?=$object['nom_departement'] ?></strong></span>
                     </div>
 
                     <p class="req-description">
@@ -90,26 +90,18 @@
 
                     <div class="req-details-grid">
                         <div class="req-detail-item">
-                            <span class="label">Objet demandé</span>
-                            <span class="value">Chaises de bureau</span>
-                        </div>
-                        <div class="req-detail-item">
                             <span class="label">Quantité</span>
-                            <span class="value">5 unités</span>
-                        </div>
-                        <div class="req-detail-item">
-                            <span class="label">Date souhaitée</span>
-                            <span class="value">5 février 2025</span>
+                            <span class="value"><?= $object['quantite']?></span>
                         </div>
                         <div class="req-detail-item">
                             <span class="label">Localisation destination</span>
-                            <span class="value">Bâtiment C - Étage 2</span>
+                            <span class="value"><?=$object['nom_point_collecte']?> - <?=$object['adresse_point_collecte']?></span>
                         </div>
                     </div>
 
                     <div class="req-actions">
-                        <button class="btn-refuse" onclick="openRefuseModal('Demande de chaises de bureau ergonomiques')">Refuser</button>
-                        <button class="btn-approve" onclick="openApproveModal('Demande de chaises de bureau ergonomiques')">Approuver</button>
+                        <button class="btn-refuse" onclick="openRefuseModal('<?= $object['nom_objet'] ?>', '')">Refuser</button>
+                        <button class="btn-approve" onclick="openApproveModal('<?= $object['nom_objet'] ?>', '')">Approuver</button>
                     </div>
                 </div>
                 <?php endforeach  ?>
@@ -144,8 +136,8 @@
                     </div>
 
                     <div class="req-actions">
-                        <button class="btn-refuse" onclick="openRefuseModal('Demande d\'écrans d\'ordinateur')">Refuser</button>
-                        <button class="btn-approve" onclick="openApproveModal('Demande d\'écrans d\'ordinateur')">Approuver</button>
+                        <button class="btn-refuse" onclick="openRefuseModal('<?= $object['nom_objet'] ?>', '')">Refuser</button>
+                        <button class="btn-approve" onclick="openApproveModal('<?= $object['nom_objet'] ?>', ''">Approuver</button>
                     </div>
                 </div>
 

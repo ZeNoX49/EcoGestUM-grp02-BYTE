@@ -1,13 +1,13 @@
 //ouvr le popup d'approbation
-function openApproveModal(requestName) {
-    document.getElementById('approveNamePlace').textContent = requestName;
+function openApproveModal(objectName, url) {
+    document.getElementById('approveNamePlace').textContent = objectName;
     // Affiche la modale
     document.getElementById('modalApprove').style.display = 'flex';
 }
 
 // ouvr le popup de refus
-function openRefuseModal(requestName) {
-    document.getElementById('refuseNamePlace').textContent = requestName;
+function openRefuseModal(objectName, url) {
+    document.getElementById('refuseNamePlace').textContent = objectName;
     // Affiche la modale
     document.getElementById('modalRefuse').style.display = 'flex';
 }
