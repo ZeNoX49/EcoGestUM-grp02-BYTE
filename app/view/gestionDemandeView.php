@@ -100,7 +100,7 @@
                     </div>
 
                     <div class="req-actions">
-                        <button class="btn-refuse" onclick="openRefuseModal('<?= $object['nom_objet'] ?>', '')">Refuser</button>
+                        <button class="btn-refuse" onclick="openRefuseModal('<?= $object['nom_objet'] ?>', 'index?action=gestionDemande/refuser&refuseId=<?= $object['id_objet'] ?>')">Refuser</button>
                         <button class="btn-approve" onclick="openApproveModal('<?= $object['nom_objet'] ?>', '')">Approuver</button>
                     </div>
                 </div>
@@ -174,7 +174,7 @@
 
             <div class="modal-buttons">
                 <button class="btn-modal-cancel" onclick="closeModal('modalRefuse')">Annuler</button>
-                <button class="btn-modal-confirm-red-solid">Refuser définitivement</button>
+                <button class="btn-modal-confirm-red-solid" id="confirmRefuserButton">Refuser définitivement</button>
             </div>
         </div>
     </div>

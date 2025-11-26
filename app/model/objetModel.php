@@ -182,6 +182,13 @@ function getNewObjectForReservation(): array
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function refuserObject($id){
+    $bdd = get_bdd();
+    $sql = "UPDATE OBJET SET id_statut_disponibilite = 3 WHERE id_objet = :id";
+    $stmt = $bdd->prepare($sql);
+    $stmt->execute([':id' => $id]);
+    return $stmt->execute();
+}
 // function getNbObjPropUser($id_user) {
 //     $bdd = get_bdd();
 //     $query = $bdd->query("SELECT COUNT(*) FROM mes_objets_donnes $id_user");

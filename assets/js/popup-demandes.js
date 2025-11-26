@@ -8,8 +8,13 @@ function openApproveModal(objectName, url) {
 // ouvr le popup de refus
 function openRefuseModal(objectName, url) {
     document.getElementById('refuseNamePlace').textContent = objectName;
+    document.getElementById('confirmRefuserButton').onclick = () => changeLocation(url);
+
     // Affiche la modale
     document.getElementById('modalRefuse').style.display = 'flex';
+}
+function changeLocation(url){
+    window.location.href = url;
 }
 
 //fermer une modale par son ID
