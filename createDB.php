@@ -1,11 +1,11 @@
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__.'/vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-require_once "app/model/utilisateurModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/utilisateurModel.php";
 
 function execute($sqlFile) {
     $bdd = get_bdd();
