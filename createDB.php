@@ -59,9 +59,9 @@ function setHashedPassword() {
 }
 
 function create_database() {
-    if (!execute('assets/sql/script_creation.sql')) return;
+    if (!execute($_ENV['BONUS_PATH'].'assets/sql/script_creation.sql')) return;
 
-    if (!execute('assets/sql/script_insertion.sql')) return;
+    if (!execute($_ENV['BONUS_PATH'].'assets/sql/script_insertion.sql')) return;
     setHashedPassword();
     
     createUser("etudiant", "test.etudiant.etu@univ-lemans.fr", 1, 1);
@@ -69,8 +69,8 @@ function create_database() {
     createUser("presidence", "test.presidence@univ-lemans.fr", 3, 3);
 
 
-    execute('assets/sql/script_enseignant.sql');
-    execute('assets/sql/script_etudiant.sql');
-    execute('assets/sql/script_presidence.sql');
+    execute($_ENV['BONUS_PATH'].'assets/sql/script_enseignant.sql');
+    execute($_ENV['BONUS_PATH'].'assets/sql/script_etudiant.sql');
+    execute($_ENV['BONUS_PATH'].'assets/sql/script_presidence.sql');
 }
 create_database();

@@ -72,7 +72,11 @@ INSERT INTO TYPEEVENEMENT (nom_type_evenement)
 VALUES ('Collecte'),
        ('Atelier de reparation'),
        ('Brocante solidaire'),
-       ('Sensibilisation');
+       ('Sensibilisation'),
+       ('Collecte generale'), 
+       ('Atelier pratique'), 
+       ('Vente et echange'), 
+       ('Conference');
 
 -- Points de collecte
 INSERT INTO POINTCOLLECTE (adresse_point_collecte, nom_point_collecte, latitude, longitude)
@@ -133,12 +137,12 @@ VALUES ('livre1.jpg', 'Manuel de Mathematiques L1', 'Analyse et algebre lineaire
        ('livre3.jpg', 'Programmation Python', 'Pour debutants', '2025-02-19 16:00:00', 1, 1, 2, 1, 2, 1);
 
 -- evenements
-INSERT INTO EVENEMENT (titre_evenement, type_evenement, description_evenement, date_debut_evenement, date_fin_evenement,
+INSERT INTO EVENEMENT (titre_evenement, description_evenement, date_debut_evenement, date_fin_evenement,
                        id_type_evenement, id_utilisateur)
-VALUES ('Grande Collecte de Printemps', 'Collecte generale', 'Collecte de tous types d''''objets', '2025-03-15', '2025-03-17', 1, 4),
-       ('Atelier Reparation electronique', 'Atelier pratique', 'Apprenez a reparer vos appareils', '2025-03-20', '2025-03-20', 2, 5),
-       ('Brocante Solidaire', 'Vente et echange', 'Donnez une seconde vie aux objets', '2025-04-05', '2025-04-06', 3, 6),
-       ('Sensibilisation au Gaspillage', 'Conference', 'Impact environnemental', '2025-04-10', '2025-04-10', 4, 9);
+VALUES ('Grande Collecte de Printemps', 'Collecte de tous types d''''objets', '2025-03-15', '2025-03-17', 1, 4),
+       ('Atelier Reparation electronique', 'Apprenez a reparer vos appareils', '2025-03-20', '2025-03-20', 2, 5),
+       ('Brocante Solidaire', 'Donnez une seconde vie aux objets', '2025-04-05', '2025-04-06', 3, 6),
+       ('Sensibilisation au Gaspillage', 'Impact environnemental', '2025-04-10', '2025-04-10', 4, 9);
 
 -- Reservations
 INSERT INTO RESERVER (id_objet, date_reservation, id_utilisateur, id_statut_reservation)
