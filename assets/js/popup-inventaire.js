@@ -1,5 +1,7 @@
 // Ouvrir la modale
-function openEditModal() {
+function openInventaireEditModal(objectName, objectStatut, objectQuantities, url) {
+    document.getElementById('modalObjectNameEdit').value = objectName;
+    document.getElementById('modalObjectQuantitiesEdit').value = objectQuantities;
     document.getElementById('modalEditObject').style.display = 'flex';
 }
 // Fermer la modale

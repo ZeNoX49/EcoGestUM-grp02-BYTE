@@ -100,7 +100,7 @@
             
             <p class="modal-question">
                 Êtes-vous sûr de vouloir supprimer l'objet <br>
-                "<strong id="modalObjectName">Objet</strong>" ?
+            "<strong id="modalObjectName">Objet</strong>" ?
             </p>
 
             <div class="modal-buttons">

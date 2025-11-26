@@ -94,7 +94,7 @@
                     <td><?=$objet['nom_utilisateur']?></td>
                     <td>Il y a 12 min</td>
                     <td>
-                        <button class="btn-edit-icon" onclick="openEditModal()"><i class="fa-solid fa-pen"></i></button>
+                        <button class="btn-edit-icon" onclick="openInventaireEditModal('<?=$objet['nom_objet']?>','<?=$objet['nom_statut_disponibilite']?>', '<?=$objet['quantite']?>', '')"><i class="fa-solid fa-pen"></i></button>
                     </td>
                 </tr>
                 <?php endforeach?>
@@ -111,7 +111,7 @@
                     <td>M. Dufer</td>
                     <td>Il y a 2 min</td>
                     <td>
-                        <button class="btn-edit-icon" onclick="openEditModal()"><i class="fa-solid fa-pen"></i></button>
+                        <button class="btn-edit-icon" onclick="openEditModal('Ordinateur DELL', '')"><i class="fa-solid fa-pen"></i></button>
                     </td>
                 </tr>
                 </tbody>
@@ -134,10 +134,10 @@
         <h2 class="modal-title">Modifier l'objet</h2>
         <p class="modal-subtext">Mettez à jour les informations de l'objet dans l'inventaire</p>
         <form class="modal-form">
-            <div class="form-group full"><label>Nom de l'objet *</label><input type="text" value="Chaise en bois" class="modal-input"></div>
+            <div class="form-group full"><label for="modalObjectNameEdit">Nom de l'objet *</label><input type="text" id="modalObjectNameEdit"  class="modal-input"></div>
             <div class="form-row">
                 <div class="form-group half"><label>Statut *</label><select class="modal-input"><option>Disponible</option></select></div>
-                <div class="form-group half"><label>Quantité *</label><input type="number" value="15" class="modal-input"></div>
+                <div class="form-group half"><label>Quantité *</label><input type="number" id="modalObjectQuantitiesEdit" class="modal-input"></div>
             </div>
             <div class="modal-actions">
                 <button type="button" class="btn-modal-cancel" onclick="closeModal()">Annuler</button>
@@ -146,6 +146,6 @@
         </form>
     </div>
 </div>
-<script src=<?= $_ENV['BONUS_PATH']."assets/js/popup-inventaire.js" ?>></script>
+<script src="<?php echo $_ENV['BONUS_PATH']."assets/js/popup-inventaire.js" ?>"></script>
 </body>
 </html>
