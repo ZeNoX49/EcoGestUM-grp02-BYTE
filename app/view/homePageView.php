@@ -46,14 +46,38 @@
                 EcoGestUM permet de gérer le recyclage d'une grande variété d'équipements issus des différentes composantes et services de l'université.
             </p>
             <div class="objects-grid">
-                <div class="obj-item"><h1>💻</h1><span>Matériel informatique</span></div>
-                <div class="obj-item"><h1>🪑</h1><span>Mobilier</span></div>
-                <div class="obj-item"><h1>📚</h1><span>Livres</span></div>
-                <div class="obj-item"><h1>🎓</h1><span>Fournitures</span></div>
-                <div class="obj-item"><h1>⚽</h1><span>Équipements sportif</span></div>
-                <div class="obj-item"><h1>🔌</h1><span>Petit électroménager</span></div>
-                <div class="obj-item"><h1>📺</h1><span>Matériel média</span></div>
-                <div class="obj-item"><h1>👕</h1><span>Vêtements</span></div>
+                <a class="obj-item" href="index.php?action=catalogue/show&category=1&etat=&search=&location=">
+                    <h1>💻</h1>
+                    <span>Matériel informatique</span>
+                </a>
+                <a class="obj-item" href="index.php?action=catalogue/show&category=2&etat=&search=&location=">
+                    <h1>🪑</h1>
+                    <span>Mobilier</span>
+                </a>
+                <a class="obj-item" href="index.php?action=catalogue/show&category=3&etat=&search=&location=">
+                    <h1>📚</h1>
+                    <span>Livres</span>
+                </a>
+                <a class="obj-item" href="index.php?action=catalogue/show&category=4&etat=&search=&location=">
+                    <h1>🎓</h1>
+                    <span>Matériel pédagogique</span>
+                </a>
+                <a class="obj-item" href="index.php?action=catalogue/show&category=5&etat=&search=&location=">
+                    <h1>⚽</h1>
+                    <span>Équipements sportif</span>
+                </a>
+                <a class="obj-item" href="index.php?action=catalogue/show&category=6&etat=&search=&location=">
+                    <h1>🔌</h1>
+                    <span>Petit électroménager</span>
+                </a>
+                <a class="obj-item" href="index.php?action=catalogue/show&category=7&etat=&search=&location=">
+                    <h1>📺</h1>
+                    <span>Matériel média</span>
+                </a>
+                <a class="obj-item" href="index.php?action=catalogue/show&category=5&etat=&search=&location=">
+                    <h1>👕</h1>
+                    <span>Vêtements</span>
+                </a>
             </div>
         </section>
         <section class="testimonials">

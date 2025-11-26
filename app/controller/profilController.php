@@ -114,4 +114,29 @@ class profilController
             header('Location: index.php?action=profil/show&success=mdp');
         }
     }
+
+    /* ----- ajouter des notification ----- */
+    private function addNotification($categorie_choix, $type_choix, $id_choix) {
+        if (!isset($_SESSION['user_id'])) header('Location: index.php');
+        insertChoixNotification($_SESSION["user_id"], $categorie_choix, $type_choix, $id_choix);
+    }
+
+    public function add_obj_cat() {$this->addNotification("objets", "categorie", ___);}
+    public function add_obj_pos() {$this->addNotification("objets", "position", ___);}
+    public function add_event_cat() {$this->addNotification("events", "categorie", ___);}
+    public function add_event_org() {$this->addNotification("events", "organisateur", ___);}
+    public function add_event_pos() {$this->addNotification("events", "position", ___);}
+
+
+    /* ----- supprimer des notification ----- */
+    private function deleteNotification($categorie_choix, $type_choix, $id_choix) {
+        if (!isset($_SESSION['user_id'])) header('Location: index.php');
+        deleteChoixNotification($_SESSION["user_id"], $categorie_choix, $type_choix, $id_choix);
+    }
+
+    public function delete_obj_cat() {$this->deleteNotification("objets", "categorie", ___);}
+    public function delete_obj_pos() {$this->deleteNotification("objets", "position", ___);}
+    public function delete_event_cat() {$this->deleteNotification("events", "categorie", ___);}
+    public function delete_event_org() {$this->deleteNotification("events", "organisateur", ___);}
+    public function delete_event_pos() {$this->deleteNotification("events", "position", ___);}
 }

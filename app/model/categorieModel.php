@@ -42,4 +42,3 @@ function countObjetsParCategorie($id_cat) {
     $stmt->execute([':id' => $id_cat]);
     return $stmt->fetchColumn();
 }
-?>

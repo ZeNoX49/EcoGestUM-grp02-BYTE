@@ -112,3 +112,9 @@ function getEventParticipants($id_evenement) {
     $stmt->execute([$id_evenement]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+function deleteEvents($id_event){
+    $bdd = get_bdd();
+    $stmt = $bdd->prepare("DELETE FROM EVENEMENT WHERE id_evenement = ?");
+    return $stmt->execute([$id_event]);
+}
