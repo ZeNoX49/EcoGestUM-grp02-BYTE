@@ -169,3 +169,9 @@ function updateObject($id, $nom, $desc, $idPoint, $idEtat, $idCat, $quantite, $i
 //     return $objects;
 // }
 
+function countObjetsParCategorie($id_cat) {
+    $bdd = get_bdd();
+    $stmt = $bdd->prepare("SELECT COUNT(*) FROM OBJET WHERE id_categorie = :id");
+    $stmt->execute([':id' => $id_cat]);
+    return $stmt->fetchColumn();
+}
