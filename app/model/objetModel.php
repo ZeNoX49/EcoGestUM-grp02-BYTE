@@ -2,10 +2,20 @@
 
 require_once $_ENV['BONUS_PATH']."app/model/bddModel.php";
 
-function insert_object($image, $name, $description, $date, $id_collect_point, $id_trade_type, $id_user, $id_etat, $id_category, $quantite) {
+function insert_object($image, $name, $description, $date, $id_collect_point, $id_trade_type, $id_user, $id_etat, $id_category, $quantite, $id_statut = 3) {
     $bdd = get_bdd();
-    $stmt = $bdd->prepare("INSERT INTO OBJET (image_objet, nom_objet, description_objet, date_ajout_objet, id_point_collecte, id_type_echange, id_utilisateur, id_statut_disponibilite, id_etat, id_categorie, quantite) 
-                          VALUES (:image_objet, :nom_objet, :description_objet, :date_ajout_objet, :id_point_collecte, :id_type_echange, :id_utilisateur, 3, :id_etat, :id_categorie, :quantite)");
+
+    $sql = "INSERT INTO OBJET (
+                image_objet, nom_objet, description_objet, date_ajout_objet, 
+                id_point_collecte, id_type_echange, id_utilisateur, 
+                id_statut_disponibilite, id_etat, id_categorie, quantite
+            ) VALUES (
+                :image_objet, :nom_objet, :description_objet, :date_ajout_objet, 
+                :id_point_collecte, :id_type_echange, :id_utilisateur, 
+                :id_statut, :id_etat, :id_categorie, :quantite
+            )";
+
+    $stmt = $bdd->prepare($sql);
 
     return $stmt->execute([
         ':image_objet' => $image,
@@ -15,6 +25,7 @@ function insert_object($image, $name, $description, $date, $id_collect_point, $i
         ':id_point_collecte' => $id_collect_point,
         ':id_type_echange' => $id_trade_type,
         ':id_utilisateur' => $id_user,
+        ':id_statut' => $id_statut, // On utilise la variable ici
         ':id_etat' => $id_etat,
         ':id_categorie' => $id_category,
         ':quantite' => $quantite
@@ -153,6 +164,36 @@ function updateObject($id, $nom, $desc, $idPoint, $idEtat, $idCat, $quantite, $i
         ':img' => $image,
         ':id' => $id
     ]);
+}
+
+function getStudentExchangeObjects($limit = null, $offset = 0) {
+    $bdd = get_bdd();
+    $sql = "SELECT o.*, c.nom_categorie, pc.nom_point_collecte, u.email_utilisateur, u.nom_utilisateur, u.prenom_utilisateur
+            FROM OBJET o
+            JOIN CATEGORIE c ON o.id_categorie = c.id_categorie
+            LEFT JOIN POINTCOLLECTE pc ON o.id_point_collecte = pc.id_point_collecte
+            JOIN UTILISATEUR u ON o.id_utilisateur = u.id_utilisateur
+            WHERE o.id_type_echange = 3 AND o.id_statut_disponibilite = 1
+            ORDER BY o.date_ajout_objet DESC";
+
+    if ($limit !== null) {
+        $sql .= " LIMIT :limit OFFSET :offset";
+        $stmt = $bdd->prepare($sql);
+        $stmt->bindValue(':limit', (int) $limit, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', (int) $offset, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    $req = $bdd->query($sql);
+    return $req->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function countStudentExchangeObjects() {
+    $bdd = get_bdd();
+    $sql = "SELECT COUNT(*) FROM OBJET WHERE id_type_echange = 3 AND id_statut_disponibilite = 1";
+    $req = $bdd->query($sql);
+    return $req->fetchColumn();
 }
 
 // function getNbObjPropUser($id_user) {

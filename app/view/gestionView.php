@@ -52,6 +52,16 @@
             </div>
         </a>
 
+        <a href="index.php?action=catalogueEleve/show" class="gestion-card">
+            <div class="card-icon-wrapper">
+                <i class="fa-regular fa-handshake"></i>
+            </div>
+            <div class="card-text-content">
+                <h3>Echanges etudiants</h3>
+                <p>Echange d'objets entre etudiants : recherche, publication et contact direct.</p>
+            </div>
+        </a>
+
         <a href="index.php?action=gestionCategories/show" class="gestion-card" style="display:  <?= (isset($role) && $role == 3)?'':'none' ?>">
             <div class="card-icon-wrapper">
                 <i class="fa-solid fa-tags"></i>
@@ -70,6 +80,8 @@
                 <p>Consultez, approuvez ou refusez les demandes de réservation en attente</p>
             </div>
         </a>
+
+
 
         <a href="index.php?action=inventaire/show" class="gestion-card" style="display:  <?= (isset($role) && $role == 3)?'':'none' ?>">
             <div class="card-icon-wrapper">
