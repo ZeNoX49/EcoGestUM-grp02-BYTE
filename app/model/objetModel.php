@@ -95,6 +95,36 @@ function updateObject($id, $nom, $desc, $idPoint, $idEtat, $idCat, $quantite, $i
     return update($sql, $params);
 }
 
+function getStudentExchangeObjects($limit = null, $offset = 0) {
+    $bdd = get_bdd();
+    $sql = "SELECT o.*, c.nom_categorie, pc.nom_point_collecte, u.email_utilisateur, u.nom_utilisateur, u.prenom_utilisateur
+            FROM OBJET o
+            JOIN CATEGORIE c ON o.id_categorie = c.id_categorie
+            LEFT JOIN POINTCOLLECTE pc ON o.id_point_collecte = pc.id_point_collecte
+            JOIN UTILISATEUR u ON o.id_utilisateur = u.id_utilisateur
+            WHERE o.id_type_echange = 3 AND o.id_statut_disponibilite = 1
+            ORDER BY o.date_ajout_objet DESC";
+
+    if ($limit !== null) {
+        $sql .= " LIMIT :limit OFFSET :offset";
+        $stmt = $bdd->prepare($sql);
+        $stmt->bindValue(':limit', (int) $limit, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', (int) $offset, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    $req = $bdd->query($sql);
+    return $req->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function countStudentExchangeObjects() {
+    $bdd = get_bdd();
+    $sql = "SELECT COUNT(*) FROM OBJET WHERE id_type_echange = 3 AND id_statut_disponibilite = 1";
+    $req = $bdd->query($sql);
+    return $req->fetchColumn();
+}
+
 // function getNbObjPropUser($id_user) {
 //     $sql = "SELECT COUNT(*) FROM mes_objets_donnes ?";
 //     $params = [$id_user];

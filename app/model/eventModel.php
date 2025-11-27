@@ -87,7 +87,7 @@ function getEventParticipants($id_evenement) {
     return get($sql, $params);
 }
 
-function deleteEvents($id_event){
+function deleteEvent($id_event){
     $sql = "DELETE FROM EVENEMENT WHERE id_evenement = ?";
     $params = [$id_event];
     return delete($sql, $params);

@@ -1,0 +1,200 @@
+/* Réutilisation du fond transparent pour le wrapper global */
+.gestion-wrapper {
+    background: rgba(255, 255, 255, 0.3); /* Légèrement plus transparent pour voir le fond */
+    backdrop-filter: blur(10px);
+}
+
+/* Header Rouge spécifique aux stats */
+.stat-header-bar {
+    background-color: #DB4C3B;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    margin: 30px auto 20px auto;
+    width: 95%;
+    box-sizing: border-box;
+}
+
+.stat-header-bar h1 {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.back-icon-white {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    transform: rotate(-90deg);
+    display: flex;
+    align-items: center;
+}
+
+/* Conteneur principal blanc */
+.stat-content-wrapper {
+    background-color: #F9F9F9;
+    width: 95%;
+    margin: 0 auto 40px auto;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* --- CARTES CHIFFRES CLÉS --- */
+.stat-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.stat-card-box {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 140px;
+    position: relative;
+    border: 1px solid #eee;
+}
+
+.stat-card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.icon-circle.blue { background-color: #E3F2FD; color: #2196F3; }
+.icon-circle.green { background-color: #E8F5E9; color: #4CAF50; }
+.icon-circle.dark-blue { background-color: #E8EAF6; color: #3F51B5; }
+
+.stat-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-card-body {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.stat-value {
+    font-size: 42px;
+    font-weight: 800;
+    color: #2B3A6C;
+    line-height: 1;
+}
+
+/* --- SECTION IMPACT ÉCOLOGIQUE --- */
+.impact-section {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    border-left: 8px solid #2B3A6C;
+}
+
+.impact-info h3 {
+    margin: 0 0 15px 0;
+    color: #DB4C3B;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.impact-main-number {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    color: #2B3A6C;
+}
+
+.co2-tag {
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.impact-main-number .number {
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.impact-main-number .unit {
+    font-size: 20px;
+    font-weight: 600;
+    color: #888;
+}
+
+.subtext {
+    margin: 10px 0 0 0;
+    color: #888;
+    font-size: 14px;
+    font-style: italic;
+}
+
+/* --- BOUTONS D'ACTION --- */
+.impact-actions {
+    display: flex;
+    flex-direction: column; /* Boutons empilés ou en grille selon l'espace */
+    gap: 15px;
+    min-width: 250px;
+}
+
+.btn-stat-action {
+    background-color: #2B3A6C;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    text-align: center;
+}
+
+.btn-stat-action:hover {
+    background-color: #1a2545;
+    transform: translateY(-2px);
+}
+
+/* Boutons contour (outline) */
+.btn-stat-action.outline {
+    background-color: transparent;
+    border: 2px solid #2B3A6C;
+    color: #2B3A6C;
+}
+
+.btn-stat-action.outline:hover {
+    background-color: #2B3A6C;
+    color: white;
+}
