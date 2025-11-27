@@ -42,7 +42,7 @@ class EventController {
         $data['year']   = $year;
         $data['day']    = $day;
 
-        if ($role === '2' || $role === '3') {
+        if ($role === 2 || $role === 3) {
             include "app/view/eventTeacher.php";
         } else {
             include "app/view/eventStudent.php";
