@@ -1,6 +1,7 @@
 <?php
 require_once $_ENV['BONUS_PATH']."app/model/objetModel.php";
 require_once $_ENV['BONUS_PATH']."app/model/categorieModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/pointCollecteModel.php";
 
 class formEleveController
 {
@@ -12,7 +13,7 @@ class formEleveController
         }
 
         $categories = getAllCategories();
-        $pointsCollecte = getAllLocations();
+        $pointsCollecte = getAllPointCollecte();
 
         include $_ENV['BONUS_PATH'] . "app/view/formEleveView.php";
     }
@@ -78,4 +79,3 @@ class formEleveController
         }
     }
 }
-?>
