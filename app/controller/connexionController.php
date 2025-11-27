@@ -24,7 +24,8 @@ class connexionController
             return;
         }
 
-        $user = getUserByMail($_POST['mail']);
+        $user = getUserByMail($_POST['mail'])[0];
+
         $_SESSION['user_id'] = $user['id_utilisateur'];
         $_SESSION['user_role'] = $user['id_role'];
 

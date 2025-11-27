@@ -10,7 +10,7 @@ class DetailleController
         $objet = null;
 
         if(isset($_GET['id'])){
-            $objet = getObject($_GET['id']);
+            $objet = getObject($_GET['id'])[0];
         }
 
         if(!$objet) {
