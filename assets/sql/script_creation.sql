@@ -185,7 +185,6 @@ CREATE TABLE EVENEMENT
 (
     id_evenement          INT AUTO_INCREMENT PRIMARY KEY,
     titre_evenement       VARCHAR(100) NOT NULL,
-    type_evenement        VARCHAR(100) NOT NULL,
     description_evenement VARCHAR(250),
     date_debut_evenement  DATETIME     NOT NULL,
     date_fin_evenement    DATETIME     NOT NULL,
