@@ -48,7 +48,19 @@
                 </div>
                 <div class="inv-filter-item">
                     <label>Catégorie</label>
-                    <select><option>Toutes catégories</option></select>
+                    <select id="categorieSelect" onchange="changerCategorie(this.value)">
+                        <option>Toutes catégories</option>
+                        <?php if(isset($categoriesList)) foreach($categoriesList as $cat): ?>
+                            <option value="<?= $cat['id_categorie'] ?>"
+                                <?php
+                                if(isset($_GET['categorie']) && $_GET['categorie'] == $cat['id_categorie']) {
+                                    echo 'selected';
+                                }
+                                ?>>
+                            <?= $cat['nom_categorie'] ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
                 <div class="inv-search-box">
                     <input type="text" placeholder="Rechercher un objet, un responsable...">
@@ -63,7 +75,7 @@
 
         <div class="inv-table-container">
             <div class="inv-table-header-info">
-                <span class="list-title">Liste des objets (24 éléments)</span>
+                <span class="list-title">Liste des objets (<?php if(isset($objets)) echo count($objets)?>)</span>
                 <span class="last-update">Dernière mise à jour : il y a 4 min</span>
             </div>
 
@@ -75,6 +87,7 @@
                     <th>Quantité</th>
                     <th>Localisation</th>
                     <th>Responsable</th>
+                    <th>Catégorie</th>
                     <th>Dernière MAJ</th>
                     <th>Actions</th>
                 </tr>
@@ -88,10 +101,11 @@
                             <span><?=$objet['nom_objet']?></span>
                         </div>
                     </td>
-                    <td><span class="badge badge-green">Disponible</span></td>
+                    <td><span class="badge badge-green"><?=$objet['nom_statut_disponibilite']?></span></td>
                     <td><strong><?=$objet['quantite'] ?></strong></td>
                     <td><?=$objet['nom_point_collecte']?> - <?=$objet['adresse_point_collecte']?></td>
                     <td><?=$objet['nom_utilisateur']?></td>
+                    <td><?=$objet['nom_categorie']?></td>
                     <td>Il y a 12 min</td>
                     <td>
                         <button class="btn-edit-icon" onclick="openInventaireEditModal('<?=$objet['nom_objet']?>','<?=$objet['nom_statut_disponibilite']?>', '<?=$objet['quantite']?>', '')"><i class="fa-solid fa-pen"></i></button>
@@ -147,5 +161,22 @@
     </div>
 </div>
 <script src="<?php echo $_ENV['BONUS_PATH']."assets/js/popup-inventaire.js" ?>"></script>
+<script>
+  function changerCategorie(valeur) {
+    // On garde l'action actuelle et on ajoute/modifie le paramètre categorie
+    const url = new URL(window.location.href);
+
+    if(valeur && valeur != "Toutes catégories") {
+      url.searchParams.set('categorie', valeur);
+    } else {
+      url.searchParams.delete('categorie'); // Si "Toutes", on retire le filtre
+    }
+
+    // On remet la pagination à 1 pour éviter les bugs (ex: être page 2 d'une liste vide)
+    url.searchParams.set('page', '1');
+
+    window.location.href = url.toString();
+  }
+</script>
 </body>
 </html>

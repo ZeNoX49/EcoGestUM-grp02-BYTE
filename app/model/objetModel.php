@@ -36,6 +36,30 @@ function getObject($id_object) {
     $stmt->execute([$id_object]);
     return $stmt->fetch();
 }
+function getAllFilteredObjects($search = '', $catId = null, $etatNom = null, $location = '') {
+    $bdd = get_bdd();
+    $sql = "SELECT * FROM allObject WHERE 1=1";
+    $params = [];
+    if (!empty($search)) {
+        $sql .= " AND (nom_objet LIKE :search OR description_objet LIKE :search)";
+        $params[':search'] = "%$search%";
+    }
+    if (!empty($catId)) {
+        $sql .= " AND id_categorie = :cat";
+        $params[':cat'] = $catId;
+    }
+    if (!empty($etatNom)) {
+        $sql .= " AND nom_etat = :etat";
+        $params[':etat'] = $etatNom;
+    }
+    if (!empty($location)) {
+        $sql .= " AND (nom_point_collecte LIKE :loc OR adresse_point_collecte LIKE :loc)";
+        $params[':loc'] = "%$location%";
+    }
+    $stmt = $bdd->prepare($sql);
+    $stmt->execute($params);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
 function getFilteredObjects($search = '', $catId = null, $etatNom = null, $location = '') {
     $bdd = get_bdd();
@@ -184,10 +208,43 @@ function getNewObjectForReservation(): array
 
 function refuserObject($id){
     $bdd = get_bdd();
-    $sql = "UPDATE OBJET SET id_statut_disponibilite = 3 WHERE id_objet = :id";
+    $sql = "UPDATE OBJET SET id_statut_disponibilite = 4 WHERE id_objet = :id";
     $stmt = $bdd->prepare($sql);
     $stmt->execute([':id' => $id]);
     return $stmt->execute();
+}
+
+function accepterObject($id){
+    $bdd = get_bdd();
+    $sql = "UPDATE OBJET SET id_statut_disponibilite = 2 WHERE id_objet = :id";
+    $stmt = $bdd->prepare($sql);
+    $stmt->execute([':id' => $id]);
+}
+
+function getObjectDisponible(){
+    $bdd = get_bdd();
+    $sql = "SELECT o.*, u.nom_utilisateur, u.prenom_utilisateur, s.nom_statut_disponibilite,  pc.nom_point_collecte, pc.adresse_point_collecte, d.nom_depser AS nom_departement FROM OBJET o
+            JOIN UTILISATEUR u ON o.id_utilisateur = u.id_utilisateur
+            JOIN DEPSER d ON d.id_depser = u.id_depser
+            JOIN STATUTDISPONIBLE s ON s.id_statut_disponibilite = o.id_statut_disponibilite
+            JOIN POINTCOLLECTE pc on pc.id_point_collecte = o.id_point_collecte
+            WHERE s.id_statut_disponibilite = 2 OR s.id_statut_disponibilite = 3";
+    $stmt = $bdd->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function getObjectIndiponible(){
+    $bdd = get_bdd();
+    $sql = "SELECT o.*, u.nom_utilisateur, u.prenom_utilisateur, s.nom_statut_disponibilite,  pc.nom_point_collecte, pc.adresse_point_collecte, d.nom_depser AS nom_departement FROM OBJET o
+            JOIN UTILISATEUR u ON o.id_utilisateur = u.id_utilisateur
+            JOIN DEPSER d ON d.id_depser = u.id_depser
+            JOIN STATUTDISPONIBLE s ON s.id_statut_disponibilite = o.id_statut_disponibilite
+            JOIN POINTCOLLECTE pc on pc.id_point_collecte = o.id_point_collecte
+            WHERE s.id_statut_disponibilite = 4";
+    $stmt = $bdd->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 // function getNbObjPropUser($id_user) {
 //     $bdd = get_bdd();

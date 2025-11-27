@@ -1,6 +1,7 @@
 //ouvr le popup d'approbation
 function openApproveModal(objectName, url) {
     document.getElementById('approveNamePlace').textContent = objectName;
+    document.getElementById('confirmAccepterButton').onclick = () => changeLocation(url);
     // Affiche la modale
     document.getElementById('modalApprove').style.display = 'flex';
 }
