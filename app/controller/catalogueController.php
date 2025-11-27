@@ -2,6 +2,8 @@
 
 require_once $_ENV['BONUS_PATH']."app/model/objetModel.php";
 require_once $_ENV['BONUS_PATH']."app/model/categorieModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/etatModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/pointCollecteModel.php";
 
 class catalogueController
 {
@@ -20,7 +22,7 @@ class catalogueController
         //Récupération des listes pour les menus déroulants
         $categoriesList = getAllCategories();
         $etatsList = getAllEtats();
-        $locationsList = getAllLocations();
+        $locationsList = getAllPointCollecte();
 
    
         //Chargement de la vue

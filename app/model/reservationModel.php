@@ -2,7 +2,6 @@
 require_once $_ENV['BONUS_PATH']."app/model/bddModel.php";
 
 function getReservationsByUser($idUser) {
-    $bdd = get_bdd();
     $sql = "SELECT r.*, 
                    o.nom_objet, o.description_objet, o.image_objet, 
                    c.nom_categorie, 
@@ -18,59 +17,38 @@ function getReservationsByUser($idUser) {
             JOIN UTILISATEUR u_prop ON o.id_utilisateur = u_prop.id_utilisateur
             WHERE r.id_utilisateur = ?
             ORDER BY r.date_reservation DESC";
-
-    $stmt = $bdd->prepare($sql);
-    $stmt->execute([$idUser]);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $params = [$idUser];
+    return get($sql, $params);
 }
 
 function createReservation($idUser, $idObjet) {
-    $bdd = get_bdd();
-    try {
-        $bdd->beginTransaction();
+    $sql = "INSERT INTO RESERVER (id_objet, date_reservation, id_utilisateur, id_statut_reservation) VALUES (?, NOW(), ?, 1)";
+    $params = [$idObjet, $idUser];
+    if(!insert($sql, $params)) return false;
 
-        $stmt = $bdd->prepare("INSERT INTO RESERVER (id_objet, date_reservation, id_utilisateur, id_statut_reservation) VALUES (?, NOW(), ?, 1)");
-        $stmt->execute([$idObjet, $idUser]);
-
-        $stmtObj = $bdd->prepare("UPDATE OBJET SET id_statut_disponibilite = 2 WHERE id_objet = ?");
-        $stmtObj->execute([$idObjet]);
-
-        $bdd->commit();
-        return true;
-    } catch(Exception $e) {
-        $bdd->rollBack();
-        return false;
-    }
+    $sql = "UPDATE OBJET SET id_statut_disponibilite = 2 WHERE id_objet = ?";
+    $params = [$idObjet];
+    return update($sql, $params);
 }
+
 function cancelReservation($idUser, $idObjet) {
-    $bdd = get_bdd();
-    try {
-        $bdd->beginTransaction();
+    $sql = "DELETE FROM RESERVER WHERE id_utilisateur = ? AND id_objet = ?";
+    $params = [$idUser, $idObjet];
+    if(!delete($sql, $params)) return false;
 
-        $stmt = $bdd->prepare("DELETE FROM RESERVER WHERE id_utilisateur = ? AND id_objet = ?");
-        $stmt->execute([$idUser, $idObjet]);
-
-        $stmtObj = $bdd->prepare("UPDATE OBJET SET id_statut_disponibilite = 1 WHERE id_objet = ?");
-        $stmtObj->execute([$idObjet]);
-
-        $bdd->commit();
-    } catch(Exception $e) {
-        $bdd->rollBack();
-    }
+    $sql = "UPDATE OBJET SET id_statut_disponibilite = 1 WHERE id_objet = ?";
+    $params = [$idObjet];
+    return update($sql, $params);
 }
 
 function confirmReception($idUser, $idObjet) {
-    $bdd = get_bdd();
-    $stmt = $bdd->prepare("UPDATE RESERVER SET id_statut_reservation = 4 WHERE id_utilisateur = ? AND id_objet = ?");
-    return $stmt->execute([$idUser, $idObjet]);
+    $sql = "UPDATE RESERVER SET id_statut_reservation = 4 WHERE id_utilisateur = ? AND id_objet = ?";
+    $params = [$idUser, $idObjet];
+    return get($sql, $params);
 }
 
-
-
 function getReservationsByStatutDisp($idStatut){
-    $bdd = get_bdd();
     $sql = "SELECT * FROM OBJET WHERE id_statut_disponibilite = ?";
-    $stmt = $bdd->prepare($sql);
-    $stmt->execute([$idStatut]);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $params = [$idStatut];
+    return get($sql, $params);
 }
