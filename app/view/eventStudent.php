@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>EcoGestUM - Événements</title>
-  <link rel="stylesheet" href= <?php echo $_ENV['BONUS_PATH'].'assets/css/style-event.css' ?>>
+  <link rel="stylesheet" href= <?= $_ENV['BONUS_PATH'].'assets/css/style-event.css' ?>>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Koulen&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -60,7 +60,7 @@ if ($userId) {
           ?>'"><</button>
 
           <div class="event-calendar-header">
-            <?php echo strftime('%B %Y', $firstDay); ?>
+            <?= $mois[$month]." ".$year ?>
           </div>
 
           <button onclick="window.location.href='<?php 
@@ -122,34 +122,38 @@ if ($userId) {
                 }
             }
         }
+
+        $j_date = strftime('%A %d %B %Y', mktime(0, 0, 0, $month, $selectedDay, $year));
+        $j_list = explode(" ", $j_date);
+        $j = $j_list[0]
         ?>
-        <div class="event-details-header"><?php echo strftime('%A %d %B %Y', mktime(0, 0, 0, $month, $selectedDay, $year)); ?></div>
+        <div class="event-details-header"><?= $jour[$j]." ".$selectedDay." ".$mois[$month]." ".$year; ?></div>
         
         <?php if (!empty($eventsForDay)): ?>
           <?php foreach ($eventsForDay as $event): ?>
             <details class="event-card">
               <summary>
-                <span class="event-card-title"><?php echo htmlspecialchars($event['titre_evenement']);?></span>
+                <span class="event-card-title"><?= htmlspecialchars($event['titre_evenement']);?></span>
                 <?php if (in_array($event['id_evenement'], $userEventIds)): ?>
                   <form method="POST" style="display: inline;">
                     <input type="hidden" name="action" value="unregister">
-                    <input type="hidden" name="event_id" value="<?php echo $event['id_evenement']; ?>">
+                    <input type="hidden" name="event_id" value="<?= $event['id_evenement']; ?>">
                     <button class="event-card-btn event-card-btn-registered" type="submit">Se désinscrire</button>
                   </form>
                 <?php else: ?>
                   <form method="POST" style="display: inline;">
                     <input type="hidden" name="action" value="register">
-                    <input type="hidden" name="event_id" value="<?php echo $event['id_evenement']; ?>">
+                    <input type="hidden" name="event_id" value="<?= $event['id_evenement']; ?>">
                     <button class="event-card-btn" type="submit">S'inscrire</button>
                   </form>
                 <?php endif; ?>
               </summary>
               <div class="event-card-details">
-                <p><strong>Type:</strong> <?php echo htmlspecialchars($event['type_evenement']); ?></p>
-                <p><strong>Début:</strong> <?php echo date('d/m/Y H:i', strtotime($event['date_debut_evenement'])); ?></p>
-                <p><strong>Fin:</strong> <?php echo date('d/m/Y H:i', strtotime($event['date_fin_evenement'])); ?></p>
-                <p><strong>Organisateur:</strong> <?php echo htmlspecialchars($event['prenom_utilisateur'] . ' ' . $event['nom_utilisateur']); ?></p>
-                <p><?php echo htmlspecialchars($event['description_evenement']); ?></p>
+                <p><strong>Type:</strong> <?= htmlspecialchars($event['type_evenement']); ?></p>
+                <p><strong>Début:</strong> <?= date('d/m/Y H:i', strtotime($event['date_debut_evenement'])); ?></p>
+                <p><strong>Fin:</strong> <?= date('d/m/Y H:i', strtotime($event['date_fin_evenement'])); ?></p>
+                <p><strong>Organisateur:</strong> <?= htmlspecialchars($event['prenom_utilisateur'] . ' ' . $event['nom_utilisateur']); ?></p>
+                <p><?= htmlspecialchars($event['description_evenement']); ?></p>
               </div>
             </details>
           <?php endforeach; ?>

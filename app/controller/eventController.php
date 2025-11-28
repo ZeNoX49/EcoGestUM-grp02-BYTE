@@ -42,6 +42,31 @@ class EventController {
         $data['year']   = $year;
         $data['day']    = $day;
 
+        $jour = [
+            "Monday"    => "Lundi",
+            "Tuesday"   => "Mardi",
+            "Wednesday" => "Mercredi",
+            "Thursday"  => "Jeudi",
+            "Friday"    => "Vendredi",
+            "Saturday"  => "Samedi",
+            "Sunday"    => "Dimanche"
+        ];
+
+        $mois = [
+            1 => "Janvier",
+            2 => "Février",
+            3 => "Mars",
+            4 => "Avril",
+            5 => "Mai",
+            6 => "Juin",
+            7 => "Juillet",
+            8 => "Août",
+            9 => "Septembre",
+            10 => "Octobre",
+            11 => "Novembre",
+            12 => "Décembre"
+        ];
+
         if ($role === 2 || $role === 3) {
             include "app/view/eventTeacher.php";
         } else {
