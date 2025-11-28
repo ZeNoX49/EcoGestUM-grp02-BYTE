@@ -11,13 +11,136 @@
 <?php 
 include $_ENV['BONUS_PATH'].'assets/html/header.html'; 
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
+  if ($_POST['action'] === 'create_event') {
+    error_log("POST data: " . print_r($_POST, true));
+    
+    if (isset($_SESSION['user_id']) && isset($_POST['event_titre']) && isset($_POST['event_date_debut']) && isset($_POST['event_date_fin'])) {
+      $titre = htmlspecialchars($_POST['event_titre']);
+      $type = htmlspecialchars($_POST['event_type']);
+      $description = htmlspecialchars($_POST['event_description']);
+      $date_debut = $_POST['event_date_debut'];
+      $date_fin = $_POST['event_date_fin'];
+      $id_type_evenement = isset($_POST['event_id_type']) ? (int)$_POST['event_id_type'] : 1; // Valeur par défaut
+      $id_utilisateur = $_SESSION['user_id'];
+
+      error_log("Tentative de création événement: $titre, $type, $description, $date_debut, $date_fin, $id_type_evenement, $id_utilisateur");
+      
+      try {
+        $result = createEvent($titre, $type, $description, $date_debut, $date_fin, $id_type_evenement, $id_utilisateur);
+        error_log("Résultat création: " . ($result ? "SUCCÈS" : "ÉCHEC"));
+        
+        if ($result) {
+          header('Location: ' . $_SERVER['REQUEST_URI']);
+          exit;
+        } else {
+          $error_message = "Erreur lors de la création de l'événement.";
+        }
+      } catch (Exception $e) {
+        error_log("Erreur création événement: " . $e->getMessage());
+        $error_message = "Erreur: " . $e->getMessage();
+      }
+    } else {
+      $missing = [];
+      if (!isset($_SESSION['user_id'])) $missing[] = "user_id";
+      if (!isset($_POST['event_titre'])) $missing[] = "event_titre";
+      if (!isset($_POST['event_date_debut'])) $missing[] = "event_date_debut";
+      if (!isset($_POST['event_date_fin'])) $missing[] = "event_date_fin";
+      
+      $error_message = "Champs manquants: " . implode(", ", $missing);
+      error_log("Champs manquants: " . implode(", ", $missing));
+    }
+  }
+  elseif ($_POST['action'] === 'register') {
+    if (isset($_SESSION['user_id']) && isset($_POST['event_id'])) {
+      $userId = $_SESSION['user_id'];
+      $eventId = (int)$_POST['event_id'];
+
+      if (!isUserRegisteredToEvent($userId, $eventId)) {
+        $result = registerUserToEvent($userId, $eventId);
+        if ($result) {
+          header('Location: ' . $_SERVER['REQUEST_URI']);
+          exit;
+        } else {
+          $error_message = "Erreur lors de l'inscription.";
+        }
+      }
+    }
+  }
+  elseif ($_POST['action'] === 'unregister') {
+    if (isset($_SESSION['user_id']) && isset($_POST['event_id'])) {
+      $userId = $_SESSION['user_id'];
+      $eventId = (int)$_POST['event_id'];
+
+      if (isUserRegisteredToEvent($userId, $eventId)) {
+        $result = unregisterUserFromEvent($userId, $eventId);
+        if ($result) {
+          header('Location: ' . $_SERVER['REQUEST_URI']);
+          exit;
+        } else {
+          $error_message = "Erreur lors de la désinscription.";
+        }
+      }
+    }
+  }
+  elseif ($_POST['action'] === 'delete_event') {
+    error_log("Tentative de suppression événement ID: " . $_POST['event_id']);
+    
+    if (isset($_SESSION['user_id']) && isset($_POST['event_id'])) {
+      $eventId = (int)$_POST['event_id'];
+      
+      try {
+        error_log("Appel deleteEvent($eventId)");
+        $result = deleteEvent($eventId);
+        error_log("Résultat suppression: " . ($result ? "SUCCÈS" : "ÉCHEC"));
+
+        if ($result) {
+          header('Location: ' . $_SERVER['REQUEST_URI']);
+          exit;
+        } else {
+          $error_message = "Erreur lors de la suppression de l'événement.";
+        }
+      } catch (Exception $e) {
+        error_log("Erreur suppression événement: " . $e->getMessage());
+        $error_message = "Erreur: " . $e->getMessage();
+      }
+    } else {
+      error_log("Session ou event_id manquant");
+      $error_message = "Données manquantes pour la suppression.";
+    }
+  }
+}
+
 $userId = $_SESSION['user_id'] ?? null;
 $userEventIds = [];
+$daysWithEvents = [];
+$daysRegistered = [];
 if ($userId) {
   $userEvents = getUserEvents($userId);
   $userEventIds = array_column($userEvents, 'id_evenement');
 }
+
+if (isset($data['events']) && !empty($data['events'])) {
+  foreach ($data['events'] as $event) {
+    $eventDate = date('Y-m-d', strtotime($event['date_debut_evenement']));
+    if (date('Y-m', strtotime($eventDate)) === sprintf('%04d-%02d', $data['year'], $data['month'])) {
+      $dayNum = (int)date('d', strtotime($eventDate));
+      $daysWithEvents[$dayNum] = true;
+      
+      if (in_array($event['id_evenement'], $userEventIds)) {
+        $daysRegistered[$dayNum] = true;
+      }
+    }
+  }
+}
 ?>
+
+<?php if (isset($error_message)): ?>
+<script>
+  alert(<?php echo json_encode($error_message); ?>);
+</script>
+<?php endif; ?>
+
 <main>
   <div class="event-main-wrapper">
     <div class="event-header-bar">
@@ -89,9 +212,11 @@ if ($userId) {
                         echo '<td></td>';
                     } else {
                         $isSelected = ($day === $selectedDay) ? 'selected-day' : '';
+                        $hasEvents = isset($daysWithEvents[$day]) ? 'calendar-day-has-events' : '';
+                        $isRegistered = isset($daysRegistered[$day]) ? 'calendar-day-registered' : '';
                         $cellDate = sprintf('%04d-%02d-%02d', $year, $month, $day);
 
-                        echo '<td class="clickable ' . $isSelected . '" '
+                        echo '<td class="clickable ' . $isSelected . ' ' . $hasEvents . ' ' . $isRegistered . '" '
                            . 'onclick="window.location.href=\'' 
                            . $baseUrl 
                            . '&date=' . $cellDate 
@@ -125,7 +250,7 @@ if ($userId) {
 
         $j_date = strftime('%A %d %B %Y', mktime(0, 0, 0, $month, $selectedDay, $year));
         $j_list = explode(" ", $j_date);
-        $j = $j_list[0]
+        $j = $j_list[0];
         ?>
         <div class="event-details-header"><?= $jour[$j]." ".$selectedDay." ".$mois[$month]." ".$year; ?></div>
         
@@ -149,12 +274,12 @@ if ($userId) {
                 <?php endif; ?>
               </summary>
               <div class="event-card-details">
-                <button class="delete-event-btn" title="Supprimer l'événement"onclick="confirmDeleteEvent(<?php echo (int)$event['id_evenement']; ?>)">
-                <i class="fa-solid fa-trash"></i>
+                <button class="delete-event-btn" title="Supprimer l'événement" onclick="confirmDeleteEvent(<?php echo (int)$event['id_evenement']; ?>)">
+                  <i class="fa-solid fa-trash"></i>
                 </button>
                 <form id="delete-event-form-<?php echo $event['id_evenement']; ?>" method="POST" style="display: none;">
-                <input type="hidden" name="action" value="delete_event">
-                <input type="hidden" name="event_id" value="<?php echo $event['id_evenement']; ?>">
+                  <input type="hidden" name="action" value="delete_event">
+                  <input type="hidden" name="event_id" value="<?php echo $event['id_evenement']; ?>">
                 </form>
                 <p><strong>Type:</strong> <?php echo htmlspecialchars($event['type_evenement']); ?></p>
                 <p><strong>Début:</strong> <?php echo date('d/m/Y H:i', strtotime($event['date_debut_evenement'])); ?></p>
@@ -174,6 +299,7 @@ if ($userId) {
     </div>
   </div>
 </main>
+
 <div id="addEventModal" class="modal">
   <div class="modal-content">
     <div class="modal-header">
@@ -231,6 +357,7 @@ window.onclick = function(event) {
     modal.classList.remove('active');
   }
 }
+
 function confirmDeleteEvent(eventId) {
   if (confirm("Êtes-vous sûr de vouloir supprimer cet événement ?")) {
     const form = document.getElementById('delete-event-form-' + eventId);
@@ -239,78 +366,8 @@ function confirmDeleteEvent(eventId) {
     }
   }
 }
-
 </script>
 
-<?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
-  if ($_POST['action'] === 'create_event') {
-    if (isset($_SESSION['user_id']) && isset($_POST['event_titre']) && isset($_POST['event_date_debut']) && isset($_POST['event_date_fin'])) {
-      $titre = htmlspecialchars($_POST['event_titre']);
-      $type = htmlspecialchars($_POST['event_type']);
-      $description = htmlspecialchars($_POST['event_description']);
-      $date_debut = $_POST['event_date_debut'];
-      $date_fin = $_POST['event_date_fin'];
-      $id_type = (int)$_POST['event_id_type'];
-      $id_utilisateur = $_SESSION['user_id'];
-
-      $result = createEvent($titre, $type, $description, $date_debut, $date_fin, $id_type, $id_utilisateur);
-      if ($result) {
-        echo '<script>alert("Événement créé avec succès!"); window.location.reload();</script>';
-      } else {
-        echo '<script>alert("Erreur lors de la création de l\'événement.");</script>';
-      }
-    } else {
-      echo '<script>alert("Veuillez remplir tous les champs requis.");</script>';
-    }
-  }
-  elseif ($_POST['action'] === 'register') {
-    if (isset($_SESSION['user_id']) && isset($_POST['event_id'])) {
-      $userId = $_SESSION['user_id'];
-      $eventId = (int)$_POST['event_id'];
-
-      if (!isUserRegisteredToEvent($userId, $eventId)) {
-        $result = registerUserToEvent($userId, $eventId);
-        if ($result) {
-          echo '<script>alert("Inscription réussie!"); window.location.reload();</script>';
-        } else {
-          echo '<script>alert("Erreur lors de l\'inscription.");</script>';
-        }
-      }
-    }
-  }
-  elseif ($_POST['action'] === 'unregister') {
-    if (isset($_SESSION['user_id']) && isset($_POST['event_id'])) {
-      $userId = $_SESSION['user_id'];
-      $eventId = (int)$_POST['event_id'];
-
-      if (isUserRegisteredToEvent($userId, $eventId)) {
-        $result = unregisterUserFromEvent($userId, $eventId);
-        if ($result) {
-          echo '<script>alert("Désinscription réussie!"); window.location.reload();</script>';
-        } else {
-          echo '<script>alert("Erreur lors de la désinscription.");</script>';
-        }
-      }
-    }
-  }
-  elseif ($_POST['action'] === 'delete_event') {
-  if (isset($_SESSION['user_id']) && isset($_POST['event_id'])) {
-    $eventId = (int)$_POST['event_id'];
-
-    $result = deleteEvent($eventId);
-
-    if ($result) {
-      header('Location: ' . $_SERVER['REQUEST_URI'] . '?deleted=1');
-      exit;
-    } else {
-      echo "<script>alert('Erreur lors de la suppression de l\\'événement.');</script>";
-    }
-  }
-}
-
-}
-?>
 <?php include $_ENV['BONUS_PATH'].'assets/html/footer.html'; ?>
 </body>
 </html>

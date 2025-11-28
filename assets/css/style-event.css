@@ -451,3 +451,19 @@ body::before {
 .btn-cancel:hover {
   background-color: #bbb;
 }
+.calendar-day-has-events {
+  background-color: #DB4C3B !important;
+  border: 2px solid #973428 !important;
+  border-radius: 4px;
+}
+.calendar-day-has-events:hover {
+  background-color: #d5776d !important;
+}
+.calendar-day-registered {
+  background-color: #4caf50 !important;
+  border: 2px solid #316f33 !important;
+  border-radius: 4px;
+}
+.calendar-day-registered:hover {
+  background-color: #62b465 !important;
+}

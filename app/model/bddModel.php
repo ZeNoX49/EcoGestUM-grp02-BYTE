@@ -21,7 +21,11 @@ function get($sql, $params = []) {
 
 function getCount($sql, $params = []) {
     $result = get($sql, $params);
-    return $result[0]['COUNT(*)'];
+    if (empty($result)) {
+        return 0;
+    }
+    $firstRow = $result[0];
+    return (int)reset($firstRow);
 }
 
 function ins_upd_del($sql, $params) {
