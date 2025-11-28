@@ -21,7 +21,6 @@ function get($sql, $params = []) {
 
 function getCount($sql, $params = []) {
     $result = get($sql, $params);
-    var_dump($result);
     return $result[0]['COUNT(*)'];
 }
 
