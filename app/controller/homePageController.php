@@ -3,6 +3,8 @@ require_once $_ENV['BONUS_PATH']."app/model/depserModel.php";
 require_once $_ENV['BONUS_PATH']."app/model/temoignageModel.php";
 require_once $_ENV['BONUS_PATH']."app/model/utilisateurModel.php";
 
+require_once $_ENV['BONUS_PATH']."app/model/objetModel.php";
+
 class homePageController
 {
     public function show()

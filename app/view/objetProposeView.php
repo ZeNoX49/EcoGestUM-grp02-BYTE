@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="<?php echo $_ENV['BONUS_PATH']."assets/css/style-gestion.css" ?>">
+    <link rel="stylesheet" href="<?= $_ENV['BONUS_PATH']."assets/css/style-gestion.css" ?>">
     <title>Mes Objets Proposés</title>
 </head>
 <body>
@@ -60,18 +60,14 @@
                 <?php foreach ($objets as $objet):?>
                     <div class="my-object-card">
                     <div class="status-badge <?=$correspStyleStatutDisponible[$objet['nom_statut_disponibilite']]?>"><?=$objet['nom_statut_disponibilite']?></div>
-                        <?php
-                        $imgSrc = !empty($objet['image_objet']) ? $_ENV['BONUS_PATH'].'assets/image/uploads/'.$objet['image_objet'] : 'https://via.placeholder.com/140x140/A8A8A8/FFFFFF?text=Pas+d\'image';
-                        if(strpos($objet['image_objet'], 'http') === 0) { $imgSrc = $objet['image_objet']; }
-                        ?>
-                    <div class="card-img-top" style="background-image: url('<?php echo htmlspecialchars($imgSrc); ?>');"></div>
+                    <div class="card-img-top" style="background-image: url('<?= htmlspecialchars(getObjectImage($objet['id_objet'])); ?>');"></div>
                     <div class="card-body">
                         <h3>
                             <?=$objet['nom_objet']?>
                             <span class="category-label"><?=$objet['nom_categorie']?></span>
                         </h3>
                         <p class="card-desc">
-                            <?=$objet['nom_objet']?>
+                            <?=$objet['description_objet']?>
                         </p>
                         <div class="card-meta">
                             <span><i class="fa-solid fa-location-dot"></i> <?=$objet['nom_point_collecte']?> - <?=$objet['adresse_point_collecte']?></span>
@@ -114,6 +110,6 @@
         </div>
     </div>
 
-    <script src=<?php echo $_ENV['BONUS_PATH']."assets/js/popup-objet.js" ?>></script>
+    <script src=<?= $_ENV['BONUS_PATH']."assets/js/popup-objet.js" ?>></script>
 </body>
 </html>

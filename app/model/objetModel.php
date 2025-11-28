@@ -2,10 +2,10 @@
 
 require_once $_ENV['BONUS_PATH']."app/model/bddModel.php";
 
-function insert_object($image, $name, $description, $date, $id_collect_point, $id_trade_type, $id_user, $id_etat, $id_category, $quantite, $statut = 3) {
-    $sql = "INSERT INTO OBJET (image_objet, nom_objet, description_objet, date_ajout_objet, id_point_collecte, id_type_echange, id_utilisateur, id_statut_disponibilite, id_etat, id_categorie, quantite)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    $params = [$image, $name, $description, $date, $id_collect_point, $id_trade_type, $id_user, $statut, $id_etat, $id_category, $quantite];
+function insert_object($name, $description, $date, $id_collect_point, $id_trade_type, $id_user, $id_etat, $id_category, $quantite, $statut = 3) {
+    $sql = "INSERT INTO OBJET (nom_objet, description_objet, date_ajout_objet, id_point_collecte, id_type_echange, id_utilisateur, id_statut_disponibilite, id_etat, id_categorie, quantite)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $params = [$name, $description, $date, $id_collect_point, $id_trade_type, $id_user, $statut, $id_etat, $id_category, $quantite];
     return insert($sql, $params);
 }
 
@@ -19,6 +19,16 @@ function getObject($id_object) {
     $params = [$id_object];
     return get($sql, $params);
 }
+
+function getObjectId($name, $description, $date) {
+    $sql = "SELECT id_objet FROM OBJET
+            WHERE nom_objet LIKE ? AND 
+            description_objet LIKE ? AND 
+            date_ajout_objet LIKE ?";
+    $params = [$name, $description, $date];
+    return get($sql, $params);
+}
+
 function getAllFilteredObjects($search = '', $catId = null, $etatNom = null, $location = '', $statut = null) {
     $bdd = get_bdd();
     $sql = "SELECT * FROM allObject WHERE 1=1";
@@ -122,7 +132,7 @@ function deleteObject($id_objet){
     return delete($sql, $params);
 }
 
-function updateObject($id, $nom, $desc, $idPoint, $idEtat, $idCat, $quantite, $image) {
+function updateObject($id, $nom, $desc, $idPoint, $idEtat, $idCat, $quantite) {
     $sql = "UPDATE OBJET SET
             nom_objet = ?,
             description_objet = ?,
@@ -130,9 +140,8 @@ function updateObject($id, $nom, $desc, $idPoint, $idEtat, $idCat, $quantite, $i
             id_etat = ?,
             id_categorie = ?,
             quantite = ?,
-            image_objet = ?
             WHERE id_objet = ?";
-    $params = [$nom, $desc, $idPoint, $idEtat, $idCat, $quantite, $image, $id];
+    $params = [$nom, $desc, $idPoint, $idEtat, $idCat, $quantite, $id];
     return update($sql, $params);
 }
 
@@ -220,14 +229,15 @@ function getObjectIndiponible(){
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-// function getNbObjPropUser($id_user) {
-//     $sql = "SELECT COUNT(*) FROM mes_objets_donnes ?";
-//     $params = [$id_user];
-//     return get($sql, $params);
-// }
 
-// function getNbObjRecupUser($id_user) {
-//     $sql = "SELECT COUNT(*) FROM reservations_recues ?";
-//     $params = [$id_user];
-//     return get($sql, $params);
-// }
+// Récupération de l'image
+function getObjectImage($id_objet) {
+    $uploadDir = $_ENV['BONUS_PATH'].'assets/image/uploads/';
+    $files = scandir($uploadDir);
+    foreach ($files as $file) {
+        if ((string)explode("_", $file)[0] === (string)$id_objet) {
+            return $uploadDir.$file;
+        }
+    }
+    return null;
+}

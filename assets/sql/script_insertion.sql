@@ -125,16 +125,16 @@ VALUES ('2025-01-31', 'Objets donnes', '125', 6),
        ('2025-02-28', 'Reservations', '67', 6);
 
 -- Objets
-INSERT INTO OBJET (image_objet, nom_objet, description_objet, date_ajout_objet, id_point_collecte, id_type_echange,
+INSERT INTO OBJET (nom_objet, description_objet, date_ajout_objet, id_point_collecte, id_type_echange,
                    id_utilisateur, id_statut_disponibilite, id_etat, id_categorie)
-VALUES ('livre1.jpg', 'Manuel de Mathematiques L1', 'Analyse et algebre lineaire', '2025-02-10 10:00:00', 1, 1, 1, 1, 2, 1),
-       ('ordi1.jpg', 'Ordinateur portable HP', 'Core i5, 8Go RAM, bon etat', '2025-02-12 14:30:00', 2, 2, 2, 1, 3, 2),
-       ('bureau1.jpg', 'Bureau etudiant', 'Bureau avec tiroirs', '2025-02-14 09:00:00', 4, 1, 3, 1, 2, 3),
-       ('livre2.jpg', 'Dictionnaire Anglais-Français', 'edition recente', '2025-02-15 11:00:00', 2, 1, 7, 2, 1, 1),
-       ('calculatrice.jpg', 'Calculatrice scientifique', 'Casio FX-92', '2025-02-16 13:00:00', 1, 3, 8, 1, 2, 6),
-       ('veste.jpg', 'Veste universitaire', 'Taille M, couleur bleue', '2025-02-17 15:00:00', 4, 1, 10, 1, 2, 4),
-       ('raquette.jpg', 'Raquette de badminton', 'Avec housse', '2025-02-18 10:30:00', 3, 2, 1, 3, 3, 5),
-       ('livre3.jpg', 'Programmation Python', 'Pour debutants', '2025-02-19 16:00:00', 1, 1, 2, 1, 2, 1);
+VALUES ('Manuel de Mathematiques L1', 'Analyse et algebre lineaire', '2025-02-10 10:00:00', 1, 1, 1, 1, 2, 1),
+       ('Ordinateur portable HP', 'Core i5, 8Go RAM, bon etat', '2025-02-12 14:30:00', 2, 2, 2, 1, 3, 2),
+       ('Bureau etudiant', 'Bureau avec tiroirs', '2025-02-14 09:00:00', 4, 1, 3, 1, 2, 3),
+       ('Dictionnaire Anglais-Français', 'edition recente', '2025-02-15 11:00:00', 2, 1, 7, 2, 1, 1),
+       ('Calculatrice scientifique', 'Casio FX-92', '2025-02-16 13:00:00', 1, 3, 8, 1, 2, 6),
+       ('Veste universitaire', 'Taille M, couleur bleue', '2025-02-17 15:00:00', 4, 1, 10, 1, 2, 4),
+       ('Raquette de badminton', 'Avec housse', '2025-02-18 10:30:00', 3, 2, 1, 3, 3, 5),
+       ('Programmation Python', 'Pour debutants', '2025-02-19 16:00:00', 1, 1, 2, 1, 2, 1);
 
 -- evenements
 INSERT INTO EVENEMENT (titre_evenement, description_evenement, date_debut_evenement, date_fin_evenement,

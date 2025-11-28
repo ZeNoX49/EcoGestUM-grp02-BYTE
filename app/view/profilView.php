@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href=<?php echo $_ENV["BONUS_PATH"]."assets/css/style-profil.css" ?>>
+    <link rel="stylesheet" href=<?= $_ENV["BONUS_PATH"]."assets/css/style-profil.css" ?>>
     <title>Mon Profil</title>
 </head>
 <body>
@@ -47,15 +47,15 @@
                 <form>
                     <div class="profil-form-group">
                         <label>Nom</label>
-                        <input type="text" class="profil-input" value="<?php echo $user[0]["nom_utilisateur"] ?>">
+                        <input type="text" class="profil-input" value="<?= $user[0]["nom_utilisateur"] ?>">
                     </div>
                     <div class="profil-form-group">
                         <label>Prénom</label>
-                        <input type="text" class="profil-input" value="<?php echo $user[0]["prenom_utilisateur"] ?>">
+                        <input type="text" class="profil-input" value="<?= $user[0]["prenom_utilisateur"] ?>">
                     </div>
                     <div class="profil-form-group">
                         <label>Email</label>
-                        <input type="email" class="profil-input" value="<?php echo $user[0]["email_utilisateur"] ?>">
+                        <input type="email" class="profil-input" value="<?= $user[0]["email_utilisateur"] ?>">
                     </div>
                 </form>
             </div>
@@ -73,13 +73,13 @@
                             <select class="profil-input" style="cursor: pointer;">
                                 <option>Sélectionnez</option>
                                 <?php foreach($objet_categories_possible as $obj_cat_p) : ?>
-                                    <option><?php echo $obj_cat_p["nom_categorie"] ?></option>
+                                    <option><?= $obj_cat_p["nom_categorie"] ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
                         <div class="tag-box">
                             <?php foreach($notif_obj_cat as $obj_cat) : ?>
-                                <option><span class="tag-close">×</span><?php echo " ".$objet_categories[$obj_cat["id_choix"]]["nom_categorie"] ?></option>
+                                <option><span class="tag-close">×</span><?= " ".$objet_categories[$obj_cat["id_choix"]]["nom_categorie"] ?></option>
                             <?php endforeach ?>
                         </div>
                     </div>
@@ -89,13 +89,13 @@
                             <select class="profil-input" style="cursor: pointer;">
                                 <option>Sélectionnez</option>
                                 <?php foreach($objet_position_possible as $obj_pos_p) : ?>
-                                    <option><?php echo $obj_pos_p["adresse_point_collecte"] ?></option>
+                                    <option><?= $obj_pos_p["adresse_point_collecte"] ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
                         <div class="tag-box">
                             <?php foreach($notif_obj_loc as $obj_pos) : ?>
-                                <option><span class="tag-close">×</span><?php echo " ".$objet_position[$obj_pos["id_choix"]]["adresse_point_collecte"] ?></option>
+                                <option><span class="tag-close">×</span><?= " ".$objet_position[$obj_pos["id_choix"]]["adresse_point_collecte"] ?></option>
                             <?php endforeach ?>
                         </div>
                     </div>
@@ -111,13 +111,13 @@
                             <select class="profil-input">
                                 <option>Sélectionnez</option>
                                 <?php foreach($event_categories_possible as $event_cat_p) : ?>
-                                    <option><?php echo $event_cat_p["nom_type_evenement"] ?></option>
+                                    <option><?= $event_cat_p["nom_type_evenement"] ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
                         <div class="tag-box">
                             <?php foreach($notif_event_cat as $event_cat) : ?>
-                                <option><span class="tag-close">×</span><?php echo " ".$event_categories[$event_cat["id_choix"]]["nom_type_evenement"] ?></option>
+                                <option><span class="tag-close">×</span><?= " ".$event_categories[$event_cat["id_choix"]]["nom_type_evenement"] ?></option>
                             <?php endforeach ?>
                         </div>
                     </div>
@@ -127,12 +127,12 @@
                             <select class="profil-input">
                                 <option>Sélectionnez</option>
                                 <?php foreach($event_organisateur_possible as $event_org_p) : ?>
-                                    <option><?php echo $event_org_p["email_utilisateur"] ?></option>
+                                    <option><?= $event_org_p["email_utilisateur"] ?></option>
                                 <?php endforeach ?>
                             </select>                        </div>
                         <div class="tag-box">
                             <?php foreach($notif_event_org as $event_org) : ?>
-                                <option><span class="tag-close">×</span><?php echo " ".$event_organisateur[$event_org["id_choix"]]["email_utilisateur"] ?></option>
+                                <option><span class="tag-close">×</span><?= " ".$event_organisateur[$event_org["id_choix"]]["email_utilisateur"] ?></option>
                             <?php endforeach ?>
                         </div>
                     </div>
@@ -142,13 +142,13 @@
                             <select class="profil-input">
                                 <option>Sélectionnez</option>
                                 <?php foreach($event_localisation_possible as $event_loc_p) : ?>
-                                    <option><?php echo $event_loc_p["adresse_point_collecte"] ?></option>
+                                    <option><?= $event_loc_p["adresse_point_collecte"] ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
                         <div class="tag-box">
                             <?php foreach($notif_event_loc as $event_loc) : ?>
-                                <option><span class="tag-close">×</span><?php echo " ".$event_localisation[$event_loc["id_choix"]]["adresse_point_collecte"] ?></option>
+                                <option><span class="tag-close">×</span><?= " ".$event_localisation[$event_loc["id_choix"]]["adresse_point_collecte"] ?></option>
                             <?php endforeach ?>
                         </div>
                     </div>
@@ -207,6 +207,6 @@
     </div>
 </div>
 <?php include  $_ENV["BONUS_PATH"].'assets/html/footer.html'; ?>
-<script src=<?php echo  $_ENV["BONUS_PATH"]."assets/js/page-profil.js" ?>></script>
+<script src=<?=  $_ENV["BONUS_PATH"]."assets/js/page-profil.js" ?>></script>
 </body>
 </html>

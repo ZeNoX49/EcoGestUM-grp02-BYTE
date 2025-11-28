@@ -27,16 +27,16 @@ FROM OBJET o
          JOIN UTILISATEUR u ON u.id_utilisateur = o.id_utilisateur
 WHERE o.id_statut_disponibilite = 1;
 
--- Requete 2 : Voir mes reservations (exemple pour utilisateur id=1)
-CREATE
-OR REPLACE VIEW mes_reservations AS
-SELECT o.nom_objet,
-       r.date_reservation,
-       sr.nom_statut_reservation
-FROM RESERVER r
-         JOIN OBJET o ON r.id_objet = o.id_objet
-         JOIN STATUTRESERVATION sr ON r.id_statut_reservation = sr.id_statut_reservation
-WHERE r.id_utilisateur = 1;
+-- -- Requete 2 : Voir mes reservations (exemple pour utilisateur id=1)
+-- CREATE
+-- OR REPLACE VIEW mes_reservations AS
+-- SELECT o.nom_objet,
+--        r.date_reservation,
+--        sr.nom_statut_reservation
+-- FROM RESERVER r
+--          JOIN OBJET o ON r.id_objet = o.id_objet
+--          JOIN STATUTRESERVATION sr ON r.id_statut_reservation = sr.id_statut_reservation
+-- WHERE r.id_utilisateur = 1;
 
 -- Requete 3 : Voir les evenements a venir
 CREATE

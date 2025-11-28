@@ -6,37 +6,37 @@ USE sae;
 
 /* ------ ENSEIGNANT ------ */
 
--- Requete 4 : Voir mes objets donnes (exemple pour id_utilisateur = 2)
-CREATE VIEW mes_objets_donnes AS
-SELECT
-    nom_objet,
-    description_objet,
-    date_ajout_objet
-FROM OBJET
-WHERE id_utilisateur = 2;
+-- -- Requete 4 : Voir mes objets donnes (exemple pour id_utilisateur = 2)
+-- CREATE VIEW mes_objets_donnes AS
+-- SELECT
+--     nom_objet,
+--     description_objet,
+--     date_ajout_objet
+-- FROM OBJET
+-- WHERE id_utilisateur = 2;
 
--- Requete 5 : Voir les reservations de mes objets
-CREATE VIEW reservations_de_mes_objets AS
-SELECT
-    u.nom_utilisateur,
-    u.prenom_utilisateur,
-    o.nom_objet,
-    r.date_reservation
-FROM RESERVER r
-JOIN OBJET o ON r.id_objet = o.id_objet
-JOIN UTILISATEUR u ON r.id_utilisateur = u.id_utilisateur
-WHERE o.id_utilisateur = 2;
+-- -- Requete 5 : Voir les reservations de mes objets
+-- CREATE VIEW reservations_de_mes_objets AS
+-- SELECT
+--     u.nom_utilisateur,
+--     u.prenom_utilisateur,
+--     o.nom_objet,
+--     r.date_reservation
+-- FROM RESERVER r
+-- JOIN OBJET o ON r.id_objet = o.id_objet
+-- JOIN UTILISATEUR u ON r.id_utilisateur = u.id_utilisateur
+-- WHERE o.id_utilisateur = 2;
 
 
--- Requete 6 : Voir tous les objets par etat
-CREATE VIEW objets_par_etat AS
-SELECT
-    e.nom_etat,
-    COUNT(o.id_objet) AS nombre
-FROM ETAT e
-LEFT JOIN OBJET o ON e.id_etat = o.id_etat
-WHERE o.id_utilisateur = 2
-GROUP BY e.nom_etat;
+-- -- Requete 6 : Voir tous les objets par etat
+-- CREATE VIEW objets_par_etat AS
+-- SELECT
+--     e.nom_etat,
+--     COUNT(o.id_objet) AS nombre
+-- FROM ETAT e
+-- LEFT JOIN OBJET o ON e.id_etat = o.id_etat
+-- WHERE o.id_utilisateur = 2
+-- GROUP BY e.nom_etat;
 
 -- ===========================================================
 -- PROCEDURES STOCKeES
