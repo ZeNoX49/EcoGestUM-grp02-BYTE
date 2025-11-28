@@ -60,7 +60,11 @@
                 <?php foreach ($objets as $objet):?>
                     <div class="my-object-card">
                     <div class="status-badge <?=$correspStyleStatutDisponible[$objet['nom_statut_disponibilite']]?>"><?=$objet['nom_statut_disponibilite']?></div>
-                    <div class="card-img-top" style="background-image: url('http://googleusercontent.com/image_generation_content/0');"></div>
+                        <?php
+                        $imgSrc = !empty($objet['image_objet']) ? $_ENV['BONUS_PATH'].'assets/image/uploads/'.$objet['image_objet'] : 'https://via.placeholder.com/140x140/A8A8A8/FFFFFF?text=Pas+d\'image';
+                        if(strpos($objet['image_objet'], 'http') === 0) { $imgSrc = $objet['image_objet']; }
+                        ?>
+                    <div class="card-img-top" style="background-image: url('<?php echo htmlspecialchars($imgSrc); ?>');"></div>
                     <div class="card-body">
                         <h3>
                             <?=$objet['nom_objet']?>
