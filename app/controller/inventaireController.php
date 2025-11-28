@@ -16,14 +16,13 @@ class inventaireController
         $location = isset($_GET['location']) ? trim($_GET['location']) : '';
         $statut = isset($_GET['statut']) ? $_GET['statut'] : null;
         $objets = getAllFilteredObjects($search, $category, $etat, $location, $statut);
-        //$objets = getAllObject();
         $nbObjetsDisponibles = countObjectStatus($objets, 2);
         $nbObjetsReserve = countObjectStatus($objets, 3);
         $nbObjetsEnAttente = countObjectStatus($objets, 1);
         $nbObjetsRefusee = countObjectReserve($objets, 4);
         $categoriesList = getAllCategories();
         $statutList = getAllStatutDisponible();
-        $correspStyleStatutDisponible = ['En attente' =>'badge-yellow', 'Disponible' => 'badge-green', 'Indisponible'=>'status-refused', 'Reserve' => 'status-collected'];
+        $correspStyleStatutDisponible = ['En attente' =>'badge-yellow', 'Disponible' => 'badge-green', 'Indisponible'=>'badge-red', 'Reserve' => 'badge-blue'];
         
         
         

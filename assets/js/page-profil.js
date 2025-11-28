@@ -14,3 +14,4 @@ function showSection(sectionId, element) {
     element.classList.add('active');
     }
 }
+

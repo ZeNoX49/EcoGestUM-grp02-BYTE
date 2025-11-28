@@ -269,6 +269,16 @@ body {
     color: #856404;
 }
 
+.badge-red {
+    background-color: #F8D7DA;
+    color: #721C24;
+}
+
+.badge-blue {
+    background-color: #CCE5FF;
+    color: #004085;
+}
+
 .btn-edit-icon {
     background-color: #5C7CFA;
     color: white;
@@ -399,3 +409,4 @@ body {
     border: none;
     cursor: pointer;
 }
+

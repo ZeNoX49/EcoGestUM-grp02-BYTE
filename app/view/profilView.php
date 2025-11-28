@@ -129,7 +129,8 @@
                                 <?php foreach($event_organisateur_possible as $event_org_p) : ?>
                                     <option><?= $event_org_p["email_utilisateur"] ?></option>
                                 <?php endforeach ?>
-                            </select>                        </div>
+                            </select>                        
+                        </div>
                         <div class="tag-box">
                             <?php foreach($notif_event_org as $event_org) : ?>
                                 <option><span class="tag-close">×</span><?= " ".$event_organisateur[$event_org["id_choix"]]["email_utilisateur"] ?></option>
@@ -139,7 +140,7 @@
                     <div class="col">
                         <div class="profil-form-group" style="margin-bottom: 10px;">
                             <label>Localisation</label>
-                            <select class="profil-input">
+                            <select class="profil-input" style="cursor: pointer;">
                                 <option>Sélectionnez</option>
                                 <?php foreach($event_localisation_possible as $event_loc_p) : ?>
                                     <option><?= $event_loc_p["adresse_point_collecte"] ?></option>
@@ -162,7 +163,7 @@
                     </label>
                     <label class="checkbox-item">
                         <input type="checkbox" !checked>
-                        Communications sur ...
+                        Communications sur la congolexicomatisation des lois du marché
                     </label>
                 </div>
             </div>
@@ -210,3 +211,94 @@
 <script src=<?=  $_ENV["BONUS_PATH"]."assets/js/page-profil.js" ?>></script>
 </body>
 </html>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    function addTag(tagBox, text) {
+        if (!isTagAlreadyAdded(tagBox, text)) {
+            const tag = document.createElement('span');
+            tag.className = 'tag-item';
+            tag.innerHTML = `
+                <span class="tag-text">${text}</span>
+                <span class="tag-close">×</span>
+            `;
+            tagBox.appendChild(tag);
+            
+            tag.querySelector('.tag-close').addEventListener('click', function() {
+                tag.remove();
+            });
+        }
+    }
+    
+    function isTagAlreadyAdded(tagBox, text) {
+        return Array.from(tagBox.querySelectorAll('.tag-text')).some(tag => 
+            tag.textContent.trim() === text.trim()
+        );
+    }
+
+    const objCatSelect = document.querySelector('.notif-grid .col:nth-child(1) select');
+    const objCatTagBox = document.querySelector('.notif-grid .col:nth-child(1) .tag-box');
+    if (objCatSelect && objCatTagBox) {
+        objCatSelect.addEventListener('change', function() {
+            const text = this.options[this.selectedIndex].textContent;
+            if (text !== 'Sélectionnez') {
+                addTag(objCatTagBox, text);
+                this.selectedIndex = 0;
+            }
+        });
+    }
+    
+    const objLocSelect = document.querySelector('.notif-grid .col:nth-child(2) select');
+    const objLocTagBox = document.querySelector('.notif-grid .col:nth-child(2) .tag-box');
+    if (objLocSelect && objLocTagBox) {
+        objLocSelect.addEventListener('change', function() {
+            const text = this.options[this.selectedIndex].textContent;
+            if (text !== 'Sélectionnez') {
+                addTag(objLocTagBox, text);
+                this.selectedIndex = 0;
+            }
+        });
+    }
+    
+    const eventCatSelect = document.querySelectorAll('.notif-grid')[1]?.querySelector('.col:nth-child(1) select');
+    const eventCatTagBox = document.querySelectorAll('.notif-grid')[1]?.querySelector('.col:nth-child(1) .tag-box');
+    if (eventCatSelect && eventCatTagBox) {
+        eventCatSelect.addEventListener('change', function() {
+            const text = this.options[this.selectedIndex].textContent;
+            if (text !== 'Sélectionnez') {
+                addTag(eventCatTagBox, text);
+                this.selectedIndex = 0;
+            }
+        });
+    }
+    
+    const eventOrgSelect = document.querySelectorAll('.notif-grid')[1]?.querySelector('.col:nth-child(2) select');
+    const eventOrgTagBox = document.querySelectorAll('.notif-grid')[1]?.querySelector('.col:nth-child(2) .tag-box');
+    if (eventOrgSelect && eventOrgTagBox) {
+        eventOrgSelect.addEventListener('change', function() {
+            const text = this.options[this.selectedIndex].textContent;
+            if (text !== 'Sélectionnez') {
+                addTag(eventOrgTagBox, text);
+                this.selectedIndex = 0;
+            }
+        });
+    }
+    
+    const eventLocSelect = document.querySelectorAll('.notif-grid')[1]?.querySelector('.col:nth-child(3) select');
+    const eventLocTagBox = document.querySelectorAll('.notif-grid')[1]?.querySelector('.col:nth-child(3) .tag-box');
+    if (eventLocSelect && eventLocTagBox) {
+        eventLocSelect.addEventListener('change', function() {
+            const text = this.options[this.selectedIndex].textContent;
+            if (text !== 'Sélectionnez') {
+                addTag(eventLocTagBox, text);
+                this.selectedIndex = 0;
+            }
+        });
+    }
+    
+    document.querySelectorAll('.tag-close').forEach(closeBtn => {
+        closeBtn.addEventListener('click', function() {
+            this.parentElement.remove();
+        });
+    });
+});
+</script>
