@@ -1,3 +1,4 @@
+<?php if(!(isset($demandeNouvObjetEnAttente) && isset($reservationAccepter) && isset($reservationRefuser) && isset($nbObjAttente) && isset($nbReservationAccepter) && isset($nbReservationRefuser) && isset($nbObjets))) die('error server')?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -24,19 +25,19 @@
             
             <div class="stats-dashboard">
                 <div class="stat-card border-green">
-                    <span class="stat-number">12</span>
+                    <span class="stat-number"><?= $nbReservationAccepter?></span>
                     <span class="stat-label">Approuvées (ce mois)</span>
                 </div>
                 <div class="stat-card border-yellow">
-                    <span class="stat-number">3</span>
+                    <span class="stat-number"><?= $nbObjAttente?></span>
                     <span class="stat-label">En attente</span>
                 </div>
                 <div class="stat-card border-blue">
-                    <span class="stat-number">5</span>
+                    <span class="stat-number"><?= $nbObjets ?></span>
                     <span class="stat-label">Total (ce mois)</span>
                 </div>
                 <div class="stat-card border-red">
-                    <span class="stat-number">4</span>
+                    <span class="stat-number"><?=$nbReservationRefuser?></span>
                     <span class="stat-label">Refusées (ce mois)</span>
                 </div>
             </div>
@@ -69,19 +70,19 @@
             </div>
 
             <div class="requests-list">
-                <?php if(isset($reservationEnAttente)) foreach($reservationEnAttente as $res ) : ?>
+                <?php foreach($demandeNouvObjetEnAttente as $object ) : ?>
                 <div class="request-card">
                     <div class="req-header">
                         <span class="req-tag tag-yellow">Demande de réservation</span>
-                        <span class="req-priority priority-urgent">Urgent</span>
+                        <span class="req-priority priority-urgent"><?=$object['nom_statut_disponibilite']?></span>
                     </div>
                     
-                    <h2 class="req-title">Demande de chaises de bureau ergonomiques</h2>
+                    <h2 class="req-title"><?=$object['nom_objet'] ?></h2>
                     
                     <div class="req-meta">
-                        <span>Demandeur: <strong><?=$res['nom_proprietaire']?></strong></span>
-                        <span>Date: <strong><?=$res['date_reservation']?></strong></span>
-                        <span>Département: <strong><?=$res['nom_departement'] ?></strong></span>
+                        <span>Demandeur: <strong><?=$object['nom_utilisateur']?></strong></span>
+                        <span>Date: <strong><?=$object['date_ajout_objet']?></strong></span>
+                        <span>Département: <strong><?=$object['nom_departement'] ?></strong></span>
                     </div>
 
                     <p class="req-description">
@@ -90,68 +91,22 @@
 
                     <div class="req-details-grid">
                         <div class="req-detail-item">
-                            <span class="label">Objet demandé</span>
-                            <span class="value">Chaises de bureau</span>
-                        </div>
-                        <div class="req-detail-item">
                             <span class="label">Quantité</span>
-                            <span class="value">5 unités</span>
-                        </div>
-                        <div class="req-detail-item">
-                            <span class="label">Date souhaitée</span>
-                            <span class="value">5 février 2025</span>
+                            <span class="value"><?= $object['quantite']?></span>
                         </div>
                         <div class="req-detail-item">
                             <span class="label">Localisation destination</span>
-                            <span class="value">Bâtiment C - Étage 2</span>
+                            <span class="value"><?=$object['nom_point_collecte']?> - <?=$object['adresse_point_collecte']?></span>
                         </div>
                     </div>
 
                     <div class="req-actions">
-                        <button class="btn-refuse" onclick="openRefuseModal('Demande de chaises de bureau ergonomiques')">Refuser</button>
-                        <button class="btn-approve" onclick="openApproveModal('Demande de chaises de bureau ergonomiques')">Approuver</button>
+                        <button class="btn-refuse" onclick="openRefuseModal('<?= $object['nom_objet'] ?>', 'index?action=gestionDemande/refuser&refuseId=<?= $object['id_objet'] ?>')">Refuser</button>
+                        <button class="btn-approve" onclick="openApproveModal('<?= $object['nom_objet'] ?>', 'index?action=gestionDemande/accepter&acceptId=<?= $object['id_objet'] ?>')">Approuver</button>
                     </div>
                 </div>
                 <?php endforeach  ?>
 
-                <div class="request-card">
-                    <div class="req-header">
-                        <span class="req-tag tag-yellow">Demande de réservation</span>
-                        <span class="req-priority priority-normal">Normal</span>
-                    </div>
-                    
-                    <h2 class="req-title">Demande d'écrans d'ordinateur</h2>
-                    
-                    <div class="req-meta">
-                        <span>Demandeur: <strong>M. Jean Dupont</strong></span>
-                        <span>Date: <strong>29 janvier 2025</strong></span>
-                        <span>Département: <strong>Scolarité IUT</strong></span>
-                    </div>
-
-                    <p class="req-description">
-                        Besoin de deux écrans supplémentaires pour le secrétariat pédagogique.
-                    </p>
-
-                    <div class="req-details-grid">
-                        <div class="req-detail-item">
-                            <span class="label">Objet demandé</span>
-                            <span class="value">Écran 24 pouces</span>
-                        </div>
-                        <div class="req-detail-item">
-                            <span class="label">Quantité</span>
-                            <span class="value">2 unités</span>
-                        </div>
-                    </div>
-
-                    <div class="req-actions">
-                        <button class="btn-refuse" onclick="openRefuseModal('Demande d\'écrans d\'ordinateur')">Refuser</button>
-                        <button class="btn-approve" onclick="openApproveModal('Demande d\'écrans d\'ordinateur')">Approuver</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
 
     <?php include $_ENV['BONUS_PATH'].'assets/html/footer.html'; ?>
 
@@ -166,7 +121,7 @@
 
             <div class="modal-buttons">
                 <button class="btn-modal-cancel" onclick="closeModal('modalApprove')">Annuler</button>
-                <button class="btn-modal-confirm-green-solid">Approuver la demande</button>
+                <button class="btn-modal-confirm-green-solid" id="confirmAccepterButton">Approuver la demande</button>
             </div>
         </div>
     </div>
@@ -182,11 +137,12 @@
 
             <div class="modal-buttons">
                 <button class="btn-modal-cancel" onclick="closeModal('modalRefuse')">Annuler</button>
-                <button class="btn-modal-confirm-red-solid">Refuser définitivement</button>
+                <button class="btn-modal-confirm-red-solid" id="confirmRefuserButton">Refuser définitivement</button>
             </div>
         </div>
     </div>
 
     <script src=<?php echo $_ENV['BONUS_PATH']."assets/js/popup-demandes.js" ?>></script>
+
 </body>
 </html>

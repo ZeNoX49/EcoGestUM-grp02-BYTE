@@ -93,7 +93,7 @@
             </div>
         </a>
 
-        <a href="index.php?action=historique/show" class="gestion-card">
+        <a href="index.php?action=historique/show" class="gestion-card"  style="display:  <?= (isset($role) && $role == 3)?'':'none' ?>">
             <div class="card-icon-wrapper">
                 <i class="fa-solid fa-file-lines"></i>
             </div>

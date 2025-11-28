@@ -1,4 +1,4 @@
-USE ECOGESTUM;
+USE sae;
 
 -- ===========================================================
 -- VUES
@@ -12,7 +12,7 @@ SELECT
     nom_objet,
     description_objet,
     date_ajout_objet
-FROM objet
+FROM OBJET
 WHERE id_utilisateur = 2;
 
 -- Requete 5 : Voir les reservations de mes objets
@@ -22,9 +22,9 @@ SELECT
     u.prenom_utilisateur,
     o.nom_objet,
     r.date_reservation
-FROM reserver r
-JOIN objet o ON r.id_objet = o.id_objet
-JOIN utilisateur u ON r.id_utilisateur = u.id_utilisateur
+FROM RESERVER r
+JOIN OBJET o ON r.id_objet = o.id_objet
+JOIN UTILISATEUR u ON r.id_utilisateur = u.id_utilisateur
 WHERE o.id_utilisateur = 2;
 
 
@@ -33,8 +33,8 @@ CREATE VIEW objets_par_etat AS
 SELECT
     e.nom_etat,
     COUNT(o.id_objet) AS nombre
-FROM etat e
-LEFT JOIN objet o ON e.id_etat = o.id_etat
+FROM ETAT e
+LEFT JOIN OBJET o ON e.id_etat = o.id_etat
 WHERE o.id_utilisateur = 2
 GROUP BY e.nom_etat;
 
@@ -52,7 +52,7 @@ CREATE PROCEDURE enseignant_ajouter_objet(
     IN p_id_utilisateur INT
 )
 BEGIN
-    INSERT INTO objet (
+    INSERT INTO OBJET (
         nom_objet,
         description_objet,
         date_ajout_objet,
@@ -80,7 +80,7 @@ CREATE PROCEDURE enseignant_modifier_objet(
     IN p_id_etat INT
 )
 BEGIN
-UPDATE objet
+UPDATE OBJET
 SET
     description_objet = p_description,
     id_etat = p_id_etat
@@ -99,7 +99,7 @@ CREATE PROCEDURE enseignant_creer_evenement(
     IN p_id_utilisateur INT
 )
 BEGIN
-INSERT INTO evenement (
+INSERT INTO EVENEMENT (
     titre_evenement,
     type_evenement,
     description_evenement,

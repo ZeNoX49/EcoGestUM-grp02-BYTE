@@ -49,6 +49,14 @@ FROM RESERVER r
          JOIN POINTCOLLECTE pc ON o.id_point_collecte = pc.id_point_collecte
          JOIN UTILISATEUR u ON o.id_utilisateur = u.id_utilisateur
          JOIN DEPSER d ON u.id_depser = d.id_depser;
+
+CREATE VIEW allObject AS
+SELECT o.*, u.nom_utilisateur, u.prenom_utilisateur, s.nom_statut_disponibilite,  pc.nom_point_collecte, pc.adresse_point_collecte,  c.nom_categorie, d.nom_depser AS nom_departement FROM OBJET o
+         JOIN UTILISATEUR u ON o.id_utilisateur = u.id_utilisateur
+         JOIN DEPSER d ON d.id_depser = u.id_depser
+         JOIN STATUTDISPONIBLE s ON s.id_statut_disponibilite = o.id_statut_disponibilite
+         JOIN POINTCOLLECTE pc on pc.id_point_collecte = o.id_point_collecte
+         JOIN CATEGORIE c ON c.id_categorie = o.id_categorie;
 -- ===========================================================
 -- PROCEDURES STOCKeES
 -- ===========================================================
