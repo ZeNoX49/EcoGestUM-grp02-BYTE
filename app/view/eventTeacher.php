@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
       $description = htmlspecialchars($_POST['event_description']);
       $date_debut = $_POST['event_date_debut'];
       $date_fin = $_POST['event_date_fin'];
-      $id_type_evenement = isset($_POST['event_id_type']) ? (int)$_POST['event_id_type'] : 1; // Valeur par défaut
+      $id_type_evenement = isset($_POST['event_id_type']) ? (int)$_POST['event_id_type'] : 1;
       $id_utilisateur = $_SESSION['user_id'];
 
       error_log("Tentative de création événement: $titre, $type, $description, $date_debut, $date_fin, $id_type_evenement, $id_utilisateur");
@@ -315,9 +315,16 @@ if (isset($data['events']) && !empty($data['events'])) {
       </div>
 
       <div class="form-group">
-        <label for="event_type">Type d'événement *</label>
-        <input type="text" id="event_type" name="event_type" placeholder="Ex: Conférence, Atelier, Réunion" required>
+      <label for="event_id_type">Type d'événement *</label>
+        <select id="event_id_type" name="event_id_type" required>
+          <option value="">Sélectionner un type</option>
+          <option value="1">Collecte</option>
+          <option value="2">Atelier de reparation</option>
+          <option value="3">Brocante solidaire</option>
+          <option value="4">Sensibilisation</option>
+        </select>
       </div>
+
 
       <div class="form-group">
         <label for="event_description">Description *</label>
