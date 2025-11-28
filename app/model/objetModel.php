@@ -153,7 +153,7 @@ function countObjectReserve($objets, $id_status) {
     $count = 0;
     if (is_array($objets)) {
         foreach($objets as $objet) {
-            if(isset($objet['id_statut_reservation']) && $objet['id_statut_reservation'] == $id_status) {
+            if(isset($objet['id_statut_disponibilite']) && $objet['id_statut_disponibilite'] == $id_status) {
                 $count++;
             }
         }

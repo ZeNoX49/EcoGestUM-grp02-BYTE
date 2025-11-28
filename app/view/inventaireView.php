@@ -34,6 +34,10 @@
                 <span class="num"><?php if(isset($nbObjetsReserve))echo $nbObjetsReserve?></span>
                 <span class="lbl">Réservé</span>
             </div>
+            <div class="inv-stat-card border-blue">
+                <span class="num"><?php if(isset($nbObjetsEnAttente))echo $nbObjetsEnAttente?></span>
+                <span class="lbl">En attente</span>
+            </div>
             <div class="inv-stat-card border-red">
                 <span class="num"><?php if(isset($nbObjetsRefusee))echo $nbObjetsRefusee?></span>
                 <span class="lbl">Supprimé</span>
@@ -97,11 +101,15 @@
                 <tr>
                     <td>
                         <div class="obj-cell">
-                            <div class="obj-img" style="background-image: url('https://via.placeholder.com/50');"></div>
+                            <?php
+                            $imgSrc = !empty($objet['image_objet']) ? $_ENV['BONUS_PATH'].'assets/image/uploads/'.$objet['image_objet'] : 'https://via.placeholder.com/140x140/A8A8A8/FFFFFF?text=Pas+d\'image';
+                            if(strpos($objet['image_objet'], 'http') === 0) { $imgSrc = $objet['image_objet']; }
+                            ?>
+                            <div class="obj-img" style="background-image: url('<?php echo htmlspecialchars($imgSrc); ?>');"></div>
                             <span><?=$objet['nom_objet']?></span>
                         </div>
                     </td>
-                    <td><span class="badge badge-green"><?=$objet['nom_statut_disponibilite']?></span></td>
+                    <td><span class="badge <?php if(isset($correspStyleStatutDisponible)) echo $correspStyleStatutDisponible[$objet['nom_statut_disponibilite']]?>"><?=$objet['nom_statut_disponibilite']?></span></td>
                     <td><strong><?=$objet['quantite'] ?></strong></td>
                     <td><?=$objet['nom_point_collecte']?> - <?=$objet['adresse_point_collecte']?></td>
                     <td><?=$objet['nom_utilisateur']?></td>

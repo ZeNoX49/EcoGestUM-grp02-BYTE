@@ -16,11 +16,13 @@ class inventaireController
         
         $objets = getAllFilteredObjects($search, $category, $etat, $location);
         //$objets = getAllObject();
-        $nbObjetsDisponibles = countObjectStatus($objets, 1);
-        $nbObjetsReserve = countObjectStatus($objets, 2);
-        $nbObjetsEnAttente = countObjectStatus($objets, 3);
-        $nbObjetsRefusee = countObjectReserve($objets, 5);
+        $nbObjetsDisponibles = countObjectStatus($objets, 2);
+        $nbObjetsReserve = countObjectStatus($objets, 3);
+        $nbObjetsEnAttente = countObjectStatus($objets, 1);
+        $nbObjetsRefusee = countObjectReserve($objets, 4);
         $categoriesList = getAllCategories();
+        $correspStyleStatutDisponible = ['En attente' =>'badge-yellow', 'Disponible' => 'badge-green', 'Indisponible'=>'status-refused', 'Reserve' => 'status-collected'];
+        
         
         
         
