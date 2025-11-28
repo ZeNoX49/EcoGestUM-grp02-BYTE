@@ -60,7 +60,7 @@ if ($userId) {
           ?>'"><</button>
 
           <div class="event-calendar-header">
-            <?php echo strftime('%B %Y', $firstDay); ?>
+            <?= $mois[$month]." ".$year ?>
           </div>
 
           <button onclick="window.location.href='<?php 
@@ -122,8 +122,12 @@ if ($userId) {
                 }
             }
         }
+
+        $j_date = strftime('%A %d %B %Y', mktime(0, 0, 0, $month, $selectedDay, $year));
+        $j_list = explode(" ", $j_date);
+        $j = $j_list[0]
         ?>
-        <div class="event-details-header"><?php echo strftime('%A %d %B %Y', mktime(0, 0, 0, $month, $selectedDay, $year)); ?></div>
+        <div class="event-details-header"><?= $jour[$j]." ".$selectedDay." ".$mois[$month]." ".$year; ?></div>
         
         <?php if (!empty($eventsForDay)): ?>
           <?php foreach ($eventsForDay as $event): ?>
