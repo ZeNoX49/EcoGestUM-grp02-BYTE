@@ -230,7 +230,6 @@ function getObjectIndiponible(){
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-// Récupération de l'image
 function getObjectImage($id_objet) {
     $uploadDir = $_ENV['BONUS_PATH'].'assets/image/uploads/';
     $files = scandir($uploadDir);
@@ -240,4 +239,16 @@ function getObjectImage($id_objet) {
         }
     }
     return null;
+}
+
+function getAllObjectImage($id_objet) {
+    $uploadDir = $_ENV['BONUS_PATH'].'assets/image/uploads/';
+    $files = scandir($uploadDir);
+    $images = [];
+    foreach ($files as $file) {
+        if ((string)explode("_", $file)[0] === (string)$id_objet) {
+            $images[] = $uploadDir.$file;
+        }
+    }
+    return $images;
 }

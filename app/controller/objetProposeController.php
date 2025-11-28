@@ -28,6 +28,10 @@ class objetProposeController
     public function delete(){
         if(isset($_GET['deleteId'])) {
             deleteObject($_GET['deleteId']);
+            $images = getAllObjectImage($_GET['deleteId']);
+            foreach($images as $img) {
+                unlink($img);
+            }
         }
         $this->show();
     }
