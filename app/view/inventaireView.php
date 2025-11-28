@@ -48,11 +48,23 @@
             <div class="inv-filters-left">
                 <div class="inv-filter-item">
                     <label>Statut</label>
-                    <select><option>Tous les statuts</option></select>
+                    <select onchange="changerCategorieStatut(<?php if(isset($category)) echo $category?>, this.value)"><option>Tous les statuts</option>
+                        <?php if(isset($statutList)) foreach($statutList as $stat): ?>
+                        <option value="<?= $stat['id_statut_disponibilite'] ?>"
+                                <?php
+                                if(isset($_GET['statut']) && $_GET['statut'] == $stat['id_statut_disponibilite']) {
+                                    echo 'selected';
+                                }
+                                ?>>
+                            <?= $stat['nom_statut_disponibilite'] ?>
+                        </option>
+                            <?php endforeach; ?>
+
+                    </select>
                 </div>
                 <div class="inv-filter-item">
                     <label>Catégorie</label>
-                    <select id="categorieSelect" onchange="changerCategorie(this.value)">
+                    <select id="categorieSelect" onchange="changerCategorieStatut(this.value,<?php if(isset($statut)) echo $statut?>)">
                         <option>Toutes catégories</option>
                         <?php if(isset($categoriesList)) foreach($categoriesList as $cat): ?>
                             <option value="<?= $cat['id_categorie'] ?>"
@@ -170,21 +182,22 @@
 </div>
 <script src="<?php echo $_ENV['BONUS_PATH']."assets/js/popup-inventaire.js" ?>"></script>
 <script>
-  function changerCategorie(valeur) {
-    // On garde l'action actuelle et on ajoute/modifie le paramètre categorie
+  function changerCategorieStatut(valeurCat = null, valeurStat = null) {
     const url = new URL(window.location.href);
 
-    if(valeur && valeur != "Toutes catégories") {
-      url.searchParams.set('categorie', valeur);
+    if(valeurCat && valeurCat != "Toutes catégories") {
+      url.searchParams.set('categorie', valeurCat);
     } else {
-      url.searchParams.delete('categorie'); // Si "Toutes", on retire le filtre
+      url.searchParams.delete('categorie');
     }
-
+    if(valeurStat && valeurStat != 'Tous les statuts') url.searchParams.set('statut', valeurStat);
+    else url.searchParams.delete('statut');
     // On remet la pagination à 1 pour éviter les bugs (ex: être page 2 d'une liste vide)
     url.searchParams.set('page', '1');
 
     window.location.href = url.toString();
   }
+
 </script>
 </body>
 </html>

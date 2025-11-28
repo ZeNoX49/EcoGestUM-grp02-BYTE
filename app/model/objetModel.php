@@ -19,7 +19,7 @@ function getObject($id_object) {
     $params = [$id_object];
     return get($sql, $params);
 }
-function getAllFilteredObjects($search = '', $catId = null, $etatNom = null, $location = '') {
+function getAllFilteredObjects($search = '', $catId = null, $etatNom = null, $location = '', $statut = null) {
     $bdd = get_bdd();
     $sql = "SELECT * FROM allObject WHERE 1=1";
     $params = [];
@@ -38,6 +38,10 @@ function getAllFilteredObjects($search = '', $catId = null, $etatNom = null, $lo
     if (!empty($location)) {
         $sql .= " AND (nom_point_collecte LIKE :loc OR adresse_point_collecte LIKE :loc)";
         $params[':loc'] = "%$location%";
+    }
+    if (!empty($statut)) {
+        $sql .= " AND id_statut_disponibilite = :statut";
+        $params[':statut'] = $statut;
     }
     $stmt = $bdd->prepare($sql);
     $stmt->execute($params);
