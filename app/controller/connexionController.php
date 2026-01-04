@@ -10,6 +10,7 @@ class connexionController
     }
 
     public function connect(){
+        session_abort();
         session_start();
 
         if(!isUserExisting($_POST['mail'])) {
