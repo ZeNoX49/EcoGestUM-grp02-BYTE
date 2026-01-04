@@ -132,7 +132,7 @@
                     <td><?=$objet['nom_categorie']?></td>
                     <td>Il y a 12 min</td>
                     <td>
-                        <button class="btn-edit-icon" onclick="openInventaireEditModal('<?=$objet['nom_objet']?>','<?=$objet['nom_statut_disponibilite']?>', '<?=$objet['quantite']?>', '')"><i class="fa-solid fa-pen"></i></button>
+                        <button class="btn-edit-icon" onclick="openInventaireEditModal('<?=$objet['nom_objet']?>','<?=$objet['nom_statut_disponibilite']?>', '<?=$objet['quantite']?>', 'index?action=inventaire/edit&idEdit=<?=$objet['id_objet'] ?>')"><i class="fa-solid fa-pen"></i></button>
                     </td>
                 </tr>
                 <?php endforeach?>
@@ -163,7 +163,7 @@
             </div>
             <div class="modal-actions">
                 <button type="button" class="btn-modal-cancel" onclick="closeModal()">Annuler</button>
-                <button type="button" class="btn-modal-save">Enregistrer</button>
+                <button type="button" class="btn-modal-save" id="btn-save">Enregistrer</button>
             </div>
         </form>
     </div>

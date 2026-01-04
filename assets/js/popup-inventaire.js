@@ -3,8 +3,16 @@ function openInventaireEditModal(objectName, objectStatut, objectQuantities, url
     document.getElementById('modalObjectNameEdit').value = objectName;
     document.getElementById('modalObjectQuantitiesEdit').value = objectQuantities;
     document.getElementById('modalEditObject').style.display = 'flex';
+    document.getElementById('btn-save').onclick = () => changeLocationSave(url);
+
 }
-// Fermer la modale
+function changeLocationSave(url){
+    const objectName = document.getElementById('modalObjectNameEdit').value;
+    const objectQuantities = document.getElementById('modalObjectQuantitiesEdit').value;
+    url += "&name=" + objectName + "&quantitie=" + objectQuantities;
+    window.location.href = url;
+}
+
 function closeModal() {
     document.getElementById('modalEditObject').style.display = 'none';
 }

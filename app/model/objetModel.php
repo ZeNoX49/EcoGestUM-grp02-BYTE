@@ -171,29 +171,51 @@ function deleteObject($id_objet){
     return $stmt->execute([':id' => $id_objet]);
 }
 
-function updateObject($id, $nom, $desc, $idPoint, $idEtat, $idCat, $quantite, $image) {
-    $bdd = get_bdd();
-    $sql = "UPDATE OBJET SET 
-            nom_objet = :nom, 
-            description_objet = :desc, 
-            id_point_collecte = :idPoint, 
-            id_etat = :idEtat, 
-            id_categorie = :idCat, 
-            quantite = :qte,
-            image_objet = :img
-            WHERE id_objet = :id";
 
+function updateObject($id, $nom = null, $desc = null, $idPoint = null, $idEtat = null, $idCat = null, $quantite = null, $image = null)
+{
+    $bdd = get_bdd();
+    
+    $fields = [];
+    $params = [':id' => $id];
+    
+    if ($nom !== null) {
+        $fields[] = "nom_objet = :nom";
+        $params[':nom'] = $nom;
+    }
+    if ($desc !== null) {
+        $fields[] = "description_objet = :desc";
+        $params[':desc'] = $desc;
+    }
+    if ($idPoint !== null) {
+        $fields[] = "id_point_collecte = :idPoint";
+        $params[':idPoint'] = $idPoint;
+    }
+    if ($idEtat !== null) {
+        $fields[] = "id_etat = :idEtat";
+        $params[':idEtat'] = $idEtat;
+    }
+    if ($idCat !== null) {
+        $fields[] = "id_categorie = :idCat";
+        $params[':idCat'] = $idCat;
+    }
+    if ($quantite !== null) {
+        $fields[] = "quantite = :qte";
+        $params[':qte'] = $quantite;
+    }
+    if ($image !== null) {
+        $fields[] = "image_objet = :img";
+        $params[':img'] = $image;
+    }
+    
+    if (empty($fields)) {
+        return false;
+    }
+    
+    $sql = "UPDATE OBJET SET " . implode(", ", $fields) . " WHERE id_objet = :id";
+    
     $stmt = $bdd->prepare($sql);
-    return $stmt->execute([
-        ':nom' => $nom,
-        ':desc' => $desc,
-        ':idPoint' => $idPoint,
-        ':idEtat' => $idEtat,
-        ':idCat' => $idCat,
-        ':qte' => $quantite,
-        ':img' => $image,
-        ':id' => $id
-    ]);
+    return $stmt->execute($params);
 }
 
 function getNewObjectForReservation(): array
