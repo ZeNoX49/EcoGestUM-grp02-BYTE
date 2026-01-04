@@ -75,7 +75,7 @@
                         </div>
                         <div class="card-actions">
                             <button class="btn-action-modify">Modifier</button>
-                            <button class="btn-action-delete" onclick="openDeleteModal('Chaise en bois', 'index.php?action=objetPropose/delete&deleteId=<?=$objet['id_objet']?>')">
+                            <button class="btn-action-delete" onclick="openDeleteModal('<?=$objet['nom_objet']?>', 'index.php?action=objetPropose/delete&deleteId=<?=$objet['id_objet']?>')">
                                 Supprimer
                             </button>
                         </div>
