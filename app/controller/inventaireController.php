@@ -15,6 +15,7 @@ class inventaireController
         $etat = isset($_GET['etat']) ? $_GET['etat'] : null;
         $location = isset($_GET['location']) ? trim($_GET['location']) : '';
         $statut = isset($_GET['statut']) ? $_GET['statut'] : null;
+        
         $objets = getAllFilteredObjects($search, $category, $etat, $location, $statut);
         $nbObjetsDisponibles = countObjectStatus($objets, 2);
         $nbObjetsReserve = countObjectStatus($objets, 3);
@@ -22,10 +23,13 @@ class inventaireController
         $nbObjetsRefusee = countObjectReserve($objets, 4);
         $categoriesList = getAllCategories();
         $statutList = getAllStatutDisponible();
-        $correspStyleStatutDisponible = ['En attente' =>'badge-blue', 'Disponible' => 'badge-green', 'Indisponible'=>'status-refused', 'Reserve' => 'badge-yellow'];
         
-        
-        
+        $correspStyleStatutDisponible = [
+            'En attente' =>'badge-blue',
+            'Disponible' => 'badge-green',
+            'Indisponible'=>'status-refused',
+            'Reserve' => 'badge-yellow'
+        ];
         
         include $_ENV['BONUS_PATH']."app/view/inventaireView.php";
     }

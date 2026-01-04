@@ -73,4 +73,5 @@ function create_database() {
     execute($_ENV['BONUS_PATH'].'assets/sql/script_etudiant.sql');
     execute($_ENV['BONUS_PATH'].'assets/sql/script_presidence.sql');
 }
+
 create_database();

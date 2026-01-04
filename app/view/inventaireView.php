@@ -48,23 +48,24 @@
             <div class="inv-filters-left">
                 <div class="inv-filter-item">
                     <label>Statut</label>
-                    <select onchange="changerCategorieStatut(<?php if(isset($category)) echo $category?>, this.value)"><option>Tous les statuts</option>
-                        <?php if(isset($statutList)) foreach($statutList as $stat): ?>
-                        <option value="<?= $stat['id_statut_disponibilite'] ?>"
+                    <select onchange="changerStatut(this.value)">
+                        <option>Tous les statuts</option>
+                        <?php if(isset($statutList)) foreach($statutList as $statut): ?>
+                            <option value="<?= $statut['nom_statut_disponibilite'] ?>"
                                 <?php
-                                if(isset($_GET['statut']) && $_GET['statut'] == $stat['id_statut_disponibilite']) {
+                                if(isset($_GET['statut']) && $_GET['statut'] == $statut['nom_statut_disponibilite']) {
                                     echo 'selected';
                                 }
                                 ?>>
-                            <?= $stat['nom_statut_disponibilite'] ?>
-                        </option>
-                            <?php endforeach; ?>
+                            <?= $statut['nom_statut_disponibilite'] ?>
+                            </option>
+                        <?php endforeach; ?>
 
                     </select>
                 </div>
                 <div class="inv-filter-item">
                     <label>Catégorie</label>
-                    <select id="categorieSelect" onchange="changerCategorieStatut(this.value,<?php if(isset($statut)) echo $statut?>)">
+                    <select id="categorieSelect" onchange="changerCategorie(this.value)">
                         <option>Toutes catégories</option>
                         <?php if(isset($categoriesList)) foreach($categoriesList as $cat): ?>
                             <option value="<?= $cat['id_categorie'] ?>"
@@ -79,7 +80,10 @@
                     </select>
                 </div>
                 <div class="inv-search-box">
-                    <input type="text" placeholder="Rechercher un objet, un responsable...">
+                    <form action="index.php" method="GET">
+                        <input type="hidden" name="action" value="inventaire/show">
+                        <input type="text" name="search" placeholder="Rechercher un objet..." class="search-input" value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+                    </form>
                 </div>
             </div>
 
@@ -128,26 +132,10 @@
                     <td><?=$objet['nom_categorie']?></td>
                     <td>Il y a 12 min</td>
                     <td>
-                        <button class="btn-edit-icon" onclick="openInventaireEditModal('<?=$objet['nom_objet']?>','<?=$objet['nom_statut_disponibilite']?>', '<?=$objet['quantite']?>', '')"><i class="fa-solid fa-pen"></i></button>
+                        <button class="btn-edit-icon" onclick="openInventaireEditModal('<?=$objet['nom_objet']?>','<?=$objet['nom_statut_disponibilite']?>', '<?=$objet['quantite']?>', 'index?action=inventaire/edit&idEdit=<?=$objet['id_objet'] ?>')"><i class="fa-solid fa-pen"></i></button>
                     </td>
                 </tr>
                 <?php endforeach?>
-                <tr>
-                    <td>
-                        <div class="obj-cell">
-                            <div class="obj-img" style="background-image: url('https://via.placeholder.com/50/000000/FFFFFF');"></div>
-                            <span>Ordinateur DELL</span>
-                        </div>
-                    </td>
-                    <td><span class="badge badge-yellow">Réservé</span></td>
-                    <td><strong>3</strong></td>
-                    <td>Bâtiment B - Salle 203</td>
-                    <td>M. Dufer</td>
-                    <td>Il y a 2 min</td>
-                    <td>
-                        <button class="btn-edit-icon" onclick="openEditModal('Ordinateur DELL', '')"><i class="fa-solid fa-pen"></i></button>
-                    </td>
-                </tr>
                 </tbody>
             </table>
 
@@ -175,29 +163,40 @@
             </div>
             <div class="modal-actions">
                 <button type="button" class="btn-modal-cancel" onclick="closeModal()">Annuler</button>
-                <button type="button" class="btn-modal-save">Enregistrer</button>
+                <button type="button" class="btn-modal-save" id="btn-save">Enregistrer</button>
             </div>
         </form>
     </div>
 </div>
 <script src="<?php echo $_ENV['BONUS_PATH']."assets/js/popup-inventaire.js" ?>"></script>
 <script>
-  function changerCategorieStatut(valeurCat = null, valeurStat = null) {
+  function changerCategorie(valeur) {
+    // On garde l'action actuelle et on ajoute/modifie le paramètre categorie
     const url = new URL(window.location.href);
 
-    if(valeurCat && valeurCat != "Toutes catégories") {
-      url.searchParams.set('categorie', valeurCat);
+    if(valeur && valeur != "Toutes catégories") {
+      url.searchParams.set('categorie', valeur);
     } else {
-      url.searchParams.delete('categorie');
+      url.searchParams.delete('categorie'); // Si "Toutes", on retire le filtre
     }
-    if(valeurStat && valeurStat != 'Tous les statuts') url.searchParams.set('statut', valeurStat);
-    else url.searchParams.delete('statut');
+
     // On remet la pagination à 1 pour éviter les bugs (ex: être page 2 d'une liste vide)
     url.searchParams.set('page', '1');
 
     window.location.href = url.toString();
   }
 
+  function changerStatut(valeur){
+    const url = new URL(window.location.href);
+
+    if(valeur && valeur != "Tous les statuts"){
+      url.searchParams.set('statut', valeur);
+    } else {
+      url.searchParams.delete('statut');
+    }
+
+    window.location.href = url.toString();
+  }
 </script>
 </body>
 </html>
