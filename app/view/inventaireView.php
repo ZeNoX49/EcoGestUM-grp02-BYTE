@@ -80,7 +80,10 @@
                     </select>
                 </div>
                 <div class="inv-search-box">
-                    <input type="text" placeholder="Rechercher un objet, un responsable...">
+                    <form action="index.php" method="GET">
+                        <input type="hidden" name="action" value="inventaire/show">
+                        <input type="text" name="search" placeholder="Rechercher un objet..." class="search-input" value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+                    </form>
                 </div>
             </div>
 
