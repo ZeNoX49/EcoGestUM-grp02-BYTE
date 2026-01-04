@@ -84,7 +84,7 @@
             </div>
 
             <div class="inv-filters-right">
-                <button class="btn-export"><i class="fa-solid fa-file-export"></i> Exporter</button>
+                <button class="btn-export" onclick="window.location.href = 'index.php?action=inventaire/export'"><i class="fa-solid fa-file-export"></i> Exporter</button>
                 <button class="btn-add" onclick="window.location.href = 'index.php?action=form/show'"><i class="fa-solid fa-plus"></i> Ajouter un objet</button>
             </div>
         </div>
