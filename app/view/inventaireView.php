@@ -48,7 +48,20 @@
             <div class="inv-filters-left">
                 <div class="inv-filter-item">
                     <label>Statut</label>
-                    <select><option>Tous les statuts</option></select>
+                    <select onchange="changerStatut(this.value)">
+                        <option>Tous les statuts</option>
+                        <?php if(isset($statutList)) foreach($statutList as $statut): ?>
+                            <option value="<?= $statut['nom_statut_disponibilite'] ?>"
+                                <?php
+                                if(isset($_GET['statut']) && $_GET['statut'] == $statut['nom_statut_disponibilite']) {
+                                    echo 'selected';
+                                }
+                                ?>>
+                            <?= $statut['nom_statut_disponibilite'] ?>
+                            </option>
+                        <?php endforeach; ?>
+
+                    </select>
                 </div>
                 <div class="inv-filter-item">
                     <label>Catégorie</label>
@@ -120,22 +133,6 @@
                     </td>
                 </tr>
                 <?php endforeach?>
-                <tr>
-                    <td>
-                        <div class="obj-cell">
-                            <div class="obj-img" style="background-image: url('https://via.placeholder.com/50/000000/FFFFFF');"></div>
-                            <span>Ordinateur DELL</span>
-                        </div>
-                    </td>
-                    <td><span class="badge badge-yellow">Réservé</span></td>
-                    <td><strong>3</strong></td>
-                    <td>Bâtiment B - Salle 203</td>
-                    <td>M. Dufer</td>
-                    <td>Il y a 2 min</td>
-                    <td>
-                        <button class="btn-edit-icon" onclick="openEditModal('Ordinateur DELL', '')"><i class="fa-solid fa-pen"></i></button>
-                    </td>
-                </tr>
                 </tbody>
             </table>
 
@@ -182,6 +179,18 @@
 
     // On remet la pagination à 1 pour éviter les bugs (ex: être page 2 d'une liste vide)
     url.searchParams.set('page', '1');
+
+    window.location.href = url.toString();
+  }
+
+  function changerStatut(valeur){
+    const url = new URL(window.location.href);
+
+    if(valeur && valeur != "Tous les statuts"){
+      url.searchParams.set('statut', valeur);
+    } else {
+      url.searchParams.delete('statut');
+    }
 
     window.location.href = url.toString();
   }

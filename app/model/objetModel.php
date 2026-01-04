@@ -36,7 +36,7 @@ function getObject($id_object) {
     $stmt->execute([$id_object]);
     return $stmt->fetch();
 }
-function getAllFilteredObjects($search = '', $catId = null, $etatNom = null, $location = '') {
+function getAllFilteredObjects($search = '', $catId = null, $etatNom = null, $location = '', $statutDisponible = null) {
     $bdd = get_bdd();
     $sql = "SELECT * FROM allObject WHERE 1=1";
     $params = [];
@@ -55,6 +55,10 @@ function getAllFilteredObjects($search = '', $catId = null, $etatNom = null, $lo
     if (!empty($location)) {
         $sql .= " AND (nom_point_collecte LIKE :loc OR adresse_point_collecte LIKE :loc)";
         $params[':loc'] = "%$location%";
+    }
+    if(!empty($statutDisponible)){
+        $sql .= " AND nom_statut_disponibilite = :statut";
+        $params[':statut'] = $statutDisponible;
     }
     $stmt = $bdd->prepare($sql);
     $stmt->execute($params);
@@ -246,6 +250,8 @@ function getObjectIndiponible(){
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+
 // function getNbObjPropUser($id_user) {
 //     $bdd = get_bdd();
 //     $query = $bdd->query("SELECT COUNT(*) FROM mes_objets_donnes $id_user");

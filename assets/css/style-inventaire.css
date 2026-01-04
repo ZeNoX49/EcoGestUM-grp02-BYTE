@@ -269,6 +269,12 @@ body {
     color: #856404;
 }
 
+.badge-blue {
+    background-color: #83C0FF;
+    color: #0f4374;
+}
+
+
 .btn-edit-icon {
     background-color: #5C7CFA;
     color: white;
