@@ -15,18 +15,33 @@ class inventaireController
         $etat = isset($_GET['etat']) ? $_GET['etat'] : null;
         $location = isset($_GET['location']) ? trim($_GET['location']) : '';
         $statut = isset($_GET['statut']) ? $_GET['statut'] : null;
+        
         $objets = getAllFilteredObjects($search, $category, $etat, $location, $statut);
+        //$objets = getAllObject();
         $nbObjetsDisponibles = countObjectStatus($objets, 2);
         $nbObjetsReserve = countObjectStatus($objets, 3);
         $nbObjetsEnAttente = countObjectStatus($objets, 1);
         $nbObjetsRefusee = countObjectReserve($objets, 4);
         $categoriesList = getAllCategories();
         $statutList = getAllStatutDisponible();
-        $correspStyleStatutDisponible = ['En attente' =>'badge-yellow', 'Disponible' => 'badge-green', 'Indisponible'=>'badge-red', 'Reserve' => 'badge-blue'];
         
-        
-        
+        $correspStyleStatutDisponible = [
+            'En attente' =>'badge-blue',
+            'Disponible' => 'badge-green',
+            'Indisponible'=>'status-refused',
+            'Reserve' => 'badge-yellow'
+        ];
         
         include $_ENV['BONUS_PATH']."app/view/inventaireView.php";
+    }
+    
+    function edit(){
+        if(isset($_GET['idEdit'])){
+            $name = isset($_GET['name']) ? $_GET['name'] : null;
+            $quantitie = isset($_GET['quantitie']) ? $_GET['quantitie'] : null;
+            updateObject($_GET['idEdit'], $name, null, null, null, null, $quantitie);
+        }
+        header('Location: index.php?action=inventaire/show');
+        
     }
 }

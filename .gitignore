@@ -4,3 +4,4 @@ composer.json
 composer.lock
 assets/image/uploads/
 .idea
+.todo

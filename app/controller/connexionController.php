@@ -1,5 +1,4 @@
 <?php
-
 require_once $_ENV['BONUS_PATH']."app/model/utilisateurModel.php";
 
 class connexionController
@@ -10,8 +9,9 @@ class connexionController
     }
 
     public function connect(){
+        session_abort();
         session_start();
-
+        
         if(!isUserExisting($_POST['mail'])) {
             $_SESSION['error_message'] = "Adresse email ou mot de passe incorrect.";
             $this->show();
