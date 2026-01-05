@@ -23,24 +23,23 @@ comptes (mail, mdp)*
 - [X] footer
 - [X] connexion
 - [X] inscription
-- [ ] accueil
+- [X] accueil
 - [ ] profil - donnees personelles
 - [ ] profil - notifications
 - [ ] profil - new mdp
 - [X] catalogue recyclage
 - [X] detaille objet
-- [X] formulaire objet
 - [ ] carte
 - [ ] gestion des objets : mes reservations
-- [ ] gestion des objets : proposer un objet
+- [X] gestion des objets : proposer un objet
 - [X] gestion des objets : mes objets proposés
 
 ### etudiant
 - [X] Chercher et réserver des objets
 - [ ] Être notifié des nouvelles ressources (?)
 - [ ] evenements - etudiant
-    - [ ] sans evenement
-    - [ ] avec evenement
+    - [X] sans evenement
+    - [X] avec evenement
     - [ ] avec evenement et plus d'info
 - [ ] statistique - etudiant
 - [ ] Signaler un objet cassé ou non réutilisable

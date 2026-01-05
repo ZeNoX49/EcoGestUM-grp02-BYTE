@@ -282,7 +282,7 @@ if (isset($data['events']) && !empty($data['events'])) {
                   <input type="hidden" name="action" value="delete_event">
                   <input type="hidden" name="event_id" value="<?php echo $event['id_evenement']; ?>">
                 </form>
-                <p><strong>Type:</strong> <?php echo htmlspecialchars($event['type_evenement']); ?></p>
+                <p><strong>Type:</strong> <?php echo htmlspecialchars($event['nom_type_evenement']); ?></p>
                 <p><strong>Début:</strong> <?php echo date('d/m/Y H:i', strtotime($event['date_debut_evenement'])); ?></p>
                 <p><strong>Fin:</strong> <?php echo date('d/m/Y H:i', strtotime($event['date_fin_evenement'])); ?></p>
                 <p><strong>Organisateur:</strong> <?php echo htmlspecialchars($event['prenom_utilisateur'] . ' ' . $event['nom_utilisateur']); ?></p>
