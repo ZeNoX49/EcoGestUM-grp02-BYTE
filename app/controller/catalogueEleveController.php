@@ -12,6 +12,7 @@ class catalogueEleveController {
         $offset = ($page - 1) * $limit;
 
         $objets = getStudentExchangeObjects($limit, $offset);
+        
 
         $totalObjets = countStudentExchangeObjects();
         $totalPages = ceil($totalObjets / $limit);
