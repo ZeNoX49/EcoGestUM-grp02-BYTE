@@ -8,7 +8,6 @@ class objetProposeController
     {
         if(isset($_SESSION['user_id'])) {
             $objets = getObjectUtilisateur($_SESSION['user_id']);
-            echo var_dump($objets);
             $nbAttente = countObjectStatus($objets, 3);
             $nbDisponible = countObjectStatus($objets, 1);
             $nbRserve = countObjectStatus($objets, 2);
