@@ -36,7 +36,7 @@ comptes (mail, mdp)*
 - [X] gestion des objets : mes objets proposés
 
 ### etudiant
-- [ ] gestion des objets - etudiant
+- [X] Chercher et réserver des objets
 - [ ] Être notifié des nouvelles ressources (?)
 - [ ] evenements - etudiant
     - [ ] sans evenement
@@ -44,6 +44,7 @@ comptes (mail, mdp)*
     - [ ] avec evenement et plus d'info
 - [ ] statistique - etudiant
 - [ ] Signaler un objet cassé ou non réutilisable
+- [ ] Accéder à un espace dédié aux échanges de matériel entre étudiants
 
 ### enseignant
 - [ ] Chercher et réserver des objets
