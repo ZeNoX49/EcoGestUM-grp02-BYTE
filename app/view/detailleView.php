@@ -19,7 +19,8 @@
     <?php if(isset($objet) && $objet): ?>
 
         <?php
-        $imgSrc = getObjectImage($objet['id_objet']);
+        $imgSrc = !empty($objet['image_objet']) ? $_ENV['BONUS_PATH'].'assets/image/uploads/'.$objet['image_objet'] : $_ENV['BONUS_PATH'].'assets/image/logo.svg';
+        if(strpos($objet['image_objet'], 'http') === 0) { $imgSrc = $objet['image_objet']; }
 
         $isAvailable = ($objet['id_statut_disponibilite'] == 1);
         $tagColor = $isAvailable ? '#8BC34A' : '#DB4C3B';
@@ -117,7 +118,7 @@
                         </button>
                     <?php endif; ?>
 
-                    <a href="index.php?action=map/show" class="btn-map">
+                    <a href="index.php?action=map/show&id=<?= $objet['id_objet'] ?>" class="btn-map">
                         Voir sur la carte
                     </a>
                     <a href="mailto:<?= $objet['email_utilisateur'] ?>?subject=EcoGestUM - Intérêt pour : <?= urlencode($objet['nom_objet']) ?>" class="btn-contact">
