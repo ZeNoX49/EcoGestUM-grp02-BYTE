@@ -25,13 +25,17 @@
                 <p>Information : Ce formulaire simplifié vous permet de proposer un objet.</p>
             </div>
 
-            <form action="index.php?action=form/submit" method="POST" enctype="multipart/form-data">
+            <form action="index.php?action=form/<?= isset($isEdit) ? 'update' : 'submit' ?>" method="POST" enctype="multipart/form-data">
+                <?php if(isset($objet)): ?>
+                    <input type="hidden" name="id_objet" value="<?= $objet['id_objet'] ?>">
+                    <input type="hidden" name="current_image" value="<?= htmlspecialchars($objet['image_objet']) ?>">
+                <?php endif; ?>
                 <div class="form-grid">
 
                     <div class="left-col">
                         <div class="form-group">
                             <label>Nom de l'objet *</label>
-                            <input type="text" name="nom_objet" class="input-field" placeholder="Ex : Chaise en bois" required>
+                            <input type="text" name="nom_objet" class="input-field" value="<?= isset($objet) ? htmlspecialchars($objet['nom_objet']) : '' ?>" required>
                         </div>
 
                         <div class="form-row">
@@ -42,7 +46,7 @@
 
                                     <?php if(isset($categories)): ?>
                                         <?php foreach($categories as $cat): ?>
-                                            <option value="<?= htmlspecialchars($cat['id_categorie']) ?>">
+                                            <option value="<?= $cat['id_categorie'] ?>" <?= (isset($objet) && $objet['id_categorie'] == $cat['id_categorie']) ? 'selected' : '' ?>>
                                                 <?= htmlspecialchars($cat['nom_categorie']) ?>
                                             </option>
                                         <?php endforeach; ?>
@@ -52,13 +56,20 @@
                             </div>
                             <div class="form-group col-quantity">
                                 <label>Quantité</label>
-                                <input type="number" name="quantite" class="input-field" value="1" min="1" required>
+                                <input type="number" name="quantite" class="input-field" value="<?= isset($objet) ? $objet['quantite'] : '1' ?>" min="1" required>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label>Localisation (Point de collecte) *</label>
-                            <input type="text" name="nom_point_collecte" list="locations-list" class="input-field" placeholder="Choisissez ou écrivez un nouveau lieu..." required autocomplete="off">
+                            <input type="text"
+                                   name="nom_point_collecte"
+                                   list="locations-list"
+                                   class="input-field"
+                                   placeholder="Choisissez ou écrivez un nouveau lieu..."
+                                   required
+                                   autocomplete="off"
+                                   value="<?= isset($objet) ? htmlspecialchars($objet['nom_point_collecte']) : '' ?>">
 
                             <datalist id="locations-list">
                                 <?php if(isset($pointsCollecte)): ?>
@@ -83,27 +94,34 @@
                         <div class="form-group">
                             <label>État de l'objet *</label>
                             <div class="state-selector">
-                                <input type="radio" name="id_etat" id="etat4" value="4" class="state-option">
+                                <input type="radio" name="id_etat" id="etat4" value="4" <?= (isset($objet) && $objet['id_etat'] == 4) ? 'checked' : '' ?>>
                                 <label for="etat4" class="state-label">Moyen</label>
 
-                                <input type="radio" name="id_etat" id="etat3" value="3" class="state-option">
+                                <input type="radio" name="id_etat" id="etat3" value="3" <?= (isset($objet) && $objet['id_etat'] == 3) ? 'checked' : '' ?>>
                                 <label for="etat3" class="state-label">Bon</label>
 
-                                <input type="radio" name="id_etat" id="etat2" value="2" class="state-option">
+                                <input type="radio" name="id_etat" id="etat2" value="2" <?= (isset($objet) && $objet['id_etat'] == 2) ? 'checked' : '' ?>>
                                 <label for="etat2" class="state-label">Très bon</label>
 
-                                <input type="radio" name="id_etat" id="etat1" value="1" class="state-option" checked>
+                                <input type="radio" name="id_etat" id="etat1" value="1" <?= (isset($objet) && $objet['id_etat'] == 1) ? 'checked' : '' ?>>
                                 <label for="etat1" class="state-label">Neuf</label>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label>Description détaillée *</label>
-                            <textarea name="description_objet" class="input-field" placeholder="Décrivez l'objet..." required></textarea>
+                            <textarea name="description_objet" class="input-field" placeholder="Décrivez l'objet..." required><?= isset($objet) ? htmlspecialchars($objet['description_objet']) : '' ?></textarea>
 
                             <div class="gallery-container">
                                 <span class="gallery-label">Aperçu :</span>
-                                <div class="preview-strip" id="previewGallery"></div>
+                                <div class="preview-strip" id="previewGallery">
+                                    <?php if(isset($objet)): ?>
+                                        <?php
+                                        $imgSrc = getObjectImage($objet['id_objet']);
+                                        ?>
+                                        <img src="<?= htmlspecialchars($imgSrc) ?>" class="preview-thumb" alt="Image actuelle">
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
                     </div>
