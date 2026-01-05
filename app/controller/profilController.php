@@ -111,7 +111,7 @@ class profilController
             }
             
             updateUserPassword($_SESSION['user_id'], $newMdp);
-            header('Location: index.php?action=profil/show&success=mdp');
+            header('Location: index.php?action=connexion/disconnect');
         }
     }
 

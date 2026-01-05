@@ -24,7 +24,7 @@ class objetProposeController
             header('Location: index.php?action=connexion/show');
         }
     }
-    
+
     public function delete(){
         if(isset($_GET['deleteId'])) {
             deleteObject($_GET['deleteId']);

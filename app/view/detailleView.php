@@ -20,7 +20,6 @@
 
         <?php
             $imgSrc = getObjectImage($objet['id_objet']);
-
             $isAvailable = ($objet['id_statut_disponibilite'] == 1);
             $tagColor = $isAvailable ? '#8BC34A' : '#DB4C3B';
             $tagText = $objet['nom_statut_disponibilite'] ?? 'Indisponible';
@@ -117,7 +116,7 @@
                         </button>
                     <?php endif; ?>
 
-                    <a href="index.php?action=map/show" class="btn-map">
+                    <a href="index.php?action=map/show&id=<?= $objet['id_objet'] ?>" class="btn-map">
                         Voir sur la carte
                     </a>
                     <a href="mailto:<?= $objet['email_utilisateur'] ?>?subject=EcoGestUM - Intérêt pour : <?= urlencode($objet['nom_objet']) ?>" class="btn-contact">
