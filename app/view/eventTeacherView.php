@@ -275,9 +275,11 @@ if (isset($data['events']) && !empty($data['events'])) {
                 <?php endif; ?>
               </summary>
               <div class="event-card-details">
-                <button class="delete-event-btn" title="Supprimer l'événement" onclick="confirmDeleteEvent(<?php echo (int)$event['id_evenement']; ?>)">
-                  <i class="fa-solid fa-trash"></i>
-                </button>
+                <?php if($event["id_utilisateur"] === $_SESSION["user_id"]) : ?>
+                  <button class="delete-event-btn" title="Supprimer l'événement" onclick="confirmDeleteEvent(<?php echo (int)$event['id_evenement']; ?>)">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                <?php endif ?>
                 <form id="delete-event-form-<?php echo $event['id_evenement']; ?>" method="POST" style="display: none;">
                   <input type="hidden" name="action" value="delete_event">
                   <input type="hidden" name="event_id" value="<?php echo $event['id_evenement']; ?>">
