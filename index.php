@@ -1,0 +1,39 @@
+<?php
+session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+require __DIR__ . '/vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+function dispatch() {
+
+    $action = isset($_GET['action']) ? $_GET['action'] : 'connexion';
+
+    $parts = explode('/', $action);
+
+    // ucfirst() capitalizes the first letter
+    $controllerName = $parts[0] . 'Controller';
+
+    $method = isset($parts[1]) ? $parts[1] : 'show';
+
+    $controllerFile = "app/controller/$controllerName.php";
+
+    if (!file_exists($controllerFile)) {
+        die("Controller $controllerName not found.");
+    }
+
+    require_once $controllerFile;
+
+    $controller = new $controllerName();
+
+    if (!method_exists($controller, $method)) {
+        die("Method $method not found in $controllerName.");
+    }
+
+    $controller->$method();
+}
+
+dispatch();
