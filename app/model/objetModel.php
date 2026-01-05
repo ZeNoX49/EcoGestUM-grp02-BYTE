@@ -30,7 +30,6 @@ function getObjectId($name, $description, $date) {
 }
 
 function getAllFilteredObjects($search = '', $catId = null, $etatNom = null, $location = '', $statut = null) {
-    $bdd = get_bdd();
     $sql = "SELECT * FROM allObject WHERE 1=1";
     $params = [];
     if (!empty($search)) {
@@ -53,9 +52,7 @@ function getAllFilteredObjects($search = '', $catId = null, $etatNom = null, $lo
         $sql .= " AND id_statut_disponibilite = :statut";
         $params[':statut'] = $statut;
     }
-    $stmt = $bdd->prepare($sql);
-    $stmt->execute($params);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return get($sql, $params);
 }
 
 function getFilteredObjects($search = '', $catId = null, $etatNom = null, $location = '') {
@@ -146,7 +143,6 @@ function updateObject($id, $nom, $desc, $idPoint, $idEtat, $idCat, $quantite) {
 }
 
 function getStudentExchangeObjects($limit = null, $offset = 0) {
-    $bdd = get_bdd();
     $sql = "SELECT o.*, c.nom_categorie, pc.nom_point_collecte, u.email_utilisateur, u.nom_utilisateur, u.prenom_utilisateur
             FROM OBJET o
             JOIN CATEGORIE c ON o.id_categorie = c.id_categorie
@@ -156,80 +152,47 @@ function getStudentExchangeObjects($limit = null, $offset = 0) {
             ORDER BY o.date_ajout_objet DESC";
 
     if ($limit !== null) {
-        $sql .= " LIMIT :limit OFFSET :offset";
-        $stmt = $bdd->prepare($sql);
-        $stmt->bindValue(':limit', (int) $limit, PDO::PARAM_INT);
-        $stmt->bindValue(':offset', (int) $offset, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $sql .= " LIMIT $limit OFFSET $offset";
     }
 
-    $req = $bdd->query($sql);
-    return $req->fetchAll(PDO::FETCH_ASSOC);
+    return get($sql);
 }
 
 function countStudentExchangeObjects() {
-    $bdd = get_bdd();
     $sql = "SELECT COUNT(*) FROM OBJET WHERE id_type_echange = 3 AND id_statut_disponibilite = 1";
-    $req = $bdd->query($sql);
-    return $req->fetchColumn();
+    return getCount($sql);
 }
 
-function getNewObjectForReservation(): array
-{
-    $bdd = get_bdd();
-    $sql = "SELECT o.*, u.nom_utilisateur, u.prenom_utilisateur, s.nom_statut_disponibilite,  pc.nom_point_collecte, pc.adresse_point_collecte, d.nom_depser AS nom_departement FROM OBJET o
-            JOIN UTILISATEUR u ON o.id_utilisateur = u.id_utilisateur
-            JOIN DEPSER d ON d.id_depser = u.id_depser
-            JOIN STATUTDISPONIBLE s ON s.id_statut_disponibilite = o.id_statut_disponibilite
-            JOIN POINTCOLLECTE pc on pc.id_point_collecte = o.id_point_collecte
-            WHERE s.id_statut_disponibilite = 1";
-    $stmt = $bdd->prepare($sql);
-    $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+function getNewObjectForReservation() {
+    $sql = "SELECT * FROM objets_sauvegardes os
+            WHERE os.id_statut_disponibilite = 1";
+    return get($sql);
 }
 
 function refuserObject($id){
-    $bdd = get_bdd();
-    $sql = "UPDATE OBJET SET id_statut_disponibilite = 4 WHERE id_objet = :id";
-    $stmt = $bdd->prepare($sql);
-    $stmt->execute([':id' => $id]);
-    return $stmt->execute();
+    $sql = "UPDATE OBJET SET id_statut_disponibilite = 4 WHERE id_objet = ?";
+    return update($sql, [$id]);
 }
 
 function accepterObject($id){
-    $bdd = get_bdd();
-    $sql = "UPDATE OBJET SET id_statut_disponibilite = 2 WHERE id_objet = :id";
-    $stmt = $bdd->prepare($sql);
-    $stmt->execute([':id' => $id]);
+    $sql = "UPDATE OBJET SET id_statut_disponibilite = 2 WHERE id_objet = ?";
+    return update($sql, [$id]);
 }
 
 function getObjectDisponible(){
-    $bdd = get_bdd();
-    $sql = "SELECT o.*, u.nom_utilisateur, u.prenom_utilisateur, s.nom_statut_disponibilite,  pc.nom_point_collecte, pc.adresse_point_collecte, d.nom_depser AS nom_departement FROM OBJET o
-            JOIN UTILISATEUR u ON o.id_utilisateur = u.id_utilisateur
-            JOIN DEPSER d ON d.id_depser = u.id_depser
-            JOIN STATUTDISPONIBLE s ON s.id_statut_disponibilite = o.id_statut_disponibilite
-            JOIN POINTCOLLECTE pc on pc.id_point_collecte = o.id_point_collecte
-            WHERE s.id_statut_disponibilite = 2 OR s.id_statut_disponibilite = 3";
-    $stmt = $bdd->prepare($sql);
-    $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $sql = "SELECT * FROM objets_sauvegardes os
+            WHERE os.id_statut_disponibilite = 2 OR os.id_statut_disponibilite = 3";
+    return get($sql);
 }
 
 function getObjectIndiponible(){
-    $bdd = get_bdd();
-    $sql = "SELECT o.*, u.nom_utilisateur, u.prenom_utilisateur, s.nom_statut_disponibilite,  pc.nom_point_collecte, pc.adresse_point_collecte, d.nom_depser AS nom_departement FROM OBJET o
-            JOIN UTILISATEUR u ON o.id_utilisateur = u.id_utilisateur
-            JOIN DEPSER d ON d.id_depser = u.id_depser
-            JOIN STATUTDISPONIBLE s ON s.id_statut_disponibilite = o.id_statut_disponibilite
-            JOIN POINTCOLLECTE pc on pc.id_point_collecte = o.id_point_collecte
-            WHERE s.id_statut_disponibilite = 4";
-    $stmt = $bdd->prepare($sql);
-    $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $sql = "SELECT * FROM objets_sauvegardes os
+            WHERE os.id_statut_disponibilite = 4";
+    return get($sql);
 }
 
+
+// pas la bdd mais les images
 function getObjectImage($id_objet) {
     $uploadDir = $_ENV['BONUS_PATH'].'assets/image/uploads/';
     $files = scandir($uploadDir);

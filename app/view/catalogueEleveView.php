@@ -25,7 +25,7 @@
                     Proposer un échange
                 </a>
 
-                <a href="index.php?action=homePage/show" class="back-icon" title="Retour">
+                <a href="index.php?action=gestion/show" class="back-icon" title="Retour">
                     <i class="fa-solid fa-arrow-turn-up"></i>
                 </a>
             </div>

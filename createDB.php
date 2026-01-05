@@ -59,6 +59,12 @@ function setHashedPassword() {
 }
 
 function create_database() {
+    // on supprime toutes les images
+    $uploadDir = $_ENV['BONUS_PATH'].'assets/image/uploads/';
+    foreach (glob($uploadDir . '*') as $file) {
+        unlink($file);
+    }
+
     if (!execute($_ENV['BONUS_PATH'].'assets/sql/script_creation.sql')) return;
 
     if (!execute($_ENV['BONUS_PATH'].'assets/sql/script_insertion.sql')) return;
@@ -68,10 +74,9 @@ function create_database() {
     createUser("enseignant", "test.enseignant@univ-lemans.fr", 2, 1);
     createUser("presidence", "test.presidence@univ-lemans.fr", 3, 3);
 
-
-    execute($_ENV['BONUS_PATH'].'assets/sql/script_enseignant.sql');
-    execute($_ENV['BONUS_PATH'].'assets/sql/script_etudiant.sql');
-    execute($_ENV['BONUS_PATH'].'assets/sql/script_presidence.sql');
+    execute($_ENV['BONUS_PATH'].'assets/sql/script_view.sql');
+    execute($_ENV['BONUS_PATH'].'assets/sql/script_procedure.sql');
+    execute($_ENV['BONUS_PATH'].'assets/sql/script_declencheur.sql');
 }
 
 create_database();

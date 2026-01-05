@@ -4,43 +4,31 @@ require_once $_ENV['BONUS_PATH']."app/model/bddModel.php";
 
 // Récupère tous les événements
 function getAllEvents() {
-    $sql = "SELECT e.*, u.nom_utilisateur, u.prenom_utilisateur, t.nom_type_evenement
-            FROM EVENEMENT e
-            LEFT JOIN UTILISATEUR u ON u.id_utilisateur = e.id_utilisateur
-            LEFT JOIN TYPEEVENEMENT t ON t.id_type_evenement = e.id_type_evenement
-            ORDER BY e.date_debut_evenement DESC";
+    $sql = "SELECT * FROM evenements_sauvegardes es
+            ORDER BY es.date_debut_evenement DESC";
     return get($sql);
 }
 
 // Récupère un événement par son ID
 function getEventById($id) {
-    $sql = "SELECT e.*, u.nom_utilisateur, u.prenom_utilisateur, t.nom_type_evenement
-            FROM EVENEMENT e
-            LEFT JOIN UTILISATEUR u ON u.id_utilisateur = e.id_utilisateur
-            LEFT JOIN TYPEEVENEMENT t ON t.id_type_evenement = e.id_type_evenement
-            WHERE e.id_evenement = ?";
+    $sql = "SELECT * FROM evenements_sauvegardes es
+            WHERE es.id_evenement = ?";
     $params = [$id];
     return get($sql, $params);
 }
 
 function getUpcomingEvents() {
-    $sql = "SELECT e.*, u.nom_utilisateur, u.prenom_utilisateur, t.nom_type_evenement
-            FROM EVENEMENT e
-            LEFT JOIN UTILISATEUR u ON u.id_utilisateur = e.id_utilisateur
-            LEFT JOIN TYPEEVENEMENT t ON t.id_type_evenement = e.id_type_evenement
-            WHERE e.date_debut_evenement > NOW()
-            ORDER BY e.date_debut_evenement ASC";
+    $sql = "SELECT * FROM evenements_sauvegardes es
+            WHERE es.date_debut_evenement > NOW()
+            ORDER BY es.date_debut_evenement ASC";
     return get($sql);
 }
 
 function getUserEvents($id_utilisateur) {
-    $sql = "SELECT e.*, u.nom_utilisateur, u.prenom_utilisateur, t.nom_type_evenement
-            FROM EVENEMENT e
-            LEFT JOIN UTILISATEUR u ON u.id_utilisateur = e.id_utilisateur
-            LEFT JOIN TYPEEVENEMENT t ON t.id_type_evenement = e.id_type_evenement
-            INNER JOIN INSCRIRE i ON i.id_evenement = e.id_evenement
+    $sql = "SELECT * FROM evenements_sauvegardes es
+            INNER JOIN INSCRIRE i ON i.id_evenement = es.id_evenement
             WHERE i.id_utilisateur = ?
-            ORDER BY e.date_debut_evenement DESC";
+            ORDER BY es.date_debut_evenement DESC";
     $params = [$id_utilisateur];
     return get($sql, $params);
 }

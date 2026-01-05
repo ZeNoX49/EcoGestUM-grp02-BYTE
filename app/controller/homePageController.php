@@ -2,6 +2,7 @@
 require_once $_ENV['BONUS_PATH']."app/model/depserModel.php";
 require_once $_ENV['BONUS_PATH']."app/model/temoignageModel.php";
 require_once $_ENV['BONUS_PATH']."app/model/utilisateurModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/categorieModel.php";
 
 require_once $_ENV['BONUS_PATH']."app/model/objetModel.php";
 
@@ -11,6 +12,8 @@ class homePageController
     {
         $depser = getAllDepSer();
         $users = getUsers();
+        $categories = getAllCategories();
+        $image_categories = [1 => "💻", 2 => "🪑", 3 => "📚", 4 => "🎓", 5 => "⚽", 6 => "🔌", 7 => "📺", 8 => "👕"];
 
         $temoignages = getAllTemoignages();
         $temoignages_display = [];
