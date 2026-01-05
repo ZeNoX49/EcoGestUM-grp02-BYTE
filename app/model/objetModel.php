@@ -3,6 +3,7 @@
 require_once $_ENV['BONUS_PATH']."app/model/bddModel.php";
 
 function insert_object($name, $description, $date, $id_collect_point, $id_trade_type, $id_user, $id_etat, $id_category, $quantite, $statut = 3) {
+    if($id_etat == null)$id_etat = 1;
     $sql = "INSERT INTO OBJET (nom_objet, description_objet, date_ajout_objet, id_point_collecte, id_type_echange, id_utilisateur, id_statut_disponibilite, id_etat, id_categorie, quantite)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $params = [$name, $description, $date, $id_collect_point, $id_trade_type, $id_user, $statut, $id_etat, $id_category, $quantite];
