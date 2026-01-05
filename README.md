@@ -37,7 +37,7 @@ comptes (mail, mdp)*
 ### etudiant
 - [X] Chercher et réserver des objets
 - [ ] Être notifié des nouvelles ressources (?)
-- [ ] evenements - etudiant
+- [X] evenements - etudiant
     - [X] sans evenement
     - [X] avec evenement
     - [X] avec evenement et plus d'info
