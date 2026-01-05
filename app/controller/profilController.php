@@ -121,11 +121,11 @@ class profilController
         insertChoixNotification($_SESSION["user_id"], $categorie_choix, $type_choix, $id_choix);
     }
 
-    public function add_obj_cat() {$this->addNotification("objets", "categorie", ___);}
-    public function add_obj_pos() {$this->addNotification("objets", "position", ___);}
-    public function add_event_cat() {$this->addNotification("events", "categorie", ___);}
-    public function add_event_org() {$this->addNotification("events", "organisateur", ___);}
-    public function add_event_pos() {$this->addNotification("events", "position", ___);}
+    public function add_obj_cat() {$this->addNotification("objets", "categorie", "___");}
+    public function add_obj_pos() {$this->addNotification("objets", "position", "___");}
+    public function add_event_cat() {$this->addNotification("events", "categorie", "___");}
+    public function add_event_org() {$this->addNotification("events", "organisateur", "___");}
+    public function add_event_pos() {$this->addNotification("events", "position", "___");}
 
 
     /* ----- supprimer des notification ----- */
@@ -134,9 +134,9 @@ class profilController
         deleteChoixNotification($_SESSION["user_id"], $categorie_choix, $type_choix, $id_choix);
     }
 
-    public function delete_obj_cat() {$this->deleteNotification("objets", "categorie", ___);}
-    public function delete_obj_pos() {$this->deleteNotification("objets", "position", ___);}
-    public function delete_event_cat() {$this->deleteNotification("events", "categorie", ___);}
-    public function delete_event_org() {$this->deleteNotification("events", "organisateur", ___);}
-    public function delete_event_pos() {$this->deleteNotification("events", "position", ___);}
+    public function delete_obj_cat() {$this->deleteNotification("objets", "categorie", "___");}
+    public function delete_obj_pos() {$this->deleteNotification("objets", "position", "___");}
+    public function delete_event_cat() {$this->deleteNotification("events", "categorie", "___");}
+    public function delete_event_org() {$this->deleteNotification("events", "organisateur", "___");}
+    public function delete_event_pos() {$this->deleteNotification("events", "position", "___");}
 }
