@@ -136,6 +136,7 @@ INSERT INTO OBJET (nom_objet, description_objet, date_ajout_objet, id_point_coll
 ('Programmation Python', 'Pour debutants', '2025-02-19 16:00:00', 1, 1, 2, 1, 2, 1);
 
 -- evenements
+ALTER TABLE EVENEMENT AUTO_INCREMENT = 1;
 INSERT INTO EVENEMENT (titre_evenement, description_evenement, date_debut_evenement, date_fin_evenement, id_type_evenement, id_utilisateur) VALUES
 ('Grande Collecte de Printemps', 'Collecte de tous types d''objets', '2026-01-15', '2026-01-17', 1, 4),
 ('Atelier Reparation electronique', 'Apprenez a reparer vos appareils', '2026-01-20', '2026-01-20', 2, 5),
@@ -161,6 +162,7 @@ INSERT INTO SIGNALER (id_objet, id_utilisateur, description_signalement, date_si
 (6, 1, 'Taille incorrecte dans la description', '2025-02-17 17:30:00');
 
 -- Inscriptions evenements
+TRUNCATE INSCRIRE;
 INSERT INTO INSCRIRE (id_utilisateur, id_evenement) VALUES
 (1, 1),
 (2, 1),
