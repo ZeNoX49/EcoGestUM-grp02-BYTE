@@ -15,19 +15,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
   if ($_POST['action'] === 'create_event') {
     error_log("POST data: " . print_r($_POST, true));
     
-    if (isset($_SESSION['user_id']) && isset($_POST['event_titre']) && isset($_POST['event_date_debut']) && isset($_POST['event_date_fin'])) {
+    if (isset($_SESSION['user_id']) && isset($_POST['event_titre']) && isset($_POST['event_date_debut']) && isset($_POST['event_date_fin']) && isset($_POST["event_id_type"])) {
       $titre = htmlspecialchars($_POST['event_titre']);
-      $type = htmlspecialchars($_POST['event_type']);
       $description = htmlspecialchars($_POST['event_description']);
       $date_debut = $_POST['event_date_debut'];
       $date_fin = $_POST['event_date_fin'];
-      $id_type_evenement = isset($_POST['event_id_type']) ? (int)$_POST['event_id_type'] : 1;
+      $id_type_evenement = $_POST['event_id_type'];
       $id_utilisateur = $_SESSION['user_id'];
 
-      error_log("Tentative de création événement: $titre, $type, $description, $date_debut, $date_fin, $id_type_evenement, $id_utilisateur");
+      error_log("Tentative de création événement: $titre,$description, $date_debut, $date_fin, $id_type_evenement, $id_utilisateur");
       
       try {
-        $result = createEvent($titre, $type, $description, $date_debut, $date_fin, $id_type_evenement, $id_utilisateur);
+        $result = createEvent($titre, $description, $date_debut, $date_fin, $id_type_evenement, $id_utilisateur);
         error_log("Résultat création: " . ($result ? "SUCCÈS" : "ÉCHEC"));
         
         if ($result) {
@@ -110,6 +109,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     }
   }
 }
+
+$everyEventType = getAllEventType();
 
 $userId = $_SESSION['user_id'] ?? null;
 $userEventIds = [];
@@ -321,10 +322,9 @@ if (isset($data['events']) && !empty($data['events'])) {
       <label for="event_id_type">Type d'événement *</label>
         <select id="event_id_type" name="event_id_type" required>
           <option value="">Sélectionner un type</option>
-          <option value="1">Collecte</option>
-          <option value="2">Atelier de reparation</option>
-          <option value="3">Brocante solidaire</option>
-          <option value="4">Sensibilisation</option>
+          <?php foreach($everyEventType as $et) : ?>
+            <option value="<?= $et["id_type_evenement"] ?>"><?= $et["nom_type_evenement"] ?></option>
+          <?php endforeach ?>
         </select>
       </div>
 

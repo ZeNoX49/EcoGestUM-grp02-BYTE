@@ -33,10 +33,10 @@ function getUserEvents($id_utilisateur) {
     return get($sql, $params);
 }
 
-function createEvent($titre, $type, $description, $date_debut, $date_fin, $id_type_evenement, $id_utilisateur) {
-    $sql = "INSERT INTO EVENEMENT (titre_evenement, type_evenement, description_evenement, date_debut_evenement, date_fin_evenement, id_type_evenement, id_utilisateur)
-            VALUES (?, ?, ?, ?, ?, ?, ?)";
-    $params = [$titre, $type, $description, $date_debut, $date_fin, $id_type_evenement, $id_utilisateur];
+function createEvent($titre, $description, $date_debut, $date_fin, $id_type_evenement, $id_utilisateur) {
+    $sql = "INSERT INTO EVENEMENT (titre_evenement, description_evenement, date_debut_evenement, date_fin_evenement, id_type_evenement, id_utilisateur)
+            VALUES (?, ?, ?, ?, ?, ?)";
+    $params = [$titre, $description, $date_debut, $date_fin, $id_type_evenement, $id_utilisateur];
     return insert($sql, $params);
 }
 
