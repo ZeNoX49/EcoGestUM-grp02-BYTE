@@ -37,13 +37,17 @@ comptes (mail, mdp)*
 
 ### etudiant
 - [ ] gestion des objets - etudiant
+- [ ] Être notifié des nouvelles ressources (?)
 - [ ] evenements - etudiant
     - [ ] sans evenement
     - [ ] avec evenement
     - [ ] avec evenement et plus d'info
 - [ ] statistique - etudiant
+- [ ] Signaler un objet cassé ou non réutilisable
 
 ### enseignant
+- [ ] Chercher et réserver des objets
+- [ ] Être notifié des nouvelles ressources (?)
 - [ ] gestion des objets - enseignant
 - [ ] page evenement en mode "admin"
 - [ ] proposer un evenement
@@ -51,12 +55,15 @@ comptes (mail, mdp)*
 - [ ] statistique evenement
 - [ ] statistique mes donnees
 - [ ] historique des evenements
+- [ ] Signaler un objet cassé ou non réutilisable
+- [ ] Accéder à un espace d'échange entre enseignant - "Collaborer avec d’autres enseignants pour mutualiser les ressources recyclées."
 
 ### presidence
 - [X] gestion des categories
 - [ ] gerer les demandes
 - [ ] inventaire
 - [ ] historique
+- [ ] génerer des rapports annuels/trimestriels sur les performances de recyclage
 - [ ] statistique - presidence
 
 ## Exemple de .env
