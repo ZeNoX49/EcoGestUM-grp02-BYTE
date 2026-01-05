@@ -118,7 +118,7 @@
                         </button>
                     <?php endif; ?>
 
-                    <a href="index.php?action=map/show" class="btn-map">
+                    <a href="index.php?action=map/show&id=<?= $objet['id_objet'] ?>" class="btn-map">
                         Voir sur la carte
                     </a>
                     <a href="mailto:<?= $objet['email_utilisateur'] ?>?subject=EcoGestUM - Intérêt pour : <?= urlencode($objet['nom_objet']) ?>" class="btn-contact">

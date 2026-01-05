@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 
     <style>
-        /* --- STYLE GLASSMORPHISM --- */
         .map-wrapper {
             width: 90%;
             max-width: 1400px;
@@ -24,15 +23,19 @@
 
         .map-frame {
             background: rgba(255, 255, 255, 0.45);
-            backdrop-filter: blur(15px); /* Le flou */
+            backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             padding: 20px;
             border-radius: 30px;
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
             border: 1px solid rgba(255, 255, 255, 0.4);
             width: 100%;
-            height: 600px; /* Hauteur fixée pour éviter le bug d'affichage */
+            height: 600px;
             position: relative;
+        }
+
+        .leaflet-container a {
+            color: #FFFFFF;
         }
 
         #map {
@@ -40,10 +43,9 @@
             height: 100%;
             border-radius: 20px;
             z-index: 1;
-            background-color: #ddd; /* Gris en attendant le chargement */
+            background-color: #ddd;
         }
 
-        /* Popup personnalisé */
         .popup-content {
             text-align: center;
             font-family: 'Poppins', sans-serif;
@@ -106,34 +108,29 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
 <script>
-    console.log("test");
-
     document.addEventListener('DOMContentLoaded', function() {
 
-        // 1. Initialiser la carte (Centrée sur Le Laval)
         var map = L.map('map').setView([48.08593223153121, -0.7586975230079035], 18);
 
-        // 2. Ajouter le fond de carte "Voyager" (très propre)
         L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
             maxZoom: 20
         }).addTo(map);
 
-        // 3. INJECTION PHP -> JS
-        // On boucle sur les objets trouvés par PHP pour créer les marqueurs
+        var markersGroup = L.featureGroup().addTo(map);
+
         <?php foreach ($objets_a_afficher as $objet): ?>
         <?php
-        // On traduit l'adresse textuelle en GPS
         $coords = [$objet['latitude'], $objet['longitude']];
-
+        // Gestion de l'image
         $img = !empty($objet['image_objet']) ? 'assets/image/uploads/'.$objet['image_objet'] : 'assets/image/logo.svg';
-
         if(strpos($objet['image_objet'], 'http') === 0) { $img = $objet['image_objet']; }
 
-        if ($coords):
+        // On vérifie qu'on a bien des coordonnées
+        if ($coords[0] != 0 && $coords[1] != 0):
         ?>
 
-        var marker = L.marker([<?php echo $coords[0]; ?>, <?php echo $coords[1]; ?>]).addTo(map);
+        var marker = L.marker([<?php echo $coords[0]; ?>, <?php echo $coords[1]; ?>]); // On crée le marqueur
 
         // Contenu HTML du popup
         var content = `
@@ -150,21 +147,17 @@
 
         <?php endif; ?>
         <?php endforeach; ?>
-        // ça marche pas pour linstant
-        if (markersGroup.getLayers().length > 0) {
-            map.addLayer(markersGroup);
 
-            // Si un seul marqueur on centre et on zoom fort
+        if (markersGroup.getLayers().length > 0) {
             if (markersGroup.getLayers().length === 1) {
                 map.fitBounds(markersGroup.getBounds(), {maxZoom: 18});
                 markersGroup.getLayers()[0].openPopup();
             } else {
-                // Sinon ajuster pour tout voir
                 map.fitBounds(markersGroup.getBounds(), {padding: [50, 50]});
             }
         }
 
-        //pour être sûr que la carte s'affiche bien
+        // Pour être sûr que la carte s'affiche bien
         setTimeout(function(){ map.invalidateSize(); }, 500);
     });
 </script>
