@@ -7,10 +7,9 @@ class GestionCategoriesController
     {
         $categories = getAllCategories();
 
-        foreach ($categories as &$cat) {
+        foreach ($categories as $cat) {
             $cat['nb_objets'] = countObjetsParCategorie($cat['id_categorie']);
         }
-        unset($cat);
 
         include $_ENV['BONUS_PATH']."app/view/gestionCategoriesView.php";
     }
@@ -40,7 +39,7 @@ class GestionCategoriesController
 
             updateCategory($id, $nom, $desc, $icone, $statut);
         }
-        header('Location: /ecogestum-grp12-byte/gestionCategories/show');
+        header('Location: index.php?action=gestionCategories/show');
     }
 
     public function delete()
@@ -48,7 +47,7 @@ class GestionCategoriesController
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_categorie'])) {
             deleteCategory($_POST['id_categorie']);
         }
-        header('Location: /ecogestum-grp12-byte/gestionCategories/show');
+        header('Location: index.php?action=gestionCategories/show');
     }
 }
 ?>

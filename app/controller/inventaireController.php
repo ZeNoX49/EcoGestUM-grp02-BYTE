@@ -34,10 +34,10 @@ class inventaireController
         include $_ENV['BONUS_PATH']."app/view/inventaireView.php";
     }
     
-    function edit(){
-        if(isset($_GET['idEdit'])){
-            $name = isset($_GET['name']) ? $_GET['name'] : null;
-            $quantitie = isset($_GET['quantitie']) ? $_GET['quantitie'] : null;
+    function edit() {
+        if(isset($_GET['idEdit'])) {
+            $name = $_GET['name'] ?? null;
+            $quantitie = $_GET['quantitie'] ?? null;
             updateObject($_GET['idEdit'], $name, null, null, null, null, $quantitie);
         }
         header('Location: index.php?action=inventaire/show');

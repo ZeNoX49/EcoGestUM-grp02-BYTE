@@ -38,7 +38,7 @@ class formController
 
             $date = date('Y-m-d H:i:s');
             $typeEchange = 1;
-            $user = $_SESSION['user_id'] ?? 1;
+            $user = $_SESSION['user_id'];
             $statut = 1;
 
             if(!insert_object($nom, $desc, $date, $idPointCollecte, $typeEchange, $user, $etat, $categorie, $quantite, $statut)) {

@@ -6,7 +6,7 @@ class EventController {
     public function show()
     {
         if (!isset($_SESSION['user_role'])) {
-            header('Location: /ecogestum-grp12-byte/index.php?action=connexion');
+            header('Location: index.php?action=connexion');
             exit();
         }
 
@@ -68,9 +68,9 @@ class EventController {
         ];
 
         if ($role === 2 || $role === 3) {
-            include "app/view/eventTeacher.php";
+            include "app/view/eventTeacherView.php";
         } else {
-            include "app/view/eventStudent.php";
+            include "app/view/eventStudentView.php";
             exit();
         }
     }
