@@ -52,7 +52,7 @@
             </div>
         </a>
 
-        <a href="index.php?action=catalogueEleve/show" class="gestion-card">
+        <a href="index.php?action=catalogueEleve/show" class="gestion-card" style="display:  <?= (isset($role) && $role == 1)?'':'none' ?>">
             <div class="card-icon-wrapper">
                 <i class="fa-regular fa-handshake"></i>
             </div>
