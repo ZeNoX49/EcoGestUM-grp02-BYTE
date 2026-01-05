@@ -1,5 +1,5 @@
 
-function showSection(sectionId, element) {
+function  showSection(sectionId, element) {
     //Cache les sections pas active
     const sections = document.querySelectorAll('.content-section');
     sections.forEach(sec => sec.classList.remove('active-section'));

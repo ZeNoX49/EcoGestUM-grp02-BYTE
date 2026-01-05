@@ -81,7 +81,7 @@ class profilController
             if(!updateUser($_SESSION['user_id'], $nom, $prenom, $email)) {
                 header('Location: index.php?action=profil/show&error=update');
             }
-            
+
             $_SESSION['user_mail'] = $email;
             header('Location: index.php?action=profil/show&success=info');
         }
@@ -90,28 +90,34 @@ class profilController
     public function updatePassword()
     {
         if (!isset($_SESSION['user_id'])) header('Location: index.php');
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $currentMdp = $_POST['current_mdp'];
             $newMdp = $_POST['new_mdp'];
             $confirmMdp = $_POST['confirm_mdp'];
 
-            $user = getUser($_SESSION['user_id']);
+            $users = getUser($_SESSION['user_id']);
+            $user = $users[0];
 
             if (!password_verify($currentMdp, $user['mdp_utilisateur'])) {
-                header('Location: index.php?action=profil/show&error=current');
+                header('Location: index.php?action=profil/show&section=mdp&error=current');
+                exit;
             }
-            
             if ($newMdp !== $confirmMdp) {
-                header('Location: index.php?action=profil/show&error=match');
+                header('Location: index.php?action=profil/show&section=mdp&error=match');
+                exit;
+            }
+            if(strlen($newMdp) < 4) {
+                header('Location: index.php?action=profil/show&section=mdp&error=short');
+                exit;
             }
 
-            if(strlen($newMdp) < 4) {
-                header('Location: index.php?action=profil/show&error=short');
-            }
-            
             updateUserPassword($_SESSION['user_id'], $newMdp);
-            header('Location: index.php?action=connexion/disconnect');
+            session_destroy();
+            session_start();
+            $_SESSION['success_message'] = "Mot de passe modifié avec succès. Veuillez vous reconnecter.";
+
+            header('Location: index.php?action=connexion/show');
+            exit;
         }
     }
 

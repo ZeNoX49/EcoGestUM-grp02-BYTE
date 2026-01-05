@@ -129,7 +129,7 @@
                                 <?php foreach($event_organisateur_possible as $event_org_p) : ?>
                                     <option><?= $event_org_p["email_utilisateur"] ?></option>
                                 <?php endforeach ?>
-                            </select>                        
+                            </select>
                         </div>
                         <div class="tag-box">
                             <?php foreach($notif_event_org as $event_org) : ?>
@@ -170,30 +170,41 @@
 
             <div id="mdp" class="content-section">
                 <h2>Changer Mot de Passe</h2>
-                <form>
+
+                <?php if(isset($_GET['error'])): ?>
+                    <p style="color: red; text-align: center; margin-bottom: 15px;">
+                        <?php
+                        if($_GET['error'] == 'current') echo "Le mot de passe actuel est incorrect.";
+                        if($_GET['error'] == 'match') echo "Les nouveaux mots de passe ne correspondent pas.";
+                        if($_GET['error'] == 'short') echo "Le mot de passe doit faire au moins 4 caractères.";
+                        ?>
+                    </p>
+                <?php endif; ?>
+
+                <form action="index.php?action=profil/updatePassword" method="POST">
                     <div class="profil-form-group center-btn" style="margin: 40px auto;">
                         <div style="width: 100%;">
                             <label>Mot de passe actuel</label>
-                            <input type="password" class="profil-input">
+                            <input type="password" name="current_mdp" class="profil-input" required>
                         </div>
                     </div>
 
                     <div class="profil-form-group center-btn" style="margin: 20px auto;">
                         <div style="width: 100%;">
                             <label>Nouveau Mot de passe</label>
-                            <input type="password" class="profil-input">
+                            <input type="password" name="new_mdp" class="profil-input" required>
                         </div>
                     </div>
 
                     <div class="profil-form-group center-btn" style="margin: 20px auto;">
                         <div style="width: 100%;">
                             <label>Confirmation du Mot de passe</label>
-                            <input type="password" class="profil-input">
+                            <input type="password" name="confirm_mdp" class="profil-input" required>
                         </div>
                     </div>
 
                     <div class="center-btn" style="margin-top: 40px;">
-                        <button type="button" class="btn-confirm">CONFIRMER</button>
+                        <button type="submit" class="btn-confirm">CONFIRMER</button>
                     </div>
                 </form>
             </div>
@@ -212,93 +223,93 @@
 </body>
 </html>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    function addTag(tagBox, text) {
-        if (!isTagAlreadyAdded(tagBox, text)) {
-            const tag = document.createElement('span');
-            tag.className = 'tag-item';
-            tag.innerHTML = `
+    document.addEventListener('DOMContentLoaded', function() {
+        function addTag(tagBox, text) {
+            if (!isTagAlreadyAdded(tagBox, text)) {
+                const tag = document.createElement('span');
+                tag.className = 'tag-item';
+                tag.innerHTML = `
                 <span class="tag-text">${text}</span>
                 <span class="tag-close">×</span>
             `;
-            tagBox.appendChild(tag);
-            
-            tag.querySelector('.tag-close').addEventListener('click', function() {
-                tag.remove();
+                tagBox.appendChild(tag);
+
+                tag.querySelector('.tag-close').addEventListener('click', function() {
+                    tag.remove();
+                });
+            }
+        }
+
+        function isTagAlreadyAdded(tagBox, text) {
+            return Array.from(tagBox.querySelectorAll('.tag-text')).some(tag =>
+                tag.textContent.trim() === text.trim()
+            );
+        }
+
+        const objCatSelect = document.querySelector('.notif-grid .col:nth-child(1) select');
+        const objCatTagBox = document.querySelector('.notif-grid .col:nth-child(1) .tag-box');
+        if (objCatSelect && objCatTagBox) {
+            objCatSelect.addEventListener('change', function() {
+                const text = this.options[this.selectedIndex].textContent;
+                if (text !== 'Sélectionnez') {
+                    addTag(objCatTagBox, text);
+                    this.selectedIndex = 0;
+                }
             });
         }
-    }
-    
-    function isTagAlreadyAdded(tagBox, text) {
-        return Array.from(tagBox.querySelectorAll('.tag-text')).some(tag => 
-            tag.textContent.trim() === text.trim()
-        );
-    }
 
-    const objCatSelect = document.querySelector('.notif-grid .col:nth-child(1) select');
-    const objCatTagBox = document.querySelector('.notif-grid .col:nth-child(1) .tag-box');
-    if (objCatSelect && objCatTagBox) {
-        objCatSelect.addEventListener('change', function() {
-            const text = this.options[this.selectedIndex].textContent;
-            if (text !== 'Sélectionnez') {
-                addTag(objCatTagBox, text);
-                this.selectedIndex = 0;
-            }
-        });
-    }
-    
-    const objLocSelect = document.querySelector('.notif-grid .col:nth-child(2) select');
-    const objLocTagBox = document.querySelector('.notif-grid .col:nth-child(2) .tag-box');
-    if (objLocSelect && objLocTagBox) {
-        objLocSelect.addEventListener('change', function() {
-            const text = this.options[this.selectedIndex].textContent;
-            if (text !== 'Sélectionnez') {
-                addTag(objLocTagBox, text);
-                this.selectedIndex = 0;
-            }
-        });
-    }
-    
-    const eventCatSelect = document.querySelectorAll('.notif-grid')[1]?.querySelector('.col:nth-child(1) select');
-    const eventCatTagBox = document.querySelectorAll('.notif-grid')[1]?.querySelector('.col:nth-child(1) .tag-box');
-    if (eventCatSelect && eventCatTagBox) {
-        eventCatSelect.addEventListener('change', function() {
-            const text = this.options[this.selectedIndex].textContent;
-            if (text !== 'Sélectionnez') {
-                addTag(eventCatTagBox, text);
-                this.selectedIndex = 0;
-            }
-        });
-    }
-    
-    const eventOrgSelect = document.querySelectorAll('.notif-grid')[1]?.querySelector('.col:nth-child(2) select');
-    const eventOrgTagBox = document.querySelectorAll('.notif-grid')[1]?.querySelector('.col:nth-child(2) .tag-box');
-    if (eventOrgSelect && eventOrgTagBox) {
-        eventOrgSelect.addEventListener('change', function() {
-            const text = this.options[this.selectedIndex].textContent;
-            if (text !== 'Sélectionnez') {
-                addTag(eventOrgTagBox, text);
-                this.selectedIndex = 0;
-            }
-        });
-    }
-    
-    const eventLocSelect = document.querySelectorAll('.notif-grid')[1]?.querySelector('.col:nth-child(3) select');
-    const eventLocTagBox = document.querySelectorAll('.notif-grid')[1]?.querySelector('.col:nth-child(3) .tag-box');
-    if (eventLocSelect && eventLocTagBox) {
-        eventLocSelect.addEventListener('change', function() {
-            const text = this.options[this.selectedIndex].textContent;
-            if (text !== 'Sélectionnez') {
-                addTag(eventLocTagBox, text);
-                this.selectedIndex = 0;
-            }
-        });
-    }
-    
-    document.querySelectorAll('.tag-close').forEach(closeBtn => {
-        closeBtn.addEventListener('click', function() {
-            this.parentElement.remove();
+        const objLocSelect = document.querySelector('.notif-grid .col:nth-child(2) select');
+        const objLocTagBox = document.querySelector('.notif-grid .col:nth-child(2) .tag-box');
+        if (objLocSelect && objLocTagBox) {
+            objLocSelect.addEventListener('change', function() {
+                const text = this.options[this.selectedIndex].textContent;
+                if (text !== 'Sélectionnez') {
+                    addTag(objLocTagBox, text);
+                    this.selectedIndex = 0;
+                }
+            });
+        }
+
+        const eventCatSelect = document.querySelectorAll('.notif-grid')[1]?.querySelector('.col:nth-child(1) select');
+        const eventCatTagBox = document.querySelectorAll('.notif-grid')[1]?.querySelector('.col:nth-child(1) .tag-box');
+        if (eventCatSelect && eventCatTagBox) {
+            eventCatSelect.addEventListener('change', function() {
+                const text = this.options[this.selectedIndex].textContent;
+                if (text !== 'Sélectionnez') {
+                    addTag(eventCatTagBox, text);
+                    this.selectedIndex = 0;
+                }
+            });
+        }
+
+        const eventOrgSelect = document.querySelectorAll('.notif-grid')[1]?.querySelector('.col:nth-child(2) select');
+        const eventOrgTagBox = document.querySelectorAll('.notif-grid')[1]?.querySelector('.col:nth-child(2) .tag-box');
+        if (eventOrgSelect && eventOrgTagBox) {
+            eventOrgSelect.addEventListener('change', function() {
+                const text = this.options[this.selectedIndex].textContent;
+                if (text !== 'Sélectionnez') {
+                    addTag(eventOrgTagBox, text);
+                    this.selectedIndex = 0;
+                }
+            });
+        }
+
+        const eventLocSelect = document.querySelectorAll('.notif-grid')[1]?.querySelector('.col:nth-child(3) select');
+        const eventLocTagBox = document.querySelectorAll('.notif-grid')[1]?.querySelector('.col:nth-child(3) .tag-box');
+        if (eventLocSelect && eventLocTagBox) {
+            eventLocSelect.addEventListener('change', function() {
+                const text = this.options[this.selectedIndex].textContent;
+                if (text !== 'Sélectionnez') {
+                    addTag(eventLocTagBox, text);
+                    this.selectedIndex = 0;
+                }
+            });
+        }
+
+        document.querySelectorAll('.tag-close').forEach(closeBtn => {
+            closeBtn.addEventListener('click', function() {
+                this.parentElement.remove();
+            });
         });
     });
-});
 </script>
