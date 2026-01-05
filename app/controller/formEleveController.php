@@ -26,21 +26,6 @@ class formEleveController
                 exit();
             }
 
-            // Gestion de l'upload d'image
-            $nomImage = 'default.png';
-            if (isset($_FILES['photos_objet']) && $_FILES['photos_objet']['error'][0] == 0) {
-                $tmpName = $_FILES['photos_objet']['tmp_name'][0];
-                $name = basename($_FILES['photos_objet']['name'][0]);
-                $uploadDir = $_ENV['BONUS_PATH'].'assets/image/uploads/';
-
-                if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
-                $finalName = time() . "_" . $name;
-
-                if (move_uploaded_file($tmpName, $uploadDir . $finalName)) {
-                    $nomImage = $finalName;
-                }
-            }
-
             // Récupération des champs
             $nom = $_POST['nom_objet'];
             $desc = $_POST['description_objet'];
@@ -56,10 +41,16 @@ class formEleveController
 
             // Gestion du lieu
             $nomLieu = trim($_POST['nom_point_collecte']);
-            $idPointCollecte = getIdPointCollecteByName($nomLieu);
+            $id_point_collecte = getIdPointCollecteByName($nomLieu);
+            if ($id_point_collecte) {
+                $idPointCollecte = $id_point_collecte[0]["id_point_collecte"];
+            } else {
+                if(!createPointCollecte($nomLieu)) {
+                    echo "une erreur a lieu<br>";
+                    exit;
+                }
 
-            if (!$idPointCollecte) {
-                $idPointCollecte = createPointCollecte($nomLieu);
+                $idPointCollecte = getIdPointCollecteByName($nomLieu);
             }
 
             $date = date('Y-m-d H:i:s');
@@ -67,15 +58,29 @@ class formEleveController
             $user = $_SESSION['user_id'];
             $statut = 1;
 
-            $result = insert_object($nomImage, $nom, $desc, $date, $idPointCollecte, $typeEchange, $user, $etat, $categorie, $quantite, $statut);
-
-            if ($result) {
-                header('Location: index.php?action=catalogueEleve/show');
-                exit;
-            } else {
-                header('Location: index.php?action=formEleve/show&error=creation_failed');
+            if(!insert_object($nom, $desc, $date, $idPointCollecte, $typeEchange, $user, $etat, $categorie, $quantite, $statut)) {
+                echo "Erreur lors de l'insertion.";
                 exit;
             }
+
+            if (isset($_FILES['photos_objet'])) {
+                $uploadDir = $_ENV['BONUS_PATH'].'assets/image/uploads/';
+                if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
+
+                $idObj = getObjectId($nom, $desc, $date)[0]["id_objet"];
+
+                // Parcourir les fichiers correctement
+                foreach ($_FILES['photos_objet']['tmp_name'] as $index => $tmpName) {
+                    if ($_FILES['photos_objet']['error'][$index] === 0) {
+                        // Récupère l'extension
+                        $extension = pathinfo($_FILES['photos_objet']['name'][$index], PATHINFO_EXTENSION);
+                        $finalName = $idObj."_".($index+1).".".$extension;
+                        move_uploaded_file($tmpName, $uploadDir . $finalName);
+                    }
+                }
+            }
+
+            header('Location: index.php?action=catalogueEleve/show');
         }
     }
 }

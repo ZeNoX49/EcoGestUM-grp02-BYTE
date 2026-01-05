@@ -39,7 +39,7 @@ class profilController
         $objet_position_possible = getAllPointCollecte();
         $notif_obj_loc = getChoixNotification($_SESSION['user_id'], "objets", "position");
         foreach($notif_obj_loc as $obj_loc) {
-            $objet_position_possible = array_diff($objet_position_possible, [$objet_position[$obj_cat["id_choix"]]["adresse_point_collecte"]]);
+            $objet_position_possible = array_diff($objet_position_possible, [$objet_position[$obj_loc["id_choix"]]["adresse_point_collecte"]]);
         }
 
         // Evenement - categorie
@@ -47,7 +47,7 @@ class profilController
         $event_categories_possible = getAllEventType();
         $notif_event_cat = getChoixNotification($_SESSION['user_id'], "events", "categorie");
         foreach($notif_event_cat as $event_cat) {
-            $event_categories_possible = array_diff($event_categories_possible, [$event_categories[$obj_cat["id_choix"]]["nom_categorie"]]);
+            $event_categories_possible = array_diff($event_categories_possible, [$event_categories[$event_cat["id_choix"]]["nom_categorie"]]);
         }
 
         // Evenement - organisateur
@@ -55,7 +55,7 @@ class profilController
         $event_organisateur_possible = getEventUsers();
         $notif_event_org = getChoixNotification($_SESSION['user_id'], "events", "organisateur");
         foreach($notif_event_org as $event_org) {
-            $event_organisateur_possible = array_diff($event_organisateur_possible, [$event_organisateur[$obj_cat["id_choix"]]["email_utilisateur"]]);
+            $event_organisateur_possible = array_diff($event_organisateur_possible, [$event_organisateur[$event_org["id_choix"]]["email_utilisateur"]]);
         }
 
         // Evenement - localisation
@@ -63,7 +63,7 @@ class profilController
         $event_localisation_possible = getAllPointCollecte();
         $notif_event_loc = getChoixNotification($_SESSION['user_id'], "events", "position");
         foreach($notif_event_loc as $event_loc) {
-            $event_localisation_possible = array_diff($event_localisation_possible, [$event_localisation[$obj_cat["id_choix"]]["adresse_point_collecte"]]);
+            $event_localisation_possible = array_diff($event_localisation_possible, [$event_localisation[$event_loc["id_choix"]]["adresse_point_collecte"]]);
         }
 
         include $_ENV['BONUS_PATH']."app/view/profilView.php";

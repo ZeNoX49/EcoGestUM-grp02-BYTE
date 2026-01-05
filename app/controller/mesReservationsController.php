@@ -29,6 +29,7 @@ class mesReservationsController
         }
         header('Location: index.php?action=mesReservations/show');
     }
+    
     public function confirm() {
         if (isset($_SESSION['user_id']) && isset($_GET['id'])) {
             confirmReception($_SESSION['user_id'], $_GET['id']);
