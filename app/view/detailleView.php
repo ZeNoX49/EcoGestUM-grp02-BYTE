@@ -19,9 +19,7 @@
     <?php if(isset($objet) && $objet): ?>
 
         <?php
-        $imgSrc = !empty($objet['image_objet']) ? $_ENV['BONUS_PATH'].'assets/image/uploads/'.$objet['image_objet'] : $_ENV['BONUS_PATH'].'assets/image/logo.svg';
-        if(strpos($objet['image_objet'], 'http') === 0) { $imgSrc = $objet['image_objet']; }
-
+        $imgSrc = getObjectImage($objet['id_objet']);
         $isAvailable = ($objet['id_statut_disponibilite'] == 1);
         $tagColor = $isAvailable ? '#8BC34A' : '#DB4C3B';
         $tagText = $objet['nom_statut_disponibilite'] ?? 'Indisponible';
