@@ -136,7 +136,6 @@ CREATE TABLE OBJET (
     CONSTRAINT fk_objet_etat FOREIGN KEY (id_etat) REFERENCES ETAT (id_etat) ON DELETE SET NULL,
     CONSTRAINT fk_objet_categorie FOREIGN KEY (id_categorie) REFERENCES CATEGORIE (id_categorie) ON DELETE SET NULL
 );
-
 CREATE TABLE EVENEMENT (
     id_evenement          INT AUTO_INCREMENT PRIMARY KEY,
     titre_evenement       VARCHAR(100) NOT NULL,

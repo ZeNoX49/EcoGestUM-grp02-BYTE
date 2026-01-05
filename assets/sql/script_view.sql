@@ -27,12 +27,14 @@ SELECT o.id_objet,
        p.latitude,
        p.longitude,
        e.nom_etat,
-       u.nom_utilisateur
+       u.nom_utilisateur,
+       s.nom_statut_disponibilite
 FROM OBJET o
          JOIN POINTCOLLECTE p ON p.id_point_collecte = o.id_point_collecte
          JOIN ETAT e ON e.id_etat = o.id_etat
          JOIN UTILISATEUR u ON u.id_utilisateur = o.id_utilisateur
-WHERE o.id_statut_disponibilite = 1;
+         JOIN STATUTDISPONIBLE s ON s.id_statut_disponibilite = o.id_statut_disponibilite
+WHERE o.id_statut_disponibilite = 2;
 
 -- Requete 2 : Voir mes reservations (exemple pour utilisateur id=1)
 CREATE

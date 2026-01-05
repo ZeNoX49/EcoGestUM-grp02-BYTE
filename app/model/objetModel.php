@@ -15,6 +15,7 @@ function getObject($id_object) {
             JOIN ETAT e ON e.id_etat = o.id_etat
             JOIN POINTCOLLECTE p ON p.id_point_collecte = o.id_point_collecte
             JOIN UTILISATEUR u ON u.id_utilisateur = o.id_utilisateur
+            JOIN STATUTDISPONIBLE s ON s.id_statut_disponibilite = o.id_statut_disponibilite
             WHERE id_objet = ?";
     $params = [$id_object];
     return get($sql, $params);
@@ -148,7 +149,7 @@ function getStudentExchangeObjects($limit = null, $offset = 0) {
             JOIN CATEGORIE c ON o.id_categorie = c.id_categorie
             LEFT JOIN POINTCOLLECTE pc ON o.id_point_collecte = pc.id_point_collecte
             JOIN UTILISATEUR u ON o.id_utilisateur = u.id_utilisateur
-            WHERE o.id_type_echange = 3 AND o.id_statut_disponibilite = 1
+            WHERE o.id_type_echange = 3 AND o.id_statut_disponibilite = 2
             ORDER BY o.date_ajout_objet DESC";
 
     if ($limit !== null) {

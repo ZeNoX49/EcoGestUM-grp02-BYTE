@@ -19,10 +19,10 @@
     <?php if(isset($objet) && $objet): ?>
 
         <?php
-            $imgSrc = getObjectImage($objet['id_objet']);
-            $isAvailable = ($objet['id_statut_disponibilite'] == 1);
-            $tagColor = $isAvailable ? '#8BC34A' : '#DB4C3B';
-            $tagText = $objet['nom_statut_disponibilite'] ?? 'Indisponible';
+        $imgSrc = getObjectImage($objet['id_objet']);
+        $isAvailable = ($objet['id_statut_disponibilite'] == 2);
+        $tagColor = $isAvailable ? '#8BC34A' : '#DB4C3B';
+        $tagText = $objet['nom_statut_disponibilite'] ?? 'Indisponible';
         ?>
 
         <div class="breadcrumb">
