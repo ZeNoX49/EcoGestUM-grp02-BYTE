@@ -68,9 +68,9 @@ class EventController {
         ];
 
         if ($role === 2 || $role === 3) {
-            include "app/view/eventTeacher.php";
+            include "app/view/eventTeacherView.php";
         } else {
-            include "app/view/eventStudent.php";
+            include "app/view/eventStudentView.php";
             exit();
         }
     }
