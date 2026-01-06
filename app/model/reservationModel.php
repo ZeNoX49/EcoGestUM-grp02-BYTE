@@ -3,7 +3,7 @@ require_once $_ENV['BONUS_PATH']."app/model/bddModel.php";
 
 function getReservationsByUser($idUser) {
     $sql = "SELECT r.*, 
-                   o.nom_objet, o.description_objet, o.image_objet, 
+                   o.nom_objet, o.description_objet,
                    c.nom_categorie, 
                    s.nom_statut_reservation, 
                    pc.nom_point_collecte, pc.adresse_point_collecte,
@@ -26,7 +26,7 @@ function createReservation($idUser, $idObjet) {
     $params = [$idObjet, $idUser];
     if(!insert($sql, $params)) return false;
 
-    $sql = "UPDATE OBJET SET id_statut_disponibilite = 2 WHERE id_objet = ?";
+    $sql = "UPDATE OBJET SET id_statut_disponibilite = 3 WHERE id_objet = ?";
     $params = [$idObjet];
     return update($sql, $params);
 }

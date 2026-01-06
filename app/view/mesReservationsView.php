@@ -59,9 +59,6 @@
 
             <?php foreach($reservations as $res): ?>
                 <?php
-                // Gestion de l'image
-                $imgSrc = getObjectImage($res["id_objet"]);
-
                 $statusClass = "status-yellow";
                 $statusLabel = $res['nom_statut_reservation'];
                 $canConfirm = false;
@@ -117,6 +114,7 @@
                                 <button class="res-btn btn-green" onclick="openConfirmModal('<?= addslashes($res['nom_objet']) ?>', '<?= $res['id_objet'] ?>')">Confirmer réception</button>
                             <?php endif; ?>
 
+                            <a href="index.php?action=detaille/show&id=<?= $res['id_objet'] ?>" class="res-btn btn-green">Voir</a>
                             <a href="mailto:<?= $res['email_proprietaire'] ?>" class="res-btn btn-blue">Contacter</a>
 
                             <?php if($canCancel): ?>
