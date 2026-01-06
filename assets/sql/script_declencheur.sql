@@ -1,4 +1,4 @@
-USE ECOGESTUM;
+USE SAE;
 
 
 
@@ -16,17 +16,17 @@ BEGIN
     IF OLD.id_statut_disponibilite != NEW.id_statut_disponibilite THEN
         IF NEW.id_statut_disponibilite = 2 THEN
             INSERT INTO NOTIFICATION (contenu_notification)
-            VALUES (CONCAT('Votre objet', NEW.nom_objet, ' est disponible à la réservation'));
+            VALUES (CONCAT('Votre objet "', NEW.nom_objet, '" est disponible à la réservation'));
             INSERT INTO RECEVOIR (id_utilisateur, id_notification) VALUES (NEW.id_utilisateur, LAST_INSERT_ID());
         END IF;
         IF NEW.id_statut_disponibilite = 3 THEN
             INSERT INTO NOTIFICATION (contenu_notification)
-            VALUES (CONCAT('Votre objet ', NEW.nom_objet, ' a été réservé'));
+            VALUES (CONCAT('Votre objet "', NEW.nom_objet, '" a été réservé'));
             INSERT INTO RECEVOIR (id_utilisateur, id_notification) VALUES (NEW.id_utilisateur, LAST_INSERT_ID());
         END IF;
         IF NEW.id_statut_disponibilite = 4 THEN
             INSERT INTO NOTIFICATION (contenu_notification)
-            VALUES (CONCAT('Votre objet ', NEW.nom_objet, ' nest plus disponible'));
+            VALUES (CONCAT('Votre objet "', NEW.nom_objet, '" nest plus disponible'));
             INSERT INTO RECEVOIR (id_utilisateur, id_notification) VALUES (NEW.id_utilisateur, LAST_INSERT_ID());
         END IF;
     END IF;
