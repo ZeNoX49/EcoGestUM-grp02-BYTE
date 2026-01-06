@@ -23,7 +23,7 @@ class DetailleController
         $hasPosition = false;
         if($objet["id_point_collecte"] !== null) {
             $pc = getPointCollecteById($objet["id_point_collecte"])[0];
-            if($pc["longitude"] !== 0 && $pc["latitude"] !== 0) {
+            if(($pc["longitude"] !== null && $pc["longitude"] != 0) && ($pc["latitude"] !== null && $pc["longitude"] != 0)) {
                 $hasPosition = true;
             }
         }

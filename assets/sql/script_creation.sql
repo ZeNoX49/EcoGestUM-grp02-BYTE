@@ -112,8 +112,8 @@ CREATE TABLE POINTCOLLECTE (
     id_point_collecte      INT AUTO_INCREMENT PRIMARY KEY,
     adresse_point_collecte VARCHAR(100),
     nom_point_collecte     VARCHAR(100)   NOT NULL,
-    latitude               DECIMAL(10, 8) NOT NULL,
-    longitude              DECIMAL(11, 8) NOT NULL
+    latitude               DECIMAL(10, 8),
+    longitude              DECIMAL(11, 8)
 );
 
 CREATE TABLE OBJET (

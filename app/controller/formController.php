@@ -24,16 +24,15 @@ class formController
             $quantite = $_POST['quantite'] ?? 1;
             $nomLieu = trim($_POST['nom_point_collecte']);
 
-            $id_point_collecte = getIdPointCollecteByName($nomLieu);
-            if ($id_point_collecte) {
-                $idPointCollecte = $id_point_collecte[0]["id_point_collecte"];
+            $point_collecte = getIdPointCollecteByName($nomLieu)[0];
+            if ($point_collecte) {
+                $idPointCollecte = $point_collecte["id_point_collecte"];
             } else {
                 if(!createPointCollecte($nomLieu)) {
                     echo "une erreur a lieu<br>";
                     exit;
                 }
-
-                $idPointCollecte = getIdPointCollecteByName($nomLieu);
+                $idPointCollecte = getLastIdPointCollecte();
             }
 
             $date = date('Y-m-d H:i:s');

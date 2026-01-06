@@ -22,3 +22,9 @@ function createPointCollecte($nom) {
     $params = [$nom, "Adresse non spécifiée"];
     return insert($sql, $params);
 }
+
+// pas fameux comme fonction, si quelqu'un ajoute un autre objet en même temps ca foire 
+function getLastIdPointCollecte() {
+    $sql = "SELECT MAX(id_point_collecte) as max_id_pc FROM POINTCOLLECTE";
+    return get($sql)[0]["max_id_pc"];
+}
