@@ -108,7 +108,7 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function() {
 
         var map = L.map('map').setView([48.08593223153121, -0.7586975230079035], 18);
 
@@ -123,8 +123,7 @@
         <?php
         $coords = [$objet['latitude'], $objet['longitude']];
         // Gestion de l'image
-        $img = !empty($objet['image_objet']) ? 'assets/image/uploads/'.$objet['image_objet'] : 'assets/image/logo.svg';
-        if(strpos($objet['image_objet'], 'http') === 0) { $img = $objet['image_objet']; }
+        $img = getObjectImage($objet['id_objet']);
 
         // On vérifie qu'on a bien des coordonnées
         if ($coords[0] != 0 && $coords[1] != 0):
@@ -135,13 +134,12 @@
         // Contenu HTML du popup
         var content = `
                 <div class="popup-content">
-                    <img src="<?php echo htmlspecialchars($img); ?>" alt="Objet">
+                    <img src="<?php echo $img; ?>" alt="Objet">
                     <h3><?php echo addslashes($objet['nom_objet']); ?></h3>
                     <p>📍 <?php echo addslashes($objet['nom_point_collecte']); ?></p>
                     <a href="index.php?action=detaille/show&id=<?php echo $objet['id_objet']; ?>" class="btn-detail">Voir l'objet</a>
                 </div>
             `;
-
         marker.bindPopup(content);
         marker.addTo(markersGroup);
 
@@ -150,8 +148,10 @@
 
         if (markersGroup.getLayers().length > 0) {
             if (markersGroup.getLayers().length === 1) {
-                map.fitBounds(markersGroup.getBounds(), {maxZoom: 18});
-                markersGroup.getLayers()[0].openPopup();
+              var marker = markersGroup.getLayers()[0];
+              var latLng = marker.getLatLng();
+              map.setView(latLng, 15);
+              marker.openPopup();
             } else {
                 map.fitBounds(markersGroup.getBounds(), {padding: [50, 50]});
             }
