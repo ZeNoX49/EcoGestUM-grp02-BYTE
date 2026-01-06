@@ -1,5 +1,7 @@
 # EcoGestUM-grp12-BYTE
 
+[serveur web](http://lainf-sae3-02.univ-lemans.fr/EcoGestUM-grp02-BYTE/)
+
 **pour créer la BDD aller dans le fichier *createDB.php***
 
 comptes (mail, mdp)*

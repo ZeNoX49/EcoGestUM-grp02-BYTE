@@ -123,9 +123,7 @@
         <?php
         $coords = [$objet['latitude'], $objet['longitude']];
         // Gestion de l'image
-        $img = !empty($objet['image_objet']) ? 'assets/image/uploads/'.$objet['image_objet'] : 'assets/image/logo.svg';
-        if(strpos($objet['image_objet'], 'http') === 0) { $img = $objet['image_objet']; }
-
+        $img = getObjectImage($objet["id_objet"]);
         // On vérifie qu'on a bien des coordonnées
         if ($coords[0] != 0 && $coords[1] != 0):
         ?>

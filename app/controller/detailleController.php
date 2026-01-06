@@ -2,6 +2,7 @@
 
 require_once $_ENV['BONUS_PATH']."app/model/objetModel.php";
 require_once $_ENV['BONUS_PATH']."app/model/reservationModel.php";
+require_once $_ENV['BONUS_PATH']."app/model/pointCollecteModel.php";
 
 class DetailleController
 {
@@ -16,6 +17,15 @@ class DetailleController
         if(!$objet) {
             header('Location: index.php?action=catalogue/show');
             exit;
+        }
+
+        $monObjet = $objet["id_utilisateur"] == $_SESSION["user_id"];
+        $hasPosition = false;
+        if($objet["id_point_collecte"] !== null) {
+            $pc = getPointCollecteById($objet["id_point_collecte"])[0];
+            if($pc["longitude"] !== 0 && $pc["latitude"] !== 0) {
+                $hasPosition = true;
+            }
         }
 
         include $_ENV['BONUS_PATH']."app/view/detailleView.php";

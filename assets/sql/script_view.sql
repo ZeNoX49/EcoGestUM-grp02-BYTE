@@ -19,7 +19,6 @@ OR REPLACE VIEW objets_disponibles AS
 SELECT o.id_objet,
        o.nom_objet,
        o.description_objet,
-       o.image_objet,
        o.date_ajout_objet,
        o.id_categorie,
        p.nom_point_collecte,
@@ -117,7 +116,7 @@ GROUP BY sr.nom_statut_reservation;
 
 CREATE VIEW reservations AS
 SELECT r.*,
-       o.nom_objet, o.description_objet, o.image_objet,
+       o.nom_objet, o.description_objet,
        c.nom_categorie,
        s.nom_statut_reservation,
        pc.nom_point_collecte, pc.adresse_point_collecte,

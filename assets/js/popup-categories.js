@@ -9,7 +9,7 @@ function openEditModal(id, name, desc, icon, status, mode) {
 
     if (mode === 'new') {
         modalTitle.textContent = "Ajouter une catégorie";
-        form.action = "/ecogestum-grp12-byte/gestionCategories/add";
+        form.action = "index.php?action=gestionCategories/add";
         idInput.value = "";
         nameInput.value = "";
         descInput.value = "";
@@ -18,7 +18,7 @@ function openEditModal(id, name, desc, icon, status, mode) {
         if(radios.length > 0) radios[0].checked = true;
     } else {
         modalTitle.textContent = "Modifier la catégorie";
-        form.action = "/ecogestum-grp12-byte/gestionCategories/update";
+        form.action = "index.php?action=gestionCategories/update";
         idInput.value = id;
         nameInput.value = name;
         descInput.value = desc;

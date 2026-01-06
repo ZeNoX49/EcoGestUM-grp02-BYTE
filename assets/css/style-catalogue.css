@@ -534,6 +534,12 @@
     flex-grow: 1;
 }
 
+.btn-reserve-disable {
+    background-color: #646464;
+    color: white;
+    flex-grow: 1;
+}
+
 .btn-reserve:hover {
     background-color: #2B3A6C;
 }
@@ -541,6 +547,12 @@
 .btn-map {
     background-color: #B8C5E6;
     color: #394264;
+    flex-grow: 1;
+}
+
+.btn-map-disable {
+    background-color: #909090;
+    color: #646464;
     flex-grow: 1;
 }
 

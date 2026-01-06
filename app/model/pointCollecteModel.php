@@ -6,6 +6,11 @@ function getAllPointCollecte() {
     return get($sql);
 }
 
+function getPointCollecteById($id) {
+    $sql = "SELECT * FROM POINTCOLLECTE WHERE id_point_collecte = ?";
+    return get($sql, [$id]);
+}
+
 function getIdPointCollecteByName($nom) {
     $sql = "SELECT id_point_collecte FROM POINTCOLLECTE WHERE nom_point_collecte LIKE ?";
     $params = [$nom];

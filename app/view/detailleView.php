@@ -102,9 +102,15 @@
                 <div class="action-buttons">
                     <?php if($isAvailable): ?>
                         <?php if(isset($_SESSION['user_id'])): ?>
-                            <a href="index.php?action=detaille/reserver&id=<?= $objet['id_objet'] ?>" class="btn-reserve" onclick="return confirm('Confirmer la réservation de cet objet ?');">
-                                Réserver cet objet
-                            </a>
+                            <?php if($monObjet) : ?>
+                                <a class="btn-reserve-disable">
+                                    Votre objet
+                                </a>
+                            <?php else : ?>
+                                <a href="index.php?action=detaille/reserver&id=<?= $objet['id_objet'] ?>" class="btn-reserve" onclick="return confirm('Confirmer la réservation de cet objet ?');">
+                                    Réserver cet objet
+                                </a>
+                            <?php endif ?>
                         <?php else: ?>
                             <a href="index.php?action=connexion/show" class="btn-reserve" style="background-color: #999;">
                                 Connectez-vous pour réserver
@@ -116,9 +122,11 @@
                         </button>
                     <?php endif; ?>
 
-                    <a href="index.php?action=map/show&id=<?= $objet['id_objet'] ?>" class="btn-map">
-                        Voir sur la carte
-                    </a>
+                    <?php if($hasPosition) : ?>
+                        <a href="index.php?action=map/show&id=<?= $objet['id_objet'] ?>" class="btn-map">Voir sur la carte</a>
+                    <?php else : ?>
+                        <a class="btn-map-disable">Impossible de voir sur la carte</a>
+                    <?php endif ?>
                     <a href="mailto:<?= $objet['email_utilisateur'] ?>?subject=EcoGestUM - Intérêt pour : <?= urlencode($objet['nom_objet']) ?>" class="btn-contact">
                         Contacter
                     </a>

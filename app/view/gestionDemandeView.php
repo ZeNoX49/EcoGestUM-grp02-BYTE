@@ -101,8 +101,8 @@
                     </div>
 
                     <div class="req-actions">
-                        <button class="btn-refuse" onclick="openRefuseModal('<?= $object['nom_objet'] ?>', 'index?action=gestionDemande/refuser&refuseId=<?= $object['id_objet'] ?>')">Refuser</button>
-                        <button class="btn-approve" onclick="openApproveModal('<?= $object['nom_objet'] ?>', 'index?action=gestionDemande/accepter&acceptId=<?= $object['id_objet'] ?>')">Approuver</button>
+                        <button class="btn-refuse" onclick="openRefuseModal('<?= $object['nom_objet'] ?>', 'index.php?action=gestionDemande/refuser&refuseId=<?= $object['id_objet'] ?>')">Refuser</button>
+                        <button class="btn-approve" onclick="openApproveModal('<?= $object['nom_objet'] ?>', 'index.php?action=gestionDemande/accepter&acceptId=<?= $object['id_objet'] ?>')">Approuver</button>
                     </div>
                 </div>
                 <?php endforeach  ?>
