@@ -31,7 +31,7 @@ comptes (mail, mdp)*
 - [ ] profil - new mdp
 - [X] catalogue recyclage
 - [X] detaille objet
-- [X] carte
+- [ ] carte
 - [ ] gestion des objets : mes reservations
 - [X] gestion des objets : proposer un objet
 - [X] gestion des objets : mes objets proposés

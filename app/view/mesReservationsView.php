@@ -60,8 +60,7 @@
             <?php foreach($reservations as $res): ?>
                 <?php
                 // Gestion de l'image
-                $imgSrc = !empty($res['image_objet']) ? $_ENV['BONUS_PATH'].'assets/image/uploads/'.$res['image_objet'] : 'https://via.placeholder.com/400x300?text=Pas+d\'image';
-                if(strpos($res['image_objet'], 'http') === 0) { $imgSrc = $res['image_objet']; }
+                $imgSrc = getObjectImage($res["id_objet"]);
 
                 $statusClass = "status-yellow";
                 $statusLabel = $res['nom_statut_reservation'];
