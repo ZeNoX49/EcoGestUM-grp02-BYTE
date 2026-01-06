@@ -53,8 +53,7 @@
                 <?php foreach($objets as $objet): ?>
                     <?php
                     // Gestion de l'image
-                    $imgSrc = !empty($objet['image_objet']) ? $_ENV['BONUS_PATH'].'assets/image/uploads/'.$objet['image_objet'] : 'https://via.placeholder.com/150x200?text=Livre';
-                    if(strpos($objet['image_objet'], 'http') === 0) { $imgSrc = $objet['image_objet']; }
+                    $imgSrc = getObjectImage($objet['id_objet']);
                     ?>
 
                     <div class="student-card">
