@@ -11,4 +11,3 @@ function getObjetsDisponibles() {
         return get($sql);
     }
 }
-

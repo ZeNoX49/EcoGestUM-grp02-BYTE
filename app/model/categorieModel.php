@@ -29,3 +29,4 @@ function countObjetsParCategorie($id_cat) {
     $params = [$id_cat];
     return getCount($sql, $params);
 }
+

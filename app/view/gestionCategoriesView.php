@@ -34,7 +34,7 @@
                 <div class="mini-stat-card">
                     <div class="icon-box brown"><i class="fa-solid fa-box"></i></div>
                     <div class="text-box">
-                        <?php $totalObjets = array_sum(array_column($categories, 'nb_objets')); ?>
+                        <?php $totalObjets = sizeof(getAllObject()); ?>
                         <span class="num"><?php echo $totalObjets; ?></span>
                         <span class="lbl">Objets catégorisés</span>
                     </div>
@@ -66,7 +66,7 @@
                         <button class="btn-icon-red" onclick="openDeleteModal(
                                 '<?php echo $cat['id_categorie']; ?>',
                                 '<?php echo addslashes($cat['nom_categorie']); ?>',
-                                '<?php echo $cat['nb_objets']; ?>'
+                                '<?php echo countObjetsParCategorie($cat["id_categorie"]); ?>'
                                 )"><i class="fa-solid fa-trash"></i></button>
                     </div>
                     <div class="cat-icon-large">
@@ -86,7 +86,7 @@
                     <div class="cat-footer">
                         <div class="cat-meta">
                             <span>Objets</span>
-                            <strong><?php echo $cat['nb_objets']; ?></strong>
+                            <strong><?php echo countObjetsParCategorie($cat["id_categorie"]); ?></strong>
                         </div>
                         <div class="cat-meta right">
                             <span>Dernière MAJ</span>

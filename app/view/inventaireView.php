@@ -118,8 +118,7 @@
                     <td>
                         <div class="obj-cell">
                             <?php
-                            $imgSrc = !empty($objet['image_objet']) ? $_ENV['BONUS_PATH'].'assets/image/uploads/'.$objet['image_objet'] : 'https://via.placeholder.com/140x140/A8A8A8/FFFFFF?text=Pas+d\'image';
-                            if(strpos($objet['image_objet'], 'http') === 0) { $imgSrc = $objet['image_objet']; }
+                            $imgSrc = getObjectImage($objet['id_objet']);
                             ?>
                             <div class="obj-img" style="background-image: url('<?php echo htmlspecialchars($imgSrc); ?>');"></div>
                             <span><?=$objet['nom_objet']?></span>

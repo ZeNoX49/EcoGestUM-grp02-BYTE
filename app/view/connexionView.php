@@ -9,6 +9,7 @@
 <body>
 <div class="container">
     <div class="form-section">
+        <h2 style="color: red;">Ce site est un projet étudiant, ne pas mettre de vrais identifiants universitaires</h2>
         <img src=<?php echo $_ENV['BONUS_PATH']."assets/image/LogoLeMans.png" ?> alt="Le Mans Université" class="logo">
         <?php if (isset($_SESSION['error_message'])): ?>
             <div class="error-message">
