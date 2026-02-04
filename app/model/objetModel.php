@@ -196,8 +196,9 @@ function getObjectIndiponible(){
 
 // pas la bdd mais les images
 function getObjectImage($id_objet) {
-    $uploadDir = $_ENV['BONUS_PATH'].'assets/image/uploads/';
-    $files = scandir($uploadDir);
+    $files = getUploadDir();
+    if($files == null) return null;
+
     foreach ($files as $file) {
         if ((string)explode("_", $file)[0] === (string)$id_objet) {
             return $uploadDir.$file;
@@ -207,8 +208,9 @@ function getObjectImage($id_objet) {
 }
 
 function getAllObjectImage($id_objet) {
-    $uploadDir = $_ENV['BONUS_PATH'].'assets/image/uploads/';
-    $files = scandir($uploadDir);
+    $files = getUploadDir();
+    if($files == null) return null;
+
     $images = [];
     foreach ($files as $file) {
         if ((string)explode("_", $file)[0] === (string)$id_objet) {
@@ -216,4 +218,19 @@ function getAllObjectImage($id_objet) {
         }
     }
     return $images;
+}
+
+function getUploadDir() {
+    $uploadDir = $_ENV['BONUS_PATH'].'assets/image/uploads/';
+
+    if (!is_dir($uploadDir)) {
+        mkdir($_ENV['BONUS_PATH'].'assets/image/uploads/', 0777, true);
+
+        if (!is_dir($uploadDir)) {
+            echo "Impossible de créer le fichier uploads pour les images";
+            return null;
+        }
+    }
+
+    return scandir($uploadDir);
 }
