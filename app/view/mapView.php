@@ -87,10 +87,21 @@
 <?php include 'assets/html/header.html'; ?>
 
 <div class="main">
-    <div style="text-align: center; margin-top: 30px;">
-        <h1 style="color: #2B3A6C; font-family: 'Poppins';">Localisation des objets</h1>
+    <div style="margin-top: 30px;">
+        <?php if(sizeof($objets_a_afficher) == 1) : ?>
+            <div class="back-to-catalogue" style="margin-left: 30px;">
+                <a href="index.php?action=detaille/show&id=<?= $objets_a_afficher[0]['id_objet'] ?>">Retour au détaille de l'objet</a>
+            </div>
+            <h1 style="color: #2B3A6C; font-family: 'Poppins'; text-align: center">Localisation de l'objet</h1>
+        <?php else : ?>
+            <div class="back-to-catalogue" style="margin-left: 30px;">
+                <a href="index.php?action=catalogue/show">Retour au catalogue</a>
+            </div>
+            <h1 style="color: #2B3A6C; font-family: 'Poppins'; text-align: center">Localisation des objets</h1>
+        <?php endif ?>
+
         <?php if(isset($erreur_bdd)): ?>
-            <p style="color: red; background: white; display:inline-block; padding:5px 10px; border-radius:10px;">
+            <p style="color: red; background: white; display:inline-block; padding:5px 10px; border-radius:10px; text-align: center">
                 ⚠️ Mode démo : <?php echo $erreur_bdd; ?>
             </p>
         <?php endif; ?>

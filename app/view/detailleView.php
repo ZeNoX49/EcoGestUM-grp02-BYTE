@@ -28,7 +28,7 @@
         <div class="breadcrumb">
             <a href="index.php">Accueil</a> /
             <a href="index.php?action=catalogue/show">Catalogue</a> /
-            <?= htmlspecialchars($objet['nom_categorie']) ?> /
+            <a href="index.php?action=catalogue/show&category=<?= $objet['id_categorie'] ?>&etat=&search=&location="><?= htmlspecialchars($objet['nom_categorie']) ?></a> /
             <?= htmlspecialchars($objet['nom_objet']) ?>
         </div>
 
