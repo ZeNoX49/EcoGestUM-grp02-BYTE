@@ -1,6 +1,4 @@
-USE SAE;
-
-
+USE ECOGESTUM;
 
 CREATE TRIGGER setDateNotification
     BEFORE INSERT

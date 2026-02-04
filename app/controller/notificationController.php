@@ -7,8 +7,9 @@ class notificationController
             header('Location: index.php?action=connexion/show');
         }
         $notifications = getNotification($_SESSION['user_id']);
-        include $_ENV['BONUS_PATH'].'app/view/notificationView.php';
+        // include $_ENV['BONUS_PATH'].'app/view/notificationView.php';
     }
+
     public function erase(){
         if(!isset($_SESSION['user_id'])){
             header('Location: index.php?action=connexion/show');

@@ -18,7 +18,7 @@ function removeNotificationId(int $id, $userId)
 }
 
 function getCountNotification($id){
-    $sql = "SELECT COUNT(*) as count FROM NOTIFICATION JOIN RECEVOIR ON RECEVOIR.id_notification = NOTIFICATION.id_notification WHERE RECEVOIR.id_utilisateur = ?";
+    $sql = "SELECT COUNT(*) FROM NOTIFICATION JOIN RECEVOIR ON RECEVOIR.id_notification = NOTIFICATION.id_notification WHERE RECEVOIR.id_utilisateur = ?";
     $params = [$id];
     return getCount($sql, $params);
 }

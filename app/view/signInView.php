@@ -8,7 +8,7 @@
 <body>
 <div class="container">
     <div class="form-section">
-        <h2 style="color: red;">Ce site est un projet étudiant, ne pas mettre de vrais identifiants universitaires</h2>
+        <h2 style="color: red; text-align: center">Ce site est un projet étudiant, ne pas mettre de vrais identifiants universitaires</h2>
 
         <img src=<?php echo $_ENV['BONUS_PATH']."assets/image/LogoLeMans.png" ?> alt="Le Mans Université" class="logo">
         <h1>Inscription</h1>
